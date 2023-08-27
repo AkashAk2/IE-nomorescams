@@ -1,0 +1,165 @@
+/*-- Use For Custom Styling --*/
+
+
+/* headings */
+
+.h2-center {
+    margin-top: -20px !important;
+}
+
+.h2-subheadings {
+    font-size: 40px;
+    font-weight: 500;
+}
+
+.h2-left {
+    font-size: 40px;
+    font-weight: 600;
+    margin-top: 10px;
+    margin-bottom: 30px;
+    font-family: 'Montserrat', sans-serif;
+    text-align: left;
+}
+.h5-center {
+    font-family: "Montserrat", sans-serif;
+    text-align: center;
+    color: white;
+    font-weight: 500;
+    font-size: 20px; /* You can adjust the font size as needed */
+    margin-top: 90px;
+}
+
+/*text*/
+.justified-text {
+    text-align: justify;
+    font-size: 20px;
+    font-family: Roboto, sans-serif;
+}
+
+
+/*fact*/
+.fact {
+    padding: 5px;
+    border-radius: 5px;
+    max-width: 400px;
+    margin: 0 auto;
+    margin-bottom: 40px;
+    display: block; 
+    text-align: center;
+
+}
+
+.fact-heading {
+    color: #ff9900;
+    font-size: 30px;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.fact-text {
+    color: white;
+    font-size: 20px;
+    line-height: 1.5;
+    margin-bottom: 20;
+    font-family: Roboto, sans-serif;
+}
+
+.fact-percentage {
+    color: #ff9900;
+    font-weight: bold;
+}
+
+/*scamtype container*/
+.container-position {
+    margin-right: 50px;
+    margin-left: 50px;
+    max-width: 95%; /* adjust this value based on your requirements */
+}
+
+
+/*Button*/
+.checkButton {
+    margin-top: 50px;
+}
+
+.centered-button {
+    position: absolute;
+    bottom: 15px;
+    left: 50%;
+    transform: translateX(-50%);
+    white-space: nowrap;
+}
+
+
+/* ===================================
+    statistics Section
+====================================== */
+
+.statistics {
+    position: relative;
+    align-items: center; /* Horizontal alignment */
+    justify-content: center; /* Vertical alignment */
+    height: 100vh;
+}
+
+.statistics .main-title {
+    position: relative;
+    margin-bottom: 6rem;
+    text-align: center;
+}
+
+.statistics .main-title h5 {
+    font-weight: 300;
+    color: #ffffff;
+    opacity: 0.7;
+    font-size: 16px;
+    margin-bottom: 1.1rem;
+    font-family: "Montserrat", sans-serif;
+}
+
+.statistics .main-title h2 {
+    font-weight: 800;
+    color: #ffffff;
+    font-size: 55px;
+    line-height: 1.2;
+    max-width: 1000px;
+    margin-bottom: 1.5rem;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.statistics .main-title p {
+    max-width: 720px;
+    margin: 0 auto;
+    font-size: 16px;
+    color: #ffffff;
+    opacity: 0.7;
+    font-weight: 300;
+    line-height: 26px;
+    letter-spacing: 0.5px;
+    font-family: 'Source Sans Pro', sans-serif;
+}
+
+.statistics .statistics-img-small {
+    margin-left: 30px;
+}
+
+.statistics ul li {
+    font-size: 16px;
+    display: flex;
+    color: #ffffff;
+    font-weight: 300;
+    line-height: 30px;
+    opacity: 0.7;
+    letter-spacing: 0.5px;
+    font-family: 'Source Sans Pro', sans-serif;
+}
+
+.statistics ul li:before{
+    padding-right: 15px;
+    font-weight: 700;
+    content: '\f061';
+    color: yellow;
+    opacity: 1;
+    font-family: "Font Awesome 5 Free";
+}
