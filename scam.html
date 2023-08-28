@@ -153,12 +153,158 @@
                 <h5>Answer a few questions about your message and we will let you know if it is suspicious</h5>
             </div>
             <div class="checkButton">
-                <a href="javascript:void(0);" class="scroll btn btn-medium btn-rounded btn-trans btn-margin">Check</a>
+                <a href="scam.html#quiz" class="scroll btn btn-medium btn-rounded btn-trans btn-margin">Check</a>
             </div>
         </div>
     </div>
 </section>
 <!-- End Scam -->
+
+<!-- Start Quiz -->
+<section class="quiz" id="quiz">
+    <div class="quiz-container bg-black">
+        <div class="progress-bar" id="progressBar"></div>
+        
+        <!-- Initial Slide -->
+        <div class="slide active" id="slide1">
+            <h2>What type of communication is it?</h2>
+            <div class="options">
+                <button data-type="text">Text Message</button>
+                <button data-type="call">Phone Call</button>
+            </div>
+        </div>
+        
+        <!-- Subsequent slides for Text Message type -->
+        <div class="slide" id="slide2-text">
+            <h2>Does the message ask you to take immediate action or claim something like your account being hacked or involved in fraud?</h2>
+            <div class="options">
+                <button data-weight="3">Yes</button>
+                <button data-weight="0">No</button>
+            </div>
+        </div>
+
+        <div class="slide" id="slide3-text">
+            <h2>Does the message inform you about a problem with your payment or package delivery?</h2>
+            <div class="options">
+                <button data-weight="2">Yes</button>
+                <button data-weight="0">No</button>
+            </div>
+        </div>
+
+        <div class="slide" id="slide4-text">
+            <h2>Does the message threaten to stop a service or charge a fine if you don't act now?</h2>
+            <div class="options">
+                <button data-weight="3">Yes</button>
+                <button data-weight="0">No</button>
+            </div>
+        </div>
+
+        <div class="slide" id="slide5-text">
+            <h2>Are you asked to make a payment or transfer money? (Eg: Toll, Utility Bills)</h2>
+            <div class="options">
+                <button data-weight="3">Yes</button>
+                <button data-weight="0">No</button>
+            </div>
+        </div>
+
+        <div class="slide" id="slide6-text">
+            <h2>Are you requested to click on a link or call a number provided in the message?</h2>
+            <div class="options">
+                <button data-weight="3">Yes</button>
+                <button data-weight="0">No</button>
+            </div>
+        </div>
+
+        <div class="slide" id="slide7-text">
+            <h2>Are you prompted to log into an online account with your personal information?</h2>
+            <div class="options">
+                <button data-weight="3">Yes</button>
+                <button data-weight="0">No</button>
+            </div>
+        </div>
+        
+
+        <!-- ... Similarly for other slides -->
+
+        <!-- Subsequent slides for Phone Call type -->
+        <div class="slide" id="slide2-call">
+            <h2>Does the message ask for personal or financial information, such as payment or moving money between accounts?</h2>
+            <div class="options">
+                <button data-weight="3">Yes</button>
+                <button data-weight="0">No</button>
+            </div>
+        </div>
+
+        <!-- ... Similarly for other slides -->
+        <div class="slide" id="slide3-call">
+            <h2>Does the message ask for your password, pin, one-time code, or some other security information?</h2>
+            <div class="options">
+                <button data-weight="3">Yes</button>
+                <button data-weight="0">No</button>
+            </div>
+        </div>
+        
+        <div class="slide" id="slide4-call">
+            <h2>Does the message ask for credit card or banking details to process a refund or other ‘overpayment’?</h2>
+            <div class="options">
+                <button data-weight="3">Yes</button>
+                <button data-weight="0">No</button>
+            </div>
+        </div>
+        
+        <div class="slide" id="slide5-call">
+            <h2>Does the message want you to install software or access a secure account on your mobile phone or computer?</h2>
+            <div class="options">
+                <button data-weight="3">Yes</button>
+                <button data-weight="0">No</button>
+            </div>
+        </div>
+        
+        <div class="slide" id="slide6-call">
+            <h2>Does the message threaten you with immediate arrest, deportation, blackmail, etc.?</h2>
+            <div class="options">
+                <button data-weight="3">Yes</button>
+                <button data-weight="0">No</button>
+            </div>
+        </div>
+        
+        <div class="slide" id="slide7-call">
+            <h2>Does the message suggest you or your accounts have been hacked or involved in fraud?</h2>
+            <div class="options">
+                <button data-weight="3">Yes</button>
+                <button data-weight="0">No</button>
+            </div>
+        </div>
+        
+        <div class="slide" id="slide8-call">
+            <h2>Does the message tell you about a way to make quick, easy money with little risk or effort?</h2>
+            <div class="options">
+                <button data-weight="3">Yes</button>
+                <button data-weight="0">No</button>
+            </div>
+        </div>
+        
+        
+
+        <div class="controls">
+            <button id="prev">Previous</button>
+            <button id="next">Next</button>
+        </div>
+
+        <div class="result-section">
+            <h3>Result</h3>
+            <p>The probability of the communication being a scam is: <span id="resultPercentage">NaN</span>%</p>
+            <button id="restartQuiz">Restart Quiz</button>
+        </div>
+        
+        
+    </div>
+</section>
+
+
+
+
+<!-- End Quiz -->
 
 
 

@@ -248,3 +248,147 @@ function setActiveLink() {
     }
 }
 
+
+// // Function to get total weighted questions based on communication type (text/call)
+// function getTotalWeightedQuestions() {
+//     if(type === "text") {
+//         return 3 + 2 + 3 + 3 + 3 + 3; // Sum of the absolute weight for text type questions
+//     } else if(type === "call") { 
+//         // Sum of absolute weights for all call-related questions
+//         return Math.abs(3) + Math.abs(-1) + 
+//                Math.abs(3) + Math.abs(-1) + 
+//                Math.abs(3) + Math.abs(-1) + 
+//                Math.abs(3) + Math.abs(-1) + 
+//                Math.abs(3) + Math.abs(-1) + 
+//                Math.abs(3) + Math.abs(-1) + 
+//                Math.abs(3) + Math.abs(-1);
+//     }
+// }
+
+//Quiz
+$(document).ready(function() {
+    // Global variables
+    let currentSlide = 1;
+    let totalWeightedYesAnswers = 0;
+    let totalWeightedQuestions;
+    let type = null;
+
+
+    // Starting the quiz
+    $("#slide1 .options button").click(function() {
+        type = $(this).data("type");
+        
+        // Initialize totalWeightedQuestions based on the type selected
+        if(type === "text") {
+            totalWeightedQuestions = 3 + 2 + 3 + 3 + 3 + 3; // Sum of the absolute weight for text type questions
+        } else {
+            totalWeightedQuestions = 21;
+        }
+
+        switchSlide(`slide1`, `slide2-${type}`);
+    });
+
+
+    $(".options button").click(function() {
+        // Check if data-weight attribute exists
+        if($(this).attr("data-weight")) {
+            let weight = parseInt($(this).attr("data-weight"));
+            console.log(`Clicked weight: ${weight}`);
+    
+            totalWeightedYesAnswers += weight;
+            console.log(`Total Weighted Yes Answers: ${totalWeightedYesAnswers}`);
+
+        }
+        // Highlight the clicked button and clear others
+        $(this).siblings().removeClass('active');
+        $(this).addClass('active');
+    });
+    
+
+
+    // Previous button logic
+    $("#prev").click(function() {
+        if (currentSlide > 2) {
+            switchSlide(`slide${currentSlide}-${type}`, `slide${currentSlide - 1}-${type}`);
+        }
+    });
+
+    // Next button logic
+    $("#next").click(function() {
+        if (currentSlide < (type === "text" ? 7 : 8)) {
+            switchSlide(`slide${currentSlide}-${type}`, `slide${currentSlide + 1}-${type}`);
+        } else {
+            displayResult();
+        }
+    });
+
+    // Switching slide function
+    function switchSlide(oldSlide, newSlide) {
+        $(`#${oldSlide}`).fadeOut(300, function() {
+            $(this).removeClass('active');
+            $(`#${newSlide}`).addClass('active').fadeIn(500);
+        });
+        updateProgressBar(newSlide.split('-')[0].replace('slide', ''));
+    }
+
+    function updateProgressBar(slideNumber) {
+        currentSlide = parseInt(slideNumber);
+        const totalSlides = (type === "text" ? 7 : 8);  // 7 slides for text, 8 for call
+        const progress = (currentSlide / totalSlides) * 100;
+        $("#progressBar").css("width", `${progress}%`);
+    }
+
+    function calculateScamPercentage() {
+        console.log(`Total Weighted Yes Answers: ${totalWeightedYesAnswers}`);
+        console.log(`Total Weighted Questions: ${totalWeightedQuestions}`);
+        if (totalWeightedQuestions === 0) {
+            return 0;  // Avoid division by zero
+        }
+        let percentage = (totalWeightedYesAnswers / totalWeightedQuestions) * 100;
+        
+        // Ensure the percentage is between 0 and 100
+        return Math.max(0, Math.min(percentage, 100));
+    }
+    
+    
+    
+
+    function displayResult() {
+        let percentage = calculateScamPercentage();
+        $("#resultPercentage").text(`${percentage.toFixed(0)}`);
+        $(".result-section").show();
+    }
+
+    function resetQuiz() {
+        // Reset global variables
+        totalWeightedYesAnswers = 0;
+        currentSlide = 1;
+        type = null;
+
+        // Hide all slides
+        $('.slide').hide().removeClass('active');
+        // Show the initial slide
+        $('#slide1').show().addClass('active');
+
+        // Reset progress bar
+        $('#progressBar').css("width", "0%");
+
+        // Reset result percentage
+        $('#resultPercentage').text('NaN');
+
+         // Hide result section and reset the result text
+         $(".result-section").hide();
+         $("#resultPercentage").text('');  // Clear the result text
+    }
+    
+
+    
+    // Use jQuery only for the restartQuiz click event
+    $("#restartQuiz").click(function() {
+        resetQuiz();
+    });
+    
+    // resetQuiz();
+    
+});
+

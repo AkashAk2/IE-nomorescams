@@ -829,6 +829,7 @@ header{
     align-items: center; /* Horizontal alignment */
     justify-content: center; /* Vertical alignment */
     height: 100vh;
+    padding-bottom: 20px;
 }
 
 .scam .main-title {
