@@ -1,0 +1,22 @@
+{
+  "name": "fit5120",
+  "version": "1.0.0",
+  "description": "FIT5120 final project",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/AkashAk2/fit5120.git"
+  },
+  "author": "Akash",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/AkashAk2/fit5120/issues"
+  },
+  "homepage": "https://github.com/AkashAk2/fit5120#readme",
+  "dependencies": {
+    "mysql": "^2.18.1"
+  }
+}
