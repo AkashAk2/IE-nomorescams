@@ -181,6 +181,21 @@ section{padding: 7.5rem 0;}
 .btn.btn-large {font-size:16px;  padding: 14px 60px; line-height: 2em;}
 .btn.btn-rounded {border-radius: 50px;}
 
+/* Report Button */
+#reportButton {
+    text-align: center; /* Center align the button */
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+#reportButton a.btn {
+    /* Add any specific styles for the button under reportButton */
+
+}
+#reportButton a.btn:hover {
+    /* Add any hover-specific styles for the button under reportButton */
+    background: #DF2E38 !important; border-color: white; color: white !important
+}
+
 /* Text color */
 .text-yellow {color: yellow;}
 .text-black {color: #000000;}

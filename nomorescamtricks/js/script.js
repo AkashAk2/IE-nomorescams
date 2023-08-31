@@ -394,12 +394,37 @@ $(document).ready(function() {
     function displayResult() {
         let percentage = calculateScamPercentage();
         $("#resultPercentage").text(`${percentage.toFixed(0)}`);
+        
+        let evaluationMessage = "";
+        let textColor = "#000"; // default color
+    
+        if(percentage < 30) {
+            evaluationMessage = "Likely not a scam";
+            textColor = "green";
+        } else if(percentage >= 30 && percentage <= 50) {
+            evaluationMessage = "High chance of being a scam";
+            textColor = "pink";
+        } else {
+            evaluationMessage = "Likely a scam";
+            textColor = "red";
+        }
+    
+        $("#evaluationMessage").text(evaluationMessage).css("color", textColor);
+        $("#resultPercentage").css("color", textColor);
+    
+        if(percentage > 30) {
+            $("#scamwatchLink").show();
+        } else {
+            $("#scamwatchLink").hide();
+        }
+    
         $(".result-section").show();
     
-        // Hide the next button
+        // Hide the next and previous buttons
         $('#next').hide();
         $('#prev').hide();
     }
+    
     
     
 

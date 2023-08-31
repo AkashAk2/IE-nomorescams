@@ -29,6 +29,26 @@
     margin-top: 90px;
 }
 
+.h3-result {
+    font-family: "Montserrat", sans-serif;
+    text-align: center;
+    color: white;
+    font-weight: bold;
+    font-size: 50px; /* You can adjust the font size as needed */
+}
+
+
+
+
+.p-result {
+    font-family: "Montserrat", sans-serif;
+    text-align: center;
+    color: white;
+    font-weight: 800;
+    font-size: 20px; /* You can adjust the font size as needed */
+    margin-top: 20px;
+}
+
 /*text*/
 .justified-text {
     text-align: justify;
@@ -173,7 +193,7 @@
     /* max-width: 1000px;
     max-height: 500px; */
     width: 1200px;
-    height: 600px;
+    height: 750px;
     margin: 50px auto;
     box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.1);
 }
@@ -313,9 +333,11 @@ h2 {
 
 .result-section p {
     font-size: 18px;
-    color: #e74c3c;  /* Color can be adjusted based on preference */
+    color: white;  /* Color can be adjusted based on preference */
     text-align: center;
 }
+
+
 
 #restartQuiz {
     background-color: #e74c3c;
@@ -326,6 +348,7 @@ h2 {
     cursor: pointer;
     transition: background-color 0.3s;
     margin-top: 15px;
+    margin-bottom: 15px;
     display: block;
     margin: 15px auto;
 }

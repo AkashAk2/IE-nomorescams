@@ -162,6 +162,7 @@
 
 <!-- Start Quiz -->
 <section class="quiz" id="quiz">
+    <h2 class="wow h2-center fadeInUp" data-wow-delay="400ms" style="text-align: center;">Check the communication you received against the following questions to assess its legitimacy</h2>
     <div class="quiz-container bg-black">
         <div class="progress-bar" id="progressBar"></div>
         
@@ -375,10 +376,24 @@
         </div>
 
         <div class="result-section">
-            <h3>Result</h3>
-            <p>The probability of the communication being a scam is: <span id="resultPercentage">NaN</span>%</p>
+            <h3 class="h3-result"><span style="display: block; text-align: center; color: yellow;" class="js-rotating">Result</span></h3>
+            <p class="p-result">The probability of the communication being a scam is: <span class="p-result" id="resultPercentage">NaN</span>%</p>
+            <p class="p-result" id="evaluationMessage"></p>
+            <div id = "reportButton">
+                <a href="https://www.scamwatch.gov.au/report-a-scam" id="scamwatchLink" class="btn btn-large btn-rounded btn-trans btn-margin" target="_blank" style="display:none;">Report to scamwatch</a>
+            </div>
+            
             <button id="restartQuiz">Restart Quiz</button>
+            <div style="text-align: center;">
+                <p>
+                    <span style="color: red;">Disclaimer:</span> The provided probability is for illustrative purposes and may not accurately reflect real-world outcomes.
+                    Please use the results as a general guideline and exercise caution when interpreting them.
+                </p>
+            </div>
+            
+            
         </div>
+        
         
         
     </div>
