@@ -239,6 +239,37 @@ h2 {
     margin-top: 20px;
 }
 
+#prev:hover {
+    background-color: #2c3e50;  /* a slightly darker shade of the base color for 'Previous' button hover */
+}
+
+#prev {
+    background-color: #0f64b3;
+}
+
+#next {
+    background-color: #0f64b3;  /* A bit darker shade for default state */
+}
+
+#next.show-result-width {
+    width: 140px; /* Set the width wider for "Show Result" */
+}
+
+
+#next:hover {
+    background-color: #1a95ce;  /* Lighter shade for hover */
+}
+
+.next-selected {
+    background-color: #54B435;  /* Color when an option is selected */
+}
+
+#next.activated {
+    background-color: #56b30f; 
+}
+
+
+
 .controls button {
     background-color: #34495e;
     color: #fff;
@@ -255,8 +286,16 @@ h2 {
 }
 
 .controls button:hover {
-    background-color: #2c3e50;
+    background-color: yellow;
 }
+
+.button-disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+    pointer-events: none;
+}
+
+
 
 
 .result-section {

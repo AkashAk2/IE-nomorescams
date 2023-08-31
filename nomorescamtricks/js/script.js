@@ -249,21 +249,6 @@ function setActiveLink() {
 }
 
 
-// // Function to get total weighted questions based on communication type (text/call)
-// function getTotalWeightedQuestions() {
-//     if(type === "text") {
-//         return 3 + 2 + 3 + 3 + 3 + 3; // Sum of the absolute weight for text type questions
-//     } else if(type === "call") { 
-//         // Sum of absolute weights for all call-related questions
-//         return Math.abs(3) + Math.abs(-1) + 
-//                Math.abs(3) + Math.abs(-1) + 
-//                Math.abs(3) + Math.abs(-1) + 
-//                Math.abs(3) + Math.abs(-1) + 
-//                Math.abs(3) + Math.abs(-1) + 
-//                Math.abs(3) + Math.abs(-1) + 
-//                Math.abs(3) + Math.abs(-1);
-//     }
-// }
 
 //Quiz
 $(document).ready(function() {
@@ -273,67 +258,123 @@ $(document).ready(function() {
     let totalWeightedQuestions;
     let type = null;
 
+    $('#prev').addClass('button-disabled');  // Make the previous button disabled initially
 
-    // Starting the quiz
     $("#slide1 .options button").click(function() {
         type = $(this).data("type");
-        
-        // Initialize totalWeightedQuestions based on the type selected
-        if(type === "text") {
-            totalWeightedQuestions = 3 + 2 + 3 + 3 + 3 + 3; // Sum of the absolute weight for text type questions
-        } else {
-            totalWeightedQuestions = 21;
+    
+        if (type === "text") {
+            totalWeightedQuestions = 3 + 2 + 3 + 3 + 3 + 3 + 3;
+        } else if (type === "call") {
+            totalWeightedQuestions = 3 + 3 + 3 + 3 + 3 + 3 + 3 + 3;
+        } else if (type === "email") {
+            totalWeightedQuestions = 2 + 2 + 3 + 2 + 2 + 4 + 2 + 2 + 3 + 2 + 1;
         }
-
-        switchSlide(`slide1`, `slide2-${type}`);
+    
+        // Activate the 'Next' button, but don't switch slides immediately
+        $('#next').removeClass('button-disabled').addClass('activated');
     });
-
+    
+    function debounce(func, wait) {
+        let timeout;
+        return function(...args) {
+            const context = this;
+            clearTimeout(timeout);
+            timeout = setTimeout(() => func.apply(context, args), wait);
+        };
+    }
+    
 
     $(".options button").click(function() {
-        // Check if data-weight attribute exists
-        if($(this).attr("data-weight")) {
+        if ($(this).attr("data-weight")) {
             let weight = parseInt($(this).attr("data-weight"));
-            console.log(`Clicked weight: ${weight}`);
-    
             totalWeightedYesAnswers += weight;
-            console.log(`Total Weighted Yes Answers: ${totalWeightedYesAnswers}`);
-
         }
-        // Highlight the clicked button and clear others
         $(this).siblings().removeClass('active');
         $(this).addClass('active');
+    
+        // Enable the 'Next' button
+        $('#next').removeClass('button-disabled').addClass('activated');
     });
     
+    
+    
 
-
-    // Previous button logic
-    $("#prev").click(function() {
-        if (currentSlide > 2) {
+    // Previous button function
+    $("#prev").click(debounce(function() {
+        if (currentSlide === 2) {
+            // If on the second slide, switch back to the main slide1 regardless of the type
+            switchSlide(`slide${currentSlide}-${type}`, `slide1`);
+        } else if (currentSlide > 2) {
             switchSlide(`slide${currentSlide}-${type}`, `slide${currentSlide - 1}-${type}`);
         }
-    });
+    }, 500));  // 500ms debounce
 
-    // Next button logic
+
+
     $("#next").click(function() {
-        if (currentSlide < (type === "text" ? 7 : 8)) {
+        if($(this).hasClass('button-disabled')) {
+            return;  // Do nothing if the button is disabled
+        }
+    
+        const totalSlides = (type === "text" ? 7 : type === "call" ? 8 : 11);
+    
+        // Check if we're on slide 1 and have a type selected
+        if (currentSlide === 1 && type) {
+            switchSlide('slide1', `slide2-${type}`);
+            return;
+        }
+    
+        if (currentSlide < totalSlides) {
             switchSlide(`slide${currentSlide}-${type}`, `slide${currentSlide + 1}-${type}`);
         } else {
             displayResult();
         }
     });
+    
+    
 
-    // Switching slide function
     function switchSlide(oldSlide, newSlide) {
+        $('.slide').hide().removeClass('active');  // Hide all slides
+        $(`#${oldSlide}`).removeClass('active'); 
+        $(`#${newSlide}`).addClass('active').fadeIn(500);
+    
         $(`#${oldSlide}`).fadeOut(300, function() {
             $(this).removeClass('active');
             $(`#${newSlide}`).addClass('active').fadeIn(500);
         });
+    
         updateProgressBar(newSlide.split('-')[0].replace('slide', ''));
+        $('#next').addClass('button-disabled');
+        $('#next').removeClass('activated');
+        
+        // Check if it's the first slide
+        if (newSlide === 'slide1') {
+            $('#prev').addClass('button-disabled');
+        } else {
+            $('#prev').removeClass('button-disabled');
+        }
+    
+        // Determine the total slides based on type
+        const totalSlides = (type === "text" ? 7 : type === "call" ? 8 : 11);
+        // Update the next button's text based on current slide
+        if (currentSlide === totalSlides) {
+            $('#next').text('Result');
+        } else {
+            $('#next').text('Next');
+        }
+        
+    
+        console.log(`Switching from ${oldSlide} to ${newSlide}`);
     }
+    
+    
+    
+    
 
     function updateProgressBar(slideNumber) {
         currentSlide = parseInt(slideNumber);
-        const totalSlides = (type === "text" ? 7 : 8);  // 7 slides for text, 8 for call
+        const totalSlides = (type === "text" ? 7 : 8); 
         const progress = (currentSlide / totalSlides) * 100;
         $("#progressBar").css("width", `${progress}%`);
     }
@@ -349,37 +390,53 @@ $(document).ready(function() {
         // Ensure the percentage is between 0 and 100
         return Math.max(0, Math.min(percentage, 100));
     }
-    
-    
-    
 
     function displayResult() {
         let percentage = calculateScamPercentage();
         $("#resultPercentage").text(`${percentage.toFixed(0)}`);
         $(".result-section").show();
+    
+        // Hide the next button
+        $('#next').hide();
+        $('#prev').hide();
     }
+    
+    
 
     function resetQuiz() {
         // Reset global variables
         totalWeightedYesAnswers = 0;
         currentSlide = 1;
         type = null;
-
+    
+        // Clear the active state from option buttons
+        $(".options button").removeClass('active');
+    
         // Hide all slides
         $('.slide').hide().removeClass('active');
         // Show the initial slide
         $('#slide1').show().addClass('active');
-
+    
         // Reset progress bar
         $('#progressBar').css("width", "0%");
-
+    
         // Reset result percentage
         $('#resultPercentage').text('NaN');
-
-         // Hide result section and reset the result text
-         $(".result-section").hide();
-         $("#resultPercentage").text('');  // Clear the result text
+    
+        // Clear the hover effect from option buttons
+        $(".options button").removeClass('hover');
+    
+        // Enable the 'Next' button and show it
+        $('#next').removeClass('button-disabled').show().text('Next');
+    
+        // Hide result section and reset the result text
+        $(".result-section").hide();
+        $("#resultPercentage").text('');
+    
+        // Hide the previous button initially
+        $('#prev').show().addClass('button-disabled');
     }
+    
     
 
     
@@ -388,7 +445,6 @@ $(document).ready(function() {
         resetQuiz();
     });
     
-    // resetQuiz();
     
 });
 

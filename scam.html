@@ -167,16 +167,17 @@
         
         <!-- Initial Slide -->
         <div class="slide active" id="slide1">
-            <h2>What type of communication is it?</h2>
+            <h2>1. What type of communication is it?</h2>
             <div class="options">
                 <button data-type="text">Text Message</button>
                 <button data-type="call">Phone Call</button>
+                <button data-type="email">Email</button>
             </div>
         </div>
         
         <!-- Subsequent slides for Text Message type -->
         <div class="slide" id="slide2-text">
-            <h2>Does the message ask you to take immediate action or claim something like your account being hacked or involved in fraud?</h2>
+            <h2>2. Does the message ask you to take immediate action or claim something like your account being hacked or involved in fraud?</h2>
             <div class="options">
                 <button data-weight="3">Yes</button>
                 <button data-weight="0">No</button>
@@ -184,7 +185,7 @@
         </div>
 
         <div class="slide" id="slide3-text">
-            <h2>Does the message inform you about a problem with your payment or package delivery?</h2>
+            <h2>3. Does the message inform you about a problem with your payment or package delivery?</h2>
             <div class="options">
                 <button data-weight="2">Yes</button>
                 <button data-weight="0">No</button>
@@ -192,7 +193,7 @@
         </div>
 
         <div class="slide" id="slide4-text">
-            <h2>Does the message threaten to stop a service or charge a fine if you don't act now?</h2>
+            <h2>4. Does the message threaten to stop a service or charge a fine if you don't act now?</h2>
             <div class="options">
                 <button data-weight="3">Yes</button>
                 <button data-weight="0">No</button>
@@ -200,7 +201,7 @@
         </div>
 
         <div class="slide" id="slide5-text">
-            <h2>Are you asked to make a payment or transfer money? (Eg: Toll, Utility Bills)</h2>
+            <h2>5. Are you asked to make a payment or transfer money? (Eg: Toll, Utility Bills)</h2>
             <div class="options">
                 <button data-weight="3">Yes</button>
                 <button data-weight="0">No</button>
@@ -208,7 +209,7 @@
         </div>
 
         <div class="slide" id="slide6-text">
-            <h2>Are you requested to click on a link or call a number provided in the message?</h2>
+            <h2>6. Are you requested to click on a link or call a number provided in the message?</h2>
             <div class="options">
                 <button data-weight="3">Yes</button>
                 <button data-weight="0">No</button>
@@ -216,7 +217,7 @@
         </div>
 
         <div class="slide" id="slide7-text">
-            <h2>Are you prompted to log into an online account with your personal information?</h2>
+            <h2>7. Are you prompted to log into an online account with your personal information?</h2>
             <div class="options">
                 <button data-weight="3">Yes</button>
                 <button data-weight="0">No</button>
@@ -228,7 +229,7 @@
 
         <!-- Subsequent slides for Phone Call type -->
         <div class="slide" id="slide2-call">
-            <h2>Does the message ask for personal or financial information, such as payment or moving money between accounts?</h2>
+            <h2>2. Does the message ask for personal or financial information, such as payment or moving money between accounts?</h2>
             <div class="options">
                 <button data-weight="3">Yes</button>
                 <button data-weight="0">No</button>
@@ -237,7 +238,7 @@
 
         <!-- ... Similarly for other slides -->
         <div class="slide" id="slide3-call">
-            <h2>Does the message ask for your password, pin, one-time code, or some other security information?</h2>
+            <h2>3. Does the message ask for your password, pin, one-time code, or some other security information?</h2>
             <div class="options">
                 <button data-weight="3">Yes</button>
                 <button data-weight="0">No</button>
@@ -245,7 +246,7 @@
         </div>
         
         <div class="slide" id="slide4-call">
-            <h2>Does the message ask for credit card or banking details to process a refund or other ‘overpayment’?</h2>
+            <h2>4. Does the message ask for credit card or banking details to process a refund or other ‘overpayment’?</h2>
             <div class="options">
                 <button data-weight="3">Yes</button>
                 <button data-weight="0">No</button>
@@ -253,7 +254,7 @@
         </div>
         
         <div class="slide" id="slide5-call">
-            <h2>Does the message want you to install software or access a secure account on your mobile phone or computer?</h2>
+            <h2>5. Does the message want you to install software or access a secure account on your mobile phone or computer?</h2>
             <div class="options">
                 <button data-weight="3">Yes</button>
                 <button data-weight="0">No</button>
@@ -261,7 +262,7 @@
         </div>
         
         <div class="slide" id="slide6-call">
-            <h2>Does the message threaten you with immediate arrest, deportation, blackmail, etc.?</h2>
+            <h2>6. Does the message threaten you with immediate arrest, deportation, blackmail, etc.?</h2>
             <div class="options">
                 <button data-weight="3">Yes</button>
                 <button data-weight="0">No</button>
@@ -269,7 +270,7 @@
         </div>
         
         <div class="slide" id="slide7-call">
-            <h2>Does the message suggest you or your accounts have been hacked or involved in fraud?</h2>
+            <h2>7. Does the message suggest you or your accounts have been hacked or involved in fraud?</h2>
             <div class="options">
                 <button data-weight="3">Yes</button>
                 <button data-weight="0">No</button>
@@ -277,9 +278,91 @@
         </div>
         
         <div class="slide" id="slide8-call">
-            <h2>Does the message tell you about a way to make quick, easy money with little risk or effort?</h2>
+            <h2>8. Does the message tell you about a way to make quick, easy money with little risk or effort?</h2>
             <div class="options">
                 <button data-weight="3">Yes</button>
+                <button data-weight="0">No</button>
+            </div>
+        </div>
+
+
+
+        <div class="slide" id="slide2-email">
+            <h2>2. Did the email come from an unfamiliar or unknown address?</h2>
+            <div class="options">
+                <button data-weight="2">Yes</button>
+                <button data-weight="0">No</button>
+            </div>
+        </div>
+
+        <div class="slide" id="slide3-email">
+            <h2>3. Does the email start with generic greetings like "Dear Customer"?</h2>
+            <div class="options">
+                <button data-weight="2">Yes</button>
+                <button data-weight="0">No</button>
+            </div>
+        </div>
+
+        <div class="slide" id="slide4-email">
+            <h2>4. Does the email contain a link or attachment? or asking you to log in with your personal details or share other private information?</h2>
+            <div class="options">
+                <button data-weight="3">Yes</button>
+                <button data-weight="0">No</button>
+            </div>
+        </div>
+        
+        <div class="slide" id="slide5-email">
+            <h2>5. Did the email request payment and give you unfamiliar bank account details?</h2>
+            <div class="options">
+                <button data-weight="2">Yes</button>
+                <button data-weight="0">No</button>
+            </div>
+        </div>
+        
+        <div class="slide" id="slide6-email">
+            <h2>6. Does the email claim to be from a known organization but use a free email service (like @gmail.com or @yahoo.com.au)?</h2>
+            <div class="options">
+                <button data-weight="2">Yes</button>
+                <button data-weight="-3">No</button>
+            </div>
+        </div>
+        
+        <div class="slide" id="slide7-email">
+            <h2>7. Are there any obvious spelling or grammar mistakes?</h2>
+            <div class="options">
+                <button data-weight="4">Yes</button>
+                <button data-weight="-2">No</button>
+            </div>
+        </div>
+        
+        <div class="slide" id="slide8-email">
+            <h2>8. Does the email provide a phone number and urge you to call immediately?</h2>
+            <div class="options">
+                <button data-weight="2">Yes</button>
+                <button data-weight="0">No</button>
+            </div>
+        </div>
+        
+        <div class="slide" id="slide9-email">
+            <h2>9. Did the email threaten you with actions like arrest, deportation, blackmail or claim something like your account being hacked or involved in fraud?</h2>
+            <div class="options">
+                <button data-weight="3">Yes</button>
+                <button data-weight="-1">No</button>
+            </div>
+        </div>
+        
+        <div class="slide" id="slide10-email">
+            <h2>10. Does the email warn about stopping a service or charging you a fine if you don't comply?</h2>
+            <div class="options">
+                <button data-weight="2">Yes</button>
+                <button data-weight="-1">No</button>
+            </div>
+        </div>
+        
+        <div class="slide" id="slide11-email">
+            <h2>11. Did the email inform you that you've been a victim of identity theft and offer assistance or compensation?</h2>
+            <div class="options">
+                <button data-weight="1">Yes</button>
                 <button data-weight="0">No</button>
             </div>
         </div>
@@ -288,7 +371,7 @@
 
         <div class="controls">
             <button id="prev">Previous</button>
-            <button id="next">Next</button>
+            <button id="next" class="button-disabled">Next</button>
         </div>
 
         <div class="result-section">
