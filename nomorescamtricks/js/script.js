@@ -264,11 +264,11 @@ $(document).ready(function() {
         type = $(this).data("type");
     
         if (type === "text") {
-            totalWeightedQuestions = 3 + 2 + 3 + 3 + 3 + 3 + 3;
+            totalWeightedQuestions = 3 + 2 + 3 + 3 + 3 + 3;
         } else if (type === "call") {
-            totalWeightedQuestions = 3 + 3 + 3 + 3 + 3 + 3 + 3 + 3;
+            totalWeightedQuestions = 3 + 3 + 3 + 3 + 3 + 3 + 3;
         } else if (type === "email") {
-            totalWeightedQuestions = 2 + 2 + 3 + 2 + 2 + 4 + 2 + 2 + 3 + 2 + 1;
+            totalWeightedQuestions = 2 + 2 + 3 + 2 + 2 + 4 + 2 + 3 + 2 + 1;
         }
     
         // Activate the 'Next' button, but don't switch slides immediately
@@ -374,7 +374,7 @@ $(document).ready(function() {
 
     function updateProgressBar(slideNumber) {
         currentSlide = parseInt(slideNumber);
-        const totalSlides = (type === "text" ? 7 : 8); 
+        const totalSlides = (type === "text" ? 7 : type === "call" ? 8 : 11);
         const progress = (currentSlide / totalSlides) * 100;
         $("#progressBar").css("width", `${progress}%`);
     }
