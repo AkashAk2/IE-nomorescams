@@ -257,6 +257,9 @@ $(document).ready(function() {
     let totalWeightedYesAnswers = 0;
     let totalWeightedQuestions;
     let type = null;
+    // $(".result-container").show();
+    $('#restartQuiz').hide()
+    // $("#scamwatchLink").show();
 
     $('#prev').addClass('button-disabled');  // Make the previous button disabled initially
 
@@ -273,6 +276,7 @@ $(document).ready(function() {
     
         // Activate the 'Next' button, but don't switch slides immediately
         $('#next').removeClass('button-disabled').addClass('activated');
+        $('restartQuiz').hide()
     });
     
     function debounce(func, wait) {
@@ -329,6 +333,10 @@ $(document).ready(function() {
             switchSlide(`slide${currentSlide}-${type}`, `slide${currentSlide + 1}-${type}`);
         } else {
             displayResult();
+            $('#next').hide();
+            $('#prev').hide();
+            $('restartQuiz').show()
+            
         }
     });
     
@@ -408,6 +416,7 @@ $(document).ready(function() {
             evaluationMessage = "Likely a scam";
             textColor = "red";
         }
+        
     
         $("#evaluationMessage").text(evaluationMessage).css("color", textColor);
         $("#resultPercentage").css("color", textColor);
@@ -418,11 +427,16 @@ $(document).ready(function() {
             $("#scamwatchLink").hide();
         }
     
-        $(".result-section").show();
+        $(".result-container").show();
+
+        $("html, body").animate({
+            scrollTop: $(".result-container").offset().top
+        }, 1000); // 1000ms for a smooth scrolling effect
     
         // Hide the next and previous buttons
         $('#next').hide();
         $('#prev').hide();
+        $('#restartQuiz').show()
     }
     
     
@@ -455,8 +469,10 @@ $(document).ready(function() {
         $('#next').removeClass('button-disabled').show().text('Next');
     
         // Hide result section and reset the result text
-        $(".result-section").hide();
+        $(".result-container").hide();
         $("#resultPercentage").text('');
+
+        $('#restartQuiz').hide()
     
         // Hide the previous button initially
         $('#prev').show().addClass('button-disabled');

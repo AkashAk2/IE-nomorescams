@@ -179,16 +179,17 @@ section{
 /* Report Button */
 #reportButton {
     text-align: center; /* Center align the button */
-    margin-top: 20px;
+    margin-top: 100px;
     margin-bottom: 20px;
 }
 #reportButton a.btn {
     /* Add any specific styles for the button under reportButton */
+    background: #DF2E38 !important; border-color: white; color: white !important
 
 }
 #reportButton a.btn:hover {
     /* Add any hover-specific styles for the button under reportButton */
-    background: #DF2E38 !important; border-color: white; color: white !important
+    background: black !important; border-color: white; color: white !important
 }
 
 /* Text color */
