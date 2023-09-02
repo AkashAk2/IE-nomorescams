@@ -2,14 +2,7 @@
     scam
 ====================================== */
 
-/*
-    Theme Name: MegaOne
-    Theme URI:
-    Author: Themes Industry
-    Author URI:
-    Description: One Page Parallax Template
-    Tags: one page, multipurpose, parallax, creative, html5
- */
+
 
 /* ===================================
     Table of Content
@@ -144,8 +137,10 @@ p{margin-bottom: 0 !important; font-family: 'Source Sans Pro', sans-serif;}
 .fa, .far, .fas{display: inline;}
 li{list-style: none;text-decoration: none;}
 .hidden{display: none;}
-section{padding: 7.5rem 0;}
-.padding-bottom {padding-bottom: 7.5rem;}
+section{
+    padding: 7.5rem 0;
+}
+.padding-bottom {padding-bottom: 3.5rem;}
 .padding-top {padding-top: 7.5rem;}
 .padding-bottom-half {padding-bottom: 5rem;}
 
@@ -1606,6 +1601,8 @@ figure.scam-image.hover .curl {
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    margin-left: 10px;
+    margin-right: 10px;
     height: 200px;  /* Set the height to a specific value */
     width: 100%;  /* Make it take up the full width of the parent column */
 }
@@ -1620,8 +1617,8 @@ figure.scam-image.hover .curl {
 }
 
 .parallax-box h2{
-    font-size: 30px;
-    margin-bottom: 10px;
+    font-size: 25px;
+    margin-bottom: -10px;
     height: 60px;
     margin-top: 30px;
     font-weight: 500;
@@ -1632,10 +1629,10 @@ figure.scam-image.hover .curl {
 .parallax-box h5{
     font-weight: normal;
     height: 30px; 
-    font-size: 16px;
+    font-size: 20px;
     color: #ffffff;
-    opacity: .7;
-    font-family: 'Source Sans Pro', sans-serif;
+    opacity: .8;
+    font-family: Montserrat ,sans-serif;
 }
 
 /* ===================================
@@ -1699,47 +1696,40 @@ figure.scam-image.hover .curl {
 ====================================== */
 
 .home .feature-item {
-    padding: 5rem 0 2.5rem 0;
+    padding: -10rem 0 2.5rem 0;
     background: #23262d;
     width: 250px;
     height: 400px;
+    align-items: center; 
 }
 
-.home .feature_header_text{
-    font-size: 24px;
-    font-weight: 500;
+.home .feature_header_text {
+    font-size: 25px;
+    font-weight: bold;
     display: block;
     font-family: 'Montserrat' , sans-serif;
     white-space: normal;
+    top: 30px;
 }
 
 .home .feature_header_content {
-    font-size: 18px;
+    font-size: 20px;
     padding: 20px;
-    opacity: .7;
     line-height: 1.4;
     font-weight: normal;
-    position: absolute;
-    bottom: 5px;
-    font-family: 'Source Sans Pro', sans-serif;
+    font-family: 'Montserrat' , sans-serif;
+    align-self: center; 
+    top:auto;
+    margin-top: 60px;
 
-    /* Flexbox styles for centering */
-    display: flex;
-    justify-content: center; /* Horizontally center */
-    align-items: center; /* Vertically center */
-    left: 0;
-    right: 0;
-    top: 0;
-    /* bottom: 5px; You had this defined already */
 }
-
 
 .home .actual_feature{
     text-align: center;
     font-size: 62px;
     font-weight: bold;
     margin-bottom: 0;
-    padding: 30px 0;
+    padding: 10px 0;
     transition: .5s ease;
     font-family: 'Montserrat' , sans-serif;
 }

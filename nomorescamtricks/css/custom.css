@@ -29,6 +29,26 @@
     margin-top: 90px;
 }
 
+.row .stats h5 {
+    font-family: "Montserrat", sans-serif;
+    text-align: center;
+    color: white;
+    font-weight: 500;
+    font-size: 20px;
+}
+
+.row .stats h2 {
+    font-size: 25px;
+    font-family: "Montserrat", sans-serif;
+    font-weight: bold;
+}
+
+.row {
+    margin-bottom: 15px;
+    margin-left: -10px;
+    margin-right: -10px;
+}
+
 .h3-result {
     font-family: "Montserrat", sans-serif;
     text-align: center;
@@ -37,7 +57,10 @@
     font-size: 50px; /* You can adjust the font size as needed */
 }
 
-
+.paragraph {
+    font-family: "Montserrat", sans-serif;
+    font-size: 20px;
+}
 
 
 .p-result {
@@ -61,9 +84,9 @@
 .fact {
     padding: 5px;
     border-radius: 5px;
-    max-width: 400px;
+    max-width: auto;
     margin: 0 auto;
-    margin-bottom: 40px;
+    margin-bottom: 10px;
     display: block; 
     text-align: center;
 
@@ -74,14 +97,17 @@
     font-size: 30px;
     font-weight: bold;
     margin-bottom: 10px;
+    font-family: 'Montserrat', sans-serif;
 }
 
 .fact-text {
     color: white;
-    font-size: 20px;
     line-height: 1.5;
-    margin-bottom: 20;
-    font-family: Roboto, sans-serif;
+    font-family: 'Montserrat', sans-serif;
+    text-align: justify;
+    font-weight: 500;
+    font-size: 25px; 
+    margin-top: 20px;
 }
 
 .fact-percentage {
@@ -119,7 +145,8 @@
     position: relative;
     align-items: center; /* Horizontal alignment */
     justify-content: center; /* Vertical alignment */
-    height: 100vh;
+    height: 80vh;
+    margin-bottom: 20px;
 }
 
 .statistics .main-title {
@@ -314,6 +341,7 @@ h2 {
     cursor: not-allowed;
     pointer-events: none;
 }
+
 
 
 
