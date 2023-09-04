@@ -314,6 +314,11 @@
         function updateH2Value(newValue, id) {
             const h2Element = document.getElementById(id);
             h2Element.textContent = newValue;
+
+            // Check if the element has the "count" class and animate it
+            if (h2Element.classList.contains("count")) {
+                animateCounterElement(h2Element);
+            }
         }
 
         // Make a GET request to fetch data

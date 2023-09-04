@@ -177,6 +177,21 @@ $('.count').each(function() {
     });
 });
 
+function animateCounterElement(element) {
+    var originalText = $(element).text();
+    var isDollarSignPresent = originalText.startsWith('$');
+    var numberValue = isDollarSignPresent ? parseFloat(originalText.replace('$', '')) : parseFloat(originalText);
+
+    $(element).prop('Counter', 0).animate({
+        Counter: numberValue
+    }, {
+        duration: 3000,
+        easing: 'swing',
+        step: function(now) {
+            $(element).text((isDollarSignPresent ? "$" : "") + Math.ceil(now));
+        }
+    });
+}
 
 
 /* ===================================
