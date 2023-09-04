@@ -1,5 +1,6 @@
 const express = require('express');
 const sql = require('mssql');
+const fs = require('fs');
 const app = express();
 const port = process.env.PORT || 3000;
 
@@ -13,56 +14,41 @@ const config = {
     }
 };
 
-async function testConnection() {
+async function getScamStatistics() {
     try {
-        // Establish a connection
-        let pool = await sql.connect(config);
-        await pool.close();
-
-        return true;
-    } catch (err) {
-        console.error('SQL error', err);
-        return false;
-    }
-}
-
-async function queryScamStatistics() {
-    try {
-        // Establish a connection
-        let pool = await sql.connect(config);
-
-        // Query the "scam_statistics" table
+        let pool = await sql.connect(dbConfig);
         const result = await pool.request().query('SELECT * FROM scam_loss_statistics');
-
-        // Close the connection
         await pool.close();
-        const jsonResult = JSON.stringify(result.recordset);
-        return jsonResult; // Return the query result as an array of objects
+        return result.recordset[0];
     } catch (err) {
         console.error('SQL error', err);
-        throw err; // Rethrow the error for handling in the calling code
+        throw err;
     }
 }
 
-// Serve static files from the root directory
 app.use(express.static(__dirname));
 
-//Test database connection
-app.get('/testdb', async (req, res) => {
-    let isConnected = await testConnection();
-    if (isConnected) {
-        res.send('Database is connected');
-    } else {
-        res.status(500).send('Failed to connect to the database');
-    }
-});
+app.get('/', async (req, res) => {
+    try {
+        const stats = await getScamStatistics();
+        
+        fs.readFile('index.html', 'utf8', (err, data) => {
+            if (err) {
+                console.error("Failed to read index.html", err);
+                res.status(500).send('Internal Server Error');
+                return;
+            }
 
-app.get('/scam_statistics', async (req, res) => {
-    let data = await queryScamStatistics();
-    if (data) {
-        res.send(data);
-    } else {
-        res.status(500).send('Failed to connect to the database');
+            // Replacing placeholders with real data
+            data = data.replace("{{total-loss}}", stats.totalLoss);
+            data = data.replace("{{numbers-of-reports}}", stats.numberOfReports);
+            data = data.replace("{{age-over-65}}", stats.ageOver65);
+
+            res.send(data);
+        });
+    } catch (err) {
+        console.error("Failed to get statistics", err);
+        res.status(500).send('Failed to fetch the data');
     }
 });
 
@@ -70,10 +56,5 @@ app.listen(port, () => {
     console.log(`Server is running on http://localhost:${port}`);
 });
 
-// Handle app termination gracefully
-process.on('SIGTERM', () => {
-    sql.close(); // close sql connection on app termination
-});
-process.on('exit', () => {
-    sql.close(); // close sql connection on app termination
-});
+process.on('SIGTERM', sql.close);
+process.on('exit', sql.close);
