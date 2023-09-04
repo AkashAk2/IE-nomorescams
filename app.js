@@ -1,11 +1,30 @@
 const express = require('express');
 const sql = require('mssql');
+const cors = require('cors');
+const winston = require('winston');
+const fs = require('fs');
+const path = require('path');
+
 const app = express();
 const port = process.env.PORT || 3000;
-const cors = require('cors');
-app.use(cors());
 
+// Setup winston logger
+const logger = winston.createLogger({
+    level: 'info',
+    format: winston.format.json(),
+    transports: [
+        new winston.transports.File({ filename: 'error.log', level: 'error' }),
+        new winston.transports.File({ filename: 'combined.log' })
+    ]
+});
 
+if (process.env.NODE_ENV !== 'production') {
+    logger.add(new winston.transports.Console({
+        format: winston.format.simple()
+    }));
+}
+
+// Database configuration
 const config = {
     user: 'team27@fit5120server',
     password: 'Monash@27', // Replace with your actual password
@@ -16,68 +35,42 @@ const config = {
     }
 };
 
-async function testConnection() {
-    try {
-        // Establish a connection
-        let pool = await sql.connect(config);
-        await pool.close();
-
-        return true;
-    } catch (err) {
-        console.error('SQL error', err);
-        return false;
-    }
-}
-
-async function queryScamStatistics() {
-    try {
-        // Establish a connection
-        let pool = await sql.connect(config);
-
-        // Query the "scam_statistics" table
-        const result = await pool.request().query('SELECT * FROM scam_loss_statistics');
-
-        // Close the connection
-        await pool.close();
-        const jsonResult = JSON.stringify(result.recordset);
-        return jsonResult; // Return the query result as an array of objects
-    } catch (err) {
-        console.error('SQL error', err);
-        throw err; // Rethrow the error for handling in the calling code
-    }
-}
-
-// Serve static files from the root directory
+// Middlewares
+app.use(cors());
 app.use(express.static(__dirname));
 
-//Test database connection
-// app.get('/testdb', async (req, res) => {
-//     let isConnected = await testConnection();
-//     if (isConnected) {
-//         res.send('Database is connected');
-//     } else {
-//         res.status(500).send('Failed to connect to the database');
-//     }
-// });
-
+// Route for fetching scam statistics
 app.get('/scam_statistics', async (req, res) => {
+    try {
+        let pool = await sql.connect(config);
+        const result = await pool.request().query('SELECT * FROM scam_loss_statistics');
+        await pool.close();
 
-    let data = await queryScamStatistics();
-    if (data) {
-        res.send(data);
-    } else {
+        const jsonResult = JSON.stringify(result.recordset);
+        res.send(jsonResult);
+    } catch (err) {
+        logger.error(`SQL error: ${err}`);
         res.status(500).send('Failed to connect to the database');
     }
 });
 
+// Global error handler
+app.use((err, req, res, next) => {
+    logger.error(`Error occurred: ${err.message}`);
+    res.status(500).send('Internal Server Error');
+});
+
 app.listen(port, () => {
-    console.log(`Server is running on http://localhost:${port}`);
+    logger.info(`Server is running on http://localhost:${port}`);
 });
 
 // Handle app termination gracefully
 process.on('SIGTERM', () => {
-    sql.close(); // close sql connection on app termination
+    sql.close();
+    logger.info('App terminated, SQL connection closed');
 });
+
 process.on('exit', () => {
-    sql.close(); // close sql connection on app termination
+    sql.close();
+    logger.info('App exited, SQL connection closed');
 });
