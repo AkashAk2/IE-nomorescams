@@ -307,36 +307,24 @@
 <script src="nomorescamtricks/js/contact_us.js"></script>
 <script src="nomorescamtricks/js/script.js"></script>
 <script>
-        // Function to update the h2 tag with new data
-        function updateH2Value(newValue, id) {
-            const h2Element = document.getElementById(id);
-            h2Element.textContent = newValue;
-
-            // Check if the element has the "count" class and animate it
-            if (h2Element.classList.contains("count")) {
-                animateCounterElement(h2Element);
-            }
-        }
-
-        // Make a GET request to fetch data
-        fetch('/scam_statistics')
-        .then(response => {
-            if (!response.ok) {
-                throw new Error('Network response was not ok');
-            }
-            return response.json(); // Parse the response as JSON
-        })
-        .then(data => {
-            console.log(data)
-            // Assuming the response contains JSON data with the new value
-            updateH2Value(data[0].Total_Monetary_Loss,'total-loss'); // Update the <h2> with the specific value from the JSON
-            updateH2Value(data[0].Number_of_reports,'numbers-of-reports'); // Update the <h2> with the specific value from the JSON
-            updateH2Value(data[0].Affected_people_aged_65plus,'age-over-65'); // Update the <h2> with the specific value from the JSON
-        })
-        .catch(error => {
-            console.error('Error:', error);
-        });
-
+    document.addEventListener("DOMContentLoaded", function() {  // Ensure the DOM is fully loaded
+        fetch('/scam_statistics')   // Make a GET request to the server
+            .then(response => response.json())  // Parse the JSON data from the response
+            .then(data => {
+                // Assuming the database returns a single row with the statistics
+                if (data && data.length > 0) {
+                    const stats = data[0];  // Get the first row
+    
+                    // Update the HTML with the data
+                    document.getElementById('total-loss').textContent = "$" + stats.total_loss;  // Assuming "total_loss" is a column in your table
+                    document.getElementById('numbers-of-reports').textContent = stats.number_of_reports;  // Assuming "number_of_reports" is a column in your table
+                    document.getElementById('age-over-65').textContent = stats.age_over_65;  // Assuming "age_over_65" is a column in your table
+                }
+            })
+            .catch(error => {
+                console.error("There was an error fetching scam statistics:", error);
+            });
+    });
     </script>
 </body>
 </html>

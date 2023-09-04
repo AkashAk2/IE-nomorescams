@@ -2,10 +2,13 @@
   "name": "fit5120",
   "version": "1.0.0",
   "description": "FIT5120 final project",
-  "main": "app.js",
   "scripts": {
     "start": "node app.js",
     "test": "echo \"No tests specified\" && exit 0"
+  },
+  "main": "app.js",
+  "engines": {
+    "node": "18.x"
   },
   "repository": {
     "type": "git",
