@@ -1,4 +1,4 @@
-from flask import Flask
+from flask import Flask, render_template, request, redirect, url_for, flash, session
 import secrets, pyodbc
 
 app = Flask(__name__)
@@ -19,25 +19,20 @@ def index():
             flash('Wrong password. Please try again.')
     return render_template('password_prompt.html')
 
-
-
 # Test connection to the database
 @app.route('/test-connection')
 def test_connection():
     try:
         # Setting up connection string for Azure SQL
-        # Setting up connection string for Azure SQL
         server = 'tcp:fit5120server.database.windows.net,1433'
         database = 'fit5120-db'
         username = 'team27'  # replace with your username
-        password = 'Monash@27'  # replace with your actual password
-        driver = '{ODBC Driver 18 for SQL Server}'  # Note that you have updated the driver version to 18.
+        password = 'Monash@27'  # replace with your password
+        driver = '{ODBC Driver 18 for SQL Server}'
 
         connection_string = (f'DRIVER={driver};SERVER={server};DATABASE={database};'
-                     f'UID={username};PWD={password};Encrypt=yes;TrustServerCertificate=no;Connection Timeout=30;')
+                             f'UID={username};PWD={password};Encrypt=yes;TrustServerCertificate=no;Connection Timeout=30;')
 
-
-        
         cnx = pyodbc.connect(connection_string)
         cnx.close()
         return "Successful database connection!"
