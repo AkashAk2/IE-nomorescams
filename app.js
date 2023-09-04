@@ -2,6 +2,9 @@ const express = require('express');
 const sql = require('mssql');
 const app = express();
 const port = process.env.PORT || 3000;
+const cors = require('cors');
+app.use(cors());
+
 
 const config = {
     user: 'team27@fit5120server',
@@ -48,14 +51,14 @@ async function queryScamStatistics() {
 app.use(express.static(__dirname));
 
 //Test database connection
-app.get('/testdb', async (req, res) => {
-    let isConnected = await testConnection();
-    if (isConnected) {
-        res.send('Database is connected');
-    } else {
-        res.status(500).send('Failed to connect to the database');
-    }
-});
+// app.get('/testdb', async (req, res) => {
+//     let isConnected = await testConnection();
+//     if (isConnected) {
+//         res.send('Database is connected');
+//     } else {
+//         res.status(500).send('Failed to connect to the database');
+//     }
+// });
 
 app.get('/scam_statistics', async (req, res) => {
     let data = await queryScamStatistics();

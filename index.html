@@ -322,7 +322,7 @@
         }
 
         // Make a GET request to fetch data
-        fetch('http://localhost:3000/scam_statistics')
+        fetch('/scam_statistics')
         .then(response => {
             if (!response.ok) {
                 throw new Error('Network response was not ok');
