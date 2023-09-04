@@ -1,3 +1,5 @@
+console.log('app.js has started running!');
+
 const express = require('express');
 const sql = require('mssql');
 const fs = require('fs');
@@ -39,10 +41,12 @@ app.get('/', async (req, res) => {
                 return;
             }
 
-            // Replacing placeholders with real data
+            console.log(data); // Before replacement
             data = data.replace("{{total-loss}}", stats.totalLoss);
             data = data.replace("{{numbers-of-reports}}", stats.numberOfReports);
             data = data.replace("{{age-over-65}}", stats.ageOver65);
+            console.log(data); // After replacement
+
 
             res.send(data);
         });
