@@ -1,63 +1,69 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <!-- Meta Tags -->
-    <meta charset="utf-8">
-    <meta content="width=device-width, initial-scale=1, shrink-to-fit=no" name="viewport">
-    <title>NoMoreScamTricks | Scam?</title>
-    <!-- Favicon -->
-    <link href="resources/images/shield_tab_icon.png" rel="icon">
-    <!-- Bundle -->
-    <link rel="stylesheet" href="nomorescamtricks/css/bundle.min.css">
-    <!-- Plugin Css -->
-    <link href="nomorescamtricks/css/wow.css" rel="stylesheet">
-    <link href="nomorescamtricks/css/LineIcons.min.css" rel="stylesheet">
-    <link href="nomorescamtricks/css/jquery.fancybox.min.css" rel="stylesheet">
-    <link href="nomorescamtricks/css/owl.carousel.min.css" rel="stylesheet">
-    <link href="nomorescamtricks/css/cubeportfolio.min.css" rel="stylesheet">
-    <link href="nomorescamtricks/css/line-awesome.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
-    <!-- Style Sheet -->
-    <link href="nomorescamtricks/css/style.css" rel="stylesheet">
-    <link href="nomorescamtricks/css/custom.css" rel="stylesheet">
-</head>
-
-<body data-spy="scroll" data-target=".navbar" data-offset="50">
-
-
-
-<!-- Start Header -->
-<header id="scam">
-    <div class="top-banner bg-trans-color transparent-banner">
-        <div class="container-fluid">
-            <div class="row">
-                <div class="col-sm-12 col-md-12 col-lg-12 d-flex justify-content-center">
-                    <div class="logo-center">
-                        <a href="index.html">
-                            <img src="resources/images/shield_yellow.png" alt="LOGO IMAGE">
-                        </a>
+    <head>
+        <!-- Meta Tags -->
+        <meta charset="utf-8">
+        <meta content="width=device-width, initial-scale=1, shrink-to-fit=no" name="viewport">
+        
+        <!-- Page Title -->
+        <title>NoMoreScamTricks | Home</title>
+        <!-- Favicon -->
+        <link href="{{ url_for('static', filename='resources/images/shield_tab_icon.png') }}" rel="icon">
+        <!-- Bundle -->
+        <link rel="stylesheet" href="{{ url_for('static', filename='css/bundle.min.css') }}">
+        <!-- Plugin Css -->
+        <link href="{{ url_for('static', filename='css/wow.css') }}" rel="stylesheet">
+        <link href="{{ url_for('static', filename='css/LineIcons.min.css') }}" rel="stylesheet">
+        <link href="{{ url_for('static', filename='css/jquery.fancybox.min.css') }}" rel="stylesheet">
+        <link href="{{ url_for('static', filename='css/owl.carousel.min.css') }}" rel="stylesheet">
+        <link href="{{ url_for('static', filename='css/cubeportfolio.min.css') }}" rel="stylesheet">
+        <link href="{{ url_for('static', filename='css/line-awesome.min.css') }}" rel="stylesheet">
+    
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+        <!-- Style Sheet -->
+        <link href="{{ url_for('static', filename='css/style.css') }}" rel="stylesheet">
+        <link href="{{ url_for('static', filename='css/custom.css') }}" rel="stylesheet">
+    </head>
+    
+    <body data-spy="scroll" data-target=".navbar" data-offset="50">
+    
+    <!-- Start Header -->
+    <header id="home">
+        <div class="top-banner bg-trans-color transparent-banner">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-sm-12 col-md-12 col-lg-12 d-flex justify-content-center">
+                        <div class="logo-center">
+                            <a href="{{ url_for('index') }}">
+                                <img src="{{ url_for('static', filename='images/shield_yellow.png') }}" alt="LOGO IMAGE">
+                            </a>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
-    
-    <nav class="navbar navbar-top-default navbar-expand-lg navbar-simple nav-line">
-        <div class="container">
-            <div class="collapse navbar-collapse" id="navheader">
-                <div class="navbar-nav  ml-auto mr-auto">
-                    <a class="nav-link line" href="templates/index.html#home">Home</a>
-                    <a class="nav-link line" href="templates/scam.html#scam">Is this a scam?</a>
-                    <!-- <a class="nav-link line" href="templates/safemethods.html">How to be safe?</a> -->
-                    <a class="nav-link line" href="templates/statistics.html#statistics">Statistics</a>
-                    <!-- <a class="nav-link line" href="templates/report.html">Reporting and Resources</a> -->
+        
+        <nav class="navbar navbar-top-default navbar-expand-lg navbar-simple nav-line">
+            <div class="container">
+                <div class="collapse navbar-collapse" id="navheader">
+                    <div class="navbar-nav ml-auto mr-auto">
+                        <a class="nav-link line" href="{{ url_for('home') }}#home">Home</a>
+                        <a class="nav-link line" href="{{ url_for('scam') }}#scam">Is this a scam?</a>
+                        <!-- 
+                        <a class="nav-link line" href="{{ url_for('safe_methods') }}">How to be safe?</a> 
+                        -->
+                        <a class="nav-link line" href="{{ url_for('statistics') }}#statistics">Statistics</a>
+                        <!-- 
+                        <a class="nav-link line" href="{{ url_for('report') }}">Reporting and Resources</a> 
+                        -->
+                    </div>
+                    
                 </div>
             </div>
-        </div>
-    </nav>
-</header>
-<!-- End Header -->
+        </nav>
+    </header>
+    <!-- End Header -->
 
 
 

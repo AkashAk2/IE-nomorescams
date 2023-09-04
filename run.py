@@ -1,10 +1,10 @@
 from flask import Flask, render_template, request, redirect, url_for, flash, session
 import secrets, pyodbc
 
-app = Flask(__name__)
-
-# Generate the secret_key each time
+# Generate the secret_key each time and specify the static folder at the same time
+app = Flask(__name__, static_folder='nomorescamtricks')
 app.secret_key = secrets.token_hex(16)
+
 
 @app.route('/', methods=['GET', 'POST'])
 def index():
