@@ -26,6 +26,24 @@ async function testConnection() {
     }
 }
 
+async function queryScamStatistics() {
+    try {
+        // Establish a connection
+        let pool = await sql.connect(config);
+
+        // Query the "scam_statistics" table
+        const result = await pool.request().query('SELECT * FROM scam_loss_statistics');
+
+        // Close the connection
+        await pool.close();
+        const jsonResult = JSON.stringify(result.recordset);
+        return jsonResult; // Return the query result as an array of objects
+    } catch (err) {
+        console.error('SQL error', err);
+        throw err; // Rethrow the error for handling in the calling code
+    }
+}
+
 // Serve static files from the root directory
 app.use(express.static(__dirname));
 
@@ -34,6 +52,15 @@ app.get('/testdb', async (req, res) => {
     let isConnected = await testConnection();
     if (isConnected) {
         res.send('Database is connected');
+    } else {
+        res.status(500).send('Failed to connect to the database');
+    }
+});
+
+app.get('/scam_statistics', async (req, res) => {
+    let data = await queryScamStatistics();
+    if (data) {
+        res.send(data);
     } else {
         res.status(500).send('Failed to connect to the database');
     }

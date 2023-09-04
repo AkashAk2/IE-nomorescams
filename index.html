@@ -101,7 +101,8 @@
                         <div class="col-12 col-md-4 stats">
                             <div class="parallax-box d-flex flex-column align-items-center justify-content-center">
                                 <i class="fas fa-dollar-sign fact-percentage"></i>
-                                <h2 class="count fact-percentage">$568640274</h2>
+                                <!-- <h2 class="count fact-percentage">$568640274</h2> -->
+                                <h2 id="total-loss"class="count fact-percentage">loading</h2>
                                 <h5>Total Monetary Loss in 2022</h5>
                             </div>
                         </div>
@@ -109,7 +110,8 @@
                         <div class="col-12 col-md-4 stats">
                             <div class="parallax-box d-flex flex-column align-items-center justify-content-center">
                                 <i class="fas fa-file-alt fact-percentage"></i>
-                                <h2 class="count fact-percentage">239237</h2>
+                                <!-- <h2 class="count fact-percentage">239237</h2> -->
+                                <h2 id="numbers-of-reports"class="count fact-percentage">loading</h2>
                                 <h5>Number of reports</h5>
                             </div>
                         </div>
@@ -117,7 +119,8 @@
                         <div class="col-12 col-md-4 stats">
                             <div class="parallax-box d-flex flex-column align-items-center justify-content-center">
                                 <i class="fas fa-user fact-percentage"></i>
-                                <h2 class="count fact-percentage">49163</h2>
+                                <!-- <h2 class="count fact-percentage">49163</h2> -->
+                                <h2 id="age-over-65" class="count fact-percentage">loading</h2>
                                 <h5>Affected people aged 65+ </h5>
                             </div>
                         </div>
@@ -306,5 +309,32 @@
 <!-- CUSTOM JS -->
 <script src="nomorescamtricks/js/contact_us.js"></script>
 <script src="nomorescamtricks/js/script.js"></script>
+<script>
+        // Function to update the h2 tag with new data
+        function updateH2Value(newValue, id) {
+            const h2Element = document.getElementById(id);
+            h2Element.textContent = newValue;
+        }
+
+        // Make a GET request to fetch data
+        fetch('http://localhost:3000/scam_statistics')
+        .then(response => {
+            if (!response.ok) {
+                throw new Error('Network response was not ok');
+            }
+            return response.json(); // Parse the response as JSON
+        })
+        .then(data => {
+            console.log(data)
+            // Assuming the response contains JSON data with the new value
+            updateH2Value(data[0].Total_Monetary_Loss,'total-loss'); // Update the <h2> with the specific value from the JSON
+            updateH2Value(data[0].Number_of_reports,'numbers-of-reports'); // Update the <h2> with the specific value from the JSON
+            updateH2Value(data[0].Affected_people_aged_65plus,'age-over-65'); // Update the <h2> with the specific value from the JSON
+        })
+        .catch(error => {
+            console.error('Error:', error);
+        });
+
+    </script>
 </body>
 </html>
