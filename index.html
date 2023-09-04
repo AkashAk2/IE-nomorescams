@@ -322,7 +322,7 @@
         }
 
         // Make a GET request to fetch data
-        fetch('/scam_statistics')
+        fetch('https://fit5120.azurewebsites.net/scam_statistics')
         .then(response => {
             if (!response.ok) {
                 throw new Error('Network response was not ok');

@@ -60,7 +60,7 @@ app.use(express.static(__dirname));
 //     }
 // });
 
-app.get('/scam_statistics', async (req, res) => {
+app.get('https://fit5120.azurewebsites.net/scam_statistics', async (req, res) => {
     let data = await queryScamStatistics();
     if (data) {
         res.send(data);
