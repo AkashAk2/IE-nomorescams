@@ -1,141 +1,69 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
+  <head>
     <!-- Meta Tags -->
     <meta charset="utf-8">
     <meta content="width=device-width, initial-scale=1, shrink-to-fit=no" name="viewport">
-    <!-- Author -->
-    <meta name="author" content="Themes Industry">
-    <!-- Description -->
-    <meta name="description" content="MegaOne is a highly creative, modern, visually stunning and Bootstrap responsive multipurpose studio and portfolio HTML5 template with ready home page demos.">
+    
     <!-- Page Title -->
-    <title>NoMoreScamTricks | Scam?</title>
+    <title>NoMoreScamTricks | Statistics</title>
     <!-- Favicon -->
-    <link href="resources/images/shield_tab_icon.png" rel="icon">
+    <link href="{{ url_for('static', filename='resources/images/shield_tab_icon.png') }}" rel="icon">
     <!-- Bundle -->
-    <link rel="stylesheet" href="nomorescamtricks/css/bundle.min.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/bundle.min.css') }}">
     <!-- Plugin Css -->
-    <link href="nomorescamtricks/css/wow.css" rel="stylesheet">
-    <link href="nomorescamtricks/css/LineIcons.min.css" rel="stylesheet">
-    <link href="nomorescamtricks/css/jquery.fancybox.min.css" rel="stylesheet">
-    <link href="nomorescamtricks/css/owl.carousel.min.css" rel="stylesheet">
-    <link href="nomorescamtricks/css/cubeportfolio.min.css" rel="stylesheet">
-    <link href="nomorescamtricks/css/line-awesome.min.css" rel="stylesheet">
+    <link href="{{ url_for('static', filename='css/wow.css') }}" rel="stylesheet">
+    <link href="{{ url_for('static', filename='css/LineIcons.min.css') }}" rel="stylesheet">
+    <link href="{{ url_for('static', filename='css/jquery.fancybox.min.css') }}" rel="stylesheet">
+    <link href="{{ url_for('static', filename='css/owl.carousel.min.css') }}" rel="stylesheet">
+    <link href="{{ url_for('static', filename='css/cubeportfolio.min.css') }}" rel="stylesheet">
+    <link href="{{ url_for('static', filename='css/line-awesome.min.css') }}" rel="stylesheet">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
     <!-- Style Sheet -->
-    <link href="nomorescamtricks/css/style.css" rel="stylesheet">
-    <link href="nomorescamtricks/css/custom.css" rel="stylesheet">
+    <link href="{{ url_for('static', filename='css/style.css') }}" rel="stylesheet">
+    <link href="{{ url_for('static', filename='css/custom.css') }}" rel="stylesheet">
 </head>
 
 <body data-spy="scroll" data-target=".navbar" data-offset="50">
 
-<!-- Start Loader -->
-<div class="loader">
-    <div class="container">
-        <div class="row">
-            <div class="container">
-                <div class="row">
-                    <a class="intro-banner-vdo-play-btn pinkBg">
-                        <i class="glyphicon glyphicon-play whiteText" aria-hidden="true"></i>
-                        <span class="ripple pinkBg"></span>
-                        <span class="ripple pinkBg"></span>
-                        <span class="ripple pinkBg"></span>
-                    </a>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-<!-- End Loader -->
-
 <!-- Start Header -->
 <header id="home">
-    <div class="top-banner bg-trans-color  transparent-banner">
+    <div class="top-banner bg-trans-color transparent-banner">
         <div class="container-fluid">
             <div class="row">
-                <div class="col-4 col-lg-4 d-flex align-items-center">
-                    <a href="javascript:void(0)" class="sidemenu_btn active link sidemenu_toggle">
-                        <span></span>
-                        <span></span>
-                        <span></span>
-                    </a>
-                </div>
-                <div class="col-sm-12 col-md-4 col-lg-4 d-flex justify-content-center">
+                <div class="col-sm-12 col-md-12 col-lg-12 d-flex justify-content-center">
                     <div class="logo-center">
-                        <a href="index.html">
-                            <img src="resources/images/shield_yellow.png" alt="LOGO IMAGE"></a>
+                        <a href="{{ url_for('index') }}">
+    <img src="{{ url_for('static', filename='/resources/images/shield_yellow.png') }}" alt="LOGO IMAGE">
+</a>
                     </div>
                 </div>
             </div>
         </div>
     </div>
+    
     <nav class="navbar navbar-top-default navbar-expand-lg navbar-simple nav-line">
         <div class="container">
-            <div class="collapse navbar-collapse" id="megaone">
+            <div class="collapse navbar-collapse" id="navheader">
                 <div class="navbar-nav  ml-auto mr-auto">
-                    <a class="nav-link line" href="templates/index.html#home">Home</a>
-                    <a class="nav-link line" href="templates/scam.html#scam">Is this a scam?</a>
-                    <!-- <a class="nav-link line" href="templates/safemethods.html">How to be safe?</a> -->
-                    <a class="nav-link line" href="templates/statistics.html#statistics">Statistics</a>
-                    <!-- <a class="nav-link line" href="templates/report.html">Reporting and Resources</a> -->
+                    <a class="nav-link line" href="{{ url_for('index') }}#home">Home</a>
+                    <a class="nav-link line" href="{{ url_for('scam') }}#scam">Is this a scam?</a>
+                    <!-- <a class="nav-link line" href="{{ url_for('safemethods') }}">How to be safe?</a> -->
+                    <a class="nav-link line" href="{{ url_for('statistics') }}#statistics">Statistics</a>
+                    <!-- <a class="nav-link line" href="{{ url_for('report') }}">Reporting and Resources</a>  -->
                 </div>
             </div>
         </div>
     </nav>
-    
 </header>
 <!-- End Header -->
 
 
 
 
-<!-- Start Counter -->
-<section class="statistics bg-black" id="statistics">
-    <!-- <div class="col-12 col-md-10 col-lg-8 offset-md-1 offset-lg-2 heading-area text-center wow zoomIn" data-wow-duration="1s" data-wow-delay=".1s">
-        <div class="main-title text-lg-left mb-0 wow fadeInUp" data-wow-delay="300ms">
-            <h2 class="wow fadeInUp h2-subheadings" data-wow-delay="400ms" style="text-align: center;">Do you know?</h2>
-    </div> -->
-    <div class="container position-relative">
-        <div class="row align-items-center">
-            
-            <div class="col-12 col-md-6 wow slideInLeft" data-wow-duration="1s" data-wow-delay=".1s">
-                <div class="counter-content">
-                    <h3 class="my-3">Annual Australian Scam Losses: The Year 2022 in Review</h3>
-                    <p class="alt-font">Adjacent, we unveil the monetary losses suffered by Australians in the year 2022, quantified for your insight.</p>
-                </div>
-            </div>
-            <div class="col-12 col-md-6 text-center wow slideInRight" data-wow-duration="1s" data-wow-delay=".1s">
-                <div class="row mt-5 mt-md-0">
-                    <!-- Counter -->
-                    <div class="col-12 col-md-4">
-                        <div class="parallax-box d-flex flex-column align-items-center justify-content-center">
-                            <i class="lni lni-handshake"></i>
-                            <h2 class="count">$568640274</h2>
-                            <h5>Total Money Lost</h5>
-                        </div>
-                    </div>
-                    <!-- Counter -->
-                    <div class="col-12 col-md-4">
-                        <div class="parallax-box d-flex flex-column align-items-center justify-content-center">
-                            <i class="lni lni-world"></i>
-                            <h2 class="count">239237</h2>
-                            <h5>Number of reports</h5>
-                        </div>
-                    </div>
-                    <!-- Counter -->
-                    <div class="col-12 col-md-4">
-                        <div class="parallax-box d-flex flex-column align-items-center justify-content-center">
-                            <i class="lni lni-tab"></i>
-                            <h2 class="count">49163</h2>
-                            <h5>People most affected are aged 65+</h5>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            
-        </div>
-    </div>
-</section>
-<!-- End Counter -->
+
 <script src="https://cdn.jsdelivr.net/npm/echarts@5.3.0/dist/echarts.min.js"></script>
 
 
@@ -600,20 +528,18 @@ var chartDom = document.getElementById('echarts-scamtype-main');
 <!-- End Scroll Top -->
 
 <!-- JavaScript -->
-<script src="nomorescamtricks/js/bundle.min.js"></script>
+<script src="{{ url_for('static', filename='js/bundle.min.js') }}"></script>
+
 <!-- Plugin Js -->
-<script src="nomorescamtricks/js/jquery.appear.js"></script>
-<script src="nomorescamtricks/js/morphext.min.js"></script>
-<script src="nomorescamtricks/js/parallaxie.min.js"></script>
-<script src="nomorescamtricks/js/owl.carousel.min.js"></script>
-<script src="nomorescamtricks/js/jquery.cubeportfolio.min.js"></script>
-<script src="nomorescamtricks/js/wow.min.js"></script>
-<!-- Map -->
-<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB4fusEY9kSwNHgtK8KOgyoTsyP5Tb2NXo"></script>
-<script src="nomorescamtricks/js/map.js"></script>
+<script src="{{ url_for('static', filename='js/jquery.appear.js') }}"></script>
+<script src="{{ url_for('static', filename='js/morphext.min.js') }}"></script>
+<script src="{{ url_for('static', filename='js/parallaxie.min.js') }}"></script>
+<script src="{{ url_for('static', filename='js/owl.carousel.min.js') }}"></script>
+<script src="{{ url_for('static', filename='js/jquery.cubeportfolio.min.js') }}"></script>
+<script src="{{ url_for('static', filename='js/wow.min.js') }}"></script>
 
 <!-- CUSTOM JS -->
-<script src="nomorescamtricks/js/contact_us.js"></script>
-<script src="nomorescamtricks/js/script.js"></script>
-</body>
+<script src="{{ url_for('static', filename='js/contact_us.js') }}"></script>
+<script src="{{ url_for('static', filename='js/script.js') }}"></script>
+
 </html>

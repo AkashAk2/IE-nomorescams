@@ -56,6 +56,35 @@ def index():
     # User is not authenticated and hasn't made a POST request
     return render_template('password_prompt.html')
 
+#home
+@app.route('/home')
+def home():
+    return render_template('index.html')
+
+#scam
+@app.route('/scam')
+def scam():
+    return render_template('scam.html')
+
+#safemethods
+@app.route('/safemethods')
+def safemethods():
+    return render_template('safemethods.html')
+
+#statistics
+@app.route('/statistics')
+def statistics():
+    return render_template('statistics.html')
+
+#report
+@app.route('/report')
+def report():
+    return render_template('report.html')
+
+
+
+
+
 @app.route('/test-connection')
 def test_connection():
     try:
