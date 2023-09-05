@@ -2,7 +2,7 @@ from flask import Flask, render_template, request, redirect, url_for, flash, ses
 import secrets, pyodbc
 
 # Generate the secret_key each time and specify the static folder at the same time
-app = Flask(__name__, static_folder='nomorescamtricks')
+app = Flask(__name__)
 app.secret_key = secrets.token_hex(16)
 
 
