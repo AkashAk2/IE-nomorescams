@@ -9,7 +9,22 @@ app.secret_key = secrets.token_hex(16)
 @app.route('/', methods=['GET', 'POST'])
 def index():
     if 'authenticated' in session and session['authenticated']:
-        return render_template('index.html')  # index.html is the default page
+        # Database Connection
+        try:
+            cnx = pyodbc.connect(connection_string)
+            cursor = cnx.cursor()
+            cursor.execute("SELECT Total_Monetary_Loss, Number_of_reports, Affected_people_aged_65plus FROM scam_loss_statistics")
+            result = cursor.fetchone()
+            total_loss = result[0]
+            number_of_reports = result[1]
+            affected_people_65plus = result[2]
+            cnx.close()
+        except Exception as e:
+            print(f"Error: {e}")
+            total_loss, number_of_reports, affected_people_65plus = "Error", "Error", "Error"
+
+        return render_template('index.html', total_loss=total_loss, number_of_reports=number_of_reports, affected_people_65plus=affected_people_65plus) 
+
     if request.method == 'POST':
         password = request.form.get('password')
         if password == 'Monash@27':  # website password
