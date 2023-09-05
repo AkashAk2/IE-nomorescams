@@ -11,17 +11,31 @@ def index():
     if 'authenticated' in session and session['authenticated']:
         # Database Connection
         try:
+            # Setting up connection string for Azure SQL
+            server = 'tcp:fit5120server.database.windows.net,1433'
+            database = 'fit5120-db'
+            username = 'team27'  # replace with your username
+            password = 'Monash@27'  # replace with your password
+            driver = '{ODBC Driver 18 for SQL Server}'
+
+            connection_string = (f'DRIVER={driver};SERVER={server};DATABASE={database};'
+                                f'UID={username};PWD={password};Encrypt=yes;TrustServerCertificate=no;Connection Timeout=30;')
+
             cnx = pyodbc.connect(connection_string)
             cursor = cnx.cursor()
             cursor.execute("SELECT Total_Monetary_Loss, Number_of_reports, Affected_people_aged_65plus FROM scam_loss_statistics")
             result = cursor.fetchone()
-            total_loss = result[0]
-            number_of_reports = result[1]
-            affected_people_65plus = result[2]
+            if result:
+                print("Data fetched:", result)
+            else:
+                print("No data returned from the query.")
             cnx.close()
         except Exception as e:
-            print(f"Error: {e}")
-            total_loss, number_of_reports, affected_people_65plus = "Error", "Error", "Error"
+            print(f"Database error: {e}")
+            total_loss = str(result[0])
+            number_of_reports = str(result[1])
+            affected_people_65plus = str(result[2])
+
 
         return render_template('index.html', total_loss=total_loss, number_of_reports=number_of_reports, affected_people_65plus=affected_people_65plus) 
 
