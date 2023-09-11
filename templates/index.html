@@ -50,7 +50,7 @@
                 <div class="navbar-nav  ml-auto mr-auto">
                     <a class="nav-link line" href="{{ url_for('index') }}#home">Home</a>
                     <a class="nav-link line" href="{{ url_for('scam') }}#scam">Is this a scam?</a>
-                    <!-- <a class="nav-link line" href="{{ url_for('safemethods') }}">How to be safe?</a> -->
+                    <a class="nav-link line" href="{{ url_for('safemethods') }}">Account Safety</a>
                     <a class="nav-link line" href="{{ url_for('statistics') }}#statistics">Statistics</a>
                     <!-- <a class="nav-link line" href="{{ url_for('report') }}">Reporting and Resources</a>  -->
                 </div>
@@ -78,7 +78,7 @@
         </div>
         
         <!-- Start Counter -->
-    <div class="statistics bg-black" id="statistics">
+    <div class="statistics-home bg-black" id="stats">
         <!-- <div class="col-12 col-md-10 col-lg-8 offset-md-1 offset-lg-2 heading-area text-center wow zoomIn" data-wow-duration="1s" data-wow-delay=".1s">
             <div class="main-title text-lg-left mb-0 wow fadeInUp" data-wow-delay="300ms">
                 <h2 class="wow fadeInUp h2-subheadings" data-wow-delay="400ms" style="text-align: center;">Do you know?</h2>
@@ -155,7 +155,7 @@
                         <span class="feature_header_text underline">How to be safe?</span>
                         <p class="feature_header_content">There are a variety of scams affecting Australians. Click here to learn more about how to protect yourselves.</p>
                     </div>
-                    <a href="javascript:void(0);" class="scroll btn btn-medium btn-rounded btn-trans btn-margin centered-button">Coming Soon</a>
+                    <a href="{{ url_for('safemethods') }}#safety" class="scroll btn btn-medium btn-rounded btn-trans btn-margin centered-button">Coming Soon</a>
                 </div>
             </div>
             <!-- Feature 3-->
@@ -165,7 +165,7 @@
                         <span class="feature_header_text underline">Scam Statistics</span>
                         <p class="feature_header_content">Demographic information about Australians who have been targeted by scams in the last year.</p>
                     </div>
-                    <a href="{{ url_for('statistics') }}#statistics" class="scroll btn btn-medium btn-rounded btn-trans btn-margin centered-button">Statistics</a>
+                    <a href="{{ url_for('statistics') }}#statistics" class="btn btn-medium btn-rounded btn-trans btn-margin centered-button">Statistics</a>
                 </div>
             </div>
 

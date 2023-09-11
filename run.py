@@ -69,7 +69,7 @@ def scam():
 #safemethods
 @app.route('/safemethods')
 def safemethods():
-    return render_template('safemethods.html')
+    return render_template('accountsafety.html')
 
 #statistics
 @app.route('/statistics')
