@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request, redirect, url_for, flash, session
+from flask import Flask, render_template, request, redirect, url_for, flash, session, jsonify
 import secrets, pyodbc, os
 import pandas as pd
 from sklearn.feature_extraction.text import CountVectorizer
@@ -6,25 +6,25 @@ from sklearn.naive_bayes import MultinomialNB
 from sklearn.model_selection import train_test_split
 import re
 import string
+import mysql.connector
 
 app = Flask(__name__)
 app.secret_key = secrets.token_hex(16)
 
+DB_CONFIG = {
+    'user': 'team27',
+    'password': 'Monash@27',
+    'host': 'nomorescams-mysql.mysql.database.azure.com',
+    'port': 3306,
+    'database': 'nomorescams',
+    'ssl_ca': 'static/resources/key/BaltimoreCyberTrustRoot.crt.pem',
+    'ssl_disabled': False
+}
+
 def get_db_connection():
     try:
-        # Setting up connection string for Azure SQL
-        server = 'tcp:fit5120server.database.windows.net,1433'
-        database = 'fit5120-db'
-        username = 'team27'  # replace with your username
-        password = 'Monash@27'  # replace with your password
-        driver = '{ODBC Driver 17 for SQL Server}'
-
-        connection_string = (f'DRIVER={driver};SERVER={server};DATABASE={database};'
-                             f'UID={username};PWD={password};Encrypt=yes;TrustServerCertificate=no;Connection Timeout=30;')
-
-
-        return pyodbc.connect(connection_string)
-    except Exception as e:
+        return mysql.connector.connect(**DB_CONFIG)
+    except mysql.connector.Error as e:
         print(f"Database error: {e}")
         return None
 
@@ -48,19 +48,18 @@ def index():
             cnx.close()
 
         return render_template('index.html', total_loss=total_loss, number_of_reports=number_of_reports, affected_people_65plus=affected_people_65plus)
-    
-    # Handle password submission and validation
+
     if request.method == 'POST':
         password = request.form.get('password')
-        if password == 'Monash@27':  # replace 'Your_Secure_Password' with your actual password or a more secure validation method
+        if password == 'Monash@27':
             session['authenticated'] = True
             return redirect(url_for('index'))
         else:
             flash('Wrong password. Please try again.')
             return render_template('password_prompt.html')
-    
-    # User is not authenticated and hasn't made a POST request
+
     return render_template('password_prompt.html')
+
 
 #home
 @app.route('/home')
@@ -150,6 +149,82 @@ def test_connection():
         return "Successful database connection!"
     except Exception as e:
         return f"Error: {e}"
+    
+@app.route('/test-mysql-connection')
+def test_mysql_connection():
+    try:
+        cnx = mysql.connector.connect(
+            user="team27",
+            password="Monash@27",
+            host="nomorescams-mysql.mysql.database.azure.com",
+            port=3306,
+            database="nomorescams",
+            ssl_ca="static/resources/key/BaltimoreCyberTrustRoot.crt.pem",
+            ssl_disabled=False
+        )
+        cnx.close()
+        return "Successful MySQL database connection!"
+    except Exception as e:
+        return f"Error: {e}"
+    
+# @app.route('/create-mysql-table')
+# def create_mysql_table():
+#     cnx = None
+#     cursor = None
+
+#     try:
+#         # Connect to the database
+#         cnx = mysql.connector.connect(
+#             user="team27",
+#             password="Monash@27",
+#             host="nomorescams-mysql.mysql.database.azure.com",
+#             port=3306,
+#             database="nomorescams",
+#             ssl_ca="static/resources/key/BaltimoreCyberTrustRoot.crt.pem",
+#             ssl_disabled=False
+#         )
+#         cursor = cnx.cursor()
+
+#         # Create the table
+#         cursor.execute("""
+#         CREATE TABLE IF NOT EXISTS scam_loss_statistics (
+#             Total_Monetary_Loss BIGINT,
+#             Number_of_reports INT,
+#             Affected_people_aged_65plus INT
+#         );
+#         """)
+
+#         # Check if the data already exists to prevent duplicate entries
+#         cursor.execute("SELECT COUNT(*) FROM scam_loss_statistics WHERE Total_Monetary_Loss = 568640274")
+#         result = cursor.fetchone()
+#         if result[0] == 0:
+#             # Insert the data if it doesn't exist
+#             cursor.execute("""
+#             INSERT INTO scam_loss_statistics (Total_Monetary_Loss, Number_of_reports, Affected_people_aged_65plus)
+#             VALUES (568640274, 239237, 49163);
+#             """)
+
+#         # Commit the changes
+#         cnx.commit()
+
+#         return "Table created and data inserted successfully!"
+
+#     except mysql.connector.Error as err:
+#         if err.errno == mysql.connector.errorcode.ER_TABLE_EXISTS_ERROR:
+#             return "Table already exists."
+#         elif err.errno == mysql.connector.errorcode.ER_BAD_DB_ERROR:
+#             return "Database does not exist."
+#         else:
+#             return f"Database error: {err}"
+#     except Exception as e:
+#         return f"General error: {e}"
+#     finally:
+#         if cursor:
+#             cursor.close()
+#         if cnx:
+#             cnx.close()
+
+
 
 if __name__ == '__main__':
     app.run(debug=True)
