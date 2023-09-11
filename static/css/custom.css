@@ -458,4 +458,63 @@ h2 {
     opacity: 1; /* Fully visible when active */
 }
 
+/* Account Safety Page */
+.sidelearncontainer {
+    padding:20px;
+    max-width: 300px;
+    margin-left: 100px;
+    /* padding-top: 50px;
+    padding-left: 50px; */
+}
 
+.sidelearncontainer h5 {
+    font-size: 25px;
+    font-weight: bold;
+    padding:20px;
+}
+
+.sidelearncontainer p {
+    text-align: justify;
+    padding-top: 15px;
+    padding:20px;
+    padding-right: 25px;
+}
+
+
+.accountsafety-heading {
+    padding: 40px;
+    margin-left: 100px;
+}
+
+.reduced-margin {
+    margin-top: -50px;
+}
+
+.emailinputcontainer {
+    width: 100%; /* set it to the width you need, or use max-width if necessary */
+    height: 100%; /* set it to the height you need */
+    display: flex;
+    justify-content: center; /* horizontally center the input */
+    align-items: center; /* vertically center the input */
+    margin-top: 50px;
+}
+
+#emailinput {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 500;
+    font-size: 20px;
+    width: 400px; /* example width */
+    height: 50px; /* example height */
+    color: black;
+    placeholder: black; /* This makes the placeholder text black */
+    border: 1px solid #ccc; /* example border */
+    padding: 0 10px; /* some padding on the left and right */
+}
+
+#emailinput::placeholder {
+    color: black;
+}
+
+.leakcheck-button {
+    margin-top: 10px;
+}
