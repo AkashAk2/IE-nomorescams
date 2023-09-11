@@ -1,5 +1,11 @@
 from flask import Flask, render_template, request, redirect, url_for, flash, session
 import secrets, pyodbc, os
+import pandas as pd
+from sklearn.feature_extraction.text import CountVectorizer
+from sklearn.naive_bayes import MultinomialNB
+from sklearn.model_selection import train_test_split
+import re
+import string
 
 app = Flask(__name__)
 app.secret_key = secrets.token_hex(16)
@@ -81,9 +87,48 @@ def statistics():
 def report():
     return render_template('report.html')
 
+#scam email detect
+@app.route('/detect_scam')
+def detect_scam():
+    return render_template('detect_scam.html')
 
 
+def clean_text(text):
+    '''Make text lowercase, remove text in square brackets,remove links,remove punctuation
+    and remove words containing numbers.'''
+    text = str(text).lower()
+    text = re.sub('\[.*?\]', '', text)
+    text = re.sub('https?://\S+|www\.\S+', '', text)
+    text = re.sub('<.*?>+', '', text)
+    text = re.sub('[%s]' % re.escape(string.punctuation), '', text)
+    text = re.sub('\n', '', text)
+    text = re.sub('\w*\d\w*', '', text)
+    return text
 
+@app.route('/predict', methods=['POST'])
+def predict():
+    df = pd.read_csv("spam.csv", encoding="latin-1")
+    df = df.dropna(how="any", axis=1)
+    df.columns = ['label', 'message']
+    df['message_clean'] = df['message'].apply(clean_text)
+    # Features and Labels
+    df['label'] = df['label'].map({'ham': 0, 'spam': 1})
+    X = df['message_clean']
+    y = df['label']
+    # Extract Feature With CountVectorizer
+    cv = CountVectorizer()
+    X = cv.fit_transform(X)  # Fit the Data
+    X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.4, random_state=42)
+    # Naive Bayes Classifier
+    clf = MultinomialNB()
+    clf.fit(X_train, y_train)
+    clf.score(X_test, y_test)
+    if request.method == 'POST':
+        message = request.form['message']
+        data = [message]
+        vect = cv.transform(data).toarray()
+        my_prediction = clf.predict(vect)
+    return render_template('detect_scam.html', prediction=my_prediction)
 
 @app.route('/test-connection')
 def test_connection():
