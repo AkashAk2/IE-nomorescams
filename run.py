@@ -1,5 +1,5 @@
 from flask import Flask, render_template, request, redirect, url_for, flash, session, jsonify
-import secrets, pyodbc, os
+import secrets, os
 import pandas as pd
 from sklearn.feature_extraction.text import CountVectorizer
 from sklearn.naive_bayes import MultinomialNB
@@ -129,26 +129,7 @@ def predict():
         my_prediction = clf.predict(vect)
     return render_template('detect_scam.html', prediction=my_prediction)
 
-@app.route('/test-connection')
-def test_connection():
-    try:
-        # Setting up connection string for Azure SQL
-        # Setting up connection string for Azure SQL
-        server = 'tcp:fit5120server.database.windows.net,1433'
-        database = 'fit5120-db'
-        username = 'team27'  # replace with your username
-        password = 'Monash@27'  # replace with your actual password
-        driver = '{ODBC Driver 17 for SQL Server}'  # Note that you have updated the driver version to 18.
 
-        connection_string = (f'DRIVER={driver};SERVER={server};DATABASE={database};'
-                     f'UID={username};PWD={password};Encrypt=yes;TrustServerCertificate=no;Connection Timeout=30;')
-
-
-        cnx = pyodbc.connect(connection_string)
-        cnx.close()
-        return "Successful database connection!"
-    except Exception as e:
-        return f"Error: {e}"
     
 @app.route('/test-mysql-connection')
 def test_mysql_connection():
@@ -166,7 +147,34 @@ def test_mysql_connection():
         return "Successful MySQL database connection!"
     except Exception as e:
         return f"Error: {e}"
-    
+
+# Test fetch data from MySQL database
+@app.route('/fetch-data')
+def fetch_data():
+    try:
+        # Connect to the database
+        cnx = mysql.connector.connect(**DB_CONFIG)
+        cursor = cnx.cursor(dictionary=True)
+
+        # Execute the SELECT query
+        cursor.execute("SELECT Total_Monetary_Loss, Number_of_reports, Affected_people_aged_65plus FROM scam_loss_statistics")
+        
+        # Fetch all rows
+        rows = cursor.fetchall()
+
+        # Close the cursor and the connection
+        cursor.close()
+        cnx.close()
+
+        # Return the fetched data
+        return jsonify(rows)
+
+    except mysql.connector.Error as err:
+        return jsonify(status='error', message=str(err))
+    except Exception as e:
+        return jsonify(status='error', message=f"General Error: {e}")
+
+
 # @app.route('/create-mysql-table')
 # def create_mysql_table():
 #     cnx = None
