@@ -52,6 +52,7 @@
                     <a class="nav-link line" href="{{ url_for('scam') }}#scam">Is this a scam?</a>
                     <a class="nav-link line" href="{{ url_for('safemethods') }}">Account Safety</a>
                     <a class="nav-link line" href="{{ url_for('statistics') }}#statistics">Statistics</a>
+                    <a class="nav-link line" href="{{ url_for('detect_scam') }}#detect_scam">Detect Scam Email</a>
                     <!-- <a class="nav-link line" href="{{ url_for('report') }}">Reporting and Resources</a>  -->
                 </div>
             </div>
@@ -68,7 +69,7 @@
 
 
 <div class="statisticsgap">
-  <div id="echarts-example-main" style="width: 700px; height: 400px;"></div>
+  <div id="echarts-example-main" style="width: 40%; height: 400px;"></div>
   <div class="piechart_context">
     <div class="piechart_context-part1">
       <p>This pie chart shows the most serious reported percentage of persons across age groups. Reported in person refers to the total number of persons who reported the most serious scam incident to an authority, expressed as a percentage of the total number of persons who experienced a scam during 2021-22.
@@ -161,8 +162,8 @@
     }
 
     .piechart_context {
-    width: 700px;
-    margin-left: 40px;
+    width: 30%;
+    margin-left: 10%;
     padding-top: 80px;
   
   }
@@ -461,7 +462,7 @@ option.title = {
 
 
 <div class="statisticsgap_bar">
-  <div id="echarts-scamtype-main" style="width: 800px; height: 400px;"></div>
+  <div id="echarts-scamtype-main" style="width: 60%; height: 400px;"></div>
   <div class="lastbarchart_context">
     <p>This chart shows persons in Australia aged 15 years and over, whether experienced a scam during 2021-22, by scam type. 
       Statistics show "Information request or phishing" is the most common scam type, which is more than double compare with the second common type "Computer support".     </p>
@@ -517,7 +518,7 @@ var chartDom = document.getElementById('echarts-scamtype-main');
                 value: 'Information request or phishing',
                 textStyle: {
                     color: 'rgba(194, 221, 80, 0.8)',
-                    fontSize : 12,
+                    fontSize : 11,
                     fontWeight: 'bold'
                     
                 }
@@ -652,7 +653,7 @@ option && myChart.setOption(option);
       align-content: center;
     }
     .lastbarchart_context {
-      width: 700px;
+      width: 25%;
     margin-left: 40px;
     padding-top: 50px;
   }
