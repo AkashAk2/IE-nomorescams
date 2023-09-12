@@ -68,7 +68,7 @@
 
 
 <div class="statisticsgap">
-  <div id="echarts-example-main" style="width: 65%; height: 400px;"></div>
+  <div id="echarts-example-main" style="width: 700px; height: 400px;"></div>
   <div class="piechart_context">
     <div class="piechart_context-part1">
       <p>This pie chart shows the most serious reported percentage of persons across age groups. Reported in person refers to the total number of persons who reported the most serious scam incident to an authority, expressed as a percentage of the total number of persons who experienced a scam during 2021-22.
@@ -152,7 +152,7 @@
   <style>
 
     .statisticsgap{
-      padding: 0 20px 0 0;
+      padding: 20px 0 0 0;
       width: 100%;
       height: 400px;
       display: flex;
@@ -161,7 +161,10 @@
     }
 
     .piechart_context {
-    max-width: 25%;
+    width: 700px;
+    margin-left: 40px;
+    padding-top: 80px;
+  
   }
 
   </style>
@@ -313,7 +316,14 @@ option = {
     {
       type: 'category',
       axisTick: { show: false },
-      data: ['2014-15', '2020-21', '2021-22']
+      data: ['2014-15', '2020-21', '2021-22'],
+      axisLabel: {
+        textStyle: {
+            color:"white",
+            fontSize: 14, // Adjust the font size here
+            fontWeight: 'bold' // Make the font bold
+        }
+    }
     }
   ],
   yAxis: [
@@ -321,6 +331,13 @@ option = {
       type: 'value',
       axisLabel: {
         formatter: '{value}k', // Format the label as 1,000 people (k stands for thousands)
+
+        textStyle: {
+            color:"white",
+            fontSize: 14, // Adjust the font size here
+            fontWeight: 'bold' // Make the font bold
+        }
+    
       
     }
   }
@@ -441,8 +458,17 @@ option.title = {
 
 </script>
 
-<div id="echarts-scamtype-main" style="width: 100%; height: 400px;"></div>
 
+
+<div class="statisticsgap_bar">
+  <div id="echarts-scamtype-main" style="width: 800px; height: 400px;"></div>
+  <div class="lastbarchart_context">
+    <p>This chart shows persons in Australia aged 15 years and over, whether experienced a scam during 2021-22, by scam type. 
+      Statistics show "Information request or phishing" is the most common scam type, which is more than double compare with the second common type "Computer support".     </p>
+  </div>
+
+
+</div>
 
 <script>
 
@@ -452,86 +478,187 @@ var chartDom = document.getElementById('echarts-scamtype-main');
     var option;
     
     option = {
-      // backgroundColor: '#333',
-      title: {
-        text: 'Australian exposed to scam types (\'000 people) 2021-22',
-        left: 'top', 
+  title: {
+    text: "Australian exposed to scam types('000 people) in 2021-22",
+    left: 'top',
         textStyle: {
-            color: 'white',
-            fontSize: 20, // Font size of the title
-            fontWeight: 'bold', // Font weight of the title
-          },
-      },
-      tooltip: {
-        trigger: 'item',
-        formatter: '{a} <br/>{b} : {c}'
-      },
-      toolbox: {
-        feature: {
-          dataView: { readOnly: false },
-          restore: {},
-          saveAsImage: {}
+          color: "white",
+          fontWeight: 'bold',
+          fontSize: 18
         }
-      },
-      legend: {
-        data: ['Show', 'Click', 'Visit', 'Inquiry', 'Order']
-      },
-      series: [
+  },
+  tooltip: {
+    trigger: 'axis',
+    axisPointer: {
+      type: 'shadow'
+    }
+  },
+  grid: {
+    left: '3%',
+    right: '4%',
+    bottom: '3%',
+    containLabel: true
+  },
+  xAxis: {
+    type: 'value',
+    boundaryGap: [0, 0.01],
+    axisLabel: {
+        textStyle: {
+            color:"white",
+            fontSize: 14, // Adjust the font size here
+            fontWeight: 'bold' // Make the font bold
+        }
+    }
+  },
+  yAxis: {
+        type: 'category',
+        data: [
+            {
+                value: 'Information request or phishing',
+                textStyle: {
+                    color: 'rgba(194, 221, 80, 0.8)',
+                    fontSize : 12,
+                    fontWeight: 'bold'
+                    
+                }
+            },
+            {
+                value: 'Computer support',
+                textStyle: {
+                    color: 'rgba(96, 202, 237, 0.8)', // Change color here
+                    fontSize : 12,
+                    fontWeight: 'bold'
+                }
+            },
+            {
+                value: 'Financial advice',
+                textStyle: {
+                    color: 'rgba(45, 255, 168, 0.42)' ,// Change color here
+                    fontSize : 12,
+                    fontWeight: 'bold'
+                }
+            },
+            {
+                value: 'Upfront payment',
+                textStyle: {
+                    color: 'green', // Change color here
+                    fontSize : 12,
+                    fontWeight: 'bold'
+                }
+            },
+            {
+                value: 'Buying or selling',
+                textStyle: {
+                    color: 'rgba(238, 50, 199, 0.74)', // Change color here
+                    fontSize : 12,
+                    fontWeight: 'bold'
+                }
+            },
+            {
+                value: 'Lottery',
+                textStyle: {
+                    color: 'orange' ,// Change color here
+                    fontSize : 12,
+                    fontWeight: 'bold'
+                }
+            },
+            {
+                value: 'Relationship or romance',
+                textStyle: {
+                    color: 'yellow' ,// Change color here
+                    fontSize : 12,
+                    fontWeight: 'bold'
+                }
+            },
+            {
+                value: 'Pyramid',
+                textStyle: {
+                    color: 'pink' ,// Change color here
+                    fontSize : 12,
+                    fontWeight: 'bold'
+                }
+            }
+        ]
+    },
+    series: [
         {
-          name: 'Funnel',
-          type: 'funnel',
-          left: '10%',
-          top: 60,
-          bottom: 60,
-          width: '80%',
-          min: 0,
-          max: 9000,
-          minSize: '0%',
-          maxSize: '100%',
-          sort: 'descending',
-          gap: 2,
-          label: {
-            show: true,
-            position: 'inside',
-            formatter: '{b} : {c} ({@|fontSize:14})',
-            rich: {
-              '@':{
-                fontSize: 14
-              }
-            }
-          },
-          labelLine: {
-            length: 10,
-            lineStyle: {
-              width: 1,
-              type: 'solid'
-            }
-          },
-          itemStyle: {
-            borderColor: '#fff',
-            borderWidth: 1
-          },
-          emphasis: {
-            label: {
-              fontSize: 20
-            }
-          },
-          data: [
-            { value: 8909.9, name: 'Information request or phishing' },
-            { value: 3503.5, name: 'Computer support' },
-            { value: 3747.9, name: 'Financial advice' },
-            { value: 3021.4, name: 'Upfront payment' },
-            { value: 3711.9, name: 'Buying or selling' },
-            { value: 1600.6, name: 'Lottery' },
-            { value: 1071.3, name: 'Relationship or romance' },
-            { value: 587.3, name: 'Pyramid' }
-          ]
+            name: '2021-22',
+            type: 'bar',
+            center: ['25'],
+            data: [
+                {
+                    value: 8909.9,
+                    itemStyle: {
+                        color: 'rgba(194, 221, 80, 0.8)' // Change color here
+                    }
+                },
+                {
+                    value: 3503.5,
+                    itemStyle: {
+                        color: 'rgba(96, 202, 237, 0.8)' // Change color here
+                    }
+                },
+                {
+                    value: 3747.9,
+                    itemStyle: {
+                        color: 'rgba(78, 217, 159, 0.42)' // Change color here
+                    }
+                },
+                {
+                    value: 3021.4,
+                    itemStyle: {
+                        color: 'rgba(0, 128, 0, 0.6)' // Change color here
+                    }
+                },
+                {
+                    value: 3711.9,
+                    itemStyle: {
+                        color: 'rgba(238, 50, 199, 0.74)' // Change color here
+                    }
+                },
+                {
+                    value: 1600.6,
+                    itemStyle: {
+                        color: 'rgba(75, 0, 130, 0.6)' // Change color here
+                    }
+                },
+                {
+                    value: 1071.3,
+                    itemStyle: {
+                        color: 'rgba(148, 0, 211, 0.6)' // Change color here
+                    }
+                },
+                {
+                    value: 587.3,
+                    itemStyle: {
+                        color: 'rgba(255, 105, 180, 0.6)' // Change color here
+                    }
+                }
+            ]
         }
-      ]
-    };
-    
-    option && myChart.setOption(option);
+    ]
+};
+
+option && myChart.setOption(option);
 </script>
+
+<style>
+      .statisticsgap_bar{
+      padding: 20px 0 0 0;
+      width: 100%;
+      height: 400px;
+      display: flex;
+      justify-content: center;
+      align-content: center;
+    }
+    .lastbarchart_context {
+      width: 700px;
+    margin-left: 40px;
+    padding-top: 50px;
+  }
+
+</style>
+
 
 
 
