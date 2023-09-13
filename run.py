@@ -127,7 +127,8 @@ def predict():
         data = [message]
         vect = cv.transform(data).toarray()
         my_prediction = clf.predict(vect)
-    return render_template('detect_scam.html', prediction=my_prediction)
+    return render_template('detect_scam.html', prediction=my_prediction, original_message=message)
+
 
 
     

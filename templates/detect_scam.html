@@ -79,7 +79,7 @@
                         
                                 <form action="{{ url_for('predict')}}" method="POST">
                                     
-                                    <textarea name="message" rows="10" cols="100" required="required", placeholder="Copy the SMS or Email" style="color: black;"></textarea>
+                                    <textarea name="message" rows="10" cols="100" required="required" placeholder="Copy the SMS or Email" style="color: black;">{{ original_message }}</textarea>
                                     <br> </br>
                                     <button type="submit" class="btn btn-primary btn-block btn-large">Predict</button>
                         
