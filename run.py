@@ -86,10 +86,10 @@ def statistics():
 def report():
     return render_template('report.html')
 
-#scam email detect
-@app.route('/detect_scam')
-def detect_scam():
-    return render_template('detect_scam.html')
+# #scam email detect
+# @app.route('/detect_scam')
+# def detect_scam():
+#     return render_template('detect_scam.html')
 
 
 def clean_text(text):
@@ -104,30 +104,41 @@ def clean_text(text):
     text = re.sub('\w*\d\w*', '', text)
     return text
 
-@app.route('/predict', methods=['POST'])
-def predict():
-    df = pd.read_csv("spam.csv", encoding="latin-1")
-    df = df.dropna(how="any", axis=1)
-    df.columns = ['label', 'message']
-    df['message_clean'] = df['message'].apply(clean_text)
-    # Features and Labels
-    df['label'] = df['label'].map({'ham': 0, 'spam': 1})
-    X = df['message_clean']
-    y = df['label']
-    # Extract Feature With CountVectorizer
-    cv = CountVectorizer()
-    X = cv.fit_transform(X)  # Fit the Data
-    X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.4, random_state=42)
-    # Naive Bayes Classifier
-    clf = MultinomialNB()
-    clf.fit(X_train, y_train)
-    clf.score(X_test, y_test)
+@app.route('/detect_scam', methods=['GET', 'POST'])
+def detect_scam():
+    # initialize variables to their default states
+    prediction = None
+    original_message = ""
+    
     if request.method == 'POST':
-        message = request.form['message']
-        data = [message]
+        df = pd.read_csv("spam.csv", encoding="latin-1")
+        df = df.dropna(how="any", axis=1)
+        df.columns = ['label', 'message']
+        df['message_clean'] = df['message'].apply(clean_text)
+        # Features and Labels
+        df['label'] = df['label'].map({'ham': 0, 'spam': 1})
+        X = df['message_clean']
+        y = df['label']
+        # Extract Feature With CountVectorizer
+        cv = CountVectorizer()
+        X = cv.fit_transform(X)  # Fit the Data
+        X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.4, random_state=42)
+        # Naive Bayes Classifier
+        clf = MultinomialNB()
+        clf.fit(X_train, y_train)
+        clf.score(X_test, y_test)
+        
+        original_message = request.form['message']
+        data = [original_message]
         vect = cv.transform(data).toarray()
-        my_prediction = clf.predict(vect)
-    return render_template('detect_scam.html', prediction=my_prediction, original_message=message)
+        prediction = clf.predict(vect)
+
+        # Instead of rendering a template for POST, return a JSON response
+        return jsonify({'prediction': int(prediction[0]), 'original_message': original_message})
+    
+    # For GET requests, render the template as usual
+    return render_template('detect_scam.html', prediction=prediction, original_message=original_message)
+
 
 
 

@@ -518,3 +518,146 @@ h2 {
 .leakcheck-button {
     margin-top: 10px;
 }
+
+
+
+/* Spam message detection */
+
+#messageinput {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 300;
+    font-size: 20px;
+    width: 800px;
+    height: 300px;
+}
+
+.message-container {
+    font-family: 'Montserrat', sans-serif;
+}
+
+.centered {
+    text-align: center;
+}
+.centered-heading {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 800;
+    font-size: 55px;
+    white-space: nowrap;
+    text-align: center;
+    width: 100%; 
+    margin: auto;  /* centers the h2 as a block */
+}
+#resultsSection {
+    display: none;
+}
+
+.progress-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 10vh;
+    width: 30%;
+    margin-left: 338px;
+  }
+  
+  .progress-bar__container {
+    width: 80%;
+    height: 2rem;
+    border-radius: 2rem;
+    position: relative;
+    overflow: hidden;
+    transition: all 0.5s;
+    will-change: transform;
+    box-shadow: 0 0 5px white;
+  }
+  
+  .progress-bar {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    content: "";
+    background-color: yellow;
+    top:0;
+    bottom: 0;
+    left: -100%;
+    border-radius: inherit;
+    display: flex;
+    justify-content: center;
+    align-items:center;
+    color: white;
+    font-family: sans-serif;
+  }
+  
+  .progress-bar__text {
+    display: none;
+  }
+  
+
+.results {
+    font-family: 'Montserrat', sans-serif;
+    position: relative;
+    display: none;
+    padding: 40px;
+    border-radius: 8px;
+    /* max-width: 1000px;
+    max-height: 500px; */
+    width: 1300px;
+    height: 800px;
+    margin: 30px auto;
+    box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.1);
+}
+
+/* .results {
+    margin-top: 30px;
+    padding: 20px;
+    border-top: 1px solid #ddd;
+} */
+
+#resultsSection h2 {
+    font-size: 30px;
+    font-weight: bold;
+    margin-bottom: 10px;
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+#resultsSection h2#predictionText {
+    margin-top: 100px !important;
+    font-size: 30px !important;
+    margin-bottom: 50px !important;
+    font-weight: bold !important;
+}
+
+
+.results p {
+    font-size: 25px;
+    color: white;  /* Color can be adjusted based on preference */
+    text-align: center;
+    margin-bottom: 10px;
+}
+
+.disclaimerPrediction {
+    position: absolute;
+    bottom: 20px;
+    left: 0;
+    right: 0;
+    text-align: center;
+    padding: 20px;
+}
+
+#learnButton {
+    text-align: center; /* Center align the button */
+    /* margin-top: 100px;
+    margin-bottom: 20px; */
+}
+
+.buttons-row {
+    display: flex;
+    justify-content: center; /* Center the items horizontally */
+    gap: 150px; /* Provide some gap between buttons */
+    align-items: baseline;
+    
+
+    
+}
+
