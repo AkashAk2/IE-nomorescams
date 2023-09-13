@@ -62,29 +62,59 @@
 <!-- End Header -->
 
 
-
-<div class="center-container" style="text-align: center;">
-    <div class="login">
-        <h1>Spam Detector for Email📧</h1>
-
-        <form action="{{ url_for('predict')}}" method="POST">
-            <textarea name="message" rows="6" cols="50" required="required", style="color: black;"></textarea>
-            <br> </br>
-            <button type="submit" class="btn btn-primary btn-block btn-large">Predict</button>
-
-            <div class="results">
-
-                {% if prediction == 1%}
-                    <h2 style="color:red;">Looking Spam, Be safe</h2>
-                {% elif prediction == 0%}
-                    <h2 style="color:green;"><b>Not a Spam💚</b></h2>
-                {% endif %}
-
+<section class="safety bg-black overflow-hidden" id="safety">
+    <div class="row align-items-center">
+            <!-- First Div with centered content -->
+            <div class="accountsafety-heading col-lg-7 mr-lg-3 d-flex align-items-center justify-content-center"> 
+                <div>
+                    <div class="heading-area reduced-margin text-center wow zoomIn" data-wow-duration="1s" data-wow-delay=".1s">
+                        <div class="center-container" style="text-align: center;">
+                            <div class="login">
+                                <div class="main-title text-lg-left mb-0 wow fadeInUp" data-wow-delay="300ms">
+                                    <h2 class="wow fadeInUp heading" data-wow-delay="400ms" style="text-align: center;">Scam Detector for SMS and Email</h2>
+                                </div>
+                                <div>
+                                    <h5 class="h5-center" style="margin-top: -5px;">Input the SMS and Email you think may be consider is Scam, We will give you some hit.</h5>
+                                </div>
+                        
+                                <form action="{{ url_for('predict')}}" method="POST">
+                                    
+                                    <textarea name="message" rows="10" cols="100" required="required", placeholder="Copy the SMS or Email" style="color: black;"></textarea>
+                                    <br> </br>
+                                    <button type="submit" class="btn btn-primary btn-block btn-large">Predict</button>
+                        
+                                    <div class="results">
+                        
+                                        {% if prediction == 1%}
+                                            <h2 style="color:red;">Looking Scam, Be safe</h2>
+                                        {% elif prediction == 0%}
+                                            <h2 style="color:green;"><b>Not a Scam💚</b></h2>
+                                        {% endif %}
+                        
+                                    </div>
+                        
+                                </form>
+                            </div>
+                        </div>
+                        
+                    </div>
+                </div>
             </div>
 
-        </form>
+            <!-- Second Div with centered content -->
+            <div class="col-lg-3 sidelearncontainer d-flex align-items-center justify-content-center" style="background-color: #23262d;"> 
+                <div>
+                    <h5>Keep your email and SMS safe</h5>
+                    <p class="paragraph"></p>
+                </div>
+            </div>
+        </div>
     </div>
-</div>
+</section>
+
+
+
+
 
 
 
