@@ -81,15 +81,6 @@
                                 <textarea id="messageBox" name="message" rows="10" cols="100" required="required" placeholder="Copy the SMS or Email" style="color: black;font-size: 20px">{{ original_message }}</textarea>
                                 <br> </br>
                                 <button type="submit" class="btn btn-medium btn-rounded btn-trans btn-margin">Predict</button>
-
-                                <!-- Progress Bar -->
-                                <div class="progress-container">
-                                    <div class="progress-bar__container">
-                                    <div class="progress-bar">
-                                        <span class="progress-bar__text">Prediction Successful!</span>
-                                    </div>
-                                    </div>
-                                </div>
                             </form>
 
                             
@@ -169,76 +160,18 @@
 <div class="go-top"><i class="fas fa-angle-up"></i><i class="fas fa-angle-up"></i></div>
 <!-- End Scroll Top -->
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.9.1/gsap.min.js"></script>
 
 <script>
     document.addEventListener("DOMContentLoaded", function() {
-    var form = document.getElementById('scamForm');
-
-    // Get elements related to the progress bar
-    const progressBarContainer = document.querySelector('.progress-bar__container');
-    const progressBar = document.querySelector('.progress-bar');
-    const progressBarText = document.querySelector('.progress-bar__text');
-    const progressContainer = document.querySelector('.progress-container');
-
-    // Hide the progress container initially
-    progressContainer.style.display = 'none';
-
-    // Define a function to handle progress bar animation
-    function startProgressBar(callback) {
-        const progressBarStates = [0, 7, 27, 34, 68, 80, 95, 100];
-        let time = 0;
-        let endState = 100;
-
-        progressBarStates.forEach((state, index) => {
-            let randomTime = Math.floor(Math.random() * 500);
-            setTimeout(() => {
-                if (state == endState) {
-                    gsap.to(progressBar, {
-                        x: `${state}%`,
-                        duration: 2,
-                        backgroundColor: '#4895ef',
-                        onComplete: () => {
-                            progressBarText.style.display = "initial";
-                            progressBarContainer.style.boxShadow = '0 0 5px #4895ef';
-                            if (callback) callback();
-                        }
-                    });
-                } else {
-                    gsap.to(progressBar, {
-                        x: `${state}%`,
-                        duration: 2,
-                    });
-                }
-            }, randomTime + time);
-            time += randomTime;
-        });
-    }
-
-    function resetProgressBar() {
-        gsap.set(progressBar, { x: '-100%' }); // Reset progress bar to start position
-        progressBarText.style.display = "none"; // Hide the text
-        progressBar.style.backgroundColor = 'yellow'; // Reset color
-        progressBarContainer.style.boxShadow = '0 0 5px white'; // Reset box shadow
-    }
-
-    form.addEventListener('submit', function(e) {
-        e.preventDefault();
-
-        // Reset progress bar on new form submission
-        resetProgressBar();
-
-        // Show the progress container when form is submitted
-        progressContainer.style.display = 'flex';
-
-        // Start the progress bar after showing it
-        startProgressBar(() => {
-            // The callback ensures we scroll to results only after animation completes
-
+        var form = document.getElementById('scamForm');
+    
+        form.addEventListener('submit', function(e) {
+            e.preventDefault();
+    
             var resultsDiv = document.querySelector('.results');
             var resultsSection = document.getElementById('resultsSection');
             resultsDiv.style.display = "block";
-
+    
             var formData = new FormData(form);
             fetch('{{ url_for("detect_scam") }}', {
                 method: 'POST',
@@ -247,12 +180,12 @@
             .then(response => response.json())
             .then(data => {
                 console.log("Data received from server:", data);
-
+    
                 var predictionText = document.getElementById('predictionText');
                 var reportButton = document.getElementById('reportButton');
                 var learnButton = document.getElementById('learnButton');
                 var scamTypesButton = document.getElementById('scamTypesButton');
-
+    
                 if (data.prediction == 1) {
                     predictionText.innerHTML = '<h2 style="color:red;">Uh Oh message looks like a Scam :( <br> <br> Do not take any actions, seek help from someone you trust or report to scamwatch.</h2>';
                     scamTypesButton.style.display = 'block';
@@ -260,7 +193,6 @@
                     learnButton.style.display = 'block';
                 } else if (data.prediction == 0) {
                     predictionText.innerHTML = '<h2 style="color:green;"><b>NOT A SCAM MESSAGE :) </b></h2> <br> <span style="color:white;">Educate Yourself: Knowledge is the best defense against scams. <br> Remember, always exercise caution and trust your instincts.</span>';
-
                     scamTypesButton.style.display = 'block';
                     learnButton.style.display = 'block';
                 }
@@ -270,9 +202,6 @@
             });
         });
     });
-});
-
-
 </script>
 
 <!-- JavaScript -->
