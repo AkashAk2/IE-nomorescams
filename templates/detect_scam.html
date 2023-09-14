@@ -78,7 +78,7 @@
                             </div>
 
                             <form id="scamForm" action="{{ url_for('detect_scam')}}" method="POST">
-                                <textarea id="messageBox" name="message" rows="10" cols="100" required="required" placeholder="Copy the SMS or Email" style="color: black;">{{ original_message }}</textarea>
+                                <textarea id="messageBox" name="message" rows="10" cols="100" required="required" placeholder="Copy the SMS or Email" style="color: black;font-size: 20px">{{ original_message }}</textarea>
                                 <br> </br>
                                 <button type="submit" class="btn btn-medium btn-rounded btn-trans btn-margin">Predict</button>
 
@@ -106,7 +106,7 @@
         <div class="col-lg-3 sidelearncontainer d-flex align-items-center justify-content-center" style="background-color: #23262d;"> 
             <div>
                 <h5>Keep your email and SMS safe</h5>
-                <p class="paragraph"></p>
+                <p class="paragraph">Our SMS and Email Scam Detector, powered by machine learning, enhances online security. It analyzes messages for scams, providing timely alerts for a safer online experience with reduced communication concerns.</p>
             </div>
         </div>
     </div>
