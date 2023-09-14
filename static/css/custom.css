@@ -318,9 +318,18 @@ h2 {
 }
 
 .controls {
+    position: absolute;
+    bottom: 235px;  /* Example position from the bottom */
+    left: 350px; 
     display: flex;
     justify-content: space-between;
-    margin-top: 20px;
+    align-items: center;
+    gap: 800px;
+}
+
+#prev, #next {
+    flex: 4; /* This will allow both buttons to take equal width */
+    margin: 5px; /* Add some margin for spacing */
 }
 
 
@@ -370,15 +379,14 @@ h2 {
     font-size: 16px;
     font-weight: 500;
     border-radius: 4px;
-    padding: 10px 10px;
     margin-left: 50px;
     margin-right: 50px;
     cursor: pointer;
     transition: background-color 0.3s;
     width: 100px; /* Setting a fixed width for all buttons */
     height: 50px; /* Setting a fixed height for all buttons */
-    /* padding: 0; */
 }
+
 
 .controls button:hover {
     background-color: yellow;
@@ -471,6 +479,7 @@ h2 {
     font-size: 25px;
     font-weight: bold;
     padding:20px;
+    text-align: center;
 }
 
 .sidelearncontainer p {
@@ -656,8 +665,27 @@ h2 {
     justify-content: center; /* Center the items horizontally */
     gap: 150px; /* Provide some gap between buttons */
     align-items: baseline;
-    
-
-    
 }
 
+/* Account Safety Page */
+.scamlearncontainer {
+    padding:20px;
+    max-width: 400px;
+    margin-left: 100px;
+    /* padding-top: 50px;
+    padding-left: 50px; */
+}
+
+.scamlearncontainer h5 {
+    font-size: 25px;
+    font-weight: bold;
+    padding:20px;
+    text-align: center;
+}
+
+.scamlearncontainer p {
+    text-align: justify;
+    padding-top: 15px;
+    padding:20px;
+    padding-right: 25px;
+}

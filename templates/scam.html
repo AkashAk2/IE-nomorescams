@@ -52,7 +52,6 @@
                         <a class="nav-link line" href="{{ url_for('scam') }}#scam">Is this a scam?</a>
                         <a class="nav-link line" href="{{ url_for('safemethods') }}">Account Safety</a>
                         <a class="nav-link line" href="{{ url_for('statistics') }}#statistics">Statistics</a>
-                        <a class="nav-link line" href="{{ url_for('detect_scam') }}#detect_scam">Detect Scam Email</a>
                         <!-- <a class="nav-link line" href="{{ url_for('report') }}">Reporting and Resources</a>  -->
                     </div>
                 </div>
@@ -314,10 +313,17 @@
         <div id = "reportButton">
             <a href="https://www.scamwatch.gov.au/report-a-scam" id="scamwatchLink" class="btn btn-large btn-rounded btn-trans btn-margin" target="_blank" style="display:none;">Report to scamwatch</a>
         </div>
-        
+        <div class="buttons-row" style="margin-top: 60px;">
+            <div id="scamTypesButton" style="display:none;">
+                <a href="{{ url_for('index') }}#typesofscam" id="scamtypesbutton" class="btn btn-large btn-rounded btn-trans btn-margin" target="_blank">Learn types of Scams</a>
+            </div>
+            <div id="learnButton" style="display:none;">
+                <a href="" id="learnmore" class="btn btn-large btn-rounded btn-trans btn-margin" target="_blank">Learn How to be Safe</a>
+            </div>
+        </div>
         
         <div class="disclaimer" style="text-align: center;">
-            <p>
+            <p style="font-size: 18px; text-align: center; margin-bottom: 10px; bottom: 20px !important;">
                 <span style="color: red;">Disclaimer:</span> The provided probability is for illustrative purposes and may not accurately reflect real-world outcomes.
                 Please use the results as a general guideline and exercise caution when interpreting them.
             </p>

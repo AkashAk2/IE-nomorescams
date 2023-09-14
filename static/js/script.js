@@ -302,40 +302,12 @@ $(document).ready(function() {
             timeout = setTimeout(() => func.apply(context, args), wait);
         };
     }
-    
 
-    $(".options button").click(function() {
-        if ($(this).attr("data-weight")) {
-            let weight = parseInt($(this).attr("data-weight"));
-            totalWeightedYesAnswers += weight;
-        }
-        $(this).siblings().removeClass('active');
-        $(this).addClass('active');
-    
-        // Enable the 'Next' button
-        $('#next').removeClass('button-disabled').addClass('activated');
-    });
-    
-    
-    
+    function showNoOptionSelectedAlert() {
+        alert("Please select an option before proceeding.");
+    }
 
-    // Previous button function
-    $("#prev").click(debounce(function() {
-        if (currentSlide === 2) {
-            // If on the second slide, switch back to the main slide1 regardless of the type
-            switchSlide(`slide${currentSlide}-${type}`, `slide1`);
-        } else if (currentSlide > 2) {
-            switchSlide(`slide${currentSlide}-${type}`, `slide${currentSlide - 1}-${type}`);
-        }
-    }, 500));  // 500ms debounce
-
-
-
-    $("#next").click(function() {
-        if($(this).hasClass('button-disabled')) {
-            return;  // Do nothing if the button is disabled
-        }
-    
+    function proceedToNextSlide() {
         const totalSlides = (type === "text" ? 7 : type === "call" ? 8 : 11);
     
         // Check if we're on slide 1 and have a type selected
@@ -350,10 +322,63 @@ $(document).ready(function() {
             displayResult();
             $('#next').hide();
             $('#prev').hide();
-            $('restartQuiz').show()
-            
+            $('#restartQuiz').show()
         }
-    });
+    }
+    
+    
+
+    $(".options button").click(debounce(function() {
+        if ($(this).attr("data-weight")) {
+            let weight = parseInt($(this).attr("data-weight"));
+            totalWeightedYesAnswers += weight;
+        }
+        $(this).siblings().removeClass('active');
+        $(this).addClass('active');
+    
+        // Enable the 'Next' button
+        $('#next').removeClass('button-disabled').addClass('activated');
+    
+        // Proceed to next slide directly without triggering the next button
+        proceedToNextSlide();
+    }, 300));
+    
+    
+    
+    
+    
+
+    // Previous button function
+    $("#prev").click(debounce(function() {
+        if (currentSlide === 2) {
+            // If on the second slide, switch back to the main slide1 regardless of the type
+            switchSlide(`slide${currentSlide}-${type}`, `slide1`);
+        } else if (currentSlide > 2) {
+            switchSlide(`slide${currentSlide}-${type}`, `slide${currentSlide - 1}-${type}`);
+        }
+    }, 500));  // 500ms debounce
+
+    
+    
+
+
+
+    $("#next").click(debounce(function() {
+        if($(this).hasClass('button-disabled')) {
+            return;  // Do nothing if the button is disabled
+        }
+    
+        // Check if an option is selected
+        const currentSlideElem = $(`#slide${currentSlide}-${type}`);
+        if (!currentSlideElem.find('.options button.active').length) {
+            showNoOptionSelectedAlert();
+            return;
+        }
+    
+        proceedToNextSlide();
+    }, 500));
+    
+    
     
     
 
@@ -368,8 +393,8 @@ $(document).ready(function() {
         });
     
         updateProgressBar(newSlide.split('-')[0].replace('slide', ''));
-        $('#next').addClass('button-disabled');
-        $('#next').removeClass('activated');
+        // $('#next').addClass('button-disabled');
+        // $('#next').removeClass('activated');
         
         // Check if it's the first slide
         if (newSlide === 'slide1') {
@@ -438,8 +463,12 @@ $(document).ready(function() {
     
         if(percentage > 30) {
             $("#scamwatchLink").show();
+            $("#scamTypesButton").show(); // Show the "Learn types of Scams" button
+            $("#learnButton").show();   
         } else {
             $("#scamwatchLink").hide();
+            $("#scamTypesButton").show(); // Show the "Learn types of Scams" button
+            $("#learnButton").show();   
         }
     
         $(".result-container").show();
@@ -503,4 +532,8 @@ $(document).ready(function() {
     
     
 });
+
+
+
+
 
