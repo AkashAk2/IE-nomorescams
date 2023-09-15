@@ -71,14 +71,14 @@
                     <div class="center-container" style="text-align: center;">
                         <div class="login">
                             <div class="main-title text-lg-left mb-0 wow fadeInUp" data-wow-delay="300ms">
-                                <h2 class="wow fadeInUp heading" data-wow-delay="400ms" style="text-align: center;">Scam Detector for SMS and Email</h2>
+                                <h2 class="wow fadeInUp heading" data-wow-delay="400ms" style="text-align: center;">Scam Detector for SMS or Email</h2>
                             </div>
                             <div>
-                                <h5 class="h5-center" style="margin-top: -5px;">Input the SMS and Email you think may be consider is Scam, We will give you some hit.</h5>
+                                <h5 class="h5-center" style="margin-top: -5px;">Submit suspicious SMS and email messages for checking.</h5>
                             </div>
 
                             <form id="scamForm" action="{{ url_for('detect_scam')}}" method="POST">
-                                <textarea id="messageBox" name="message" rows="10" cols="100" required="required" placeholder="Copy the SMS or Email" style="color: black;font-size: 20px">{{ original_message }}</textarea>
+                                <textarea id="messageBox" name="message" rows="10" cols="100" required="required" placeholder="SMS or Email contents..." style="color: black;font-size: 20px">{{ original_message }}</textarea>
                                 <br> </br>
                                 <button type="submit" class="btn btn-medium btn-rounded btn-trans btn-margin">Predict</button>
                             </form>
@@ -96,8 +96,8 @@
         <!-- Second Div with centered content -->
         <div class="col-lg-3 sidelearncontainer d-flex align-items-center justify-content-center" style="background-color: #23262d;"> 
             <div>
-                <h5>Keep your email and SMS safe</h5>
-                <p class="paragraph">Our SMS and Email Scam Detector, powered by machine learning, enhances online security. It analyzes messages for scams, providing timely alerts for a safer online experience with reduced communication concerns.</p>
+                <h5>Do you know?</h5>
+                <p class="paragraph">Up to August in <strong>2023</strong>, Australia has seen <strong>72.471</strong> fishing scams, leading to a total loss of over <strong>$21</strong> millions. That's an average of nearly <strong>$292</strong> per report. Always stay vigilant online. </p>
             </div>
         </div>
     </div>
