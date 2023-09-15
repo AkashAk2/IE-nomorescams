@@ -48,12 +48,12 @@
         <div class="container">
             <div class="collapse navbar-collapse" id="navheader">
                 <div class="navbar-nav  ml-auto mr-auto">
-                    <a class="nav-link line" href="{{ url_for('index') }}#home">Home</a>
-                    <a class="nav-link line" href="{{ url_for('scam') }}#scam">Is this a scam?</a>
-                    <a class="nav-link line" href="{{ url_for('safemethods') }}">Account Safety</a>
-                    <a class="nav-link line" href="{{ url_for('statistics') }}#statistics">Statistics</a>
-                    <a class="nav-link line" href="{{ url_for('detect_scam') }}#detect_scam">Detect Scam Email</a>
-                    <!-- <a class="nav-link line" href="{{ url_for('report') }}">Reporting and Resources</a>  -->
+                  <a class="nav-link line" href="{{ url_for('index') }}#home">Home</a>
+                  <a class="nav-link line" href="{{ url_for('scam') }}#scam">Is this a scam?</a>
+                  <a class="nav-link line" href="{{ url_for('detect_scam') }}#detect_scam">Scam Detector Tool</a>
+                  <!-- <a class="nav-link line" href="{{ url_for('safemethods') }}">Account Safety</a> -->
+                  <a class="nav-link line" href="{{ url_for('statistics') }}#statistics">Statistics</a>
+                  <!-- <a class="nav-link line" href="{{ url_for('report') }}">Reporting and Resources</a>  -->
                 </div>
             </div>
         </div>
@@ -67,7 +67,7 @@
 
 <script src="https://cdn.jsdelivr.net/npm/echarts@5.3.0/dist/echarts.min.js"></script>
 
-
+<section class="bg-black">
 <div class="statisticsgap">
   <div id="echarts-example-main" style="width: 40%; height: 400px;"></div>
   <div class="piechart_context">
@@ -81,7 +81,7 @@
     </div>
   </div>
 </div>
-
+</section>
 
   <script>
     var chartDom = document.getElementById('echarts-example-main');
@@ -104,7 +104,8 @@
         textStyle: {
           color: "white",
           fontWeight: 'bold',
-          fontSize: 18
+          fontSize: 20
+          
         }
       },
       series: [
@@ -169,10 +170,11 @@
   }
 
   </style>
-
+<section>
 <div class="statisticsgap">
 <div id="echarts-component-main" style="width: 85%; height: 400px;"></div>
 </div>
+</section>
 <script>
 
 var app = {};
@@ -449,7 +451,7 @@ option.title = {
   left: 'top', // Position the title in the center
   textStyle: {
     color: "white",
-    fontSize: 16, // Font size of the title
+    fontSize: 20, // Font size of the title
     fontWeight: 'bold', // Font weight of the title
   },
 };
@@ -460,7 +462,7 @@ option.title = {
 </script>
 
 
-
+<section class="bg-black">
 <div class="statisticsgap_bar">
   <div id="echarts-scamtype-main" style="width: 60%; height: 400px;"></div>
   <div class="lastbarchart_context">
@@ -470,7 +472,7 @@ option.title = {
 
 
 </div>
-
+</section>
 <script>
 
 
@@ -485,7 +487,7 @@ var chartDom = document.getElementById('echarts-scamtype-main');
         textStyle: {
           color: "white",
           fontWeight: 'bold',
-          fontSize: 18
+          fontSize: 20
         }
   },
   tooltip: {
@@ -668,7 +670,7 @@ option && myChart.setOption(option);
 
 
 <!-- Start Footer -->
-<footer class="footer bg-black">
+<footer class="footer">
     <div class="container">
         <div class="row align-items-center">
             <!--Social-->
