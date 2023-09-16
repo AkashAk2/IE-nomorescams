@@ -52,8 +52,8 @@
                     <a class="nav-link line" href="{{ url_for('scam') }}#scam">Is this a scam?</a>
                     <a class="nav-link line" href="{{ url_for('detect_scam') }}#detect_scam">Scam Detector Tool</a>
                     <!-- <a class="nav-link line" href="{{ url_for('safemethods') }}">Account Safety</a> -->
-                    <a class="nav-link line" href="{{ url_for('statistics') }}#statistics">Statistics</a>
-                    <!-- <a class="nav-link line" href="{{ url_for('report') }}">Reporting and Resources</a>  -->
+                    <!-- <a class="nav-link line" href="{{ url_for('statistics') }}#statistics">Statistics</a> -->
+                    <a class="nav-link line" href="{{ url_for('resources') }}#resources">Resources</a> 
                 </div>
             </div>
         </div>
@@ -187,90 +187,563 @@
 <!-- End Home -->
 
 
+<script src="https://cdn.jsdelivr.net/npm/echarts@5.3.0/dist/echarts.min.js"></script>
 
-<!-- Start types of scams -->
-<section class="cube-portfolio1 pb-0" id="typesofscam">
-    <div class="container container-position">
-        <!--Heading-->
-        <div class="row text-center">
-            <div class="col-12 col-md-10 col-lg-8 offset-md-1 offset-lg-2 wow zoomIn heading-area" data-wow-duration="1s" data-wow-delay=".1s">
-                <h3 class="heading text-center padding-bottom-half">Types of Scams</h3>
-            </div>
+<section class="chart-section">
+
+  <div style="margin-left: 250px; margin-right: 250px;">
+    <div class="row">
+      <div class="col-md-7">
+        <div id="echarts-example-main" style="width: 100%; height: 400px;"></div>
+      </div>
+      <div class="col-md-5" style="margin-top: 90px;">
+        <div>
+          <div class="piechart_context-part1">
+            <p>This pie chart shows the most serious reported percentage of persons across age groups. Reported in person refers to the total number of persons who reported the most serious scam incident to an authority, expressed as a percentage of the total number of persons who experienced a scam during 2021-22.
+            </p>
+          </div>
+          <br> <!-- This creates a new line -->
+          <div class="piechart_context-part2">
+            <p>Statistics show people over 65 have the highest rate of experiencing serious scams while people under 24 with the least probability of being scammed.</p>
+          </div>
         </div>
-
-        <div class="container container-position">
-            <!-- First Row -->
-            <div class="row no-gutters align-items-center padding-bottom-half wow fadeInUp" data-wow-duration="1.5s" data-wow-delay=".5s">
-                <div class="col-lg-6 col-md-12 col-sm-12 col-xs-12 text-div ">
-                    <h2 class="h2-subheadings">Romance Scams</h2>
-                    <p class="justified-text" style="padding-right: 20px;">Romance scams involve individuals using fake personas to build emotional connections with victims, often online. These scammers exploit trust to extract money or personal information, preying on victims' emotions. They fabricate stories, establish rapport, and then request financial aid for various reasons.</p>
-                    <a style="margin-top: 20px;" class="btn btn-medium btn-rounded btn-yellow" href="https://www.scamwatch.gov.au/types-of-scams/romance-scams" target="_blank" rel="noopener noreferrer">Find Out More</a>
-                </div>
-                <div class="col-lg-6 col-md-12 col-sm-12 col-xs-12" style="padding-left: 15px;">
-                    <div class="hover-effect image blog-img ml-auto"><img src="{{ url_for('static', filename='resources/images/romance_scam.png') }}" alt="image"></div>
-                </div>
-            </div>
-    
-            <!-- Second Row -->
-            <div class="row no-gutters align-items-center padding-bottom-half wow fadeInUp" data-wow-duration="1.5s" data-wow-delay="1s">
-                <div class="col-lg-6 col-md-12 col-sm-12 col-xs-12 order-2 order-lg-1" style="padding-right: 15px;">
-                    <div class="hover-effect image blog-img mr-auto"><img src="{{ url_for('static', filename='resources/images/investment_scam.png') }}" alt="image"></div>
-                </div>
-                <div class="col-lg-6 col-md-12 col-sm-12 col-xs-12 right-text text-right order-1 order-lg-2">
-                    <h2 class="h2-subheadings">Investment Scams</h2>
-                    <p class="justified-text" style="padding-left: 15px;">
-                        Investment scams are tricks that make people put money into something, but they end up losing it. These scams promise big profits easily, which sounds nice, but it's not true. Scammers use lies to get people interested, saying things like they have special deals or know secret things. They might even make fake investment companies. At first, they might give a bit of money back to seem real, but then everything falls apart, and people lose a lot. To stay safe, learn a lot before investing, ask experts for advice, and be careful if someone you don't know offers you a deal that seems too good.</p>
-                        <a style="margin-top: 20px;" class="btn btn-medium btn-rounded btn-yellow" href=https://www.scamwatch.gov.au/types-of-scams/investment-scams target="_blank" rel="noopener noreferrer">Find Out More</a>
-                </div>
-            </div>
-
-             <!-- Third Row -->
-            <div class="row no-gutters align-items-center padding-bottom-half wow fadeInUp" data-wow-duration="1.5s" data-wow-delay=".5s">
-                <div class="col-lg-6 col-md-12 col-sm-12 col-xs-12 text-div ">
-                    <h2 class="h2-subheadings">Text or SMS Scams</h2>
-                    <p class="justified-text" style="padding-right: 15px;">Text or SMS scams are when people send fake messages to your phone to steal your information or money. They might pretend to be important companies and ask you to give them your private details or send them money. They use tricky words to make you feel rushed or excited. To stay safe, be careful with messages from numbers you don't know, don't click on strange links, and never share personal stuff or money through texts unless you're sure it's real.</p>
-                    <a style="margin-top: 20px;" class="btn btn-medium btn-rounded btn-yellow" href="https://www.scamwatch.gov.au/types-of-scams/romance-scams" target="_blank" rel="noopener noreferrer">Find Out More</a>
-                </div>
-                <div class="col-lg-6 col-md-12 col-sm-12 col-xs-12 image-place" style="padding-left: 15px;">
-                    <div class="hover-effect image blog-img ml-auto"><img src="{{ url_for('static', filename='resources/images/text_scams.png') }}" alt="image"></div>
-                </div>
-            </div>
-
-            <!-- Fourth Row -->
-            <div class="row no-gutters align-items-center padding-bottom-half wow fadeInUp" data-wow-duration="1.5s" data-wow-delay="1s">
-                <div class="col-lg-6 col-md-12 col-sm-12 col-xs-12 order-2 order-lg-1" style="padding-right: 15px;">
-                    <div class="hover-effect image blog-img mr-auto"><img src="{{ url_for('static', filename='resources/images/phone_scams.png') }}" alt="image"></div>
-                </div>
-                <div class="col-lg-6 col-md-12 col-sm-12 col-xs-12 right-text text-right order-1 order-lg-2">
-                    <h2 class="h2-subheadings">Phone Scams</h2>
-                    <p class="justified-text" style="padding-left: 15px;">
-                        Phone call scams are when some individuals make fake phone calls to try to trick you into giving them money or personal information. These scammers might pretend to be from a bank, government agency, or a company you trust. They use tricky tactics like telling you that something is wrong with your account or offering prizes to get you to act fast. They can sound very convincing. To stay safe, be cautious when getting calls from unknown numbers, never give out your private details or send money over the phone, and hang up if something feels off.</p>
-                        <a style="margin-top: 20px;" class="btn btn-medium btn-rounded btn-yellow" href=https://www.scamwatch.gov.au/types-of-scams/phone-scams target="_blank" rel="noopener noreferrer">Find Out More</a>
-                </div>
-            </div>
-
-            <!-- Fifth Row -->
-            <div class="row no-gutters align-items-center padding-bottom-half wow fadeInUp" data-wow-duration="1.5s" data-wow-delay=".5s">
-                <div class="col-lg-6 col-md-12 col-sm-12 col-xs-12 text-div ">
-                    <h2 class="h2-subheadings">Email Scams</h2>
-                    <p class="justified-text" style="padding-right: 15px;">Last year, Australians lost a lot of money, $77 million, because of email scams. Tricky people sent emails that looked really important, pretending to be from the government, police, or businesses. They made the emails seem real by using the same logos and almost the same email addresses as the real places. These scammers can even copy an email address to make their fake emails look real. It's important to be careful with emails, even if they look real, and not give them your money or information. That way, you can keep yourself and your money safe.</p>
-                    <a style="margin-top: 20px;" class="btn btn-medium btn-rounded btn-yellow" href="https://www.scamwatch.gov.au/types-of-scams/email-scams" target="_blank" rel="noopener noreferrer">Find Out More</a>
-                </div>
-                <div class="col-lg-6 col-md-12 col-sm-12 col-xs-12 image-place" style="padding-left: 15px;">
-                    <div class="hover-effect image blog-img ml-auto"><img src="{{ url_for('static', filename='resources/images/email_scams.png') }}" alt="image"></div>
-                </div>
-            </div>
-            
-            <div style="display: flex; flex-direction: column; align-items: center;">
-                <p class="justified-text" style="text-align: center;">To learn more about other types of scams in Australia from SCAMWATCH click the below link. </p>
-                <a style="margin-top: 20px; margin-bottom: 50px;" class="btn btn-medium btn-rounded btn-yellow" href="https://www.scamwatch.gov.au/types-of-scams" target="_blank" rel="noopener noreferrer">Find Out More</a>
-            </div>
-
-        
-        </div>
+      </div>
     </div>
 </section>
-<!-- End types of scams -->
+
+    <!-- Second Chart -->
+<section class="chart-section bg-black">
+    <div class="row" style="margin-top: 20px; margin-left: 250px; margin-right: 250px;">
+      <div class="col-md-7">
+        <div id="echarts-component-main" style="width: 100%; height: 400px;"></div>
+      </div>
+      <div class="col-md-5">
+        <label for="select">Select a Year:</label>
+
+        <select name="pets" id="select" style="background-color: #24262d;">
+          <option value="">--Please select Year--</option>
+          <option value="2014-15">2014-15</option>
+          <option value="2020-21">2020-21</option>
+          <option value="2021-22">2021-22</option>
+        </select>
+        <div style="padding: 40px;">
+          <p>This bar chart shows people experienced scams in various states and territories during specific years. 
+            The data indicates that both New South Wales and Victoria have consistently recorded the highest occurrences of scams.</p >
+          </div>
+      </div>
+    </div>
+</section>
+
+<section>
+    <div class="row" style="margin-top: 20px; margin-left: 250px; margin-right: 250px;">
+      <div class="col-md-9">
+        <div id="echarts-scamtype-main" style="width: 100%; height: 400px;"></div>
+      </div>
+      <div class="col-md-3" style="margin-top: 57px;">
+        <div>
+          <div>
+            <p>This chart shows persons in Australia aged 15 years and over, whether experienced a scam during 2021-22, by scam type.
+              Statistics show "Information request or phishing" is the most common scam type, which is more than double compare with the second common type "Computer support". </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+  <script>
+    var chartDom = document.getElementById('echarts-example-main');
+    var myChart = echarts.init(chartDom);
+    var option;
+
+    // Your data
+    var ageGroups = [
+      '15-24', '25-34', '35-44', '45-54', '55-64', '65 and over'
+    ];
+
+    var reportedScams = [26.3, 60.7, 50.4, 58.3, 52.0, 70.1];
+
+    // Options for the pie charts
+    option = {
+      // backgroundColor: '#333333',
+      title: {
+        text: 'Australia reported scam distribution by age group 2021-22',
+        left: 'top',
+        textStyle: {
+          color: "white",
+          fontWeight: 'bold',
+          fontSize: 18
+          
+        }
+      },
+      series: [
+        createPieSeries('Reported Scams', reportedScams, '40%', 'Reported Scams')
+
+      ]
+    };
+
+    function createPieSeries(name, data, centerX, label) {
+      return {
+        name: name,
+        type: 'pie',
+        radius: ['40%', '55%'],
+        center: [centerX, '50%'], // Adjust the centerX for placement
+        label: {
+          show: true, // Show labels
+          fontSize: 15, // Label font size
+          formatter: '{b}: {d}%', // Label format
+          fontWeight: 'bold',
+          color: "white",
+        },
+        emphasis: {
+          label: {
+            show: true,
+            fontSize: 20,
+            fontWeight: 'bold',
+            color: "white"
+          }
+        },
+        data: ageGroups.map((ageGroup, index) => ({
+          name: ageGroup,
+          value: data[index]
+        })),
+        labelLine: {
+          show: true // Hide label lines
+        },
+        labelLayout: {
+          moveOverlap: label === 'Reported Scams' // Move overlapping labels for the first chart
+        }
+      };
+    }
+
+    option && myChart.setOption(option);
+  </script>
+
+
+
+
+  <script>
+    const renderBarPlot = (data) => {
+      var app = {};
+
+      var chartDom = document.getElementById('echarts-component-main');
+      var myChart = echarts.init(chartDom);
+      var option;
+
+      const posList = [
+        'left',
+        'right',
+        'top',
+        'bottom',
+        'inside',
+        'insideTop',
+        'insideLeft',
+        'insideRight',
+        'insideBottom',
+        'insideTopLeft',
+        'insideTopRight',
+        'insideBottomLeft',
+        'insideBottomRight'
+      ];
+      app.configParameters = {
+        rotate: {
+          min: -90,
+          max: 90
+        },
+        align: {
+          options: {
+            left: 'left',
+            center: 'center',
+            right: 'right'
+          }
+        },
+        verticalAlign: {
+          options: {
+            top: 'top',
+            middle: 'middle',
+            bottom: 'bottom'
+          }
+        },
+        position: {
+          options: posList.reduce(function (map, pos) {
+            map[pos] = pos;
+            return map;
+          }, {})
+        },
+        distance: {
+          min: 0,
+          max: 100
+        }
+      };
+      app.config = {
+        rotate: 90,
+        align: 'left',
+        verticalAlign: 'middle',
+        position: 'insideBottom',
+        distance: 15,
+        onChange: function () {
+          const labelOption = {
+            rotate: app.config.rotate,
+            align: app.config.align,
+            verticalAlign: app.config.verticalAlign,
+            position: app.config.position,
+            distance: app.config.distance
+          };
+          myChart.setOption({
+            series: [
+              {
+                label: labelOption
+              },
+              {
+                label: labelOption
+              },
+              {
+                label: labelOption
+              },
+              {
+                label: labelOption
+              },
+              {
+                label: labelOption
+              },
+              {
+                label: labelOption
+              },
+              {
+                label: labelOption
+              },
+              {
+                label: labelOption
+              }
+            ]
+          });
+        }
+      };
+      const labelOption = {
+        show: true,
+        position: app.config.position,
+        distance: app.config.distance,
+        align: app.config.align,
+        verticalAlign: app.config.verticalAlign,
+        rotate: app.config.rotate,
+        formatter: '{c}  {name|{a}}',
+        fontSize: 14,
+        rich: {
+          name: {},
+          c: {
+            color: 'white',
+          },
+        },
+      };
+
+
+      option = {
+        legend: {
+          data: ['NSW', 'VIC', 'QLD', 'SA', 'WA', 'TAS', 'NT', 'ACT'],
+          right: 'top',
+          textStyle: {
+            color: 'white',
+          },
+        },
+        tooltip: {
+          trigger: 'axis',
+          axisPointer: {
+            type: 'shadow'
+          }
+        },
+        toolbox: {
+          show: true,
+          orient: 'vertical',
+          left: 'right',
+          top: 'center',
+          feature: {
+            mark: { show: true },
+            dataView: { show: true, readOnly: false },
+            magicType: { show: true, type: ['line', 'bar', 'stack'] },
+            restore: { show: true },
+            saveAsImage: { show: true }
+          }
+        },
+        xAxis: {
+          type: 'category',
+          data: ['NSW', 'VIC', 'QLD', 'SA', 'WA', 'TAS', 'NT', 'ACT'],
+          axisLabel: {
+            textStyle: {
+              color: "white",
+              fontSize: 14, // Adjust the font size here
+              fontWeight: 'bold' // Make the font bold
+            }
+          }
+        },
+        yAxis: [
+          {
+            min: 0,
+            max: 300,
+            type: 'value',
+            axisLabel: {
+              formatter: '{value}k', // Format the label as 1,000 people (k stands for thousands)
+
+              textStyle: {
+                color: "white",
+                fontSize: 14, // Adjust the font size here
+                fontWeight: 'bold' // Make the font bold
+              }
+
+
+            }
+          }
+        ],
+        series: [
+          {
+            data: data,
+            type: 'bar'
+          }
+        ]
+      };
+      // Add title configuration
+      option.title = {
+        // backgroundColor: '#333',
+        text: 'Australian experienced scams by state (per 1000 people)', // Title text
+        left: 'top', // Position the title in the center
+        textStyle: {
+          color: "white",
+          fontSize: 18, // Font size of the title
+          fontWeight: 'bold', // Font weight of the title
+        },
+      };
+      option && myChart.setOption(option);
+    }
+
+
+    // Get the select element by its ID
+    const selectElement = document.getElementById("select");
+    const barData = {
+      "2014-15": [123.9, 146.8, 76.0, 27.9, 59.4, 12.2, 3.4, 4.7],
+      "2020-21": [248.9, 209.6, 116.0, 45.8, 74.9, 16.3, 3.2, 8.8],
+      "2021-22": [211.7, 128.7, 75.4, 36.9, 70.0, 15.5, 3.8, 9.4],
+    }
+    // Add an event listener for the "change" event
+    selectElement.addEventListener("change", function () {
+      // Get the selected value
+      const selectedValue = selectElement.value;
+
+
+
+      // Display the selected value
+      console.log(selectedValue)
+      renderBarPlot(barData[selectedValue]);
+    });
+
+    renderBarPlot(barData["2014-15"]);
+  </script>
+
+
+  <script>
+
+
+    var chartDom = document.getElementById('echarts-scamtype-main');
+    var myChart = echarts.init(chartDom);
+    var option;
+
+    option = {
+      title: {
+        text: "Australian exposed to scam types('000 people) in 2021-22",
+        left: 'top',
+        textStyle: {
+          color: "white",
+          fontWeight: 'bold',
+          fontSize: 18
+        }
+      },
+      tooltip: {
+        trigger: 'axis',
+        axisPointer: {
+          type: 'shadow'
+        }
+      },
+      grid: {
+        left: '3%',
+        right: '4%',
+        bottom: '3%',
+        containLabel: true
+      },
+      xAxis: {
+        type: 'value',
+        boundaryGap: [0, 0.01],
+        axisLabel: {
+          textStyle: {
+            color: "white",
+            fontSize: 14, // Adjust the font size here
+            fontWeight: 'bold' // Make the font bold
+          }
+        }
+      },
+      yAxis: {
+        type: 'category',
+        data: [
+          {
+            value: 'Information request or Phishing',
+            textStyle: {
+              color: 'rgba(194, 221, 80, 0.8)',
+              fontSize: 11,
+              fontWeight: 'bold'
+
+            }
+          },
+          {
+            value: 'Computer Support',
+            textStyle: {
+              color: 'rgba(96, 202, 237, 0.8)', // Change color here
+              fontSize: 12,
+              fontWeight: 'bold'
+            }
+          },
+          {
+            value: 'Financial Advice',
+            textStyle: {
+              color: 'rgba(45, 255, 168, 0.42)',// Change color here
+              fontSize: 12,
+              fontWeight: 'bold'
+            }
+          },
+          {
+            value: 'Upfront Payment',
+            textStyle: {
+              color: 'green', // Change color here
+              fontSize: 12,
+              fontWeight: 'bold'
+            }
+          },
+          {
+            value: 'Buying or Selling',
+            textStyle: {
+              color: 'rgba(238, 50, 199, 0.74)', // Change color here
+              fontSize: 12,
+              fontWeight: 'bold'
+            }
+          },
+          {
+            value: 'Lottery',
+            textStyle: {
+              color: 'orange',// Change color here
+              fontSize: 12,
+              fontWeight: 'bold'
+            }
+          },
+          {
+            value: 'Relationship or Romance',
+            textStyle: {
+              color: 'yellow',// Change color here
+              fontSize: 12,
+              fontWeight: 'bold'
+            }
+          },
+          {
+            value: 'Pyramid',
+            textStyle: {
+              color: 'pink',// Change color here
+              fontSize: 12,
+              fontWeight: 'bold'
+            }
+          }
+        ]
+      },
+      series: [
+        {
+          name: '2021-22',
+          type: 'bar',
+          center: ['25'],
+          data: [
+            {
+              value: 8909.9,
+              itemStyle: {
+                color: 'rgba(194, 221, 80, 0.8)' // Change color here
+              }
+            },
+            {
+              value: 3747.9,
+              itemStyle: {
+                color: 'rgba(78, 217, 159, 0.42)' // Change color here
+              }
+            },
+            {
+              value: 3711.9,
+              itemStyle: {
+                color: 'rgba(238, 50, 199, 0.74)' // Change color here
+              }
+            },
+            {
+              value: 3503.5,
+              itemStyle: {
+                color: 'rgba(96, 202, 237, 0.8)' // Change color here
+              }
+            },
+            {
+              value: 3021.4,
+              itemStyle: {
+                color: 'rgba(0, 128, 0, 0.6)' // Change color here
+              }
+            },
+            {
+              value: 1600.6,
+              itemStyle: {
+                color: 'rgba(75, 0, 130, 0.6)' // Change color here
+              }
+            },
+            {
+              value: 1071.3,
+              itemStyle: {
+                color: 'rgba(148, 0, 211, 0.6)' // Change color here
+              }
+            },
+            {
+              value: 587.3,
+              itemStyle: {
+                color: 'rgba(255, 105, 180, 0.6)' // Change color here
+              }
+            }
+          ]
+        }
+      ]
+    };
+
+    option && myChart.setOption(option);
+  </script>
+
+  <style>
+    .statisticsgap_bar {
+      padding: 20px 0 0 0;
+      width: 100%;
+      height: 400px;
+      display: flex;
+      justify-content: center;
+      align-content: center;
+    }
+
+    .lastbarchart_context {
+      width: 25%;
+      margin-left: 40px;
+      padding-top: 50px;
+    }
+  </style>
+
+  <style>
+    .statisticsgap {
+      padding: 20px 0 0 0;
+      width: 100%;
+      height: 400px;
+      display: flex;
+      justify-content: center;
+      align-content: center;
+    }
+
+    .piechart_context {
+      width: 30%;
+      margin-left: 10%;
+      padding-top: 80px;
+
+    }
+  </style>
 
 
 

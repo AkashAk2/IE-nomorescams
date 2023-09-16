@@ -82,9 +82,9 @@ def statistics():
     return render_template('statistics.html')
 
 #report
-@app.route('/report')
-def report():
-    return render_template('report.html')
+@app.route('/resources')
+def resources():
+    return render_template('resources.html')
 
 # #scam email detect
 # @app.route('/detect_scam')
