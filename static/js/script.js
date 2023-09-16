@@ -444,21 +444,28 @@ $(document).ready(function() {
         $("#resultPercentage").text(`${percentage.toFixed(0)}`);
         
         let evaluationMessage = "";
+        let actionMessage = "";
         let textColor = "#000"; // default color
+        let actionColor = "#ff9900";
     
         if(percentage < 30) {
             evaluationMessage = "Likely not a scam";
             textColor = "green";
+            actionMessage = "";
         } else if(percentage >= 30 && percentage <= 50) {
             evaluationMessage = "High chance of being a scam";
             textColor = "pink";
+            actionMessage = "";
         } else {
             evaluationMessage = "Likely a scam";
+            actionMessage = "Please refrain from taking any actions; instead, seek assistance from a trusted individual or promptly report the incident to ScamWatch using the provided button."
             textColor = "red";
         }
         
-    
+        
         $("#evaluationMessage").text(evaluationMessage).css("color", textColor);
+        $("#evaluationMessage").html(evaluationMessage.replace(/\n/g, '<br>'));
+        $("#actionMessage").text(actionMessage).css("color", actionColor);
         $("#resultPercentage").css("color", textColor);
     
         if(percentage > 30) {

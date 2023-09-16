@@ -69,11 +69,11 @@
         <div class="row align-items-center">
             <div class="col-12 col-md-10 col-lg-8 offset-md-1 offset-lg-2 heading-area text-center wow zoomIn" data-wow-duration="1s" data-wow-delay=".1s">
                 <div class="main-title text-lg-left mb-0 wow fadeInUp" data-wow-delay="300ms">
-                    <h2 class="wow fadeInUp heading" data-wow-delay="400ms" style="text-align: center;">Is this message a scam? <span style="display: block; text-align: center; color: yellow;" class="js-rotating">find out, protect yourself</span></h2>
+                    <h2 class="wow fadeInUp heading" data-wow-delay="400ms" style="text-align: center;">Is this message a scam or not?<span style="display: block; text-align: center; color: yellow;" class="js-rotating">find out, protect yourself</span></h2>
 
             </div>
             <div class="h5-center">
-                <h5 class="h5-center">Answer a few questions about your message and we will let you know if it is suspicious</h5>
+                <h5 class="h5-center">Answer a few questions about your message and we will let you know if it is suspicious or not.</h5>
             </div>
             <div class="checkButton">
                 <a href="scam.html#quiz" class="scroll btn btn-medium btn-rounded btn-trans btn-margin">Check</a>
@@ -309,12 +309,18 @@
 <section class="result-container bg-black">
     <div class="result-section">
         <h3 class="h3-result"><span style="display: block; text-align: center; color: white;">Result</span></h3>
-        <p class="p-result">The probability of the communication being a scam is: <span class="p-result" id="resultPercentage">NaN</span>%</p>
-        <p class="p-result" id="evaluationMessage"></p>
+        <p class="p-result">The probability of the communication being a scam is below:</p>
+        <div style="margin-top: 20px;">
+            <h3 style="font-family: 'Montserrat', sans-serif; font-size: 50px;"> <span class="h3-result" id="resultPercentage">NaN</span>%</h3>
+        </div>
+        <div class="scamResultText">
+            <h3 class="h3-result" style="font-size: 50px; margin-bottom: 0px;" id="evaluationMessage"></h3>
+        </div>
+        <p class="p-result" id="actionMessage" style="color: #ff9900;"></p>
         <div id = "reportButton">
             <a href="https://www.scamwatch.gov.au/report-a-scam" id="scamwatchLink" class="btn btn-large btn-rounded btn-trans btn-margin" target="_blank" style="display:none;">Report to scamwatch</a>
         </div>
-        <div class="buttons-row" style="margin-top: 60px;">
+        <div class="buttons-row" style="margin-top: 30px;">
             <div id="scamTypesButton" style="display:none;">
                 <a href="{{ url_for('index') }}#typesofscam" id="scamtypesbutton" class="btn btn-large btn-rounded btn-trans btn-margin" target="_blank">Learn types of Scams</a>
             </div>
@@ -333,7 +339,6 @@
         
     </div>
 </section>
-
 
 
 

@@ -179,7 +179,7 @@ section{
 /* Report Button */
 #reportButton {
     text-align: center; /* Center align the button */
-    margin-top: 100px;
+    margin-top: 40px;
     margin-bottom: 20px;
 }
 #reportButton a.btn {
