@@ -226,42 +226,43 @@ if ($(window).width() > 992) {
 
 //Underline
 $(document).ready(function() {
-    setActiveLink();
+    // Logic to set the active link based on the current URL
+    updateActiveLinkBasedOnURL();
 
+    // Logic to reset the active link when scrolling back to top
     $(window).on('scroll', function() {
-        setActiveLink();
-    });
-
-    $('.nav-link.line').on('click', function(event) {
-        // Remove active class from all nav-link elements
-        $('.nav-link.line').removeClass('active');
-        
-        // Add active class to the clicked link
-        $(this).addClass('active');
+        if ($(window).scrollTop() === 0) {
+            updateActiveLinkBasedOnURL();
+        }
     });
 });
 
-function setActiveLink() {
-    // Determine the current page's URL
-    var currentUrl = window.location.href;
-    var wasActiveSet = false; // flag to check if any link was set to active
+function updateActiveLinkBasedOnURL() {
+    // Get the current URL without any hash (#) value and also handle trailing slashes
+    let currentUrl = window.location.pathname;
+    if (currentUrl.endsWith('/')) {
+        currentUrl = currentUrl.slice(0, -1); // Remove the trailing slash
+    }
 
-    $('.nav-link.line').each(function() {
-        var linkUrl = $(this).attr('href');
-        
-        // Check if the current URL matches with the link's href
-        if (currentUrl.endsWith(linkUrl) || currentUrl.includes(linkUrl)) {
-            $('.nav-link.line').removeClass('active');
+    // First, remove the 'active' class from all navbar items with data-nav attribute to reset
+    $('.navbar-nav a[data-nav]').removeClass('active');
+
+    // Loop through each anchor tag in your navbar with data-nav attribute
+    $('.navbar-nav a[data-nav]').each(function() {
+        // Check if the href of the navbar item matches the current URL
+        let link = $(this).attr('href').split('#')[0]; // Removing the hash value for comparison
+        if (link.endsWith('/')) {
+            link = link.slice(0, -1); // Remove the trailing slash
+        }
+
+        if (currentUrl == link) {
+            // Add the 'active' class to the matching navbar item
             $(this).addClass('active');
-            wasActiveSet = true;
+            return false; // Exit the loop once an active link is found
         }
     });
-
-    // If no link was set to active, default to the first link (e.g., Home)
-    if (!wasActiveSet) {
-        $('.nav-link.line').first().addClass('active');
-    }
 }
+
 
 
 

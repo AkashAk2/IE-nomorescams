@@ -48,12 +48,12 @@
         <div class="container">
             <div class="collapse navbar-collapse" id="navheader">
                 <div class="navbar-nav  ml-auto mr-auto">
-                    <a class="nav-link line" href="{{ url_for('index') }}#home">Home</a>
-                    <a class="nav-link line" href="{{ url_for('scam') }}#scam">Is this a scam?</a>
-                    <a class="nav-link line" href="{{ url_for('detect_scam') }}#detect_scam">Scam Detector Tool</a>
+                    <a class="nav-link line" data-nav href="{{ url_for('index') }}#home">Home</a>
+                    <a class="nav-link line" data-nav href="{{ url_for('scam') }}#scam">Is this a scam?</a>
+                    <a class="nav-link line" data-nav href="{{ url_for('detect_scam') }}#detect_scam">Scam Detector Tool</a>
                     <!-- <a class="nav-link line" href="{{ url_for('safemethods') }}">Account Safety</a> -->
                     <!-- <a class="nav-link line" href="{{ url_for('statistics') }}#statistics">Statistics</a> -->
-                    <a class="nav-link line" href="{{ url_for('resources') }}#resources">Resources</a> 
+                    <a class="nav-link line" data-nav href="{{ url_for('resources') }}#resources">Resources</a> 
                 </div>
             </div>
         </div>
@@ -116,10 +116,10 @@
         </div>
         <div class="buttons-row" style="margin-top: 60px;">
             <div id="scamTypesButton" style="display:none;">
-                <a href="{{ url_for('index') }}#typesofscam" id="scamtypesbutton" class="btn btn-large btn-rounded btn-trans btn-margin" target="_blank">Learn types of Scams</a>
+                <a href="{{ url_for('resources') }}#typesofscam" id="scamtypesbutton" class="btn btn-large btn-rounded btn-trans btn-margin" target="_blank">Learn types of Scams</a>
             </div>
             <div id="learnButton" style="display:none;">
-                <a href="" id="learnmore" class="btn btn-large btn-rounded btn-trans btn-margin" target="_blank">Learn How to be Safe</a>
+                <a href="{{ url_for('resources') }}#steps" id="learnmore" class="btn btn-large btn-rounded btn-trans btn-margin" target="_blank">Learn How to be Safe</a>
             </div>
         </div>
         

@@ -49,13 +49,13 @@
       <div class="container">
         <div class="collapse navbar-collapse" id="navheader">
           <div class="navbar-nav  ml-auto mr-auto">
-            <a class="nav-link line" href="{{ url_for('index') }}#home">Home</a>
-            <a class="nav-link line" href="{{ url_for('scam') }}#scam">Is this a scam?</a>
-            <a class="nav-link line" href="{{ url_for('detect_scam') }}#detect_scam">Scam Detector Tool</a>
+            <a class="nav-link line" data-nav href="{{ url_for('index') }}#home">Home</a>
+            <a class="nav-link line" data-nav href="{{ url_for('scam') }}#scam">Is this a scam?</a>
+            <a class="nav-link line" data-nav href="{{ url_for('detect_scam') }}#detect_scam">Scam Detector Tool</a>
             <!-- <a class="nav-link line" href="{{ url_for('safemethods') }}">Account Safety</a> -->
-            <a class="nav-link line" href="{{ url_for('statistics') }}#statistics">Statistics</a>
-            <!-- <a class="nav-link line" href="{{ url_for('report') }}">Reporting and Resources</a>  -->
-          </div>
+            <!-- <a class="nav-link line" href="{{ url_for('statistics') }}#statistics">Statistics</a> -->
+            <a class="nav-link line" data-nav href="{{ url_for('resources') }}#resources">Resources</a> 
+        </div>
         </div>
       </div>
     </nav>
