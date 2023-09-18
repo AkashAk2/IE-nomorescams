@@ -1,54 +1,53 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-  <!-- Meta Tags -->
-  <meta charset="utf-8">
-  <meta content="width=device-width, initial-scale=1, shrink-to-fit=no" name="viewport">
+    <!-- Meta Tags -->
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1, shrink-to-fit=no" name="viewport">
+    
+    <!-- Page Title -->
+    <title>NoMoreScamTricks | Home</title>
+    <!-- Favicon -->
+    <link href="{{ url_for('static', filename='resources/images/shield_tab_icon.png') }}" rel="icon">
+    <!-- Bundle -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/bundle.min.css') }}">
+    <!-- Plugin Css -->
+    <link href="{{ url_for('static', filename='css/wow.css') }}" rel="stylesheet">
+    <link href="{{ url_for('static', filename='css/LineIcons.min.css') }}" rel="stylesheet">
+    <link href="{{ url_for('static', filename='css/jquery.fancybox.min.css') }}" rel="stylesheet">
+    <link href="{{ url_for('static', filename='css/owl.carousel.min.css') }}" rel="stylesheet">
+    <link href="{{ url_for('static', filename='css/cubeportfolio.min.css') }}" rel="stylesheet">
+    <link href="{{ url_for('static', filename='css/line-awesome.min.css') }}" rel="stylesheet">
 
-  <!-- Page Title -->
-  <title>NoMoreScamTricks | Home</title>
-  <!-- Favicon -->
-  <link href="{{ url_for('static', filename='resources/images/shield_tab_icon.png') }}" rel="icon">
-  <!-- Bundle -->
-  <link rel="stylesheet" href="{{ url_for('static', filename='css/bundle.min.css') }}">
-  <!-- Plugin Css -->
-  <link href="{{ url_for('static', filename='css/wow.css') }}" rel="stylesheet">
-  <link href="{{ url_for('static', filename='css/LineIcons.min.css') }}" rel="stylesheet">
-  <link href="{{ url_for('static', filename='css/jquery.fancybox.min.css') }}" rel="stylesheet">
-  <link href="{{ url_for('static', filename='css/owl.carousel.min.css') }}" rel="stylesheet">
-  <link href="{{ url_for('static', filename='css/cubeportfolio.min.css') }}" rel="stylesheet">
-  <link href="{{ url_for('static', filename='css/line-awesome.min.css') }}" rel="stylesheet">
-
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
-  <!-- Style Sheet -->
-  <link href="{{ url_for('static', filename='css/style.css') }}" rel="stylesheet">
-  <link href="{{ url_for('static', filename='css/custom.css') }}" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+    <!-- Style Sheet -->
+    <link href="{{ url_for('static', filename='css/style.css') }}" rel="stylesheet">
+    <link href="{{ url_for('static', filename='css/custom.css') }}" rel="stylesheet">
 </head>
 
 <body data-spy="scroll" data-target=".navbar" data-offset="50">
 
-  <!-- Start Header -->
-  <header id="home">
+<!-- Start Header -->
+<header id="home">
     <div class="top-banner bg-trans-color transparent-banner">
-      <div class="container-fluid">
-        <div class="row">
-          <div class="col-sm-12 col-md-12 col-lg-12 d-flex justify-content-center">
-            <div class="logo-center">
-              <a href="{{ url_for('index') }}">
-                <img src="{{ url_for('static', filename='/resources/images/shield_yellow.png') }}" alt="LOGO IMAGE">
-              </a>
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-sm-12 col-md-12 col-lg-12 d-flex justify-content-center">
+                    <div class="logo-center">
+                        <a href="{{ url_for('index') }}">
+    <img src="{{ url_for('static', filename='/resources/images/shield_yellow.png') }}" alt="LOGO IMAGE">
+</a>
+                    </div>
+                </div>
             </div>
-          </div>
         </div>
-      </div>
     </div>
-
+    
     <nav class="navbar navbar-top-default navbar-expand-lg navbar-simple nav-line">
-      <div class="container">
-        <div class="collapse navbar-collapse" id="navheader">
-            <div class="navbar-nav  ml-auto mr-auto">
+        <div class="container">
+            <div class="collapse navbar-collapse" id="navheader">
+              <div class="navbar-nav  ml-auto mr-auto">
                 <a class="nav-link line" data-nav href="{{ url_for('index') }}#home">Home</a>
                 <a class="nav-link line" data-nav href="{{ url_for('scam') }}#scam">Is this a scam?</a>
                 <a class="nav-link line" data-nav href="{{ url_for('detect_scam') }}#detect_scam">Scam Detector Tool</a>
@@ -56,204 +55,203 @@
                 <!-- <a class="nav-link line" href="{{ url_for('statistics') }}#statistics">Statistics</a> -->
                 <a class="nav-link line" data-nav href="{{ url_for('resources') }}#resources">Resources</a> 
             </div>
+            </div>
         </div>
-      </div>
     </nav>
-  </header>
-  <!-- End Header -->
+</header>
+<!-- End Header -->
 
 
 
-  <!-- Start Home -->
-  <section class="home bg-black" id="home">
+<!-- Start Home -->
+<section class="home bg-black" id="home">
     <div class="container">
-      <!--Heading-->
-      <div class="row text-center">
-        <div class="col-12 col-md-10 col-lg-8 offset-md-1 offset-lg-2 wow zoomIn heading-area h2-center" data-wow-duration="1s" data-wow-delay=".1s">
-          <h2 class="heading h2-center text-center">Are you being scammed?</h2>
+        <!--Heading-->
+        <div class="row text-center">
+            <div class="col-12 col-md-10 col-lg-8 offset-md-1 offset-lg-2 wow zoomIn heading-area h2-center" data-wow-duration="1s" data-wow-delay=".1s">
+                <h2 class="heading h2-center text-center">Are you being scammed?</h2>
+            </div>
         </div>
-      </div>
 
-      <div class="fact">
-        <h5 class="fact-heading">🔍 Did you know?</h5>
-        <p class="fact-text">Around <span class="fact-percentage">65%</span> of Australians have encountered scams in the past year. <span class="fact-percentage">In 2022</span>, scams hit Australia hard, causing significant financial losses. This highlights the importance of better online security and knowing how to spot scams to protect ourselves.</p>
-      </div>
-
-      <!-- Start Counter -->
-      <div class="statistics-home bg-black" id="stats">
+        <div class="fact">
+            <h5 class="fact-heading">🔍 Did you know?</h5>
+            <p class="fact-text">Around <span class="fact-percentage">65%</span> of Australians have encountered scams in the past year. <span class="fact-percentage">In 2022</span>, scams hit Australia hard, causing significant financial losses. This highlights the importance of better online security and knowing how to spot scams to protect ourselves.</p>
+        </div>
+        
+        <!-- Start Counter -->
+    <div class="statistics-home bg-black" id="stats">
         <!-- <div class="col-12 col-md-10 col-lg-8 offset-md-1 offset-lg-2 heading-area text-center wow zoomIn" data-wow-duration="1s" data-wow-delay=".1s">
             <div class="main-title text-lg-left mb-0 wow fadeInUp" data-wow-delay="300ms">
                 <h2 class="wow fadeInUp h2-subheadings" data-wow-delay="400ms" style="text-align: center;">Do you know?</h2>
         </div> -->
         <div class="container position-relative">
-          <div class="row">
-            <!-- Counter Content Div -->
-            <div class="col-12 text-center wow slideInLeft" data-wow-duration="1s" data-wow-delay=".1s">
-              <div class="counter-content">
-                <!-- <h3 class="fact-text">In 2022, scams hit Australia hard, causing significant financial losses. This highlights the importance of better online security and knowing how to spot scams to protect ourselves.</h3> -->
-                <!-- <p class="paragraph">Adjacent, we unveil the monetary losses suffered by Australians in the year 2022, quantified for your insight.</p> -->
-              </div>
+            <div class="row">
+                <!-- Counter Content Div -->
+                <div class="col-12 text-center wow slideInLeft" data-wow-duration="1s" data-wow-delay=".1s">
+                    <div class="counter-content">
+                        <!-- <h3 class="fact-text">In 2022, scams hit Australia hard, causing significant financial losses. This highlights the importance of better online security and knowing how to spot scams to protect ourselves.</h3> -->
+                        <!-- <p class="paragraph">Adjacent, we unveil the monetary losses suffered by Australians in the year 2022, quantified for your insight.</p> -->
+                    </div>
+                </div>
             </div>
-          </div>
-
-          <div class="row align-items-center mt-3 justify-content-center g-4"> <!-- added g-4 for gaps -->
-            <!-- Counters Div -->
-            <div class="col-12 col-md-8 text-center wow slideInRight" data-wow-duration="1s" data-wow-delay=".1s"> <!-- expanded to col-md-8 for a better fit -->
-              <div class="row" style="margin-bottom: 50px;">
-                <!-- Counter -->
-                <div class="col-12 col-md-4 stats">
-                  <div class="parallax-box d-flex flex-column align-items-center justify-content-center">
-                    <i class="fas fa-dollar-sign fact-percentage"></i>
-                    <!-- <h2 class="count fact-percentage">$568640274</h2> -->
-                    <h2 id="total-loss" class="count fact-percentage">{{ total_loss }}</h2>
-                    <h5>Total Monetary Loss in 2022</h5>
-                  </div>
+            
+            <div class="row align-items-center mt-3 justify-content-center g-4"> <!-- added g-4 for gaps -->
+                <!-- Counters Div -->
+                <div class="col-12 col-md-8 text-center wow slideInRight" data-wow-duration="1s" data-wow-delay=".1s"> <!-- expanded to col-md-8 for a better fit -->
+                    <div class="row" style="margin-bottom: 50px;">
+                        <!-- Counter -->
+                        <div class="col-12 col-md-4 stats">
+                            <div class="parallax-box d-flex flex-column align-items-center justify-content-center">
+                                <i class="fas fa-dollar-sign fact-percentage"></i>
+                                <!-- <h2 class="count fact-percentage">$568640274</h2> -->
+                                <h2 id="total-loss" class="count fact-percentage">{{ total_loss }}</h2>
+                                <h5>Total Monetary Loss in 2022</h5>
+                            </div>
+                        </div>
+                        <!-- Counter -->
+                        <div class="col-12 col-md-4 stats">
+                            <div class="parallax-box d-flex flex-column align-items-center justify-content-center">
+                                <i class="fas fa-file-alt fact-percentage"></i>
+                                <!-- <h2 class="count fact-percentage">239237</h2> -->
+                                <h2 id="numbers-of-reports" class="count fact-percentage">{{ number_of_reports }}</h2>
+                                <h5>Number of reports</h5>
+                            </div>
+                        </div>
+                        <!-- Counter -->
+                        <div class="col-12 col-md-4 stats">
+                            <div class="parallax-box d-flex flex-column align-items-center justify-content-center">
+                                <i class="fas fa-user fact-percentage"></i>
+                                <!-- <h2 class="count fact-percentage">49163</h2> -->
+                                <h2 id="age-over-65" class="count fact-percentage">{{ affected_people_65plus }}</h2>
+                                <h5>Affected people aged 65+ </h5>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-                <!-- Counter -->
-                <div class="col-12 col-md-4 stats">
-                  <div class="parallax-box d-flex flex-column align-items-center justify-content-center">
-                    <i class="fas fa-file-alt fact-percentage"></i>
-                    <!-- <h2 class="count fact-percentage">239237</h2> -->
-                    <h2 id="numbers-of-reports" class="count fact-percentage">{{ number_of_reports }}</h2>
-                    <h5>Number of reports</h5>
-                  </div>
-                </div>
-                <!-- Counter -->
-                <div class="col-12 col-md-4 stats">
-                  <div class="parallax-box d-flex flex-column align-items-center justify-content-center">
-                    <i class="fas fa-user fact-percentage"></i>
-                    <!-- <h2 class="count fact-percentage">49163</h2> -->
-                    <h2 id="age-over-65" class="count fact-percentage">{{ affected_people_65plus }}</h2>
-                    <h5>Affected people aged 65+ </h5>
-                  </div>
-                </div>
-              </div>
             </div>
-          </div>
-
-
-
-        </div>
-        <!-- End Counter -->
+        
+        
+        
+    </div>
+<!-- End Counter -->
 
         <div class="row">
-          <!-- Feature 1 -->
-          <div class="col-md-3 wow slideInLeft" data-wow-duration="1s" data-wow-delay=".3s">
-            <div class="feature-item text-center">
-              <div class="feature_header">
-                <span class="feature_header_text underline">Check for scam</span>
-                <div>
-                  <p class="feature_header_content">Answer a few quick questions and we will tell you if a message is suspicious.</p>
+            <!-- Feature 1 -->
+            <div class="col-md-3 wow slideInLeft" data-wow-duration="1s" data-wow-delay=".3s">
+                <div class="feature-item text-center">
+                    <div class="feature_header">
+                        <span class="feature_header_text underline">Check for scam</span>
+                        <div>
+                            <p class="feature_header_content">Answer a few quick questions and we will tell you if a message is suspicious.</p>
+                        </div>
+                        
+                    </div>
+                    <a href="{{ url_for('scam') }}#scam" class=" btn btn-medium btn-rounded btn-trans btn-margin centered-button">Go and Find</a>
                 </div>
+            </div>
+            <!-- Feature 2-->
+            <div class="col-md-3 wow slideInUp" data-wow-duration="1s" data-wow-delay=".6s">
+                <div class="feature-item text-center">
+                    <div class="feature_header">
+                        <span class="feature_header_text underline">How to be safe?</span>
+                        <p class="feature_header_content">There are a variety of scams affecting Australians. Click here to learn more about how to protect yourselves.</p>
+                    </div>
+                    <a href="{{ url_for('safemethods') }}" class=" btn btn-medium btn-rounded btn-trans btn-margin centered-button">Account Safety</a>
+                </div>
+            </div>
+            <!-- Feature 3-->
+            <div class="col-md-3 wow slideInUp" data-wow-duration="1s" data-wow-delay=".6s">
+                <div class="feature-item text-center">
+                    <div class="feature_header">
+                        <span class="feature_header_text underline">Scam Statistics</span>
+                        <p class="feature_header_content">Demographic information about Australians who have been targeted by scams in the last year.</p>
+                    </div>
+                    <a href="{{ url_for('statistics') }}#statistics" class="btn btn-medium btn-rounded btn-trans btn-margin centered-button">Statistics</a>
+                </div>
+            </div>
 
-              </div>
-              <a href="{{ url_for('scam') }}#scam" class=" btn btn-medium btn-rounded btn-trans btn-margin centered-button">Lets Start</a>
+            <!-- Feature 4-->
+            <div class="col-md-3 wow slideInRight" data-wow-duration="1s" data-wow-delay=".3s">
+                <div class="feature-item text-center">
+                    <div class="feature_header">
+                        <span class="feature_header_text underline">More Resources</span>
+                        <p class="feature_header_content">Information about how to report possible scams and additional resources about scams.</p>
+                    </div>
+                    <a href="javascript:void(0);" class="scroll btn btn-medium btn-rounded btn-trans btn-margin centered-button">Coming Soon</a>
+                </div>
             </div>
-          </div>
-          <!-- Feature 2-->
-          <div class="col-md-3 wow slideInUp" data-wow-duration="1s" data-wow-delay=".6s">
-            <div class="feature-item text-center">
-              <div class="feature_header">
-                <span class="feature_header_text underline">How to be safe?</span>
-                <p class="feature_header_content">There are a variety of scams affecting Australians. Click here to learn more about how to protect yourselves.</p>
-              </div>
-              <a href="{{ url_for('safemethods') }}" class=" btn btn-medium btn-rounded btn-trans btn-margin centered-button">Learn More</a>
-            </div>
-          </div>
-          <!-- Feature 3-->
-          <div class="col-md-3 wow slideInUp" data-wow-duration="1s" data-wow-delay=".6s">
-            <div class="feature-item text-center">
-              <div class="feature_header">
-                <span class="feature_header_text underline">Scam Statistics</span>
-                <p class="feature_header_content">Demographic information about Australians who have been targeted by scams in the last year.</p>
-              </div>
-              <a href="{{ url_for('statistics') }}#statistics" class="btn btn-medium btn-rounded btn-trans btn-margin centered-button">Read More</a>
-            </div>
-          </div>
-
-          <!-- Feature 4-->
-          <div class="col-md-3 wow slideInRight" data-wow-duration="1s" data-wow-delay=".3s">
-            <div class="feature-item text-center">
-              <div class="feature_header">
-                <span class="feature_header_text underline">More Resources</span>
-                <p class="feature_header_content">Information about how to report possible scams and additional resources about scams.</p>
-              </div>
-              <a href="javascript:void(0);" class="scroll btn btn-medium btn-rounded btn-trans btn-margin centered-button">Coming Soon</a>
-            </div>
-          </div>
-
+            
         </div>
+    </div>
+</section>
+<!-- End Home -->
+
+
+<script src="https://cdn.jsdelivr.net/npm/echarts@5.3.0/dist/echarts.min.js"></script>
+
+<section class="chart-section">
+
+  <div style="margin-left: 250px; margin-right: 250px;">
+    <div class="row">
+      <div class="col-md-7">
+        <div id="echarts-example-main" style="width: 100%; height: 400px;"></div>
       </div>
-  </section>
-  <!-- End Home -->
-
-
-  <script src="https://cdn.jsdelivr.net/npm/echarts@5.3.0/dist/echarts.min.js"></script>
-
-  <section class="chart-section">
-
-    <div style="margin-left: 250px; margin-right: 250px;">
-      <div class="row">
-        <div class="col-md-7 col-sm-12">
-          <div id="echarts-example-main" style="width: 100%; height: 400px;"></div>
-        </div>
-        <div class="col-md-5 col-sm-12" style="margin-top: 90px;">
-          <div>
-            <div class="piechart_context-part1">
-              <p>This pie chart shows the most serious reported percentage of persons across age groups. Reported in person refers to the total number of persons who reported the most serious scam incident to an authority, expressed as a percentage of the total number of persons who experienced a scam during 2021-22.
-              </p>
-            </div>
-            <br> <!-- This creates a new line -->
-            <div class="piechart_context-part2">
-              <p>Statistics show people over 65 have the highest rate of experiencing serious scams while people under 24 with the least probability of being scammed.</p>
-            </div>
+      <div class="col-md-5" style="margin-top: 90px;">
+        <div class="right-container">
+          <div class="piechart_context-part1">
+            <p style="text-align: justify;">This pie chart shows the most serious reported percentage of persons across age groups. Reported in person refers to the total number of persons who reported the most serious scam incident to an authority, expressed as a percentage of the total number of persons who experienced a scam during 2021-22.
+            </p>
+          </div>
+          <br> <!-- This creates a new line -->
+          <div class="piechart_context-part2">
+            <p style="text-align: justify;">Statistics show people over 65 have the highest rate of experiencing serious scams while people under 24 with the least probability of being scammed.</p>
           </div>
         </div>
       </div>
-  </section>
+    </div>
+</section>
 
-  <!-- Second Chart -->
-  <section class="chart-section bg-black">
+    <!-- Second Chart -->
+<section class="chart-section bg-black">
     <div class="row" style="margin-top: 20px; margin-left: 250px; margin-right: 250px;">
-      <div class="col-lg-7 col-md-12">
-        <div id="echarts-component-main" style="width: 100%; height: 400px;"></div>
+      <div class="col-md-8">
+        <div id="echarts-component-main" style="width: 100%; height: 400px; padding-right: 120px; margin-right: 10px;"></div>
       </div>
-      <div class="col-lg-5 col-md-12">
-        <label for="select">Select a Year:</label>
+      <div class="col-md-4 right-container">
+        <label class="select-align" for="select">Select a Year:</label>
 
-        <select name="pets" id="select" style="background-color: #24262d; margin-bottom: 100px;">
+        <select name="pets" id="select" style="background-color: #24262d;">
           <option value="">--Please select Year--</option>
           <option value="2014-15">2014-15</option>
           <option value="2020-21">2020-21</option>
           <option value="2021-22">2021-22</option>
         </select>
-        <div style="width: 100%;">
-          <p>This bar chart shows people experienced scams in various states and territories during specific years.
-            The data indicates that both New South Wales and Victoria have consistently recorded the highest occurrences of scams.</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <section>
-    <div class="row" style="margin-top: 20px; margin-left: 250px; margin-right: 250px;">
-      <div class="col-md-9 col-sm-12">
-        <div id="echarts-scamtype-main" style="width: 100%; height: 400px;"></div>
-      </div>
-      <div class="col-md-3 col-sm-12" style="margin-top: 57px;">
-        <div>
-          <div>
-            <p>This chart shows persons in Australia aged 15 years and over, whether experienced a scam during 2021-22, by scam type.
-              Statistics show "Information request or phishing" is the most common scam type, which is more than double compare with the second common type "Computer support". </p>
+        <div class="right-container">
+          <p style="text-align: justify;">This bar chart shows people experienced scams in various states and territories during specific years. 
+            The data indicates that both New South Wales and Victoria have consistently recorded the highest occurrences of scams.</p >
           </div>
-        </div>
       </div>
     </div>
-    </div>
-  </section>
+</section>
+
+<section>
+  <div class="row" style="margin-top: 20px; margin-left: 100px; margin-right: 250px;">
+      <div class="col-md-9">
+          <!-- Add some padding to the right to push the chart a bit to the left -->
+          <div id="echarts-scamtype-main" style="width: 100%; height: 400px; padding-right: 120px; margin-right: 10px;"></div>
+      </div>
+      <div class="col-md-3" style="height: 400px;"> 
+          <!-- Add some padding to the left to push the p tag a bit to the right -->
+          <div class="p-container">
+              <p style="text-align: justify;">This chart shows persons in Australia aged 15 years and over, whether experienced a scam during 2021-22, by scam type. Statistics show "Information request or phishing" is the most common scam type, which is more than double compared with the second common type "Computer support".</p>
+          </div>
+      </div>
+  </div>
+</section>
+
+
 
   <script>
-
     var chartDom = document.getElementById('echarts-example-main');
     var myChart = echarts.init(chartDom);
     var option;
@@ -275,7 +273,7 @@
           color: "white",
           fontWeight: 'bold',
           fontSize: 18
-
+          
         }
       },
       series: [
@@ -319,10 +317,6 @@
     }
 
     option && myChart.setOption(option);
-
-    window.addEventListener('resize', function () {
-      myChart.resize();
-    })
   </script>
 
 
@@ -554,7 +548,7 @@
     option = {
       title: {
         text: "Australian exposed to scam types('000 people) in 2021-22",
-        left: 'top',
+        left: 'center',
         textStyle: {
           color: "white",
           fontWeight: 'bold',
@@ -568,7 +562,7 @@
         }
       },
       grid: {
-        left: '3%',
+        left: '10%',
         right: '4%',
         bottom: '3%',
         containLabel: true
@@ -731,6 +725,18 @@
       margin-left: 40px;
       padding-top: 50px;
     }
+
+    .select-align {
+      margin-left: 50px;
+    }
+
+    .p-container {
+    display: flex;
+    justify-content: center;   /* Horizontally center content */
+    align-items: center;       /* Vertically center content */
+    height: 100%;              /* Take full height of parent container */
+}
+
   </style>
 
   <style>
@@ -755,40 +761,39 @@
 
 
 
-  <!-- Start Footer -->
-  <footer class="footer bg-black">
+<!-- Start Footer -->
+<footer class="footer bg-black">
     <div class="container">
-      <div class="row align-items-center">
-        <!--Social-->
-        <!--Text-->
-        <div class="col-12 text-center mt-3" style="top: 80px;">
-          <p class="company-about fadeIn">© 2023 Made By <a href="javascript:void(0);">Team Code for Good</a>
-          </p>
+        <div class="row align-items-center">
+            <!--Social-->
+            <!--Text-->
+            <div class="col-12 text-center mt-3" style="top: 80px;">
+                <p class="company-about fadeIn">© 2023 Made By <a href="javascript:void(0);">Team Code for Good</a>
+                </p>
+            </div>
         </div>
-      </div>
     </div>
-  </footer>
-  <!-- End Footer -->
+</footer>
+<!-- End Footer -->
 
-  <!-- Start Scroll Top -->
-  <div class="go-top"><i class="fas fa-angle-up"></i><i class="fas fa-angle-up"></i></div>
-  <!-- End Scroll Top -->
+<!-- Start Scroll Top -->
+<div class="go-top"><i class="fas fa-angle-up"></i><i class="fas fa-angle-up"></i></div>
+<!-- End Scroll Top -->
 
-  <!-- JavaScript -->
-  <script src="{{ url_for('static', filename='js/bundle.min.js') }}"></script>
+<!-- JavaScript -->
+<script src="{{ url_for('static', filename='js/bundle.min.js') }}"></script>
 
-  <!-- Plugin Js -->
-  <script src="{{ url_for('static', filename='js/jquery.appear.js') }}"></script>
-  <script src="{{ url_for('static', filename='js/morphext.min.js') }}"></script>
-  <script src="{{ url_for('static', filename='js/parallaxie.min.js') }}"></script>
-  <script src="{{ url_for('static', filename='js/owl.carousel.min.js') }}"></script>
-  <script src="{{ url_for('static', filename='js/jquery.cubeportfolio.min.js') }}"></script>
-  <script src="{{ url_for('static', filename='js/wow.min.js') }}"></script>
+<!-- Plugin Js -->
+<script src="{{ url_for('static', filename='js/jquery.appear.js') }}"></script>
+<script src="{{ url_for('static', filename='js/morphext.min.js') }}"></script>
+<script src="{{ url_for('static', filename='js/parallaxie.min.js') }}"></script>
+<script src="{{ url_for('static', filename='js/owl.carousel.min.js') }}"></script>
+<script src="{{ url_for('static', filename='js/jquery.cubeportfolio.min.js') }}"></script>
+<script src="{{ url_for('static', filename='js/wow.min.js') }}"></script>
 
-  <!-- CUSTOM JS -->
-  <script src="{{ url_for('static', filename='js/contact_us.js') }}"></script>
-  <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+<!-- CUSTOM JS -->
+<script src="{{ url_for('static', filename='js/contact_us.js') }}"></script>
+<script src="{{ url_for('static', filename='js/script.js') }}"></script>
 
 </body>
-
 </html>
