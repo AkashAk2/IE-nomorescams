@@ -235,11 +235,12 @@
 /* QUIZ */
 .quiz-container {
     /* background-color: black; */
+    position: relative;
     padding: 40px;
     border-radius: 8px;
     /* max-width: 1000px;
     max-height: 500px; */
-    width: 1200px;
+    width: 70%;
     height: 500px;
     margin: 50px auto;
     box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.1);
@@ -253,7 +254,7 @@
     /* max-width: 1000px;
     max-height: 500px; */
     width: 1200px;
-    height: 800px;
+    height: 80%;
     margin: 50px auto;
     box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.1);
 }
@@ -324,20 +325,23 @@ h2 {
 }
 
 .controls {
-    position: absolute;
-    bottom: 235px;  /* Example position from the bottom */
-    left: 350px; 
+    position: absolute; /* Absolute position relative to .quiz-container */
+    bottom: 10%; /* Offset from the bottom */
+    left: 50%;  /* Centering: move it 50% to the right of the left edge */
+    transform: translateX(-50%); /* Centering: pull it back 50% of its own width */
     display: flex;
     justify-content: space-between;
-    align-items: center;
-    gap: 800px;
+    width: 80%; /* Or another value that makes sense for your design */
+    min-width: 80%;
+    flex-wrap: wrap;
 }
 
 #prev, #next {
-    flex: 4; /* This will allow both buttons to take equal width */
-    margin: 5px; /* Add some margin for spacing */
+    flex: 1; /* Equal width */
+    margin: 0 5px; /* Some margin for spacing */
+    max-width: 15%;
+    min-width: 10%;
 }
-
 
 
 #next {
@@ -587,8 +591,8 @@ h2 {
   }
   
   .progress-bar {
-    position: absolute;
-    height: 100%;
+    /* position: absolute; */
+    /* height: 100%; */
     width: 100%;
     content: "";
     background-color: yellow;
@@ -782,3 +786,6 @@ h2 {
     padding: 1.5rem 0;
   }
   
+
+
+/* detect scam page */
