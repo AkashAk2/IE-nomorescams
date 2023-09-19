@@ -4,6 +4,7 @@
 // Normal Text = 25px
 // Sub Heading = 30px
 // Heading = 55px
+// grey background = #23262d
 /*
 
 /* headings */
@@ -40,6 +41,12 @@
     color: white;
     font-weight: 500;
     font-size: 25px;
+}
+
+
+.row {
+    display: flex;
+    flex-wrap: wrap;
 }
 
 .row .stats h5 {
@@ -535,8 +542,8 @@ h2 {
     font-family: 'Montserrat', sans-serif;
     font-weight: 300;
     font-size: 20px;
-    width: 800px;
-    height: 300px;
+    width: 30px;
+    height: 400px;
 }
 
 .message-container {
@@ -609,8 +616,10 @@ h2 {
     border-radius: 8px;
     /* max-width: 1000px;
     max-height: 500px; */
-    width: 1300px;
-    height: 800px;
+    width: 80%;
+    height: auto;
+    flex: 1;
+    max-width: 800px;
     margin: 30px auto;
     box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.1);
 }
@@ -662,9 +671,9 @@ h2 {
 .buttons-row {
     display: flex;
     justify-content: center; /* Center the items horizontally */
-    gap: 150px; /* Provide some gap between buttons */
+    gap: 10%; /* Provide some gap between buttons */
     align-items: baseline;
-    margin-bottom: 10px;
+    margin-bottom: 5%;
 }
 
 /* Account Safety Page */

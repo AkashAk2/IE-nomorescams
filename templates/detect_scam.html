@@ -64,80 +64,57 @@
 
 <section class="safety bg-black overflow-hidden" id="safety">
     <div class="row align-items-center">
+
         <!-- First Div with centered content -->
-        <div class="accountsafety-heading col-lg-7 mr-lg-3 d-flex align-items-center justify-content-center"> 
-            <div>
-                <div class="heading-area reduced-margin text-center wow zoomIn" data-wow-duration="1s" data-wow-delay=".1s">
-                    <div class="center-container" style="text-align: center;">
-                        <div class="login">
-                            <div class="main-title text-lg-left mb-0 wow fadeInUp" data-wow-delay="300ms">
-                                <h2 class="wow fadeInUp heading" data-wow-delay="400ms" style="text-align: center;">Scam Detector for SMS or Email</h2>
-                            </div>
-                            <div>
-                                <h5 class="h5-center" style="margin-top: -5px;">Submit suspicious SMS and email messages for checking.</h5>
-                            </div>
-
-                            <form id="scamForm" action="{{ url_for('detect_scam')}}" method="POST">
-                                <textarea id="messageBox" name="message" rows="10" cols="100" required="required" placeholder="SMS or Email contents..." style="color: black;font-size: 20px">{{ original_message }}</textarea>
-                                <br> </br>
-                                <button type="submit" class="btn btn-medium btn-rounded btn-trans btn-margin">Predict</button>
-                            </form>
-
-                            
-                             
-                        </div>
-
-                        
-                    </div>
-                </div>
+        <div class="first">
+            <div class="main-title">
+                <h2 class="heading" style="text-align: center;">Scam Detector for SMS or Email</h2>
             </div>
+            <form id="scamForm" action="{{ url_for('detect_scam')}}" method="POST">
+                <textarea id="messageBox" name="message" rows="10" cols="100" required="required" placeholder="Enter the SMS or Email content here" style="color: black; font-size: 20px;">{{ original_message }}</textarea>
+                <br>
+                <button type="submit" class="btn btn-medium btn-rounded btn-margin">Predict</button>
+            </form>
         </div>
 
         <!-- Second Div with centered content -->
-        <div class="col-lg-3 sidelearncontainer d-flex align-items-center justify-content-center" style="background-color: #23262d;"> 
+        <div class="second">
             <div>
-                <h5>Do you know?</h5>
-                <p class="paragraph">Up to August in <strong>2023</strong>, Australia has seen <strong>72.471</strong> fishing scams, leading to a total loss of over <strong>$21</strong> millions. That's an average of nearly <strong>$292</strong> per report. Always stay vigilant online. </p>
+                <img class="about_tool" src="{{ url_for('static', filename='resources/images/about_tool.png') }}" alt="About our tool">
             </div>
-        </div>
-    </div>
-</section>
-
-<!-- Results Section -->
-<section id="resultsSection">
-    <div class="results bg-black">
-        <div>
-            <h3 class="h3-result"><span style="display: block; margin-bottom: 20px; text-align: center; color: white;">Result</span></h3>
+            
         </div>
         
-        <h2 style="margin-top: 100px; font-size: 30px; margin-bottom: 20px;" id="predictionText"></h2>
-        <div id="reportButton" style="display:none; margin-bottom: 20px;">
-            <a href="https://www.scamwatch.gov.au/report-a-scam" id="scamwatchLink" class="btn btn-large btn-rounded btn-trans btn-margin" target="_blank">Report to scamwatch</a>
-        </div>
-        <div class="buttons-row" style="margin-top: 60px;">
-            <div id="scamTypesButton" style="display:none;">
-                <a href="{{ url_for('resources') }}#typesofscam" id="scamtypesbutton" class="btn btn-large btn-rounded btn-trans btn-margin" target="_blank">Learn types of Scams</a>
+
+        <!-- Third Div with centered content -->
+        <div class="result">
+            <div class="result-header">
+                <h3>Result</h3>
             </div>
-            <div id="learnButton" style="display:none;">
-                <a href="{{ url_for('resources') }}#steps" id="learnmore" class="btn btn-large btn-rounded btn-trans btn-margin" target="_blank">Learn How to be Safe</a>
+            <div class="scamResultText" style="padding: 0.5% 5%; margin-top: 10%; width: 80%; margin-bottom: 10%;">
+                <h2 class="h3-result" style="font-size: 50px; font-weight: bold; margin-bottom: 0px;" id="predictionText"></h2>
+            </div>
+            
+            <div id="reportButton" class="hidden">
+                <a href="https://www.scamwatch.gov.au/report-a-scam" id="scamwatchLink" class="btn btn-medium btn-rounded btn-trans btn-margin" target="_blank">Report to scamwatch</a>
+            </div>
+            <div class="buttons-row">
+                <div id="scamTypesButton" class="hidden">
+                    <a href="{{ url_for('resources') }}#typesofscam" id="scamtypesbutton" class="btn btn-medium btn-rounded btn-trans btn-margin" target="_blank">Learn types of Scams</a>
+                </div>
+                <div id="learnButton" class="hidden">
+                    <a href="{{ url_for('resources') }}#steps" id="learnmore" class="btn btn-medium btn-rounded btn-trans btn-margin" target="_blank">Learn How to be Safe</a>
+                </div>
+            </div>
+            <div class="disclaimer">
+                <p>
+                    <span class="disclaimer-highlight">Disclaimer:</span> The provided prediction is for illustrative purposes and may not accurately reflect real-world outcomes. Please use the results as a general guideline and exercise caution when interpreting them.
+                </p>
             </div>
         </div>
         
-        <div class="disclaimerPrediction" style="text-align: center;">
-            <p style="font-size: 18px; text-align: center; margin-bottom: 10px; bottom: 20px !important;">
-                <span style="color: red;">Disclaimer:</span> The provided prediction is for illustrative purposes and may not accurately reflect real-world outcomes.
-                Please use the results as a general guideline and exercise caution when interpreting them.
-            </p>
-        </div>
     </div>
 </section>
-
-
-
-
-
-
-
 
 
 
@@ -160,48 +137,218 @@
 <div class="go-top"><i class="fas fa-angle-up"></i><i class="fas fa-angle-up"></i></div>
 <!-- End Scroll Top -->
 
+<style>
+
+.row {
+    display: flex;
+    flex-wrap: nowrap;
+    margin: 0 5%;
+    gap: 1%;
+}
+
+.first, .second, .result {
+    flex: 1;
+    min-width: calc(50% - 10px);
+    margin: 5px;
+    max-width: 48%;
+    padding: 10px;
+    border-radius: 15px;
+    transition: box-shadow 0.3s ease;
+}
+
+.first {
+    margin-left: 0; /* Ensure it starts at the left corner */
+    background-color: #2a2c30;
+    padding: 2% 5%;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+
+.result {
+    display: none;
+    margin-right: 5px; /* If you want the same margin on the right as on the first and second divs */
+    background-color: #2a2c30;
+    padding: 2% 5%;
+}
+
+
+.result:hover {
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.2);
+}
+
+.main-title .heading {
+    text-align: center;
+    color: white;
+    margin-bottom: 1.5rem;
+}
+
+#scamForm {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+}
+
+#messageBox {
+    width: 100%;
+    max-width: 600px;
+    height: 40vh;
+    max-height: 300px;
+    padding: 1% 1.5%;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    color: black;
+    font-size: 20px;
+    margin-bottom: 1rem;
+    resize: vertical;
+}
+
+.result-header {
+    background-color: #1e2023;
+    padding: 15px;
+    border-radius: 10px 10px 0 0;
+    position: relative;
+    z-index: 2;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.result-header h3 {
+    text-align: center;
+    color: white;
+    margin: 0;
+    font-weight: bold;
+}
+
+h2#predictionText {
+    font-size: 25px;
+    margin: 10% 0;
+    text-align: center;
+    color: #fff;
+}
+
+.hidden {
+    display: none;
+}
+
+.btn {
+    padding: 0.7rem 1.5rem;
+    background-color: brown; 
+    color: #fff;
+    border-radius: 25px;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    align-self: center; /* Optional, because parent already centers it, but added for clarity. */
+}
+
+.btn:hover {
+    background-color: yellow; 
+    transform: translateY(-2px);
+}
+
+.btn:focus {
+    outline: none;
+}
+
+.btn-trans {
+    border: 2px solid #fff;
+    color: #fff;
+}
+
+.btn-trans:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+.disclaimer {
+    text-align: center;
+    margin-top: 2%;
+}
+
+.disclaimer p {
+    font-size: 18px;
+    color: white;
+    margin-bottom: 10%;
+}
+
+.disclaimer-highlight {
+    color: red;
+}
+
+.about_tool {
+    max-width: 80%;  /* You can adjust this value as needed */
+    max-height: 80%;  /* Adjust this value as well */
+    width: 100%;
+    height: auto;  /* Maintain the aspect ratio */
+    display: block;  /* Removes default inline-block spacing from the bottom */
+    margin: 0 auto;
+}
+
+
+</style>
 
 <script>
     document.addEventListener("DOMContentLoaded", function() {
-        var form = document.getElementById('scamForm');
+    const form = document.getElementById('scamForm');
     
-        form.addEventListener('submit', function(e) {
-            e.preventDefault();
-    
-            var resultsDiv = document.querySelector('.results');
-            var resultsSection = document.getElementById('resultsSection');
-            resultsDiv.style.display = "block";
-    
-            var formData = new FormData(form);
-            fetch('{{ url_for("detect_scam") }}', {
-                method: 'POST',
-                body: formData
-            })
-            .then(response => response.json())
-            .then(data => {
-                console.log("Data received from server:", data);
-    
-                var predictionText = document.getElementById('predictionText');
-                var reportButton = document.getElementById('reportButton');
-                var learnButton = document.getElementById('learnButton');
-                var scamTypesButton = document.getElementById('scamTypesButton');
-    
-                if (data.prediction == 1) {
-                    predictionText.innerHTML = '<h2 style="color:red;">Uh Oh message looks like a Scam :( <br> <br> Do not take any actions, seek help from someone you trust or report to scamwatch.</h2>';
-                    scamTypesButton.style.display = 'block';
-                    reportButton.style.display = 'block';
-                    learnButton.style.display = 'block';
-                } else if (data.prediction == 0) {
-                    predictionText.innerHTML = '<h2 style="color:green;"><b>NOT A SCAM MESSAGE :) </b></h2> <br> <span style="color:white;">Educate Yourself: Knowledge is the best defense against scams. <br> Remember, always exercise caution and trust your instincts.</span>';
-                    scamTypesButton.style.display = 'block';
-                    learnButton.style.display = 'block';
-                }
-                resultsSection.style.display = "block";
-                // Scroll to results section
-                window.scrollTo(0, resultsSection.offsetTop);
-            });
+    form.addEventListener('submit', function(e) {
+        e.preventDefault();
+
+        // Hide the second div (sidelearncontainer)
+        const sidelearncontainerDiv = document.querySelector('.second');
+        sidelearncontainerDiv.style.display = 'none';
+        // Ensure it's hidden, with "!important"
+        sidelearncontainerDiv.style.setProperty('display', 'none', 'important');
+
+        // Adjust the third div (result)
+        const resultsDiv = document.querySelector('.result');
+        resultsDiv.style.display = 'block';
+        resultsDiv.classList.add('col-lg-8');
+        resultsDiv.style.flex = '1 1 66%';
+
+        // Adjust the first div
+        const accountsafetyDiv = document.querySelector('.accountsafety-heading');
+        if (accountsafetyDiv) {
+            accountsafetyDiv.classList.remove('col-lg-7'); // Remove the old class
+            accountsafetyDiv.classList.add('col-lg-4');    // Add the new class
+        }
+
+        // Submit the form and handle the result
+        const formData = new FormData(form);
+        fetch('{{ url_for("detect_scam") }}', {
+            method: 'POST',
+            body: formData
+        })
+        .then(response => response.json())
+        .then(data => {
+            console.log("Data received from server:", data);
+
+            const predictionText = document.getElementById('predictionText');
+            const reportButton = document.getElementById('reportButton');
+            const learnButton = document.getElementById('learnButton');
+            const scamTypesButton = document.getElementById('scamTypesButton');
+
+            if (data.prediction == 1) {
+                predictionText.innerHTML = '<h2 style="color:red; font-weight: bold;">Uh Oh! This message looks like a Scam </h2>';
+                scamTypesButton.style.display = 'block';
+                reportButton.style.display = 'block';
+                learnButton.style.display = 'block';
+            } else if (data.prediction == 0) {
+                predictionText.innerHTML = '<h2 style="color:green; font-weight: bold;"><b>NOT A SCAM MESSAGE :)</h2>';
+                scamTypesButton.style.display = 'block';
+                learnButton.style.display = 'block';
+            }
+
+            // Scroll to results section
+            window.scrollTo(0, resultsDiv.offsetTop);
         });
     });
+});
+
+
 </script>
 
 <!-- JavaScript -->
