@@ -165,7 +165,7 @@
     position: relative;
     align-items: center; /* Horizontal alignment */
     justify-content: center; /* Vertical alignment */
-    height: 80vh;
+    /* height: 80vh; */
     margin-bottom: 20px;
 }
 
