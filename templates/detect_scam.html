@@ -24,6 +24,27 @@
     <!-- Style Sheet -->
     <link href="{{ url_for('static', filename='css/style.css') }}" rel="stylesheet">
     <link href="{{ url_for('static', filename='css/custom.css') }}" rel="stylesheet">
+
+    <style>
+        .safety {
+          position: relative;
+          /* background-color: rgba(0, 0, 0, 0.5);  */
+        }
+        
+        .safety > div {
+          position: relative;
+          z-index: 2;
+        }
+        
+        #matrixCanvas {
+          position: absolute;
+          top: 0;
+          left: 0;
+          z-index: 0;
+        }
+      </style>
+      
+      
 </head>
 
 <body data-spy="scroll" data-target=".navbar" data-offset="50">
@@ -62,18 +83,18 @@
 <!-- End Header -->
 
 
-<section class="safety bg-black overflow-hidden" id="safety">
+<section class="safety overflow-hidden" id="safety">
     <div class="row align-items-center">
 
         <!-- First Div with centered content -->
         <div class="first">
             <div class="main-title">
-                <h2 class="heading" style="text-align: center;">Scam Detector for SMS or Email</h2>
+                <h2 class="heading result-header" style="text-align: center;background-color: #181A1F; font-weight: bold;">Scam Detector for SMS or Email</h2>
             </div>
             <form id="scamForm" action="{{ url_for('detect_scam')}}" method="POST">
                 <textarea id="messageBox" name="message" rows="10" cols="100" required="required" placeholder="Enter the SMS or Email content here" style="color: black; font-size: 20px;">{{ original_message }}</textarea>
                 <br>
-                <button type="submit" class="btn btn-medium btn-rounded btn-margin">Predict</button>
+                <button type="submit" class="btn btn-medium btn-trans btn-rounded btn-margin">Predict</button>
             </form>
         </div>
 
@@ -207,7 +228,7 @@
 }
 
 .result-header {
-    background-color: #1e2023;
+    background-color: yellow;
     padding: 15px;
     border-radius: 10px 10px 0 0;
     position: relative;
@@ -217,7 +238,7 @@
 
 .result-header h3 {
     text-align: center;
-    color: white;
+    color: black;
     margin: 0;
     font-weight: bold;
 }
@@ -235,7 +256,7 @@ h2#predictionText {
 
 .btn {
     padding: 0.7rem 1.5rem;
-    background-color: brown; 
+    background-color: #1A4D2E; 
     color: #fff;
     border-radius: 25px;
     border: none;
@@ -287,8 +308,46 @@ h2#predictionText {
     margin: 0 auto;
 }
 
-
 </style>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+      const canvas = document.createElement('canvas');
+      canvas.id = 'matrixCanvas';
+      const section = document.querySelector('#safety');
+      canvas.width = section.offsetWidth;
+      canvas.height = section.offsetHeight;
+      section.appendChild(canvas);
+      
+      const ctx = canvas.getContext('2d');
+      const drops = [];
+      const font_size = 16;
+      const columns = canvas.width / font_size;
+      
+      for (let i = 0; i < columns; i++)
+        drops[i] = 1;
+  
+      function drawMatrix() {
+        ctx.fillStyle = 'rgba(0, 0, 0, 0.04)';
+        ctx.fillRect(0, 0, canvas.width, canvas.height);
+        
+        ctx.fillStyle = '#2a2c30';
+        ctx.font = font_size + 'px arial';
+        
+        for (let i = 0; i < drops.length; i++) {
+          const text = String.fromCharCode(65 + Math.random() * 33);
+          ctx.fillText(text, i * font_size, drops[i] * font_size);
+          
+          if (drops[i] * font_size > canvas.height && Math.random() > 0.975)
+            drops[i] = 0;
+          
+          drops[i]++;
+        }
+      }
+      
+      setInterval(drawMatrix, 33);
+    });
+  </script>
 
 <script>
     document.addEventListener("DOMContentLoaded", function() {
@@ -339,6 +398,7 @@ h2#predictionText {
             } else if (data.prediction == 0) {
                 predictionText.innerHTML = '<h2 style="color:green; font-weight: bold;"><b>NOT A SCAM MESSAGE :)</h2>';
                 scamTypesButton.style.display = 'block';
+                reportButton.style.display = 'none';
                 learnButton.style.display = 'block';
             }
 
@@ -349,7 +409,11 @@ h2#predictionText {
 });
 
 
+
 </script>
+
+
+  
 
 <!-- JavaScript -->
 <script src="{{ url_for('static', filename='js/bundle.min.js') }}"></script>
