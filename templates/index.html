@@ -129,59 +129,10 @@
                     </div>
                 </div>
             </div>
-        
-        
-        
-    </div>
+      </div>
 <!-- End Counter -->
 
-        <div class="row">
-            <!-- Feature 1 -->
-            <div class="col-md-3 wow slideInLeft" data-wow-duration="1s" data-wow-delay=".3s">
-                <div class="feature-item text-center">
-                    <div class="feature_header">
-                        <span class="feature_header_text underline">Check for scam</span>
-                        <div>
-                            <p class="feature_header_content">Answer a few quick questions and we will tell you if a message is suspicious.</p>
-                        </div>
-                        
-                    </div>
-                    <a href="{{ url_for('scam') }}#scam" class=" btn btn-medium btn-rounded btn-trans btn-margin centered-button">Go and Find</a>
-                </div>
-            </div>
-            <!-- Feature 2-->
-            <div class="col-md-3 wow slideInUp" data-wow-duration="1s" data-wow-delay=".6s">
-                <div class="feature-item text-center">
-                    <div class="feature_header">
-                        <span class="feature_header_text underline">How to be safe?</span>
-                        <p class="feature_header_content">There are a variety of scams affecting Australians. Click here to learn more about how to protect yourselves.</p>
-                    </div>
-                    <a href="{{ url_for('safemethods') }}" class=" btn btn-medium btn-rounded btn-trans btn-margin centered-button">Account Safety</a>
-                </div>
-            </div>
-            <!-- Feature 3-->
-            <div class="col-md-3 wow slideInUp" data-wow-duration="1s" data-wow-delay=".6s">
-                <div class="feature-item text-center">
-                    <div class="feature_header">
-                        <span class="feature_header_text underline">Scam Statistics</span>
-                        <p class="feature_header_content">Demographic information about Australians who have been targeted by scams in the last year.</p>
-                    </div>
-                    <a href="{{ url_for('statistics') }}#statistics" class="btn btn-medium btn-rounded btn-trans btn-margin centered-button">Statistics</a>
-                </div>
-            </div>
-
-            <!-- Feature 4-->
-            <div class="col-md-3 wow slideInRight" data-wow-duration="1s" data-wow-delay=".3s">
-                <div class="feature-item text-center">
-                    <div class="feature_header">
-                        <span class="feature_header_text underline">More Resources</span>
-                        <p class="feature_header_content">Information about how to report possible scams and additional resources about scams.</p>
-                    </div>
-                    <a href="javascript:void(0);" class="scroll btn btn-medium btn-rounded btn-trans btn-margin centered-button">Coming Soon</a>
-                </div>
-            </div>
-            
-        </div>
+        
     </div>
 </section>
 <!-- End Home -->
@@ -189,31 +140,54 @@
 
 <script src="https://cdn.jsdelivr.net/npm/echarts@5.3.0/dist/echarts.min.js"></script>
 
-<section class="chart-section">
+<style>
+  .chart-section {
+      display: none;
+  }
+  
+  .chart-section.active {
+      display: block;
+  }
+</style>
 
-  <div style="margin-left: 190px; margin-right: 200px;">
-    <div class="row">
-      <div class="col-md-7">
-        <div id="echarts-example-main" style="width: 100%; height: 400px;"></div>
-      </div>
-      <div class="col-md-5" style="margin-top: 90px;">
-        <div class="right-container">
-          <div class="piechart_context-part1">
-            <p style="text-align: justify;">This pie chart shows the most serious reported percentage of persons across age groups. Reported in person refers to the total number of persons who reported the most serious scam incident to an authority, expressed as a percentage of the total number of persons who experienced a scam during 2021-22.
-            </p>
-          </div>
-          <br> <!-- This creates a new line -->
-          <div class="piechart_context-part2">
-            <p style="text-align: justify;">Statistics show people over 65 have the highest rate of experiencing serious scams while people under 24 with the least probability of being scammed.</p>
+<div class="radio-buttons" style="text-align: center; margin-bottom: 20px;">
+  <input type="radio" id="chart1" name="chart" value="chart1" checked>
+  <label for="chart1">Chart 1</label>
+
+  <input type="radio" id="chart2" name="chart" value="chart2">
+  <label for="chart2">Chart 2</label>
+
+  <input type="radio" id="chart3" name="chart" value="chart3">
+  <label for="chart3">Chart 3</label>
+</div>
+
+<!-- Wrap each chart section within a div with a unique id -->
+<div id="chart1-section" class="chart-section active">
+
+   <!-- ... your first chart ... -->
+    <div style="margin-left: 190px; margin-right: 200px;">
+      <div class="row">
+        <div class="col-md-7">
+          <div id="echarts-example-main" style="width: 100%; height: 400px;"></div>
+        </div>
+        <div class="col-md-5" style="margin-top: 90px;">
+          <div class="right-container">
+            <div class="piechart_context-part1">
+              <p style="text-align: justify;">This pie chart shows the most serious reported percentage of persons across age groups. Reported in person refers to the total number of persons who reported the most serious scam incident to an authority, expressed as a percentage of the total number of persons who experienced a scam during 2021-22.
+              </p>
+            </div>
+            <br> <!-- This creates a new line -->
+            <div class="piechart_context-part2">
+              <p style="text-align: justify;">Statistics show people over 65 have the highest rate of experiencing serious scams while people under 24 with the least probability of being scammed.</p>
+            </div>
           </div>
         </div>
       </div>
-    </div>
-</section>
 
-    <!-- Second Chart -->
-<section class="chart-section bg-black">
-    <div class="row" style="margin-top: 20px; margin-left: 200px; margin-right: 200px;">
+  </div>
+  <div id="chart2-section" class="chart-section">
+   <!-- ... your second chart ... -->
+    <div class="row" style="margin-left: 200px; margin-right: 200px;">
       <div class="col-md-8">
         <div id="echarts-component-main" style="width: 100%; height: 400px; padding-right: 120px; margin-right: 10px;"></div>
       </div>
@@ -232,10 +206,13 @@
           </div>
       </div>
     </div>
-</section>
+  
+  </div>
+  <div id="chart3-section" class="chart-section">
+   <!-- ... your third chart ... -->
+  
 
-<section>
-  <div class="row" style="margin-top: 20px; margin-left: 100px; margin-right: 200px;">
+  <div class="row" style=" margin-left: 100px; margin-right: 200px;">
       <div class="col-md-9">
           <!-- Add some padding to the right to push the chart a bit to the left -->
           <div id="echarts-scamtype-main" style="width: 100%; height: 400px; padding-right: 120px; margin-right: 10px;"></div>
@@ -247,8 +224,82 @@
           </div>
       </div>
   </div>
-</section>
+  </div>
 
+
+  <script>
+    document.addEventListener('DOMContentLoaded', (event) => {
+        const radioButtons = document.querySelectorAll('input[name="chart"]');
+        const sections = document.querySelectorAll('.chart-section');
+        
+        radioButtons.forEach((radioButton) => {
+            radioButton.addEventListener('change', () => {
+                sections.forEach((section, index) => {
+                    section.classList.remove('active');
+                    if (radioButton.value === 'chart' + (index + 1)) {
+                        section.classList.add('active');
+                    }
+                });
+            });
+        });
+    });
+</script>
+
+
+
+    <!-- Second Chart -->
+
+<!-- <section>
+  <div class="container">
+    <div class="row"> -->
+      <!-- Feature 1 -->
+      <!-- <div class="col-md-3 wow slideInLeft" data-wow-duration="1s" data-wow-delay=".3s">
+          <div class="feature-item text-center">
+              <div class="feature_header">
+                  <span class="feature_header_text underline">Check for scam</span>
+                  <div>
+                      <p class="feature_header_content">Answer a few quick questions and we will tell you if a message is suspicious.</p>
+                  </div>
+                  
+              </div>
+              <a href="{{ url_for('scam') }}#scam" class=" btn btn-medium btn-rounded btn-trans btn-margin centered-button">Go and Find</a>
+          </div>
+      </div> -->
+      <!-- Feature 2-->
+      <!-- <div class="col-md-3 wow slideInUp" data-wow-duration="1s" data-wow-delay=".6s">
+          <div class="feature-item text-center">
+              <div class="feature_header">
+                  <span class="feature_header_text underline">How to be safe?</span>
+                  <p class="feature_header_content">There are a variety of scams affecting Australians. Click here to learn more about how to protect yourselves.</p>
+              </div>
+              <a href="{{ url_for('safemethods') }}" class=" btn btn-medium btn-rounded btn-trans btn-margin centered-button">Account Safety</a>
+          </div>
+      </div> -->
+      <!-- Feature 3-->
+      <!-- <div class="col-md-3 wow slideInUp" data-wow-duration="1s" data-wow-delay=".6s">
+          <div class="feature-item text-center">
+              <div class="feature_header">
+                  <span class="feature_header_text underline">Scam Statistics</span>
+                  <p class="feature_header_content">Demographic information about Australians who have been targeted by scams in the last year.</p>
+              </div>
+              <a href="{{ url_for('statistics') }}#statistics" class="btn btn-medium btn-rounded btn-trans btn-margin centered-button">Statistics</a>
+          </div>
+      </div> -->
+
+      <!-- Feature 4-->
+      <!-- <div class="col-md-3 wow slideInRight" data-wow-duration="1s" data-wow-delay=".3s">
+          <div class="feature-item text-center">
+              <div class="feature_header">
+                  <span class="feature_header_text underline">More Resources</span>
+                  <p class="feature_header_content">Information about how to report possible scams and additional resources about scams.</p>
+              </div>
+              <a href="javascript:void(0);" class="scroll btn btn-medium btn-rounded btn-trans btn-margin centered-button">Coming Soon</a>
+          </div>
+      </div>
+      
+  </div>
+  </div>
+</section> -->
 
 
   <script>
@@ -779,6 +830,7 @@
 <!-- Start Scroll Top -->
 <div class="go-top"><i class="fas fa-angle-up"></i><i class="fas fa-angle-up"></i></div>
 <!-- End Scroll Top -->
+
 
 <!-- JavaScript -->
 <script src="{{ url_for('static', filename='js/bundle.min.js') }}"></script>
