@@ -163,7 +163,7 @@ $('.count').each(function() {
     $(this).appear(function() {
         var originalText = $(this).text();
         var isDollarSignPresent = originalText.startsWith('$');
-        var numberValue = isDollarSignPresent ? parseFloat(originalText.replace('$', '')) : parseFloat(originalText);
+        var numberValue = isDollarSignPresent ? parseFloat(originalText.replace(/[$,]/g, '')) : parseFloat(originalText.replace(/,/g, ''));
 
         $(this).prop('Counter', 0).animate({
             Counter: numberValue
@@ -171,7 +171,8 @@ $('.count').each(function() {
             duration: 3000,
             easing: 'swing',
             step: function(now) {
-                $(this).text((isDollarSignPresent ? "$" : "") + Math.ceil(now));
+                var formattedNumber = (isDollarSignPresent ? "$" : "") + Math.ceil(now).toLocaleString();
+                $(this).text(formattedNumber);
             }
         });
     });
@@ -180,7 +181,7 @@ $('.count').each(function() {
 function animateCounterElement(element) {
     var originalText = $(element).text();
     var isDollarSignPresent = originalText.startsWith('$');
-    var numberValue = isDollarSignPresent ? parseFloat(originalText.replace('$', '')) : parseFloat(originalText);
+    var numberValue = isDollarSignPresent ? parseFloat(originalText.replace(/[$,]/g, '')) : parseFloat(originalText.replace(/,/g, ''));
 
     $(element).prop('Counter', 0).animate({
         Counter: numberValue
@@ -188,10 +189,12 @@ function animateCounterElement(element) {
         duration: 3000,
         easing: 'swing',
         step: function(now) {
-            $(element).text((isDollarSignPresent ? "$" : "") + Math.ceil(now));
+            var formattedNumber = (isDollarSignPresent ? "$" : "") + Math.ceil(now).toLocaleString();
+            $(element).text(formattedNumber);
         }
     });
 }
+
 
 
 /* ===================================

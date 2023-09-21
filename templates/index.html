@@ -150,18 +150,21 @@
   }
 </style>
 
-<div class="radio-buttons" style="text-align: center; margin-bottom: 20px;">
+<div class="radio-buttons" style="width: 80%; margin: auto; margin-top: 1%;">
+  <h5>Select a Chart Based on the Following Categories:</h5>
   <input type="radio" id="chart1" name="chart" value="chart1" checked>
-  <label for="chart1">Chart 1</label>
+  <label for="chart1">Age-Based Scam Trends</label>
 
   <input type="radio" id="chart2" name="chart" value="chart2">
-  <label for="chart2">Chart 2</label>
+  <label for="chart2">Scam Occurrences by State</label>
 
   <input type="radio" id="chart3" name="chart" value="chart3">
-  <label for="chart3">Chart 3</label>
+  <label for="chart3">Scam Types in Australia</label>
 </div>
 
+
 <!-- Wrap each chart section within a div with a unique id -->
+<section>
 <div id="chart1-section" class="chart-section active">
 
    <!-- ... your first chart ... -->
@@ -183,198 +186,123 @@
           </div>
         </div>
       </div>
-
-  </div>
+    </div>
 </div>
 <div id="chart2-section" class="chart-section">
    <!-- ... your second chart ... -->
-    <div class="row" style="margin-left: 200px; margin-right: 200px;">
-      <div class="col-md-8">
-        <div id="echarts-component-main" style="width: 100%; height: 400px; padding-right: 120px; margin-right: 10px;"></div>
-      </div>
-      <div class="col-md-4 right-container">
-        <label class="select-align" for="select">Select a Year:</label>
+   <div style="margin-left: 190px; margin-right: 200px;">
+      <div class="row">
+        <div class="col-md-8">
+          <div id="echarts-component-main" style="width: 100%; height: 400px;"></div>
+        </div>
+        <div class="col-md-4 right-container">
+            <label class="select-align" for="select">Select a Year:</label>
 
-        <select name="pets" id="select" style="background-color: #24262d;">
-          <!-- <option value="">--Please select Year--</option> -->
-          <option value="2014-15">2014-15</option>
-          <option value="2020-21">2020-21</option>
-          <option value="2021-22">2021-22</option>
-        </select>
-        <div class="right-container">
-          <p style="text-align: justify;">This bar chart shows people experienced scams in various states and territories during specific years. 
-            The data indicates that both New South Wales and Victoria have consistently recorded the highest occurrences of scams.</p >
-          </div>
-      </div>
+            <select name="pets" id="select" style="background-color: #24262d;">
+              <!-- <option value="">--Please select Year--</option> -->
+              <option value="2014-15">2014-15</option>
+              <option value="2020-21">2020-21</option>
+              <option value="2021-22">2021-22</option>
+            </select>
+            <div class="right-container">
+              <p style="text-align: justify;">This bar chart shows people experienced scams in various states and territories during specific years. 
+              The data indicates that both New South Wales and Victoria have consistently recorded the highest occurrences of scams.</p >
+            </div>
+        </div>
     </div>
-  
 </div>
-<div id="chart3-section" class="chart-section">
+</div>
    <!-- ... your third chart ... -->
-  <div class="row" style=" margin-left: 100px; margin-right: 200px;">
-      <div class="col-md-9">
-          <!-- Add some padding to the right to push the chart a bit to the left -->
-          <div id="echarts-scamtype-main" style="width: 100%; height: 400px; padding-right: 120px; margin-right: 10px;"></div>
-      </div>
-      <div class="col-md-3" style="height: 400px;"> 
-          <!-- Add some padding to the left to push the p tag a bit to the right -->
-          <div class="p-container">
-              <p style="text-align: justify;">This chart shows persons in Australia aged 15 years and over, whether experienced a scam during 2021-22, by scam type. Statistics show "Information request or phishing" is the most common scam type, which is more than double compared with the second common type "Computer support".</p>
-          </div>
-      </div>
-  </div>
+<div id="chart3-section" class="chart-section">
+
+  <div class="row "  style=" margin-left: 100px; margin-right: 200px;">
+    <div class="col-md-9">
+        <!-- Add some padding to the right to push the chart a bit to the left -->
+        <div id="echarts-scamtype-main" style="width: 100%; height: 400px; padding-right: 120px; margin-right: 10px;"></div>
+    </div>
+    <div class="col-md-3" style="height: 400px;"> 
+        <!-- Add some padding to the left to push the p tag a bit to the right -->
+        <div class="p-container">
+            <p style="text-align: justify;">This chart shows persons in Australia aged 15 years and over, whether experienced a scam during 2021-22, by scam type. Statistics show "Information request or phishing" is the most common scam type, which is more than double compared with the second common type "Computer support".</p>
+        </div>
+    </div>
 </div>
-  
-
-
-  <script>
-    document.addEventListener('DOMContentLoaded', (event) => {
-        const radioButtons = document.querySelectorAll('input[name="chart"]');
-        const sections = document.querySelectorAll('.chart-section');
-        
-        radioButtons.forEach((radioButton) => {
-            radioButton.addEventListener('change', () => {
-                sections.forEach((section, index) => {
-                    section.classList.remove('active');
-                    if (radioButton.value === 'chart' + (index + 1)) {
-                        section.classList.add('active');
-                    }
-                });
-            });
-        });
-    });
-</script>
-
-
-
-    <!-- Second Chart -->
-
-<section>
-  <div class="container">
-    <div class="row">
-      <!-- Feature 1 -->
-      <div class="col-md-3 wow slideInLeft" data-wow-duration="1s" data-wow-delay=".3s">
-          <div class="feature-item text-center">
-              <div class="feature_header">
-                  <span class="feature_header_text underline">Check for scam</span>
-                  <div>
-                      <p class="feature_header_content">Answer a few quick questions and we will tell you if a message is suspicious.</p>
-                  </div>
-                  
-              </div>
-              <a href="{{ url_for('scam') }}#scam" class=" btn btn-medium btn-rounded btn-trans btn-margin centered-button">Go and Find</a>
-          </div>
-      </div>
-      <!-- Feature 2-->
-      <div class="col-md-3 wow slideInUp" data-wow-duration="1s" data-wow-delay=".6s">
-          <div class="feature-item text-center">
-              <div class="feature_header">
-                  <span class="feature_header_text underline">How to be safe?</span>
-                  <p class="feature_header_content">There are a variety of scams affecting Australians. Click here to learn more about how to protect yourselves.</p>
-              </div>
-              <a href="{{ url_for('safemethods') }}" class=" btn btn-medium btn-rounded btn-trans btn-margin centered-button">Account Safety</a>
-          </div>
-      </div>
-      <!-- Feature 3-->
-      <div class="col-md-3 wow slideInUp" data-wow-duration="1s" data-wow-delay=".6s">
-          <div class="feature-item text-center">
-              <div class="feature_header">
-                  <span class="feature_header_text underline">Scam Statistics</span>
-                  <p class="feature_header_content">Demographic information about Australians who have been targeted by scams in the last year.</p>
-              </div>
-              <a href="{{ url_for('statistics') }}#statistics" class="btn btn-medium btn-rounded btn-trans btn-margin centered-button">Statistics</a>
-          </div>
-      </div>
-
-      <!-- Feature 4-->
-      <div class="col-md-3 wow slideInRight" data-wow-duration="1s" data-wow-delay=".3s">
-          <div class="feature-item text-center">
-              <div class="feature_header">
-                  <span class="feature_header_text underline">More Resources</span>
-                  <p class="feature_header_content">Information about how to report possible scams and additional resources about scams.</p>
-              </div>
-              <a href="javascript:void(0);" class="scroll btn btn-medium btn-rounded btn-trans btn-margin centered-button">Coming Soon</a>
-          </div>
-      </div>
-      
-  </div>
-  </div>
+</div>
 </section>
+<script>
+  document.addEventListener('DOMContentLoaded', (event) => {
+      // Initialize your ECharts instances here, and configure them as needed.
+      const chart1Instance = echarts.init(document.getElementById('echarts-example-main'));
+      // Your chart1Instance initialization logic here...
+      var chartDom = document.getElementById('echarts-example-main');
+      var myChart = echarts.init(chartDom);
+      var option;
 
+      // Your data
+      var ageGroups = [
+        '15-24', '25-34', '35-44', '45-54', '55-64', '65-65+'
+      ];
 
-  <script>
-    var chartDom = document.getElementById('echarts-example-main');
-    var myChart = echarts.init(chartDom);
-    var option;
+      var reportedScams = [26.3, 60.7, 50.4, 58.3, 52.0, 70.1];
 
-    // Your data
-    var ageGroups = [
-      '15-24', '25-34', '35-44', '45-54', '55-64', '65-65+'
-    ];
-
-    var reportedScams = [26.3, 60.7, 50.4, 58.3, 52.0, 70.1];
-
-    // Options for the pie charts
-    option = {
-      // backgroundColor: '#333333',
-      title: {
-        text: 'Australia reported scam distribution by age group 2021-22',
-        left: 'top',
-        textStyle: {
-          color: "white",
-          fontWeight: 'bold',
-          fontSize: 18
-          
-        }
-      },
-      series: [
-        createPieSeries('Reported Scams', reportedScams, '40%', 'Reported Scams')
-
-      ]
-    };
-
-    function createPieSeries(name, data, centerX, label) {
-      return {
-        name: name,
-        type: 'pie',
-        radius: ['40%', '55%'],
-        center: [centerX, '50%'], // Adjust the centerX for placement
-        label: {
-          show: true, // Show labels
-          fontSize: 12, // Label font size
-          formatter: '{b}: {d}%', // Label format
-          fontWeight: 'bold',
-          color: "white",
-        },
-        emphasis: {
-          label: {
-            show: true,
-            fontSize: 15,
+      // Options for the pie charts
+      option = {
+        // backgroundColor: '#333333',
+        title: {
+          text: 'Australia reported scam distribution by age group 2021-22',
+          left: 'top',
+          textStyle: {
+            color: "white",
             fontWeight: 'bold',
-            color: "white"
+            fontSize: 18
+            
           }
         },
-        data: ageGroups.map((ageGroup, index) => ({
-          name: ageGroup,
-          value: data[index]
-        })),
-        labelLine: {
-          show: true // Hide label lines
-        },
-        labelLayout: {
-          moveOverlap: label === 'Reported Scams' // Move overlapping labels for the first chart
-        }
+        series: [
+          createPieSeries('Reported Scams', reportedScams, '40%', 'Reported Scams')
+
+        ]
       };
-    }
 
-    option && myChart.setOption(option);
-  </script>
+      function createPieSeries(name, data, centerX, label) {
+        return {
+          name: name,
+          type: 'pie',
+          radius: ['40%', '55%'],
+          center: [centerX, '50%'], // Adjust the centerX for placement
+          label: {
+            show: true, // Show labels
+            fontSize: 12, // Label font size
+            formatter: '{b}: {d}%', // Label format
+            fontWeight: 'bold',
+            color: "white",
+          },
+          emphasis: {
+            label: {
+              show: true,
+              fontSize: 15,
+              fontWeight: 'bold',
+              color: "white"
+            }
+          },
+          data: ageGroups.map((ageGroup, index) => ({
+            name: ageGroup,
+            value: data[index]
+          })),
+          labelLine: {
+            show: true // Hide label lines
+          },
+          labelLayout: {
+            moveOverlap: label === 'Reported Scams' // Move overlapping labels for the first chart
+          }
+        };
+      }
 
-
-
-
-  <script>
-    const renderBarPlot = (data) => {
+      option && myChart.setOption(option);
+      
+      const chart2Instance = echarts.init(document.getElementById('echarts-component-main'));
+      // Your chart2Instance initialization logic here...
+      const renderBarPlot = (data) => {
       var app = {};
 
       var chartDom = document.getElementById('echarts-component-main');
@@ -586,7 +514,95 @@
     });
 
     renderBarPlot(barData["2014-15"]);
-  </script>
+
+      
+      const chart3Instance = echarts.init(document.getElementById('echarts-scamtype-main'));
+      // Your chart3Instance initialization logic here...
+      
+      // Map section ids to corresponding chart instances
+      const chartInstances = {
+          'chart1-section': chart1Instance,
+          'chart2-section': chart2Instance,
+          'chart3-section': chart3Instance
+      };
+      
+      const radioButtons = document.querySelectorAll('input[name="chart"]');
+      const sections = document.querySelectorAll('.chart-section');
+      
+      radioButtons.forEach((radioButton) => {
+          radioButton.addEventListener('change', () => {
+              sections.forEach((section) => {
+                  section.classList.remove('active'); 
+              });
+              
+              const selectedSectionId = radioButton.value + '-section';
+              const selectedSection = document.getElementById(selectedSectionId);
+              if (selectedSection) {
+                  selectedSection.classList.add('active');
+                  
+                  // Resize the corresponding chart instance.
+                  const chartInstance = chartInstances[selectedSectionId];
+                  if (chartInstance) chartInstance.resize();
+              }
+          });
+      });
+  });
+</script>
+
+    <!-- Second Chart -->
+
+<section class="home bg-black">
+  <div class="container">
+    <div class="row">
+      <!-- Feature 1 -->
+      <div class="col-md-3 wow slideInLeft" data-wow-duration="1s" data-wow-delay=".3s">
+          <div class="feature-item text-center">
+              <div class="feature_header">
+                  <span class="feature_header_text underline">Check for scam</span>
+                  <div>
+                      <p class="feature_header_content">Answer a few quick questions and we will tell you if a message is suspicious.</p>
+                  </div>
+                  
+              </div>
+              <a href="{{ url_for('scam') }}#scam" class=" btn btn-medium btn-rounded btn-trans btn-margin centered-button">Go and Find</a>
+          </div>
+      </div>
+      <!-- Feature 2-->
+      <div class="col-md-3 wow slideInUp" data-wow-duration="1s" data-wow-delay=".6s">
+          <div class="feature-item text-center">
+              <div class="feature_header">
+                  <span class="feature_header_text underline">Scam Detector</span>
+                  <p class="feature_header_content">Amidst the rising tide of phishing attacks, explore this tool to identify email and SMS scams and safeguard yourself.</p>
+              </div>
+              <a href="{{ url_for('safemethods') }}" class=" btn btn-medium btn-rounded btn-trans btn-margin centered-button">Lets Start</a>
+          </div>
+      </div>
+      <!-- Feature 3-->
+      <div class="col-md-3 wow slideInUp" data-wow-duration="1s" data-wow-delay=".6s">
+          <div class="feature-item text-center">
+              <div class="feature_header">
+                  <span class="feature_header_text underline">Email leaked?</span>
+                  <p class="feature_header_content">Concerned about email security? Check if your email has been leaked or not.</p>
+              </div>
+              <a href="javascript:void(0);" class="btn btn-medium btn-rounded btn-trans btn-margin centered-button">Coming Soon</a>
+          </div>
+      </div>
+
+      <!-- Feature 4-->
+      <div class="col-md-3 wow slideInRight" data-wow-duration="1s" data-wow-delay=".3s">
+          <div class="feature-item text-center">
+              <div class="feature_header">
+                  <span class="feature_header_text underline">More Resources</span>
+                  <p class="feature_header_content">Information about types of possible scams and additional resources about safety measures.</p>
+              </div>
+              <a href="{{ url_for('resources') }}#resources" class="scroll btn btn-medium btn-rounded btn-trans btn-margin centered-button">Show Me</a>
+          </div>
+      </div>
+      
+  </div>
+  </div>
+</section>
+
 
 
   <script>
@@ -806,6 +822,65 @@
       padding-top: 80px;
 
     }
+    .radio-buttons {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    padding: 10px;
+    background-color: transparent;
+    border: 1px solid #ff9900;
+    border-radius: 8px;
+}
+
+.radio-buttons input[type='radio'] {
+    display: none;
+}
+
+.radio-buttons > label {
+    cursor: pointer;
+    padding: 10px;
+    background-color: #ffffff;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    color: #333;
+    font-size: 16px;
+    transition: all 0.3s ease-in-out;
+    position: relative;
+}
+
+.radio-buttons > label::before {
+    content: '';
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    border: 1px solid #ccc;
+    border-radius: 50%;
+    background-color: #ffffff;
+    position: absolute;
+    left: -30px;
+    top: 50%;
+    transform: translateY(-50%);
+    transition: all 0.3s ease-in-out;
+}
+
+.radio-buttons input[type='radio']:checked + label {
+    background-color: yellow;
+    color: black;
+}
+
+.radio-buttons input[type='radio']:checked + label::before {
+    background-color: yellow;
+    border-color: black;
+}
+
+.radio-buttons > label:hover {
+    background-color: #e0e0e0;
+}
+
+.radio-buttons > label:hover::before {
+    border-color: yellow;
+}
+
   </style>
 
 
@@ -813,7 +888,7 @@
 
 
 <!-- Start Footer -->
-<footer class="footer bg-black">
+<footer class="footer">
     <div class="container">
         <div class="row align-items-center">
             <!--Social-->
