@@ -1,0 +1,545 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!-- Meta Tags -->
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1, shrink-to-fit=no" name="viewport">
+    
+    <!-- Page Title -->
+    <title>NoMoreScamTricks | Statistics</title>
+    <!-- Favicon -->
+    <link href="{{ url_for('static', filename='resources/images/shield_tab_icon.png') }}" rel="icon">
+    <!-- Bundle -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/bundle.min.css') }}">
+    <!-- Plugin Css -->
+    <link href="{{ url_for('static', filename='css/wow.css') }}" rel="stylesheet">
+    <link href="{{ url_for('static', filename='css/LineIcons.min.css') }}" rel="stylesheet">
+    <link href="{{ url_for('static', filename='css/jquery.fancybox.min.css') }}" rel="stylesheet">
+    <link href="{{ url_for('static', filename='css/owl.carousel.min.css') }}" rel="stylesheet">
+    <link href="{{ url_for('static', filename='css/cubeportfolio.min.css') }}" rel="stylesheet">
+    <link href="{{ url_for('static', filename='css/line-awesome.min.css') }}" rel="stylesheet">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+    <!-- Style Sheet -->
+    <link href="{{ url_for('static', filename='css/style.css') }}" rel="stylesheet">
+    <link href="{{ url_for('static', filename='css/custom.css') }}" rel="stylesheet">
+</head>
+
+<body data-spy="scroll" data-target=".navbar" data-offset="50">
+
+<!-- Start Header -->
+<header id="statistics">
+    <div class="top-banner bg-trans-color transparent-banner">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-sm-12 col-md-12 col-lg-12 d-flex justify-content-center">
+                    <div class="logo-center">
+                        <a href="{{ url_for('index') }}">
+    <img src="{{ url_for('static', filename='/resources/images/shield_yellow.png') }}" alt="LOGO IMAGE">
+</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <nav class="navbar navbar-top-default navbar-expand-lg navbar-simple nav-line">
+        <div class="container">
+            <div class="collapse navbar-collapse" id="navheader">
+              <div class="navbar-nav  ml-auto mr-auto">
+                <a class="nav-link line" href="{{ url_for('iteration1.index') }}#home">Home</a>
+                <a class="nav-link line" href="{{ url_for('iteration1.scam') }}#scam">Is this a scam?</a>
+                <!-- <a class="nav-link line" href="{{ url_for('safemethods') }}">Account Safety</a> -->
+                <a class="nav-link line" href="{{ url_for('iteration1.statistics') }}#statistics">Statistics</a>
+                <!-- <a class="nav-link line" href="{{ url_for('iteration1.report') }}">Reporting and Resources</a> -->
+            </div>
+            </div>
+        </div>
+    </nav>
+</header>
+<!-- End Header -->
+
+
+
+
+
+<script src="https://cdn.jsdelivr.net/npm/echarts@5.3.0/dist/echarts.min.js"></script>
+
+
+
+
+<div id="echarts-example-main" style="width: 100%; height: 400px;"></div>
+
+  <script>
+    var chartDom = document.getElementById('echarts-example-main');
+    var myChart = echarts.init(chartDom);
+    var option;
+
+    // Your data
+    var ageGroups = [
+      '15-24', '25-34', '35-44', '45-54', '55-64', '65 and over'
+    ];
+
+    var reportedScams = [26.3, 60.7, 50.4, 58.3, 52.0, 70.1];
+    var notReportedScams = [23.5, 38.4, 34.8, 52.1, 44.2, 35.8];
+
+    // Options for the pie charts
+    option = {
+      // backgroundColor: '#333333',
+      title: {
+        text: 'Australia scam distribution been reported by age group 2021-22                               Australia scam distribution not been reported by age group 2021-22',
+        left: 'top',
+        textStyle: {
+          color: "white",
+          fontWeight: 'bold',
+          fontSize: 20
+        }
+      },
+      series: [
+        createPieSeries('Reported Scams', reportedScams, '15%', 'Reported Scams'),
+        createPieSeries('Not Reported Scams', notReportedScams, '55%', 'Not Reported Scams')
+      ]
+    };
+
+    function createPieSeries(name, data, centerX, label) {
+      return {
+        name: name,
+        type: 'pie',
+        radius: '40%',
+        center: [centerX, '50%'], // Adjust the centerX for placement
+        label: {
+          show: true, // Show labels
+          fontSize: 10, // Label font size
+          formatter: '{b}: {d}%', // Label format
+          fontWeight: 'bold'
+        },
+        emphasis: {
+          label: {
+            show: true,
+            fontSize: 14,            
+            fontWeight: 'bold'
+          }
+        },
+        data: ageGroups.map((ageGroup, index) => ({
+          name: ageGroup,
+          value: data[index]
+        })),
+        labelLine: {
+          show: true // Hide label lines
+        },
+        labelLayout: {
+          moveOverlap: label === 'Reported Scams' // Move overlapping labels for the first chart
+        }
+      };
+    }
+
+    option && myChart.setOption(option);
+  </script>
+<div id="echarts-component-main" style="width: 100%; height: 400px;"></div>
+
+<script>
+
+var app = {};
+
+var chartDom = document.getElementById('echarts-component-main');
+var myChart = echarts.init(chartDom);
+var option;
+
+const posList = [
+  'left',
+  'right',
+  'top',
+  'bottom',
+  'inside',
+  'insideTop',
+  'insideLeft',
+  'insideRight',
+  'insideBottom',
+  'insideTopLeft',
+  'insideTopRight',
+  'insideBottomLeft',
+  'insideBottomRight'
+];
+app.configParameters = {
+  rotate: {
+    min: -90,
+    max: 90
+  },
+  align: {
+    options: {
+      left: 'left',
+      center: 'center',
+      right: 'right'
+    }
+  },
+  verticalAlign: {
+    options: {
+      top: 'top',
+      middle: 'middle',
+      bottom: 'bottom'
+    }
+  },
+  position: {
+    options: posList.reduce(function (map, pos) {
+      map[pos] = pos;
+      return map;
+    }, {})
+  },
+  distance: {
+    min: 0,
+    max: 100
+  }
+};
+app.config = {
+  rotate: 90,
+  align: 'left',
+  verticalAlign: 'middle',
+  position: 'insideBottom',
+  distance: 15,
+  onChange: function () {
+    const labelOption = {
+      rotate: app.config.rotate,
+      align: app.config.align,
+      verticalAlign: app.config.verticalAlign,
+      position: app.config.position,
+      distance: app.config.distance
+    };
+    myChart.setOption({
+      series: [
+        {
+          label: labelOption
+        },
+        {
+          label: labelOption
+        },
+        {
+          label: labelOption
+        },
+        {
+          label: labelOption
+        },
+        {
+          label: labelOption
+        },
+        {
+          label: labelOption
+        },
+        {
+          label: labelOption
+        },
+        {
+          label: labelOption
+        }
+      ]
+    });
+  }
+};
+const labelOption = {
+  show: true,
+  position: app.config.position,
+  distance: app.config.distance,
+  align: app.config.align,
+  verticalAlign: app.config.verticalAlign,
+  rotate: app.config.rotate,
+  formatter: '{c}  {name|{a}}',
+  fontSize: 14,
+  rich: {
+    name: {},
+    c: {
+      color: 'white',
+    },
+  },
+};
+option = {
+  tooltip: {
+    trigger: 'axis',
+    axisPointer: {
+      type: 'shadow'
+    }
+  },
+  legend: {
+    data: ['NSW', 'VIC', 'QLD', 'SA', 'WA', 'TAS', 'NT', 'ACT'],
+    right: 'top',
+    textStyle: {
+      color: 'white',
+    },
+  },
+  toolbox: {
+    show: true,
+    orient: 'vertical',
+    left: 'right',
+    top: 'center',
+    feature: {
+      mark: { show: true },
+      dataView: { show: true, readOnly: false },
+      magicType: { show: true, type: ['line', 'bar', 'stack'] },
+      restore: { show: true },
+      saveAsImage: { show: true }
+    }
+  },
+  xAxis: [
+    {
+      type: 'category',
+      axisTick: { show: false },
+      data: ['2014-15', '2020-21', '2021-22']
+    }
+  ],
+  yAxis: [
+    {
+      type: 'value',
+      axisLabel: {
+        formatter: '{value}k', // Format the label as 1,000 people (k stands for thousands)
+      
+    }
+  }
+  ],
+  series: [
+    {
+      name: 'NSW',
+      type: 'bar',
+      barGap: 0,
+      label: labelOption,
+      emphasis: {
+        focus: 'series'
+      },
+      data: [123.9, 248.9, 211.7]
+    },
+    {
+      name: 'VIC',
+      type: 'bar',
+      label: {
+        ...labelOption,
+        color: 'white'
+      },
+      emphasis: {
+        focus: 'series'
+      },
+      data: [146.8, 209.6, 128.7]
+    },
+    {
+      name: 'QLD',
+      type: 'bar',
+      label: {
+        ...labelOption,
+        color: 'white'
+      },
+      emphasis: {
+        focus: 'series'
+      },
+      data: [76.0, 116.0, 75.4]
+    },
+    {
+      name: 'SA',
+      type: 'bar',
+      label: {
+        ...labelOption,
+        color: 'white'
+      },
+      emphasis: {
+        focus: 'series'
+      },
+      data: [27.9, 45.8, 36.9]
+    },
+    {
+        name: 'WA',
+        type: 'bar',
+        label: {
+          ...labelOption,
+          color: 'white'
+        },
+        emphasis: {
+          focus: 'series'
+        },
+        data: [59.4, 74.9, 70.0]
+    },
+    {
+        name: 'TAS',
+        type: 'bar',
+        label: {
+          ...labelOption,
+          color: 'white'
+        },
+        emphasis: {
+          focus: 'series'
+        },
+        data: [12.2, 16.3, 15.5]
+    },
+    {
+        name: 'NT',
+        type: 'bar',
+        label: {
+          ...labelOption,
+          color: 'white'
+        },
+        emphasis: {
+          focus: 'series'
+        },
+        data: [3.4, 3.2, 3.8]
+    },
+    {
+        name: 'ACT',
+        type: 'bar',
+        label: {
+          ...labelOption,
+          color: 'white'
+        },
+        emphasis: {
+          focus: 'series'
+        },
+        data: [4.7, 8.8, 9.4]
+    }
+    
+      
+  ]
+};
+// Add title configuration
+option.title = {
+  // backgroundColor: '#333',
+  text: 'Australia state population been scamed (per 1000 people) 2021-22', // Title text
+  left: 'top', // Position the title in the center
+  textStyle: {
+    color: "white",
+    fontSize: 20, // Font size of the title
+    fontWeight: 'bold', // Font weight of the title
+  },
+};
+    option && myChart.setOption(option);
+
+
+
+</script>
+
+<div id="echarts-scamtype-main" style="width: 100%; height: 400px;"></div>
+
+
+<script>
+
+
+var chartDom = document.getElementById('echarts-scamtype-main');
+    var myChart = echarts.init(chartDom);
+    var option;
+    
+    option = {
+      // backgroundColor: '#333',
+      title: {
+        text: 'Australian exposed to scam types (\'000 people) 2021-22',
+        left: 'top', 
+        textStyle: {
+            color: 'white',
+            fontSize: 20, // Font size of the title
+            fontWeight: 'bold', // Font weight of the title
+          },
+      },
+      tooltip: {
+        trigger: 'item',
+        formatter: '{a} <br/>{b} : {c}'
+      },
+      toolbox: {
+        feature: {
+          dataView: { readOnly: false },
+          restore: {},
+          saveAsImage: {}
+        }
+      },
+      legend: {
+        data: ['Show', 'Click', 'Visit', 'Inquiry', 'Order']
+      },
+      series: [
+        {
+          name: 'Funnel',
+          type: 'funnel',
+          left: '10%',
+          top: 60,
+          bottom: 60,
+          width: '80%',
+          min: 0,
+          max: 9000,
+          minSize: '0%',
+          maxSize: '100%',
+          sort: 'descending',
+          gap: 2,
+          label: {
+            show: true,
+            position: 'inside',
+            formatter: '{b} : {c} ({@|fontSize:14})',
+            rich: {
+              '@':{
+                fontSize: 14
+              }
+            }
+          },
+          labelLine: {
+            length: 10,
+            lineStyle: {
+              width: 1,
+              type: 'solid'
+            }
+          },
+          itemStyle: {
+            borderColor: '#fff',
+            borderWidth: 1
+          },
+          emphasis: {
+            label: {
+              fontSize: 20
+            }
+          },
+          data: [
+            { value: 8909.9, name: 'Information request or phishing' },
+            { value: 3503.5, name: 'Computer support' },
+            { value: 3747.9, name: 'Financial advice' },
+            { value: 3021.4, name: 'Upfront payment' },
+            { value: 3711.9, name: 'Buying or selling' },
+            { value: 1600.6, name: 'Lottery' },
+            { value: 1071.3, name: 'Relationship or romance' },
+            { value: 587.3, name: 'Pyramid' }
+          ]
+        }
+      ]
+    };
+    
+    option && myChart.setOption(option);
+</script>
+
+
+
+
+
+
+
+<!-- Start Footer -->
+<footer class="footer bg-black">
+    <div class="container">
+        <div class="row align-items-center">
+            <!--Social-->
+            <!--Text-->
+            <div class="col-12 text-center mt-3" style="top: 80px;">
+                <p class="company-about fadeIn">© 2023 Made By <a href="javascript:void(0);">Team Code for Good</a>
+                </p>
+            </div>
+        </div>
+    </div>
+</footer>
+<!-- End Footer -->
+
+<!-- Start Scroll Top -->
+<div class="go-top"><i class="fas fa-angle-up"></i><i class="fas fa-angle-up"></i></div>
+<!-- End Scroll Top -->
+
+<!-- JavaScript -->
+<script src="{{ url_for('static', filename='js/bundle.min.js') }}"></script>
+
+<!-- Plugin Js -->
+<script src="{{ url_for('static', filename='js/jquery.appear.js') }}"></script>
+<script src="{{ url_for('static', filename='js/morphext.min.js') }}"></script>
+<script src="{{ url_for('static', filename='js/parallaxie.min.js') }}"></script>
+<script src="{{ url_for('static', filename='js/owl.carousel.min.js') }}"></script>
+<script src="{{ url_for('static', filename='js/jquery.cubeportfolio.min.js') }}"></script>
+<script src="{{ url_for('static', filename='js/wow.min.js') }}"></script>
+
+<!-- CUSTOM JS -->
+<script src="{{ url_for('static', filename='js/contact_us.js') }}"></script>
+<script src="{{ url_for('static', filename='js/script.js') }}"></script>
+
+</html>

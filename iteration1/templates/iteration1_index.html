@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Meta Tags -->
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1, shrink-to-fit=no" name="viewport">
+    
+    <!-- Page Title -->
+    <title>NoMoreScamTricks | Home</title>
+    <!-- Favicon -->
+    <link href="{{ url_for('static', filename='resources/images/shield_tab_icon.png') }}" rel="icon">
+    <!-- Bundle -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/bundle.min.css') }}">
+    <!-- Plugin Css -->
+    <link href="{{ url_for('static', filename='css/wow.css') }}" rel="stylesheet">
+    <link href="{{ url_for('static', filename='css/LineIcons.min.css') }}" rel="stylesheet">
+    <link href="{{ url_for('static', filename='css/jquery.fancybox.min.css') }}" rel="stylesheet">
+    <link href="{{ url_for('static', filename='css/owl.carousel.min.css') }}" rel="stylesheet">
+    <link href="{{ url_for('static', filename='css/cubeportfolio.min.css') }}" rel="stylesheet">
+    <link href="{{ url_for('static', filename='css/line-awesome.min.css') }}" rel="stylesheet">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+    <!-- Style Sheet -->
+    <link href="{{ url_for('iteration1.static', filename='css/style.css') }}" rel="stylesheet">
+    <link href="{{ url_for('iteration1.static', filename='css/custom.css') }}" rel="stylesheet">
+</head>
+
+<body data-spy="scroll" data-target=".navbar" data-offset="50">
+
+<!-- Start Header -->
+<header id="home">
+    <div class="top-banner bg-trans-color transparent-banner">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-sm-12 col-md-12 col-lg-12 d-flex justify-content-center">
+                    <div class="logo-center">
+                        <a href="{{ url_for('index') }}">
+    <img src="{{ url_for('static', filename='/resources/images/shield_yellow.png') }}" alt="LOGO IMAGE">
+</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <nav class="navbar navbar-top-default navbar-expand-lg navbar-simple nav-line">
+        <div class="container">
+            <div class="collapse navbar-collapse" id="navheader">
+                <div class="navbar-nav  ml-auto mr-auto">
+                    <a class="nav-link line" href="{{ url_for('iteration1.index') }}#home">Home</a>
+                    <a class="nav-link line" href="{{ url_for('iteration1.scam') }}#scam">Is this a scam?</a>
+                    <!-- <a class="nav-link line" href="{{ url_for('safemethods') }}">Account Safety</a> -->
+                    <a class="nav-link line" href="{{ url_for('iteration1.statistics') }}#statistics">Statistics</a>
+                    <!-- <a class="nav-link line" href="{{ url_for('iteration1.report') }}">Reporting and Resources</a> -->
+                </div>
+            </div>
+        </div>
+    </nav>
+</header>
+<!-- End Header -->
+
+
+
+<!-- Start Home -->
+<section class="home bg-black" id="home">
+    <div class="container">
+        <!--Heading-->
+        <div class="row text-center">
+            <div class="col-12 col-md-10 col-lg-8 offset-md-1 offset-lg-2 wow zoomIn heading-area h2-center" data-wow-duration="1s" data-wow-delay=".1s">
+                <h2 class="heading h2-center text-center">Are you being scammed?</h2>
+            </div>
+        </div>
+
+        <div class="fact">
+            <h5 class="fact-heading">🔍 Did you know?</h5>
+            <p class="fact-text">Around <span class="fact-percentage">65%</span> of Australians have encountered scams in the past year. <span class="fact-percentage">In 2022</span>, scams hit Australia hard, causing significant financial losses. This highlights the importance of better online security and knowing how to spot scams to protect ourselves.</p>
+        </div>
+        
+        <!-- Start Counter -->
+    <div class="statistics-home bg-black" id="stats">
+        <!-- <div class="col-12 col-md-10 col-lg-8 offset-md-1 offset-lg-2 heading-area text-center wow zoomIn" data-wow-duration="1s" data-wow-delay=".1s">
+            <div class="main-title text-lg-left mb-0 wow fadeInUp" data-wow-delay="300ms">
+                <h2 class="wow fadeInUp h2-subheadings" data-wow-delay="400ms" style="text-align: center;">Do you know?</h2>
+        </div> -->
+        <div class="container position-relative">
+            <div class="row">
+                <!-- Counter Content Div -->
+                <div class="col-12 text-center wow slideInLeft" data-wow-duration="1s" data-wow-delay=".1s">
+                    <div class="counter-content">
+                        <!-- <h3 class="fact-text">In 2022, scams hit Australia hard, causing significant financial losses. This highlights the importance of better online security and knowing how to spot scams to protect ourselves.</h3> -->
+                        <!-- <p class="paragraph">Adjacent, we unveil the monetary losses suffered by Australians in the year 2022, quantified for your insight.</p> -->
+                    </div>
+                </div>
+            </div>
+            
+            <div class="row align-items-center mt-3 justify-content-center g-4"> <!-- added g-4 for gaps -->
+                <!-- Counters Div -->
+                <div class="col-12 col-md-8 text-center wow slideInRight" data-wow-duration="1s" data-wow-delay=".1s"> <!-- expanded to col-md-8 for a better fit -->
+                    <div class="row" style="margin-bottom: 50px;">
+                        <!-- Counter -->
+                        <div class="col-12 col-md-4 stats">
+                            <div class="parallax-box d-flex flex-column align-items-center justify-content-center">
+                                <i class="fas fa-dollar-sign fact-percentage"></i>
+                                <!-- <h2 class="count fact-percentage">$568640274</h2> -->
+                                <h2 id="total-loss" class="count fact-percentage">{{ total_loss }}</h2>
+                                <h5>Total Monetary Loss in 2022</h5>
+                            </div>
+                        </div>
+                        <!-- Counter -->
+                        <div class="col-12 col-md-4 stats">
+                            <div class="parallax-box d-flex flex-column align-items-center justify-content-center">
+                                <i class="fas fa-file-alt fact-percentage"></i>
+                                <!-- <h2 class="count fact-percentage">239237</h2> -->
+                                <h2 id="numbers-of-reports" class="count fact-percentage">{{ number_of_reports }}</h2>
+                                <h5>Number of reports</h5>
+                            </div>
+                        </div>
+                        <!-- Counter -->
+                        <div class="col-12 col-md-4 stats">
+                            <div class="parallax-box d-flex flex-column align-items-center justify-content-center">
+                                <i class="fas fa-user fact-percentage"></i>
+                                <!-- <h2 class="count fact-percentage">49163</h2> -->
+                                <h2 id="age-over-65" class="count fact-percentage">{{ affected_people_65plus }}</h2>
+                                <h5>Affected people aged 65+ </h5>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        
+        
+        
+    </div>
+<!-- End Counter -->
+
+        <div class="row">
+            <!-- Feature 1 -->
+            <div class="col-md-3 wow slideInLeft" data-wow-duration="1s" data-wow-delay=".3s">
+                <div class="feature-item text-center">
+                    <div class="feature_header">
+                        <span class="feature_header_text underline">Check for scam</span>
+                        <div>
+                            <p class="feature_header_content">Answer a few quick questions and we will tell you if a message is suspicious.</p>
+                        </div>
+                        
+                    </div>
+                    <a href="{{ url_for('iteration1.scam') }}#scam" class=" btn btn-medium btn-rounded btn-trans btn-margin centered-button">Go and Find</a>
+                </div>
+            </div>
+            <!-- Feature 2-->
+            <div class="col-md-3 wow slideInUp" data-wow-duration="1s" data-wow-delay=".6s">
+                <div class="feature-item text-center">
+                    <div class="feature_header">
+                        <span class="feature_header_text underline">How to be safe?</span>
+                        <p class="feature_header_content">There are a variety of scams affecting Australians. Click here to learn more about how to protect yourselves.</p>
+                    </div>
+                    <a href="javascript:void(0);" class="scroll btn btn-medium btn-rounded btn-trans btn-margin centered-button">Coming Soon</a>
+                </div>
+            </div>
+            <!-- Feature 3-->
+            <div class="col-md-3 wow slideInUp" data-wow-duration="1s" data-wow-delay=".6s">
+                <div class="feature-item text-center">
+                    <div class="feature_header">
+                        <span class="feature_header_text underline">Scam Statistics</span>
+                        <p class="feature_header_content">Demographic information about Australians who have been targeted by scams in the last year.</p>
+                    </div>
+                    <a href="{{ url_for('iteration1.statistics') }}#statistics" class="btn btn-medium btn-rounded btn-trans btn-margin centered-button">Statistics</a>
+                </div>
+            </div>
+
+            <!-- Feature 4-->
+            <div class="col-md-3 wow slideInRight" data-wow-duration="1s" data-wow-delay=".3s">
+                <div class="feature-item text-center">
+                    <div class="feature_header">
+                        <span class="feature_header_text underline">More Resources</span>
+                        <p class="feature_header_content">Information about how to report possible scams and additional resources about scams.</p>
+                    </div>
+                    <a href="javascript:void(0);" class="scroll btn btn-medium btn-rounded btn-trans btn-margin centered-button">Coming Soon</a>
+                </div>
+            </div>
+            
+        </div>
+    </div>
+</section>
+<!-- End Home -->
+
+
+
+<!-- Start types of scams -->
+<section class="cube-portfolio1 pb-0" id="typesofscam">
+    <div class="container container-position">
+        <!--Heading-->
+        <div class="row text-center">
+            <div class="col-12 col-md-10 col-lg-8 offset-md-1 offset-lg-2 wow zoomIn heading-area" data-wow-duration="1s" data-wow-delay=".1s">
+                <h3 class="heading text-center padding-bottom-half">Types of Scams</h3>
+            </div>
+        </div>
+
+        <div class="container container-position">
+            <!-- First Row -->
+            <div class="row no-gutters align-items-center padding-bottom-half wow fadeInUp" data-wow-duration="1.5s" data-wow-delay=".5s">
+                <div class="col-lg-6 col-md-12 col-sm-12 col-xs-12 text-div ">
+                    <h2 class="h2-subheadings">Romance Scams</h2>
+                    <p class="justified-text" style="padding-right: 20px;">Romance scams involve individuals using fake personas to build emotional connections with victims, often online. These scammers exploit trust to extract money or personal information, preying on victims' emotions. They fabricate stories, establish rapport, and then request financial aid for various reasons.</p>
+                    <a style="margin-top: 20px;" class="btn btn-medium btn-rounded btn-yellow" href="https://www.scamwatch.gov.au/types-of-scams/romance-scams" target="_blank" rel="noopener noreferrer">Find Out More</a>
+                </div>
+                <div class="col-lg-6 col-md-12 col-sm-12 col-xs-12" style="padding-left: 15px;">
+                    <div class="hover-effect image blog-img ml-auto"><img src="{{ url_for('static', filename='resources/images/romance_scam.png') }}" alt="image"></div>
+                </div>
+            </div>
+    
+            <!-- Second Row -->
+            <div class="row no-gutters align-items-center padding-bottom-half wow fadeInUp" data-wow-duration="1.5s" data-wow-delay="1s">
+                <div class="col-lg-6 col-md-12 col-sm-12 col-xs-12 order-2 order-lg-1" style="padding-right: 15px;">
+                    <div class="hover-effect image blog-img mr-auto"><img src="{{ url_for('static', filename='resources/images/investment_scam.png') }}" alt="image"></div>
+                </div>
+                <div class="col-lg-6 col-md-12 col-sm-12 col-xs-12 right-text text-right order-1 order-lg-2">
+                    <h2 class="h2-subheadings">Investment Scams</h2>
+                    <p class="justified-text" style="padding-left: 15px;">
+                        Investment scams are tricks that make people put money into something, but they end up losing it. These scams promise big profits easily, which sounds nice, but it's not true. Scammers use lies to get people interested, saying things like they have special deals or know secret things. They might even make fake investment companies. At first, they might give a bit of money back to seem real, but then everything falls apart, and people lose a lot. To stay safe, learn a lot before investing, ask experts for advice, and be careful if someone you don't know offers you a deal that seems too good.</p>
+                        <a style="margin-top: 20px;" class="btn btn-medium btn-rounded btn-yellow" href=https://www.scamwatch.gov.au/types-of-scams/investment-scams target="_blank" rel="noopener noreferrer">Find Out More</a>
+                </div>
+            </div>
+
+             <!-- Third Row -->
+            <div class="row no-gutters align-items-center padding-bottom-half wow fadeInUp" data-wow-duration="1.5s" data-wow-delay=".5s">
+                <div class="col-lg-6 col-md-12 col-sm-12 col-xs-12 text-div ">
+                    <h2 class="h2-subheadings">Text or SMS Scams</h2>
+                    <p class="justified-text" style="padding-right: 15px;">Text or SMS scams are when people send fake messages to your phone to steal your information or money. They might pretend to be important companies and ask you to give them your private details or send them money. They use tricky words to make you feel rushed or excited. To stay safe, be careful with messages from numbers you don't know, don't click on strange links, and never share personal stuff or money through texts unless you're sure it's real.</p>
+                    <a style="margin-top: 20px;" class="btn btn-medium btn-rounded btn-yellow" href="https://www.scamwatch.gov.au/types-of-scams/romance-scams" target="_blank" rel="noopener noreferrer">Find Out More</a>
+                </div>
+                <div class="col-lg-6 col-md-12 col-sm-12 col-xs-12 image-place" style="padding-left: 15px;">
+                    <div class="hover-effect image blog-img ml-auto"><img src="{{ url_for('static', filename='resources/images/text_scams.png') }}" alt="image"></div>
+                </div>
+            </div>
+
+            <!-- Fourth Row -->
+            <div class="row no-gutters align-items-center padding-bottom-half wow fadeInUp" data-wow-duration="1.5s" data-wow-delay="1s">
+                <div class="col-lg-6 col-md-12 col-sm-12 col-xs-12 order-2 order-lg-1" style="padding-right: 15px;">
+                    <div class="hover-effect image blog-img mr-auto"><img src="{{ url_for('static', filename='resources/images/phone_scams.png') }}" alt="image"></div>
+                </div>
+                <div class="col-lg-6 col-md-12 col-sm-12 col-xs-12 right-text text-right order-1 order-lg-2">
+                    <h2 class="h2-subheadings">Phone Scams</h2>
+                    <p class="justified-text" style="padding-left: 15px;">
+                        Phone call scams are when some individuals make fake phone calls to try to trick you into giving them money or personal information. These scammers might pretend to be from a bank, government agency, or a company you trust. They use tricky tactics like telling you that something is wrong with your account or offering prizes to get you to act fast. They can sound very convincing. To stay safe, be cautious when getting calls from unknown numbers, never give out your private details or send money over the phone, and hang up if something feels off.</p>
+                        <a style="margin-top: 20px;" class="btn btn-medium btn-rounded btn-yellow" href=https://www.scamwatch.gov.au/types-of-scams/phone-scams target="_blank" rel="noopener noreferrer">Find Out More</a>
+                </div>
+            </div>
+
+            <!-- Fifth Row -->
+            <div class="row no-gutters align-items-center padding-bottom-half wow fadeInUp" data-wow-duration="1.5s" data-wow-delay=".5s">
+                <div class="col-lg-6 col-md-12 col-sm-12 col-xs-12 text-div ">
+                    <h2 class="h2-subheadings">Email Scams</h2>
+                    <p class="justified-text" style="padding-right: 15px;">Last year, Australians lost a lot of money, $77 million, because of email scams. Tricky people sent emails that looked really important, pretending to be from the government, police, or businesses. They made the emails seem real by using the same logos and almost the same email addresses as the real places. These scammers can even copy an email address to make their fake emails look real. It's important to be careful with emails, even if they look real, and not give them your money or information. That way, you can keep yourself and your money safe.</p>
+                    <a style="margin-top: 20px;" class="btn btn-medium btn-rounded btn-yellow" href="https://www.scamwatch.gov.au/types-of-scams/email-scams" target="_blank" rel="noopener noreferrer">Find Out More</a>
+                </div>
+                <div class="col-lg-6 col-md-12 col-sm-12 col-xs-12 image-place" style="padding-left: 15px;">
+                    <div class="hover-effect image blog-img ml-auto"><img src="{{ url_for('static', filename='resources/images/email_scams.png') }}" alt="image"></div>
+                </div>
+            </div>
+            
+            <div style="display: flex; flex-direction: column; align-items: center;">
+                <p class="justified-text" style="text-align: center;">To learn more about other types of scams in Australia from SCAMWATCH click the below link. </p>
+                <a style="margin-top: 20px; margin-bottom: 50px;" class="btn btn-medium btn-rounded btn-yellow" href="https://www.scamwatch.gov.au/types-of-scams" target="_blank" rel="noopener noreferrer">Find Out More</a>
+            </div>
+
+        
+        </div>
+    </div>
+</section>
+<!-- End types of scams -->
+
+
+
+
+
+<!-- Start Footer -->
+<footer class="footer bg-black">
+    <div class="container">
+        <div class="row align-items-center">
+            <!--Social-->
+            <!--Text-->
+            <div class="col-12 text-center mt-3" style="top: 80px;">
+                <p class="company-about fadeIn">© 2023 Made By <a href="javascript:void(0);">Team Code for Good</a>
+                </p>
+            </div>
+        </div>
+    </div>
+</footer>
+<!-- End Footer -->
+
+<!-- Start Scroll Top -->
+<div class="go-top"><i class="fas fa-angle-up"></i><i class="fas fa-angle-up"></i></div>
+<!-- End Scroll Top -->
+
+<!-- JavaScript -->
+<script src="{{ url_for('static', filename='js/bundle.min.js') }}"></script>
+
+<!-- Plugin Js -->
+<script src="{{ url_for('static', filename='js/jquery.appear.js') }}"></script>
+<script src="{{ url_for('static', filename='js/morphext.min.js') }}"></script>
+<script src="{{ url_for('static', filename='js/parallaxie.min.js') }}"></script>
+<script src="{{ url_for('static', filename='js/owl.carousel.min.js') }}"></script>
+<script src="{{ url_for('static', filename='js/jquery.cubeportfolio.min.js') }}"></script>
+<script src="{{ url_for('static', filename='js/wow.min.js') }}"></script>
+
+<!-- CUSTOM JS -->
+<script src="{{ url_for('iteration1.static', filename='js/contact_us.js') }}"></script>
+<script src="{{ url_for('iteration1.static', filename='js/script.js') }}"></script>
+
+</body>
+</html>

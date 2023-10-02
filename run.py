@@ -1,4 +1,5 @@
 from flask import Flask, render_template, request, redirect, url_for, flash, session, jsonify
+from iteration1.iteration1_blueprint import iteration1
 import secrets, os
 import pandas as pd
 from sklearn.feature_extraction.text import CountVectorizer
@@ -8,7 +9,10 @@ import re
 import string
 import mysql.connector
 
+
 app = Flask(__name__)
+app.config['SERVER_NAME'] = 'nomorescams.live'
+app.register_blueprint(iteration1, subdomain='iteration1')
 app.secret_key = secrets.token_hex(16)
 
 DB_CONFIG = {
@@ -248,4 +252,7 @@ def fetch_data():
 
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    port = os.environ.get('WEBSITE_PORT', 5000)
+    app.run(host='0.0.0.0', port=int(port), debug=False)
+
+

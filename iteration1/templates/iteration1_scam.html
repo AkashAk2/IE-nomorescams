@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Meta Tags -->
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1, shrink-to-fit=no" name="viewport">
+    
+    <!-- Page Title -->
+    <title>NoMoreScamTricks | Scam</title>
+    <!-- Favicon -->
+    <link href="{{ url_for('static', filename='resources/images/shield_tab_icon.png') }}" rel="icon">
+    <!-- Bundle -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/bundle.min.css') }}">
+    <!-- Plugin Css -->
+    <link href="{{ url_for('static', filename='css/wow.css') }}" rel="stylesheet">
+    <link href="{{ url_for('static', filename='css/LineIcons.min.css') }}" rel="stylesheet">
+    <link href="{{ url_for('static', filename='css/jquery.fancybox.min.css') }}" rel="stylesheet">
+    <link href="{{ url_for('static', filename='css/owl.carousel.min.css') }}" rel="stylesheet">
+    <link href="{{ url_for('static', filename='css/cubeportfolio.min.css') }}" rel="stylesheet">
+    <link href="{{ url_for('static', filename='css/line-awesome.min.css') }}" rel="stylesheet">
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+    <!-- Style Sheet -->
+    <link href="{{ url_for('iteration1.static', filename='css/style.css') }}" rel="stylesheet">
+    <link href="{{ url_for('iteration1.static', filename='css/custom.css') }}" rel="stylesheet">
+</head>
+    
+<body data-spy="scroll" data-target=".navbar" data-offset="50">
+
+ <!-- Start Header -->
+    <header id="scam">
+        <div class="top-banner bg-trans-color transparent-banner">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-sm-12 col-md-12 col-lg-12 d-flex justify-content-center">
+                        <div class="logo-center">
+                            <a href="{{ url_for('index') }}">
+        <img src="{{ url_for('static', filename='/resources/images/shield_yellow.png') }}" alt="LOGO IMAGE">
+    </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <nav class="navbar navbar-top-default navbar-expand-lg navbar-simple nav-line">
+            <div class="container">
+                <div class="collapse navbar-collapse" id="navheader">
+                    <div class="navbar-nav  ml-auto mr-auto">
+                        <a class="nav-link line" href="{{ url_for('iteration1.index') }}#home">Home</a>
+                        <a class="nav-link line" href="{{ url_for('iteration1.scam') }}#scam">Is this a scam?</a>
+                        <!-- <a class="nav-link line" href="{{ url_for('safemethods') }}">Account Safety</a> -->
+                        <a class="nav-link line" href="{{ url_for('iteration1.statistics') }}#statistics">Statistics</a>
+                        <!-- <a class="nav-link line" href="{{ url_for('iteration1.report') }}">Reporting and Resources</a> -->
+                    </div>
+                </div>
+            </div>
+        </nav>
+    </header>
+ <!-- End Header -->
+
+
+
+<!-- Start Scam -->
+<section class="scam bg-black overflow-hidden" id="scam">
+    <div class="container">
+        <div class="row align-items-center">
+            <div class="col-12 col-md-10 col-lg-8 offset-md-1 offset-lg-2 heading-area text-center wow zoomIn" data-wow-duration="1s" data-wow-delay=".1s">
+                <div class="main-title text-lg-left mb-0 wow fadeInUp" data-wow-delay="300ms">
+                    <h2 class="wow fadeInUp heading" data-wow-delay="400ms" style="text-align: center;">Is this message a scam? <span style="display: block; text-align: center; color: yellow;" class="js-rotating">find out, protect yourself</span></h2>
+
+            </div>
+            <div class="h5-center">
+                <h5 class="h5-center">Answer a few questions about your message and we will let you know if it is suspicious</h5>
+            </div>
+            <div class="checkButton">
+                <a href="scam.html#quiz" class="scroll btn btn-medium btn-rounded btn-trans btn-margin">Check</a>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- End Scam -->
+
+<!-- Start Quiz -->
+<section class="quiz" id="quiz">
+    <h2 class="wow h2-center fadeInUp h5-center" data-wow-delay="400ms" style="text-align: center;">Check the communication you received against the following questions to assess its legitimacy</h2>
+    <div class="quiz-container bg-black">
+        <div class="progress-bar" id="progressBar"></div>
+        
+        <!-- Initial Slide -->
+        <div class="slide active" id="slide1">
+            <h2 class="h2-questions">1. What type of communication is it?</h2>
+            <div class="options">
+                <button data-type="text">Text Message</button>
+                <button data-type="call">Phone Call</button>
+                <button data-type="email">Email</button>
+            </div>
+        </div>
+        
+        <!-- Subsequent slides for Text Message type -->
+        <div class="slide" id="slide2-text">
+            <h2 class="h2-questions">2. Does the message ask you to take immediate action or claim something like your account being hacked or involved in fraud?</h2>
+            <div class="options">
+                <button data-weight="4">Yes</button>
+                <button data-weight="0">No</button>
+            </div>
+        </div>
+
+        <div class="slide" id="slide3-text">
+            <h2 class="h2-questions">3. Does the message inform you about a problem with your payment or package delivery?</h2>
+            <div class="options">
+                <button data-weight="2">Yes</button>
+                <button data-weight="0">No</button>
+            </div>
+        </div>
+
+        <div class="slide" id="slide4-text">
+            <h2 class="h2-questions">4. Does the message threaten to stop a service or charge a fine if you don't act now?</h2>
+            <div class="options">
+                <button data-weight="3">Yes</button>
+                <button data-weight="0">No</button>
+            </div>
+        </div>
+
+        <div class="slide" id="slide5-text">
+            <h2 class="h2-questions">5. Are you asked to make a payment or transfer money? (Eg: Toll, Utility Bills, Subscriptions)</h2>
+            <div class="options">
+                <button data-weight="3">Yes</button>
+                <button data-weight="0">No</button>
+            </div>
+        </div>
+
+        <div class="slide" id="slide6-text">
+            <h2 class="h2-questions">6. Are you requested to click on a link or call a number provided in the message?</h2>
+            <div class="options">
+                <button data-weight="3">Yes</button>
+                <button data-weight="0">No</button>
+            </div>
+        </div>
+
+        <div class="slide" id="slide7-text">
+            <h2 class="h2-questions">7. Are you prompted to log into an online account with your personal information?</h2>
+            <div class="options">
+                <button data-weight="3">Yes</button>
+                <button data-weight="0">No</button>
+            </div>
+        </div>
+        
+
+        <!-- ... Similarly for other slides -->
+
+        <!-- Subsequent slides for Phone Call type -->
+        <div class="slide" id="slide2-call">
+            <h2 class="h2-questions">2. Does the message ask for personal or financial information, such as payment or moving money between accounts?</h2>
+            <div class="options">
+                <button data-weight="3">Yes</button>
+                <button data-weight="0">No</button>
+            </div>
+        </div>
+
+        <!-- ... Similarly for other slides -->
+        <div class="slide" id="slide3-call">
+            <h2 class="h2-questions">3. Does the message ask for your password, pin, one-time code, or some other security information?</h2>
+            <div class="options">
+                <button data-weight="3">Yes</button>
+                <button data-weight="0">No</button>
+            </div>
+        </div>
+        
+        <div class="slide" id="slide4-call">
+            <h2 class="h2-questions">4. Does the message ask for credit card or banking details to process a refund or other ‘overpayment’?</h2>
+            <div class="options">
+                <button data-weight="3">Yes</button>
+                <button data-weight="0">No</button>
+            </div>
+        </div>
+        
+        <div class="slide" id="slide5-call">
+            <h2 class="h2-questions">5. Does the message want you to install software or access a secure account on your mobile phone or computer?</h2>
+            <div class="options">
+                <button data-weight="3">Yes</button>
+                <button data-weight="0">No</button>
+            </div>
+        </div>
+        
+        <div class="slide" id="slide6-call">
+            <h2 class="h2-questions">6. Does the message threaten you with immediate arrest, deportation, blackmail, etc.?</h2>
+            <div class="options">
+                <button data-weight="3">Yes</button>
+                <button data-weight="0">No</button>
+            </div>
+        </div>
+        
+        <div class="slide" id="slide7-call">
+            <h2 class="h2-questions">7. Does the message suggest you or your accounts have been hacked or involved in fraud?</h2>
+            <div class="options">
+                <button data-weight="3">Yes</button>
+                <button data-weight="0">No</button>
+            </div>
+        </div>
+        
+        <div class="slide" id="slide8-call">
+            <h2 class="h2-questions">8. Does the message tell you about a way to make quick, easy money with little risk or effort?</h2>
+            <div class="options">
+                <button data-weight="3">Yes</button>
+                <button data-weight="0">No</button>
+            </div>
+        </div>
+
+
+
+        <div class="slide" id="slide2-email">
+            <h2 class="h2-questions">2. Did the email come from an unfamiliar or unknown address?</h2>
+            <div class="options">
+                <button data-weight="2">Yes</button>
+                <button data-weight="0">No</button>
+            </div>
+        </div>
+
+        <div class="slide" id="slide3-email">
+            <h2 class="h2-questions">3. Does the email start with generic greetings like "Dear Customer"?</h2>
+            <div class="options">
+                <button data-weight="2">Yes</button>
+                <button data-weight="0">No</button>
+            </div>
+        </div>
+
+        <div class="slide" id="slide4-email">
+            <h2 class="h2-questions">4. Does the email contain a link or attachment? or asking you to log in with your personal details or share other private information?</h2>
+            <div class="options">
+                <button data-weight="3">Yes</button>
+                <button data-weight="0">No</button>
+            </div>
+        </div>
+        
+        <div class="slide" id="slide5-email">
+            <h2 class="h2-questions">5. Did the email request payment and give you unfamiliar bank account details?</h2>
+            <div class="options">
+                <button data-weight="2">Yes</button>
+                <button data-weight="0">No</button>
+            </div>
+        </div>
+        
+        <div class="slide" id="slide6-email">
+            <h2 class="h2-questions">6. Does the email claim to be from a known organization but use a free email service (like @gmail.com or @yahoo.com.au)?</h2>
+            <div class="options">
+                <button data-weight="2">Yes</button>
+                <button data-weight="-3">No</button>
+            </div>
+        </div>
+        
+        <div class="slide" id="slide7-email">
+            <h2 class="h2-questions">7. Are there any obvious spelling or grammar mistakes?</h2>
+            <div class="options">
+                <button data-weight="4">Yes</button>
+                <button data-weight="-2">No</button>
+            </div>
+        </div>
+        
+        <div class="slide" id="slide8-email">
+            <h2 class="h2-questions">8. Does the email provide a phone number and urge you to call immediately?</h2>
+            <div class="options">
+                <button data-weight="2">Yes</button>
+                <button data-weight="0">No</button>
+            </div>
+        </div>
+        
+        <div class="slide" id="slide9-email">
+            <h2 class="h2-questions">9. Did the email threaten you with actions like arrest, deportation, blackmail or claim something like your account being hacked or involved in fraud?</h2>
+            <div class="options">
+                <button data-weight="3">Yes</button>
+                <button data-weight="-1">No</button>
+            </div>
+        </div>
+        
+        <div class="slide" id="slide10-email">
+            <h2 class="h2-questions">10. Does the email warn about stopping a service or charging you a fine if you don't comply?</h2>
+            <div class="options">
+                <button data-weight="2">Yes</button>
+                <button data-weight="-1">No</button>
+            </div>
+        </div>
+        
+        <div class="slide" id="slide11-email">
+            <h2 class="h2-questions">11. Did the email inform you that you've been a victim of identity theft and offer assistance or compensation?</h2>
+            <div class="options">
+                <button data-weight="1">Yes</button>
+                <button data-weight="0">No</button>
+            </div>
+        </div>
+        
+        
+
+        <div class="controls">
+            <button id="prev">Previous</button>
+            <button id="next" class="button-disabled">Next</button>
+        </div>
+
+        <div>
+            <button id="restartQuiz">Restart Quiz</button>
+        </div>
+        
+        
+    </div>
+</section>
+
+<section class="result-container bg-black">
+    <div class="result-section">
+        <h3 class="h3-result"><span style="display: block; text-align: center; color: white;">Result</span></h3>
+        <p class="p-result">The probability of the communication being a scam is: <span class="p-result" id="resultPercentage">NaN</span>%</p>
+        <p class="p-result" id="evaluationMessage"></p>
+        <div id = "reportButton">
+            <a href="https://www.scamwatch.gov.au/report-a-scam" id="scamwatchLink" class="btn btn-large btn-rounded btn-trans btn-margin" target="_blank" style="display:none;">Report to scamwatch</a>
+        </div>
+        
+        
+        <div class="disclaimer" style="text-align: center;">
+            <p>
+                <span style="color: red;">Disclaimer:</span> The provided probability is for illustrative purposes and may not accurately reflect real-world outcomes.
+                Please use the results as a general guideline and exercise caution when interpreting them.
+            </p>
+        </div>
+        
+        
+    </div>
+</section>
+
+
+
+
+<!-- End Quiz -->
+
+
+
+<!-- Start Footer -->
+<footer class="footer bg-black">
+    <div class="container">
+        <div class="row align-items-center">
+            <!--Social-->
+            <!--Text-->
+            <div class="col-12 text-center mt-3" style="top: 80px;">
+                <p class="company-about fadeIn">© 2023 Made By <a href="javascript:void(0);">Team Code for Good</a>
+                </p>
+            </div>
+        </div>
+    </div>
+</footer>
+<!-- End Footer -->
+
+<!-- Start Scroll Top -->
+<div class="go-top"><i class="fas fa-angle-up"></i><i class="fas fa-angle-up"></i></div>
+<!-- End Scroll Top -->
+
+<!-- JavaScript -->
+<script src="{{ url_for('static', filename='js/bundle.min.js') }}"></script>
+
+<!-- Plugin Js -->
+<script src="{{ url_for('static', filename='js/jquery.appear.js') }}"></script>
+<script src="{{ url_for('static', filename='js/morphext.min.js') }}"></script>
+<script src="{{ url_for('static', filename='js/parallaxie.min.js') }}"></script>
+<script src="{{ url_for('static', filename='js/owl.carousel.min.js') }}"></script>
+<script src="{{ url_for('static', filename='js/jquery.cubeportfolio.min.js') }}"></script>
+<script src="{{ url_for('static', filename='js/wow.min.js') }}"></script>
+
+<!-- CUSTOM JS -->
+<script src="{{ url_for('iteration1.static', filename='js/contact_us.js') }}"></script>
+<script src="{{ url_for('iteration1.static', filename='js/script.js') }}"></script>
+
+</body>
+</html>
