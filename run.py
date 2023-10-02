@@ -11,8 +11,7 @@ import mysql.connector
 
 
 app = Flask(__name__)
-app.config['SERVER_NAME'] = 'nomorescams.live'
-app.register_blueprint(iteration1, subdomain='iteration1')
+app.register_blueprint(iteration1, url_prefix='/iteration1')
 app.secret_key = secrets.token_hex(16)
 
 DB_CONFIG = {
@@ -252,7 +251,5 @@ def fetch_data():
 
 
 if __name__ == '__main__':
-    port = os.environ.get('WEBSITE_PORT', 5000)
-    app.run(host='0.0.0.0', port=int(port), debug=False)
-
+    app.run(debug=True)
 

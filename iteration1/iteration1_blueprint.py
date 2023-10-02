@@ -1,5 +1,5 @@
 from flask import Blueprint, render_template, request, redirect, url_for, flash, session
-import secrets, pyodbc, os
+import secrets, os
 import mysql.connector
 
 iteration1 = Blueprint('iteration1', __name__, 
