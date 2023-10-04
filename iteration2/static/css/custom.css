@@ -1,0 +1,791 @@
+/*-- Use For Custom Styling --*/
+/* 
+// Button text size = 16px
+// Normal Text = 25px
+// Sub Heading = 30px
+// Heading = 55px
+// grey background = #23262d
+/*
+
+/* headings */
+
+.h2-center {
+    margin-top: -20px !important;
+}
+
+.h2-subheadings {
+    font-size: 40px;
+    font-weight: 500;
+}
+
+.h2-left {
+    font-size: 40px;
+    font-weight: 600;
+    margin-top: 10px;
+    margin-bottom: 30px;
+    font-family: 'Montserrat', sans-serif;
+    text-align: left;
+}
+.h5-center {
+    font-family: "Montserrat", sans-serif;
+    text-align: center;
+    color: white;
+    font-weight: 500;
+    font-size: 25px; /* You can adjust the font size as needed */
+    margin-top: 90px;
+}
+
+.h2-questions {
+    font-family: "Montserrat", sans-serif;
+    text-align: center;
+    color: white;
+    font-weight: 500;
+    font-size: 25px;
+}
+
+
+.row {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.row .stats h5 {
+    font-family: "Montserrat", sans-serif;
+    text-align: center;
+    color: white;
+    font-weight: 500;
+    font-size: 20px;
+}
+
+.row .stats h2 {
+    font-size: 25px;
+    font-family: "Montserrat", sans-serif;
+    font-weight: bold;
+}
+
+.row {
+    margin-bottom: 15px;
+    margin-left: -10px;
+    margin-right: -10px;
+}
+
+.h3-result {
+    font-family: "Montserrat", sans-serif;
+    text-align: center;
+    color: white;
+    font-weight: bold;
+    font-size: 50px; /* You can adjust the font size as needed */
+}
+
+.paragraph {
+    font-family: "Montserrat", sans-serif;
+    font-size: 20px;
+}
+
+
+.p-result {
+    font-family: "Montserrat", sans-serif;
+    text-align: center;
+    color: white;
+    font-weight: 800;
+    font-size: 20px; /* You can adjust the font size as needed */
+    margin-top: 20px;
+}
+
+/*text*/
+.justified-text {
+    text-align: justify;
+    font-size: 20px;
+    font-family: Roboto, sans-serif;
+}
+
+
+/*fact*/
+.fact {
+    padding: 5px;
+    border-radius: 5px;
+    max-width: auto;
+    margin: 0 auto;
+    margin-bottom: 10px;
+    display: block; 
+    text-align: center;
+
+}
+
+.fact-heading {
+    color: #ff9900;
+    font-size: 30px;
+    font-weight: bold;
+    margin-bottom: 10px;
+    font-family: 'Montserrat', sans-serif;
+}
+
+.fact-text {
+    color: white;
+    line-height: 1.5;
+    font-family: 'Montserrat', sans-serif;
+    text-align: justify;
+    font-weight: 500;
+    font-size: 25px; 
+    margin-top: 20px;
+}
+
+.fact-percentage {
+    color: #ff9900;
+    font-weight: bold;
+}
+
+/*scamtype container*/
+.container-position {
+    margin-right: 50px;
+    margin-left: 50px;
+    max-width: 95%; /* adjust this value based on your requirements */
+}
+
+
+/*Button*/
+.checkButton {
+    margin-top: 50px;
+}
+
+.centered-button {
+    position: absolute;
+    bottom: 15px;
+    left: 50%;
+    transform: translateX(-50%);
+    white-space: nowrap;
+}
+
+
+/* ===================================
+    statistics-home Section
+====================================== */
+
+.statistics-home {
+    position: relative;
+    align-items: center; /* Horizontal alignment */
+    justify-content: center; /* Vertical alignment */
+    /* height: 80vh; */
+    margin-bottom: 20px;
+}
+
+.statistics-home .main-title {
+    position: relative;
+    margin-bottom: 6rem;
+    text-align: center;
+}
+
+.statistics-home .main-title h5 {
+    font-weight: 300;
+    color: #ffffff;
+    opacity: 0.7;
+    font-size: 16px;
+    margin-bottom: 1.1rem;
+    font-family: "Montserrat", sans-serif;
+}
+
+.statistics-home .main-title h2 {
+    font-weight: 800;
+    color: #ffffff;
+    font-size: 55px;
+    line-height: 1.2;
+    max-width: 1000px;
+    margin-bottom: 1.5rem;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.statistics-home .main-title p {
+    max-width: 720px;
+    margin: 0 auto;
+    font-size: 16px;
+    color: #ffffff;
+    opacity: 0.7;
+    font-weight: 300;
+    line-height: 26px;
+    letter-spacing: 0.5px;
+    font-family: 'Source Sans Pro', sans-serif;
+}
+
+.statistics-home .statistics-home-img-small {
+    margin-left: 30px;
+}
+
+.statistics-home ul li {
+    font-size: 16px;
+    display: flex;
+    color: #ffffff;
+    font-weight: 300;
+    line-height: 30px;
+    opacity: 0.7;
+    letter-spacing: 0.5px;
+    font-family: 'Source Sans Pro', sans-serif;
+}
+
+.statistics-home ul li:before{
+    padding-right: 15px;
+    font-weight: 700;
+    content: '\f061';
+    color: yellow;
+    opacity: 1;
+    font-family: "Font Awesome 5 Free";
+}
+
+
+/* QUIZ */
+.quiz-container {
+    /* background-color: black; */
+    position: relative;
+    padding: 40px;
+    border-radius: 8px;
+    /* max-width: 1000px;
+    max-height: 500px; */
+    width: 70%;
+    height: 500px;
+    margin: 50px auto;
+    box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.1);
+}
+
+.result-container {
+    /* background-color: black; */
+    display: none;
+    padding: 40px;
+    border-radius: 8px;
+    /* max-width: 1000px;
+    max-height: 500px; */
+    width: 1200px;
+    height: 80%;
+    margin: 50px auto;
+    box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.1);
+}
+
+.result-section {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between; 
+    height: 100%;
+}
+
+.progress-bar {
+    height: 8px;
+    background-color: yellow;
+    border-radius: 4px;
+    margin-bottom: 30px;
+}
+
+.progress-bar #progressBar {
+    height: 100%;
+    width: 0%;
+    background-color: #3498db;
+    transition: width 0.3s;
+}
+
+h2 {
+    font-size: 30px;
+    margin-bottom: 30px;
+    text-align: center;
+}
+
+.options button {
+    background-color: white;
+    color: black;
+    border: none;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 16px;
+    font-weight: 500;
+    border-radius: 4px;
+    width: 150px; /* Setting a fixed width for all buttons */
+    height: 50px; /* Setting a fixed height for all buttons */
+    padding: 2px; /* Removing the padding since we're setting a fixed width and height */
+    margin: 50px; /* This will give you 50px gap between buttons */
+    cursor: pointer;
+    transition: background-color 0.3s;
+    display: flex; /* Making it a flex container to center the text */
+    align-items: center; /* Centering content vertically */
+    justify-content: center; /* Centering content horizontally */
+    margin-top: 20px;
+    margin-bottom: 50;
+}
+
+
+.options {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap; /* allows the buttons to wrap to the next line if they don't fit in one line */
+}
+
+
+.options button:hover {
+    background-color: yellow;
+}
+
+.options button.active {
+    background-color: yellow;
+}
+
+.controls {
+    position: absolute; /* Absolute position relative to .quiz-container */
+    bottom: 10%; /* Offset from the bottom */
+    left: 50%;  /* Centering: move it 50% to the right of the left edge */
+    transform: translateX(-50%); /* Centering: pull it back 50% of its own width */
+    display: flex;
+    justify-content: space-between;
+    width: 80%; /* Or another value that makes sense for your design */
+    min-width: 80%;
+    flex-wrap: wrap;
+}
+
+#prev, #next {
+    flex: 1; /* Equal width */
+    margin: 0 5px; /* Some margin for spacing */
+    max-width: 15%;
+    min-width: 10%;
+}
+
+
+#next {
+    left: 50px;
+}
+
+
+
+#prev:hover {
+    background-color: #2c3e50;  /* a slightly darker shade of the base color for 'Previous' button hover */
+}
+
+#prev {
+    background-color: #0f64b3;
+}
+
+#next {
+    background-color: #0f64b3;  /* A bit darker shade for default state */
+}
+
+#next.show-result-width {
+    width: 140px; /* Set the width wider for "Show Result" */
+}
+
+
+#next:hover {
+    background-color: #1a95ce;  /* Lighter shade for hover */
+}
+
+.next-selected {
+    background-color: #54B435;  /* Color when an option is selected */
+}
+
+#next.activated {
+    background-color: #56b30f; 
+}
+
+
+
+.controls button {
+    background-color: #34495e;
+    color: #fff;
+    border: none;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 16px;
+    font-weight: 500;
+    border-radius: 4px;
+    margin-left: 50px;
+    margin-right: 50px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    width: 100px; /* Setting a fixed width for all buttons */
+    height: 50px; /* Setting a fixed height for all buttons */
+}
+
+
+.controls button:hover {
+    background-color: yellow;
+}
+
+.button-disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+    pointer-events: none;
+}
+
+
+
+
+
+.result-section {
+    margin-top: 30px;
+    padding: 20px;
+    border-top: 1px solid #ddd;
+}
+
+.result-section h3 {
+    font-size: 30px;
+    font-weight: bold;
+    margin-bottom: 10px;
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.result-section p {
+    font-size: 25px;
+    color: white;  /* Color can be adjusted based on preference */
+    text-align: center;
+    margin-bottom: 10px;
+}
+
+
+
+#restartQuiz {
+    background-color: #e74c3c;
+    color: #fff;
+    border: none;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 16px;
+    border-radius: 4px;
+    padding: 10px 20px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    margin-top: 15px;
+    margin-bottom: 15px;
+    display: block;
+    margin: 15px auto;
+    bottom: 20px;
+}
+
+.disclaimer {
+    bottom: 20px;
+}
+
+#restartQuiz:hover {
+    background-color: #c0392b;
+}
+
+/* Add transition for the slide */
+.slide#slide1 {
+    display: block; /* The first slide should be visible */
+}
+
+.slide {
+    display: none;
+    opacity: 0;
+    transition: opacity 0.5s; /* Transition animation for fading */
+}
+
+.slide.active {
+    display: block;
+    opacity: 1; /* Fully visible when active */
+}
+
+/* Account Safety Page */
+.sidelearncontainer {
+    padding:20px;
+    max-width: 300px;
+    margin-left: 100px;
+    /* padding-top: 50px;
+    padding-left: 50px; */
+}
+
+.sidelearncontainer h5 {
+    font-size: 25px;
+    font-weight: bold;
+    padding:20px;
+    text-align: center;
+}
+
+.sidelearncontainer p {
+    text-align: justify;
+    padding-top: 15px;
+    padding:20px;
+    padding-right: 25px;
+}
+
+
+.accountsafety-heading {
+    padding: 40px;
+    margin-left: 100px;
+}
+
+.reduced-margin {
+    margin-top: -50px;
+}
+
+.emailinputcontainer {
+    width: 100%; /* set it to the width you need, or use max-width if necessary */
+    height: 100%; /* set it to the height you need */
+    display: flex;
+    justify-content: center; /* horizontally center the input */
+    align-items: center; /* vertically center the input */
+    margin-top: 50px;
+}
+
+#emailinput {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 500;
+    font-size: 20px;
+    width: 400px; /* example width */
+    height: 50px; /* example height */
+    color: black;
+    placeholder: black; /* This makes the placeholder text black */
+    border: 1px solid #ccc; /* example border */
+    padding: 0 10px; /* some padding on the left and right */
+}
+
+#emailinput::placeholder {
+    color: black;
+}
+
+.leakcheck-button {
+    margin-top: 10px;
+}
+
+
+
+/* Spam message detection */
+
+#messageinput {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 300;
+    font-size: 20px;
+    width: 30px;
+    height: 400px;
+}
+
+.message-container {
+    font-family: 'Montserrat', sans-serif;
+}
+
+.centered {
+    text-align: center;
+}
+.centered-heading {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 800;
+    font-size: 55px;
+    white-space: nowrap;
+    text-align: center;
+    width: 100%; 
+    margin: auto;  /* centers the h2 as a block */
+}
+#resultsSection {
+    display: none;
+}
+
+.progress-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 10vh;
+    width: 30%;
+    margin-left: 338px;
+  }
+  
+  .progress-bar__container {
+    width: 80%;
+    height: 2rem;
+    border-radius: 2rem;
+    position: relative;
+    overflow: hidden;
+    transition: all 0.5s;
+    will-change: transform;
+    box-shadow: 0 0 5px white;
+  }
+  
+  .progress-bar {
+    /* position: absolute; */
+    /* height: 100%; */
+    width: 100%;
+    content: "";
+    background-color: yellow;
+    top:0;
+    bottom: 0;
+    left: -100%;
+    border-radius: inherit;
+    display: flex;
+    justify-content: center;
+    align-items:center;
+    color: white;
+    font-family: sans-serif;
+  }
+  
+  .progress-bar__text {
+    display: none;
+  }
+  
+
+.results {
+    font-family: 'Montserrat', sans-serif;
+    position: relative;
+    display: none;
+    padding: 40px;
+    border-radius: 8px;
+    /* max-width: 1000px;
+    max-height: 500px; */
+    width: 80%;
+    height: auto;
+    flex: 1;
+    max-width: 800px;
+    margin: 30px auto;
+    box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.1);
+}
+
+/* .results {
+    margin-top: 30px;
+    padding: 20px;
+    border-top: 1px solid #ddd;
+} */
+
+#resultsSection h2 {
+    font-size: 30px;
+    font-weight: bold;
+    margin-bottom: 10px;
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+#resultsSection h2#predictionText {
+    margin-top: 100px !important;
+    font-size: 30px !important;
+    margin-bottom: 50px !important;
+    font-weight: bold !important;
+}
+
+
+.results p {
+    font-size: 25px;
+    color: white;  /* Color can be adjusted based on preference */
+    text-align: center;
+    margin-bottom: 10px;
+}
+
+.disclaimerPrediction {
+    position: absolute;
+    bottom: 20px;
+    left: 0;
+    right: 0;
+    text-align: center;
+    padding: 20px;
+}
+
+#learnButton {
+    text-align: center; /* Center align the button */
+    /* margin-top: 100px;
+    margin-bottom: 20px; */
+}
+
+.buttons-row {
+    display: flex;
+    justify-content: center; /* Center the items horizontally */
+    gap: 10%; /* Provide some gap between buttons */
+    align-items: baseline;
+    margin-bottom: 5%;
+}
+
+/* Account Safety Page */
+.scamlearncontainer {
+    padding:20px;
+    max-width: 400px;
+    margin-left: 100px;
+    /* padding-top: 50px;
+    padding-left: 50px; */
+}
+
+.scamlearncontainer h5 {
+    font-size: 25px;
+    font-weight: bold;
+    padding:20px;
+    text-align: center;
+}
+
+.scamlearncontainer p {
+    text-align: justify;
+    padding-top: 15px;
+    padding:20px;
+    padding-right: 25px;
+}
+
+.chart-section {
+    margin-bottom: -50px;
+}
+
+.scam .main-title {
+    display: flex;          /* Enable flexbox */
+    justify-content: center;/* Center children horizontally */
+    align-items: center;    /* Center children vertically */
+    height: 100%;     
+}
+
+
+
+@keyframes bounce {
+    0%, 20%, 50%, 80%, 100% {
+        transform: translateY(0);
+    }
+    40% {
+        transform: translateY(-20px);
+    }
+    60% {
+        transform: translateY(-10px);
+    }
+}
+
+@keyframes shake {
+    10%, 90% {
+        transform: translate3d(-1px, 0, 0);
+    }
+    20%, 80% {
+        transform: translate3d(2px, 0, 0);
+    }
+    30%, 50%, 70% {
+        transform: translate3d(-4px, 0, 0);
+    }
+    40%, 60% {
+        transform: translate3d(4px, 0, 0);
+    }
+}
+
+
+.scamResultText {
+    background-color: white;
+    width: 500px;
+    margin: 0 auto; /* centers the div horizontally */
+    align-items: center;
+    text-align: center;
+    border-radius: 8px; /* rounded corners */
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1); /* subtle shadow */
+    padding: 20px; /* spacing inside the div */
+    transition: all 0.3s ease; /* smooth transition for hover effects */
+    animation: bounce 2s infinite;
+    transition: transform 0.1s ease-in-out;
+
+    /* Using a linear gradient for a subtle depth */
+    background: linear-gradient(135deg, rgba(255, 255, 255, 1) 0%, rgba(230, 230, 230, 1) 100%);
+
+    /* Hover Effect */
+    &:hover {
+        transform: translateY(-5px); /* subtle lift on hover */
+        box-shadow: 0 12px 24px rgba(0, 0, 0, 0.1); /* intensified shadow on hover */
+    }
+}
+
+.video-container {
+    position: relative;
+    padding-bottom: 80%; /* for 16:9 aspect ratio 56.25% */
+    height: 0;
+    overflow: hidden;
+}
+
+.video-container iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.steps-section {
+    padding: 1.5rem 0;
+  }
+  
+
+
+/* detect scam page */

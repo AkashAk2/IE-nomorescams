@@ -1,5 +1,6 @@
 from flask import Flask, render_template, request, redirect, url_for, flash, session, jsonify
 from iteration1.iteration1_blueprint import iteration1
+from iteration2.iteration2_blueprint import iteration2
 import secrets, os
 import pandas as pd
 from sklearn.feature_extraction.text import CountVectorizer
@@ -12,6 +13,7 @@ import mysql.connector
 
 app = Flask(__name__)
 app.register_blueprint(iteration1, url_prefix='/iteration1')
+app.register_blueprint(iteration2, url_prefix='/iteration2')
 app.secret_key = secrets.token_hex(16)
 
 DB_CONFIG = {

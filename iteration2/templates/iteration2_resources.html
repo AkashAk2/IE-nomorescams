@@ -1,0 +1,443 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Meta Tags -->
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1, shrink-to-fit=no" name="viewport">
+    
+    <!-- Page Title -->
+    <title>NoMoreScamTricks | Resources</title>
+    <!-- Favicon -->
+    <link href="{{ url_for('static', filename='resources/images/shield_tab_icon.png') }}" rel="icon">
+    <!-- Bundle -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/bundle.min.css') }}">
+    <!-- Plugin Css -->
+    <link href="{{ url_for('static', filename='css/wow.css') }}" rel="stylesheet">
+    <link href="{{ url_for('static', filename='css/LineIcons.min.css') }}" rel="stylesheet">
+    <link href="{{ url_for('static', filename='css/jquery.fancybox.min.css') }}" rel="stylesheet">
+    <link href="{{ url_for('static', filename='css/owl.carousel.min.css') }}" rel="stylesheet">
+    <link href="{{ url_for('static', filename='css/cubeportfolio.min.css') }}" rel="stylesheet">
+    <link href="{{ url_for('static', filename='css/line-awesome.min.css') }}" rel="stylesheet">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+    <!-- Style Sheet -->
+    <link href="{{ url_for('static', filename='css/style.css') }}" rel="stylesheet">
+    <link href="{{ url_for('static', filename='css/custom.css') }}" rel="stylesheet">
+</head>
+
+<body data-spy="scroll" data-target=".navbar" data-offset="50">
+
+<!-- Start Header -->
+<header id="resources">
+    <div class="top-banner bg-trans-color transparent-banner">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-sm-12 col-md-12 col-lg-12 d-flex justify-content-center">
+                    <div class="logo-center">
+                        <a href="{{ url_for('index') }}">
+    <img src="{{ url_for('static', filename='/resources/images/shield_yellow.png') }}" alt="LOGO IMAGE">
+</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <nav class="navbar navbar-top-default navbar-expand-lg navbar-simple nav-line">
+        <div class="container">
+            <div class="collapse navbar-collapse" id="navheader">
+                <div class="navbar-nav  ml-auto mr-auto">
+                    <a class="nav-link line" data-nav href="{{ url_for('iteration2.index') }}#home">Home</a>
+                    <a class="nav-link line" data-nav href="{{ url_for('iteration2.scam') }}#scam">Is this a scam?</a>
+                    <a class="nav-link line" data-nav href="{{ url_for('iteration2.detect_scam') }}#detect_scam">Scam Detector Tool</a>
+                    <!-- <a class="nav-link line" href="{{ url_for('iteration2.safemethods') }}">Account Safety</a> -->
+                    <!-- <a class="nav-link line" href="{{ url_for('iteration2.statistics') }}#statistics">Statistics</a> -->
+                    <a class="nav-link line" data-nav href="{{ url_for('iteration2.resources') }}#resources">Resources</a> 
+                </div>
+            </div>
+        </div>
+    </nav>
+</header>
+<!-- End Header -->
+
+
+<!-- Start types of scams -->
+<section class="cube-portfolio1 pb-0 bg-black" id="typesofscam">
+    <div class="container container-position">
+        <!--Heading-->
+        <div class="row text-center">
+            <div class="col-12 col-md-10 col-lg-8 offset-md-1 offset-lg-2 wow zoomIn heading-area" data-wow-duration="1s" data-wow-delay=".1s">
+                <h3 class="heading text-center padding-bottom-half">Types of Scams</h3>
+            </div>
+        </div>
+
+        <div class="container container-position">
+            <!-- First Row -->
+            <div class="row no-gutters align-items-center padding-bottom-half wow fadeInUp" data-wow-duration="1.5s" data-wow-delay=".5s">
+                <div class="col-lg-6 col-md-12 col-sm-12 col-xs-12 text-div ">
+                    <h2 class="h2-subheadings">Investment Scams</h2>
+                    <p class="justified-text" style="padding-right: 20px;">Investment scams are tricks that make people put money into something, but they end up losing it. 
+                        These scams promise big profits easily, which sounds nice, but it's not true. 
+                        Scammers use lies to get people interested, saying things like they have special deals or know secret things. 
+                        They might even make fake investment companies. 
+                        At first, they might give a bit of money back to seem real, but then everything falls apart, 
+                        and people lose a lot. To stay safe, learn a lot before investing, ask experts for advice, and be careful if someone you don't know offers you a deal that seems too good.</p>
+                    <a style="margin-top: 20px;" class="btn btn-medium btn-rounded btn-yellow" href="https://www.scamwatch.gov.au/types-of-scams/romance-scams" target="_blank" rel="noopener noreferrer">Find Out More</a>
+                </div>
+                <div class="col-lg-6 col-md-12 col-sm-12 col-xs-12" style="padding-left: 15px;">
+                    <div class="hover-effect image blog-img ml-auto"><img src="{{ url_for('static', filename='resources/images/investment_scam.png') }}" alt="image"></div>
+                </div>
+            </div>
+
+            <!-- Second Row -->
+            <div class="row no-gutters align-items-center padding-bottom-half wow fadeInUp" data-wow-duration="1.5s" data-wow-delay="1s">
+                <div class="col-lg-6 col-md-12 col-sm-12 col-xs-12 order-2 order-lg-1" style="padding-right: 15px;">
+                    <div class="hover-effect image blog-img mr-auto"><img src="{{ url_for('static', filename='resources/images/romance_scam.png') }}" alt="image"></div>
+                </div>
+                <div class="col-lg-6 col-md-12 col-sm-12 col-xs-12 right-text text-right order-1 order-lg-2">
+                    <h2 class="h2-subheadings">Romance Scams</h2>
+                    <p class="justified-text" style="padding-left: 15px;">Romance scams involve individuals using fake personas to build emotional connections with victims, often online. 
+                        These scammers exploit trust to extract money or personal information, preying on victims' emotions. 
+                        They fabricate stories, establish rapport, and then request financial aid for various reasons.</p>
+                        <a style="margin-top: 20px;" class="btn btn-medium btn-rounded btn-yellow" href=https://www.scamwatch.gov.au/types-of-scams/investment-scams target="_blank" rel="noopener noreferrer">Find Out More</a>
+                </div>
+            </div>
+
+            <!-- Third Row -->
+            <div class="row no-gutters align-items-center padding-bottom-half wow fadeInUp" data-wow-duration="1.5s" data-wow-delay=".5s">
+                <div class="col-lg-6 col-md-12 col-sm-12 col-xs-12 text-div ">
+                    <h2 class="h2-subheadings">Email Scams</h2>
+                    <p class="justified-text" style="padding-right: 15px;">Last year, Australians lost a lot of money, $77 million, because of email scams. Tricky people sent emails that looked really important, pretending to be from the government, police, or businesses. They made the emails seem real by using the same logos and almost the same email addresses as the real places. These scammers can even copy an email address to make their fake emails look real. It's important to be careful with emails, even if they look real, and not give them your money or information. That way, you can keep yourself and your money safe.</p>
+                    <a style="margin-top: 20px;" class="btn btn-medium btn-rounded btn-yellow" href="https://www.scamwatch.gov.au/types-of-scams/email-scams" target="_blank" rel="noopener noreferrer">Find Out More</a>
+                </div>
+                <div class="col-lg-6 col-md-12 col-sm-12 col-xs-12 image-place" style="padding-left: 15px;">
+                    <div class="hover-effect image blog-img ml-auto"><img src="{{ url_for('static', filename='resources/images/email_scams.png') }}" alt="image"></div>
+                </div>
+            </div>
+
+            <!-- Fourth Row -->
+            <div class="row no-gutters align-items-center padding-bottom-half wow fadeInUp" data-wow-duration="1.5s" data-wow-delay="1s">
+                <div class="col-lg-6 col-md-12 col-sm-12 col-xs-12 order-2 order-lg-1" style="padding-right: 15px;">
+                    <div class="hover-effect image blog-img mr-auto"><img src="{{ url_for('static', filename='resources/images/phone_scams.png') }}" alt="image"></div>
+                </div>
+                <div class="col-lg-6 col-md-12 col-sm-12 col-xs-12 right-text text-right order-1 order-lg-2">
+                    <h2 class="h2-subheadings">Phone Scams</h2>
+                    <p class="justified-text" style="padding-left: 15px;">
+                        Phone call scams are when some individuals make fake phone calls to try to trick you into giving them money or personal information. These scammers might pretend to be from a bank, government agency, or a company you trust. They use tricky tactics like telling you that something is wrong with your account or offering prizes to get you to act fast. They can sound very convincing. To stay safe, be cautious when getting calls from unknown numbers, never give out your private details or send money over the phone, and hang up if something feels off.</p>
+                        <a style="margin-top: 20px;" class="btn btn-medium btn-rounded btn-yellow" href=https://www.scamwatch.gov.au/types-of-scams/phone-scams target="_blank" rel="noopener noreferrer">Find Out More</a>
+                </div>
+            </div>
+
+             <!-- Fifth Row -->
+             <div class="row no-gutters align-items-center padding-bottom-half wow fadeInUp" data-wow-duration="1.5s" data-wow-delay=".5s">
+                <div class="col-lg-6 col-md-12 col-sm-12 col-xs-12 text-div ">
+                    <h2 class="h2-subheadings">Text or SMS Scams</h2>
+                    <p class="justified-text" style="padding-right: 15px;">Text or SMS scams are when people send fake messages to your phone to steal your information or money. They might pretend to be important companies and ask you to give them your private details or send them money. They use tricky words to make you feel rushed or excited. To stay safe, be careful with messages from numbers you don't know, don't click on strange links, and never share personal stuff or money through texts unless you're sure it's real.</p>
+                    <a style="margin-top: 20px;" class="btn btn-medium btn-rounded btn-yellow" href="https://www.scamwatch.gov.au/types-of-scams/romance-scams" target="_blank" rel="noopener noreferrer">Find Out More</a>
+                </div>
+                <div class="col-lg-6 col-md-12 col-sm-12 col-xs-12 image-place" style="padding-left: 15px;">
+                    <div class="hover-effect image blog-img ml-auto"><img src="{{ url_for('static', filename='resources/images/text_scams.png') }}" alt="image"></div>
+                </div>
+            </div>
+            
+            <div style="display: flex; flex-direction: column; align-items: center;">
+                <p class="justified-text" style="text-align: center;">To learn more about other types of scams in Australia from SCAMWATCH click the below link. </p>
+                <a style="margin-top: 20px; margin-bottom: 50px;" class="btn btn-medium btn-rounded btn-yellow" href="https://www.scamwatch.gov.au/types-of-scams" target="_blank" rel="noopener noreferrer">Find Out More</a>
+            </div>
+
+        
+        </div>
+    </div>
+</section>
+<!-- End types of scams -->
+
+
+<section id="steps">
+    <div class="container container-position">
+        <!--Heading-->
+        <div class="row text-center">
+            <div class="col-12 col-md-10 col-lg-8 offset-md-1 offset-lg-2 wow zoomIn heading-area" data-wow-duration="1s" data-wow-delay=".1s">
+                <h3 class="heading text-center">Steps to protect yourself from scams</h3>
+            </div>
+        </div>
+
+        <section class="steps-section">
+            <div class="container">
+                <p class="justified-text">
+                    Protecting yourself against scams and phishing attacks is crucial in today's digital age. Scammers are always trying to trick people online, but you can stay safe by following these simple steps:
+                </p>
+                <br>
+                
+                <p class="justified-text">
+                    • <span class="fact-percentage">Be Careful:</span> If you get unexpected emails, messages, or calls, be cautious. Scammers often try to trick you with urgent or scary messages.
+                </p>
+                <br>
+                
+                <p class="justified-text">
+                    • <span class="fact-percentage">Check Senders:</span> Look closely at who's contacting you. Watch out for small mistakes in email addresses or strange phone numbers.
+                </p>
+                <br>
+                
+                <p class="justified-text">
+                    • <span class="fact-percentage">Avoid Clicking:</span> Don't click on links in emails or messages if you're not sure they're safe. Hover your mouse over them to check where they lead.
+                </p>
+                <br>
+                
+                <p class="justified-text">
+                    • <span class="fact-percentage">Strong Passwords:</span> Make strong, unique passwords for your online accounts. It's like locking your front door with a sturdy key.
+                </p>
+                <br>
+                
+                <p class="justified-text">
+                    • <span class="fact-percentage">Passwordless Authentication:</span> Use passwordless methods if available. These are like having a special key or your fingerprint to unlock your accounts, making them even safer.
+                    <a href="#passkeys" class="see-more-button fact-percentage">Learn More</a>
+                  </p>
+                <br>
+                
+                <p class="justified-text">
+                    • <span class="fact-percentage">Extra Protection:</span> Whenever you can, use two-factor authentication (2FA). It's like having a second lock on your door.
+                </p>
+                <br>
+                
+                <p class="justified-text">
+                    • <span class="fact-percentage">Update Your Devices:</span> Keep your computer and phone up to date. Updates often fix security problems.
+                </p>
+                <br>
+                
+                <p class="justified-text">
+                    • <span class="fact-percentage">Learn About Scams:</span> Read or ask someone to help you learn about common tricks scammers use.
+                </p>
+                <br>
+                
+                <p class="justified-text">
+                    • <span class="fact-percentage">Use Antivirus:</span> Install antivirus software to help guard against bad stuff on the internet.
+                </p>
+                <br>
+                
+                <p class="justified-text">
+                    • <span class="fact-percentage">Verify Requests:</span> If someone asks for personal info or money, double-check with someone you trust or the organization directly.
+                </p>
+                <br>
+                
+                <p class="justified-text">
+                    • <span class="fact-percentage">Watch Urgent Requests:</span> If someone urgently asks for money online, take your time and ask someone for advice before sending anything.
+                </p>
+                <br>
+                
+                <p class="justified-text">
+                    • <span class="fact-percentage">Secure Wi-Fi:</span> Protect your home Wi-Fi with a strong password, so strangers can't use it.
+                </p>
+                <br>
+                
+                <p class="justified-text">
+                    • <span class="fact-percentage">Check Bank Statements:</span> Keep an eye on your bank and credit card statements for any strange charges.
+                </p>
+                <br>
+                
+                <p class="justified-text">
+                    • <span class="fact-percentage">Safe Wi-Fi:</span> Be careful about using public Wi-Fi for important things like banking. A VPN can help make it safer.
+                </p>
+                <br>
+                
+                <p class="justified-text">
+                    • <span class="fact-percentage">Report Suspicious Stuff:</span> If you see something strange online, tell your family or friends. They can help you figure out if it's safe.
+                </p>
+                <br>
+                
+                <p class="justified-text">
+                    • <span class="fact-percentage">Back Up Your Files:</span> Make copies of important photos and documents, so you don't lose them.
+                </p>
+                <br>
+                
+                <p class="justified-text">
+                    • <span class="fact-percentage">Social Media Caution:</span> Don't share too much personal stuff on social media. Scammers might use it against you.
+                </p>
+                <br>
+                
+                <p class="justified-text">
+                    • <span class="fact-percentage">Trust Yourself:</span> If something seems odd or too good to be true, it probably is. Trust your instincts and ask for help if you're unsure.
+                </p>
+                
+            </div>
+        </section>  
+    </div>
+</section>
+
+<section class="bg-black">
+    <div class="container container-position">
+        <!-- First Row -->
+        <div class="row no-gutters align-items-center padding-bottom-half wow fadeInUp" data-wow-duration="1.5s" data-wow-delay=".5s">
+            <div class="col-lg-6 col-md-12 col-sm-12 col-xs-12 text-div " id="passkeys">
+                <h2 class="h2-subheadings">What are passkeys?</h2>
+                <p class="justified-text" style="padding-right: 2%; padding-left: 4%;">
+                    Passkeys are a more secure and convenient way to access your accounts and devices without traditional passwords. These passkeys are unique to you and can come in various forms, such as:
+                </p>
+                <br>
+                <ul class="justified-text" style="padding-right: 2%; padding-left: 4%;">
+                    <li><span class="fact-percentage">Biometrics:</span> Your fingerprint, face scan, or even your voice can serve as a passkey. Devices like smartphones and laptops use these biometric features to verify your identity.</li>
+                    <br>
+                    <li><span class="fact-percentage">Hardware Tokens:</span> Some systems provide physical hardware tokens, like USB keys or smart cards, that you plug into your device to prove your identity.</li>
+                    <br>
+                    <li><span class="fact-percentage">One-Time Codes:</span> Passkeys can also be generated as one-time codes and sent to your trusted device, which you enter to access your account.</li>
+                    <br>
+                    <li><span class="fact-percentage">Email Magic Links:</span> Instead of entering a password, you receive an email link that, when clicked, serves as your passkey to log in.</li>
+                </ul>
+            </div>
+            <div class="col-lg-6 col-md-12 col-sm-12 col-xs-12" style="padding-left: 2%; padding-right: 4%;">
+                <div class="video-container">
+                    <iframe width="100%" height="450" src="https://www.youtube.com/embed/2xdV-xut7EQ" title="Understand passkeys in 4 minutes" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+                </div>
+            </div>
+        </div>
+            
+        
+    </div>
+</section>
+
+<section>
+    <div class="container container-position">
+        <!-- First Row -->
+        <div class="row no-gutters align-items-center padding-bottom-half wow fadeInUp" data-wow-duration="1.5s" data-wow-delay="1s">
+            <div class="col-lg-6 col-md-12 col-sm-12 col-xs-12" style="padding-right: 2%; padding-left: 2%;">
+                <div class="video-container" >
+                    <iframe width="560" height="315" src="https://www.youtube.com/embed/ckvrKdFNF78?si=zFklkZpnv-HALRqq&amp;start=15" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+                </div>
+            </div>
+            <div class="col-lg-6 col-md-12 col-sm-12 col-xs-12 right-text text-right order-1 order-lg-2" style="padding-right: 4%;">
+                <h2 class="h2-subheadings">How to set up Google Passkeys</h2>
+                <p class="justified-text" style="padding-right: 4%; padding-left: 2%;">
+                    Google Passkeys are a modern alternative to traditional passwords for signing in to apps and websites. They are designed to provide a simpler and more secure authentication method.
+                  </p>
+                  <br>
+                  
+                  <p class="justified-text" style="padding-right: 2%; padding-left: 2%;">
+                    <strong>Here's why you should consider using Google Passkeys:</strong>
+                  </p>
+                  <br>
+                  
+                  <ul class="justified-text" style="padding-right: 2%; padding-left: 2%;">
+                    <li>
+                      <span class="fact-percentage">Enhanced Security:</span> Resistant to online attacks like phishing.
+                    </li>
+                    <br>
+                  
+                    <li>
+                      <span class="fact-percentage">Convenience:</span> Simplifies sign-in with fingerprint, face scan, or PIN.
+                    </li>
+                    <br>
+                  
+                    <li>
+                      <span class="fact-percentage">Eliminates Password Hassles:</span> No need to remember complex passwords.
+                    </li>
+                    <br>
+                  
+                    <li>
+                      <span class="fact-percentage">Industry Collaboration:</span> Supported by FIDO Alliance, Apple, Microsoft.
+                    </li>
+                    <br>
+                  
+                    <li>
+                      <span class="fact-percentage">Broad Adoption:</span> Available for Google Accounts on major platforms.
+                    </li>
+                    <br>
+                  
+                    <li>
+                      <span class="fact-percentage">Complements 2-Step Verification:</span> Offers an alternative to traditional passwords while 2SV remains available.
+                    </li>
+                  </ul>
+                  
+            </div>
+        </div>
+            
+        
+    </div>
+</section>
+
+<section class="bg-black" id="applepasskey">
+    <div class="container container-position">
+        <div class="row no-gutters align-items-center padding-bottom-half wow fadeInUp" data-wow-duration="1.5s" data-wow-delay=".5s">
+            <div class="col-lg-6 col-md-12 col-sm-12 col-xs-12 text-div " id="passkeys">
+                <h2 class="h2-subheadings">How to use passkeys on Apple devices?</h2>
+                <p class="justified-text" style="padding-right: 2%; padding-left: 3.5%;">
+                    Apple Passkey is a passwordless authentication method designed to provide a secure and convenient way to access websites and apps. It's based on the WebAuthentication (WebAuthn) standard and uses public key cryptography.
+                  </p>
+                  <br>
+                  <p class="justified-text" style="padding-right: 2%; padding-left: 3.5%;">
+                    <strong>Why Use Apple Passkey:</strong>
+                  </p>
+                  <br>
+                  <ul class="justified-text" style="padding-right: 2%; padding-left: 3.5%;">
+                    <li>
+                      <span class="fact-percentage">Enhanced Security:</span> Passkeys are highly resistant to phishing and offer strong protection for user accounts.
+                    </li>
+                    <br>
+                    <li>
+                      <span class="fact-percentage">Simplicity:</span> They eliminate the need to remember complex passwords, making it easier for users.
+                    </li>
+                    <br>
+                    <li>
+                      <span class="fact-percentage">Multi-Platform:</span> Works on Apple devices and can even be used on non-Apple devices in close proximity.
+                    </li>
+                    <br>
+                    <li>
+                      <span class="fact-percentage">Sync Across Devices:</span> Passkeys sync across a user's devices using iCloud Keychain, offering convenience without sacrificing security.
+                    </li>
+                    <br>
+                    <li>
+                      <span class="fact-percentage">Recovery Options:</span> Passkeys can be recovered securely in case of device loss or other issues.
+                    </li>
+                  </ul>
+                  
+            </div>
+            <div class="col-lg-6 col-md-12 col-sm-12 col-xs-12" style="padding-right: 4%; padding-left: 2%;">
+                <div class="video-container">
+                    <iframe width="100%" height="350" src="https://www.youtube.com/embed/HVYESg1Qrr0?si=vQ6m978_HyVBAKIV&amp;start=105" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+                </div>
+            </div>
+        </div>
+            
+        
+    </div>
+</section>
+
+
+
+<!-- Start Footer -->
+<footer class="footer bg-black">
+    <div class="container">
+        <div class="row align-items-center">
+            <!--Social-->
+            <!--Text-->
+            <div class="col-12 text-center mt-3" style="top: 80px;">
+                <p class="company-about fadeIn">© 2023 Made By <a href="javascript:void(0);">Team Code for Good</a>
+                </p>
+            </div>
+        </div>
+    </div>
+</footer>
+<!-- End Footer -->
+
+<!-- Start Scroll Top -->
+<div class="go-top"><i class="fas fa-angle-up"></i><i class="fas fa-angle-up"></i></div>
+<!-- End Scroll Top -->
+
+<!-- JavaScript -->
+<script src="{{ url_for('static', filename='js/bundle.min.js') }}"></script>
+
+
+
+<!-- Plugin Js -->
+<script src="{{ url_for('static', filename='js/jquery.appear.js') }}"></script>
+<script src="{{ url_for('static', filename='js/morphext.min.js') }}"></script>
+<script src="{{ url_for('static', filename='js/parallaxie.min.js') }}"></script>
+<script src="{{ url_for('static', filename='js/owl.carousel.min.js') }}"></script>
+<script src="{{ url_for('static', filename='js/jquery.cubeportfolio.min.js') }}"></script>
+<script src="{{ url_for('static', filename='js/wow.min.js') }}"></script>
+
+<!-- CUSTOM JS -->
+<script src="{{ url_for('static', filename='js/contact_us.js') }}"></script>
+<script src="{{ url_for('static', filename='js/script.js') }}"></script>
+
+</body>
+</html>

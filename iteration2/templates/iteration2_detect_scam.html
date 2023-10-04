@@ -1,0 +1,433 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!-- Meta Tags -->
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1, shrink-to-fit=no" name="viewport">
+    
+    <!-- Page Title -->
+    <title>NoMoreScamTricks | Scam Detector Tool</title>
+    <!-- Favicon -->
+    <link href="{{ url_for('static', filename='resources/images/shield_tab_icon.png') }}" rel="icon">
+    <!-- Bundle -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/bundle.min.css') }}">
+    <!-- Plugin Css -->
+    <link href="{{ url_for('static', filename='css/wow.css') }}" rel="stylesheet">
+    <link href="{{ url_for('static', filename='css/LineIcons.min.css') }}" rel="stylesheet">
+    <link href="{{ url_for('static', filename='css/jquery.fancybox.min.css') }}" rel="stylesheet">
+    <link href="{{ url_for('static', filename='css/owl.carousel.min.css') }}" rel="stylesheet">
+    <link href="{{ url_for('static', filename='css/cubeportfolio.min.css') }}" rel="stylesheet">
+    <link href="{{ url_for('static', filename='css/line-awesome.min.css') }}" rel="stylesheet">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+    <!-- Style Sheet -->
+    <link href="{{ url_for('static', filename='css/style.css') }}" rel="stylesheet">
+    <link href="{{ url_for('static', filename='css/custom.css') }}" rel="stylesheet">
+
+    <style>
+        .safety {
+          position: relative;
+          /* background-color: rgba(0, 0, 0, 0.5);  */
+        }
+        
+        .safety > div {
+          position: relative;
+          z-index: 2;
+        }
+        
+        #matrixCanvas {
+          position: absolute;
+          top: 0;
+          left: 0;
+          z-index: 0;
+        }
+      </style>
+      
+      
+</head>
+
+<body data-spy="scroll" data-target=".navbar" data-offset="50">
+
+<!-- Start Header -->
+<header id="statistics">
+    <div class="top-banner bg-trans-color transparent-banner">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-sm-12 col-md-12 col-lg-12 d-flex justify-content-center">
+                    <div class="logo-center">
+                        <a href="{{ url_for('index') }}">
+    <img src="{{ url_for('static', filename='/resources/images/shield_yellow.png') }}" alt="LOGO IMAGE">
+</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <nav class="navbar navbar-top-default navbar-expand-lg navbar-simple nav-line">
+        <div class="container">
+            <div class="collapse navbar-collapse" id="navheader">
+                <div class="navbar-nav  ml-auto mr-auto">
+                    <a class="nav-link line" data-nav href="{{ url_for('iteration2.index') }}#home">Home</a>
+                    <a class="nav-link line" data-nav href="{{ url_for('iteration2.scam') }}#scam">Is this a scam?</a>
+                    <a class="nav-link line" data-nav href="{{ url_for('iteration2.detect_scam') }}#detect_scam">Scam Detector Tool</a>
+                    <!-- <a class="nav-link line" href="{{ url_for('iteration2.safemethods') }}">Account Safety</a> -->
+                    <!-- <a class="nav-link line" href="{{ url_for('iteration2.statistics') }}#statistics">Statistics</a> -->
+                    <a class="nav-link line" data-nav href="{{ url_for('iteration2.resources') }}#resources">Resources</a> 
+                </div>
+            </div>
+        </div>
+    </nav>
+</header>
+<!-- End Header -->
+
+
+<section class="safety overflow-hidden" id="safety">
+    <div class="row align-items-center">
+
+        <!-- First Div with centered content -->
+        <div class="first">
+            <div class="main-title">
+                <h2 class="heading result-header" style="text-align: center;background-color: #181A1F; font-weight: bold;">Scam Detector for SMS or Email</h2>
+            </div>
+            <form id="scamForm" action="{{ url_for('detect_scam')}}" method="POST">
+                <textarea id="messageBox" name="message" rows="10" cols="100" required="required" placeholder="Enter the SMS or Email content here" style="color: black; font-size: 20px;">{{ original_message }}</textarea>
+                <br>
+                <button type="submit" class="btn btn-medium btn-trans btn-rounded btn-margin">Predict</button>
+            </form>
+        </div>
+
+        <!-- Second Div with centered content -->
+        <div class="second">
+            <div>
+                <img class="about_tool" src="{{ url_for('static', filename='resources/images/about_tool.png') }}" alt="About our tool">
+            </div>
+            
+        </div>
+        
+
+        <!-- Third Div with centered content -->
+        <div class="result">
+            <div class="result-header">
+                <h3>Result</h3>
+            </div>
+            <div class="scamResultText" style="padding: 0.5% 5%; margin-top: 10%; width: 80%; margin-bottom: 10%;">
+                <h2 class="h3-result" style="font-size: 50px; font-weight: bold; margin-bottom: 0px;" id="predictionText"></h2>
+            </div>
+            
+            <div id="reportButton" class="hidden">
+                <a href="https://www.scamwatch.gov.au/report-a-scam" id="scamwatchLink" class="btn btn-medium btn-rounded btn-trans btn-margin" target="_blank">Report to scamwatch</a>
+            </div>
+            <div class="buttons-row">
+                <div id="scamTypesButton" class="hidden">
+                    <a href="{{ url_for('resources') }}#typesofscam" id="scamtypesbutton" class="btn btn-medium btn-rounded btn-trans btn-margin" target="_blank">Learn types of Scams</a>
+                </div>
+                <div id="learnButton" class="hidden">
+                    <a href="{{ url_for('resources') }}#steps" id="learnmore" class="btn btn-medium btn-rounded btn-trans btn-margin" target="_blank">Learn How to be Safe</a>
+                </div>
+            </div>
+            <div class="disclaimer">
+                <p>
+                    <span class="disclaimer-highlight">Disclaimer:</span> The provided prediction is for illustrative purposes and may not accurately reflect real-world outcomes. Please use the results as a general guideline and exercise caution when interpreting them.
+                </p>
+            </div>
+        </div>
+        
+    </div>
+</section>
+
+
+
+<!-- Start Footer -->
+<footer class="footer bg-black">
+    <div class="container">
+        <div class="row align-items-center">
+            <!--Social-->
+            <!--Text-->
+            <div class="col-12 text-center mt-3" style="top: 80px;">
+                <p class="company-about fadeIn">© 2023 Made By <a href="javascript:void(0);">Team Code for Good</a>
+                </p>
+            </div>
+        </div>
+    </div>
+</footer>
+<!-- End Footer -->
+
+<!-- Start Scroll Top -->
+<div class="go-top"><i class="fas fa-angle-up"></i><i class="fas fa-angle-up"></i></div>
+<!-- End Scroll Top -->
+
+<style>
+
+.row {
+    display: flex;
+    flex-wrap: nowrap;
+    margin: 0 5%;
+    gap: 1%;
+}
+
+.first, .second, .result {
+    flex: 1;
+    min-width: calc(50% - 10px);
+    margin: 5px;
+    max-width: 48%;
+    padding: 10px;
+    border-radius: 15px;
+    transition: box-shadow 0.3s ease;
+}
+
+.first {
+    margin-left: 0; /* Ensure it starts at the left corner */
+    background-color: #2a2c30;
+    padding: 2% 5%;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+
+.result {
+    display: none;
+    margin-right: 5px; /* If you want the same margin on the right as on the first and second divs */
+    background-color: #2a2c30;
+    padding: 2% 5%;
+}
+
+
+.result:hover {
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.2);
+}
+
+.main-title .heading {
+    text-align: center;
+    color: white;
+    margin-bottom: 1.5rem;
+}
+
+#scamForm {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+}
+
+#messageBox {
+    width: 100%;
+    max-width: 600px;
+    height: 40vh;
+    max-height: 300px;
+    padding: 1% 1.5%;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    color: black;
+    font-size: 20px;
+    margin-bottom: 1rem;
+    resize: vertical;
+}
+
+.result-header {
+    background-color: yellow;
+    padding: 15px;
+    border-radius: 10px 10px 0 0;
+    position: relative;
+    z-index: 2;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.result-header h3 {
+    text-align: center;
+    color: black;
+    margin: 0;
+    font-weight: bold;
+}
+
+h2#predictionText {
+    font-size: 25px;
+    margin: 10% 0;
+    text-align: center;
+    color: #fff;
+}
+
+.hidden {
+    display: none;
+}
+
+.btn {
+    padding: 0.7rem 1.5rem;
+    background-color: #1A4D2E; 
+    color: #fff;
+    border-radius: 25px;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    align-self: center; /* Optional, because parent already centers it, but added for clarity. */
+}
+
+.btn:hover {
+    background-color: yellow; 
+    transform: translateY(-2px);
+}
+
+.btn:focus {
+    outline: none;
+}
+
+.btn-trans {
+    border: 2px solid #fff;
+    color: #fff;
+}
+
+.btn-trans:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+.disclaimer {
+    text-align: center;
+    margin-top: 2%;
+}
+
+.disclaimer p {
+    font-size: 18px;
+    color: white;
+    margin-bottom: 10%;
+}
+
+.disclaimer-highlight {
+    color: red;
+}
+
+.about_tool {
+    max-width: 80%;  /* You can adjust this value as needed */
+    max-height: 80%;  /* Adjust this value as well */
+    width: 100%;
+    height: auto;  /* Maintain the aspect ratio */
+    display: block;  /* Removes default inline-block spacing from the bottom */
+    margin: 0 auto;
+}
+
+</style>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+      const canvas = document.createElement('canvas');
+      canvas.id = 'matrixCanvas';
+      const section = document.querySelector('#safety');
+      canvas.width = section.offsetWidth;
+      canvas.height = section.offsetHeight;
+      section.appendChild(canvas);
+      
+      const ctx = canvas.getContext('2d');
+      const drops = [];
+      const font_size = 16;
+      const columns = canvas.width / font_size;
+      
+      for (let i = 0; i < columns; i++)
+        drops[i] = 1;
+  
+      function drawMatrix() {
+        ctx.fillStyle = 'rgba(0, 0, 0, 0.04)';
+        ctx.fillRect(0, 0, canvas.width, canvas.height);
+        
+        ctx.fillStyle = '#2a2c30';
+        ctx.font = font_size + 'px arial';
+        
+        for (let i = 0; i < drops.length; i++) {
+          const text = String.fromCharCode(65 + Math.random() * 33);
+          ctx.fillText(text, i * font_size, drops[i] * font_size);
+          
+          if (drops[i] * font_size > canvas.height && Math.random() > 0.975)
+            drops[i] = 0;
+          
+          drops[i]++;
+        }
+      }
+      
+      setInterval(drawMatrix, 33);
+    });
+  </script>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+    const form = document.getElementById('scamForm');
+    
+    form.addEventListener('submit', function(e) {
+        e.preventDefault();
+
+        // Hide the second div (sidelearncontainer)
+        const sidelearncontainerDiv = document.querySelector('.second');
+        sidelearncontainerDiv.style.display = 'none';
+        // Ensure it's hidden, with "!important"
+        sidelearncontainerDiv.style.setProperty('display', 'none', 'important');
+
+        // Adjust the third div (result)
+        const resultsDiv = document.querySelector('.result');
+        resultsDiv.style.display = 'block';
+        resultsDiv.classList.add('col-lg-8');
+        resultsDiv.style.flex = '1 1 66%';
+
+        // Adjust the first div
+        const accountsafetyDiv = document.querySelector('.accountsafety-heading');
+        if (accountsafetyDiv) {
+            accountsafetyDiv.classList.remove('col-lg-7'); // Remove the old class
+            accountsafetyDiv.classList.add('col-lg-4');    // Add the new class
+        }
+
+        // Submit the form and handle the result
+        const formData = new FormData(form);
+        fetch('{{ url_for("detect_scam") }}', {
+            method: 'POST',
+            body: formData
+        })
+        .then(response => response.json())
+        .then(data => {
+            console.log("Data received from server:", data);
+
+            const predictionText = document.getElementById('predictionText');
+            const reportButton = document.getElementById('reportButton');
+            const learnButton = document.getElementById('learnButton');
+            const scamTypesButton = document.getElementById('scamTypesButton');
+
+            if (data.prediction == 1) {
+                predictionText.innerHTML = '<h2 style="color:red; font-weight: bold;">Uh Oh! This message looks like a Scam </h2>';
+                scamTypesButton.style.display = 'block';
+                reportButton.style.display = 'block';
+                learnButton.style.display = 'block';
+            } else if (data.prediction == 0) {
+                predictionText.innerHTML = '<h2 style="color:green; font-weight: bold;"><b>NOT A SCAM MESSAGE :)</h2>';
+                scamTypesButton.style.display = 'block';
+                reportButton.style.display = 'none';
+                learnButton.style.display = 'block';
+            }
+
+            // Scroll to results section
+            window.scrollTo(0, resultsDiv.offsetTop);
+        });
+    });
+});
+
+
+
+</script>
+
+
+  
+
+<!-- JavaScript -->
+<script src="{{ url_for('static', filename='js/bundle.min.js') }}"></script>
+
+<!-- Plugin Js -->
+<script src="{{ url_for('static', filename='js/jquery.appear.js') }}"></script>
+<script src="{{ url_for('static', filename='js/morphext.min.js') }}"></script>
+<script src="{{ url_for('static', filename='js/parallaxie.min.js') }}"></script>
+<script src="{{ url_for('static', filename='js/owl.carousel.min.js') }}"></script>
+<script src="{{ url_for('static', filename='js/jquery.cubeportfolio.min.js') }}"></script>
+<script src="{{ url_for('static', filename='js/wow.min.js') }}"></script>
+
+<!-- CUSTOM JS -->
+<script src="{{ url_for('static', filename='js/contact_us.js') }}"></script>
+<script src="{{ url_for('static', filename='js/script.js') }}"></script>
+
+</html>
