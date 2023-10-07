@@ -1,4 +1,5 @@
 from flask import Flask, render_template, request, redirect, url_for, flash, session, jsonify
+import requests
 from iteration1.iteration1_blueprint import iteration1
 from iteration2.iteration2_blueprint import iteration2
 import secrets, os
@@ -9,12 +10,21 @@ from sklearn.model_selection import train_test_split
 import re
 import string
 import mysql.connector
+from googleapiclient import discovery
+from googleapiclient.errors import HttpError
 
 
 app = Flask(__name__)
 app.register_blueprint(iteration1, url_prefix='/iteration1')
 app.register_blueprint(iteration2, url_prefix='/iteration2')
 app.secret_key = secrets.token_hex(16)
+
+WEB_RISK_API_KEY = 'AIzaSyAS7xBvDz9u70txO4BiCWTPTCWnZeCqHXw'
+CLIENT_ID = "nomorescams"  # Replace with your client ID
+CLIENT_VERSION = "1.0"  # Adjust as necessary
+VIRUSTOTAL_API_KEY = "6908dc82cfc9e3d263e55f59ef24ad91c0125dd6ea7269767b767b19715f91f5"
+
+
 
 DB_CONFIG = {
     'user': 'team27',
@@ -76,15 +86,138 @@ def home():
 def scam():
     return render_template('scam.html')
 
-#safemethods
-@app.route('/safemethods')
-def safemethods():
-    return render_template('accountsafety.html')
 
-#statistics
-@app.route('/statistics')
-def statistics():
-    return render_template('statistics.html')
+def check_haveibeenpwned(email):
+    headers = {
+        'hibp-api-key': 'd359dfbab34e41e2a293bb7a601b8df0',  
+        'User-Agent': 'nomorescams'     
+    }
+    
+    response = requests.get(f'https://haveibeenpwned.com/api/v3/breachedaccount/{email}', headers=headers)
+    
+    if response.status_code == 200:
+        breaches = response.json()
+        num_breaches = len(breaches)
+        breach_names = ', '.join([breach['Name'] for breach in breaches])
+        return False, f"Oh No! Your email has been found in {num_breaches} breaches: {breach_names}", "red"
+    
+    elif response.status_code == 404:
+        # Email was not found to be part of any breaches
+        return True, "Your email has not been found in any breaches.", "green"
+
+    
+    else:
+        return False, f"Error: {response.status_code}"
+
+@app.route('/checkemail', methods=['GET', 'POST'])
+def checkemail():
+    if request.method == 'POST':
+        data = request.get_json()
+        email = data.get('email', None)
+        
+        if email:
+            # Check email with HaveIBeenPwned
+            email_is_safe, email_message, color = check_haveibeenpwned(email)
+            return jsonify({"result": email_message, "color": color})
+
+
+        # If the email parameter isn't provided, return a default message.
+        return jsonify({"result": "Please enter an email."})
+
+    return render_template('checkemail.html')
+
+
+
+def get_all_threat_types(WEB_RISK_API_KEY):
+    response = requests.get(f"https://safebrowsing.googleapis.com/v4/threatLists?key={WEB_RISK_API_KEY}")
+    if response.status_code == 200:
+        data = response.json()
+        return list(set([entry['threatType'] for entry in data.get('threatLists', [])]))
+    else:
+        print("Error retrieving threat types:", response.content)
+        return []
+
+
+def check_virustotal(url):
+    headers = {
+        "x-apikey": VIRUSTOTAL_API_KEY
+    }
+
+    data = {
+        "url": url
+    }
+
+    response = requests.post("https://www.virustotal.com/api/v3/urls", headers=headers, data=data)
+
+    if response.status_code != 200:
+        return False, "Error connecting to VirusTotal"
+
+    # Extract ID from the response to retrieve the analysis result
+    id_ = response.json()["data"]["id"]
+    analysis_url = f"https://www.virustotal.com/api/v3/analyses/{id_}"
+    analysis_response = requests.get(analysis_url, headers=headers)
+
+    if analysis_response.status_code != 200:
+        return False, "Error fetching analysis from VirusTotal"
+
+    stats = analysis_response.json()["data"]["attributes"]["stats"]
+    malicious = stats["malicious"]
+    suspicious = stats["suspicious"]
+
+    if malicious > 0 or suspicious > 0:
+        return False, f"The URL is considered malicious by {malicious} sources and suspicious by {suspicious} sources on VirusTotal"
+    return True, "The URL seems safe on VirusTotal"
+
+#URL
+@app.route('/checkurl', methods=['GET', 'POST'])
+def checkurl():
+    if request.method == 'POST':
+        data = request.get_json()
+        url = data.get('url', None)
+        
+        if url:
+            # Check with Google Safe Browsing
+            service = discovery.build('safebrowsing', 'v4', developerKey=WEB_RISK_API_KEY)
+            all_threat_types = list(get_all_threat_types(WEB_RISK_API_KEY))
+            body = {
+                "client": {
+                    "clientId": CLIENT_ID,
+                    "clientVersion": CLIENT_VERSION
+                },
+                "threatInfo": {
+                    "threatTypes": all_threat_types,
+                    "platformTypes": ["ANY_PLATFORM"],
+                    "threatEntryTypes": ["URL"],
+                    "threatEntries": [{"url": url}]
+                }
+            }
+
+            safe_on_google = True
+            source_google = None  # Track source of the threat
+
+            try:
+                response = service.threatMatches().find(body=body).execute()
+                if 'matches' in response:
+                    threats = [match['threatType'] for match in response['matches']]
+                    safe_on_google = False
+                    source_google = "Google Safe Browsing"
+            except Exception as e:
+                return jsonify({"error": f"API returned an error: {e}"})
+
+            # Check with VirusTotal
+            safe_on_virustotal, virustotal_message = check_virustotal(url)
+            source_virustotal = None if safe_on_virustotal else "VirusTotal"
+
+            if not safe_on_google or not safe_on_virustotal:
+                # Combine sources
+                sources = [src for src in [source_google, source_virustotal] if src]
+                message = "The URL may not be safe. Flagged by: " + ", ".join(sources)
+                return jsonify({"result": message})
+
+            return jsonify({"result": "The URL seems safe."})
+
+    return render_template('checkurl.html')
+
 
 #report
 @app.route('/resources')

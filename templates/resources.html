@@ -30,30 +30,20 @@
 
 <!-- Start Header -->
 <header id="resources">
-    <div class="top-banner bg-trans-color transparent-banner">
-        <div class="container-fluid">
-            <div class="row">
-                <div class="col-sm-12 col-md-12 col-lg-12 d-flex justify-content-center">
-                    <div class="logo-center">
-                        <a href="{{ url_for('index') }}">
-    <img src="{{ url_for('static', filename='/resources/images/shield_yellow.png') }}" alt="LOGO IMAGE">
-</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    
-    <nav class="navbar navbar-top-default navbar-expand-lg navbar-simple nav-line">
-        <div class="container">
+    <nav class="navbar bg-black navbar-top-default navbar-expand-lg navbar-simple nav-line">
+        <div class="container-fluid"> 
+            <!-- Navbar items -->
             <div class="collapse navbar-collapse" id="navheader">
-                <div class="navbar-nav  ml-auto mr-auto">
+                <div class="navbar-nav ml-auto mr-auto">
+                  <a href="{{ url_for('index') }}" class="navbar-brand mr-4">
+                    <img src="{{ url_for('static', filename='resources/images/shield_yellow.png') }}" alt="LOGO IMAGE">
+                </a>
                     <a class="nav-link line" data-nav href="{{ url_for('index') }}#home">Home</a>
-                    <a class="nav-link line" data-nav href="{{ url_for('scam') }}#scam">Is this a scam?</a>
+                    <a class="nav-link line" data-nav href="{{ url_for('scam') }}#scam">Scam Quiz</a>
                     <a class="nav-link line" data-nav href="{{ url_for('detect_scam') }}#detect_scam">Scam Detector Tool</a>
-                    <a class="nav-link line" href="{{ url_for('safemethods') }}">Account Safety</a>
-                    <!-- <a class="nav-link line" href="{{ url_for('statistics') }}#statistics">Statistics</a> -->
-                    <a class="nav-link line" data-nav href="{{ url_for('resources') }}#resources">Resources</a> 
+                    <a class="nav-link line" href="{{ url_for('checkemail') }}#checkemail">Check Email Leak</a>
+                    <a class="nav-link line" href="{{ url_for('checkurl') }}#checkurl">Check URL</a>
+                    <a class="nav-link line" data-nav href="{{ url_for('resources') }}#resources">Resources</a>
                 </div>
             </div>
         </div>
@@ -63,7 +53,7 @@
 
 
 <!-- Start types of scams -->
-<section class="cube-portfolio1 pb-0 bg-black" id="typesofscam">
+<section class="cube-portfolio1 pb-0" id="typesofscam">
     <div class="container container-position">
         <!--Heading-->
         <div class="row text-center">
@@ -153,7 +143,7 @@
 <!-- End types of scams -->
 
 
-<section id="steps">
+<section class="bg-black" id="steps">
     <div class="container container-position">
         <!--Heading-->
         <div class="row text-center">
@@ -167,104 +157,59 @@
                 <p class="justified-text">
                     Protecting yourself against scams and phishing attacks is crucial in today's digital age. Scammers are always trying to trick people online, but you can stay safe by following these simple steps:
                 </p>
+                <br> <br>
                 <br>
-                
-                <p class="justified-text">
-                    • <span class="fact-percentage">Be Careful:</span> If you get unexpected emails, messages, or calls, be cautious. Scammers often try to trick you with urgent or scary messages.
-                </p>
+
+                <h2 class="fact-percentage" style="font-weight: bold;">Prevention and Awareness</h2>
+                <p class="justified-text">• <span class="fact-percentage">Be Careful:</span> If you get unexpected emails, messages, or calls, be cautious. Scammers often try to trick you with urgent or scary messages.</p>
                 <br>
-                
-                <p class="justified-text">
-                    • <span class="fact-percentage">Check Senders:</span> Look closely at who's contacting you. Watch out for small mistakes in email addresses or strange phone numbers.
-                </p>
+                <p class="justified-text">• <span class="fact-percentage">Learn About Scams:</span> Read or ask someone to help you learn about common tricks scammers use.</p>
                 <br>
-                
-                <p class="justified-text">
-                    • <span class="fact-percentage">Avoid Clicking:</span> Don't click on links in emails or messages if you're not sure they're safe. Hover your mouse over them to check where they lead.
-                </p>
+                <p class="justified-text">• <span class="fact-percentage">Check Senders:</span> Look closely at who's contacting you. Watch out for small mistakes in email addresses or strange phone numbers.</p>
+                <br><br>
+
+                <h2 class="fact-percentage" style="font-weight: bold;">Online Safety</h2>
+                <p class="justified-text">• <span class="fact-percentage">Avoid Clicking:</span> Don't click on links in emails or messages if you're not sure they're safe. Hover your mouse over them to check where they lead.</p>
                 <br>
-                
-                <p class="justified-text">
-                    • <span class="fact-percentage">Strong Passwords:</span> Make strong, unique passwords for your online accounts. It's like locking your front door with a sturdy key.
-                </p>
+                <p class="justified-text">• <span class="fact-percentage">Strong Passwords:</span> Make strong, unique passwords for your online accounts.</p>
                 <br>
-                
-                <p class="justified-text">
-                    • <span class="fact-percentage">Passwordless Authentication:</span> Use passwordless methods if available. These are like having a special key or your fingerprint to unlock your accounts, making them even safer.
-                    <a href="#passkeys" class="see-more-button fact-percentage">Learn More</a>
-                  </p>
+                <p class="justified-text">• <span class="fact-percentage">Passwordless Authentication:</span> Use passwordless methods if available.</p>
                 <br>
-                
-                <p class="justified-text">
-                    • <span class="fact-percentage">Extra Protection:</span> Whenever you can, use two-factor authentication (2FA). It's like having a second lock on your door.
-                </p>
+                <p class="justified-text">• <span class="fact-percentage">Extra Protection:</span> Use two-factor authentication (2FA).</p>
                 <br>
-                
-                <p class="justified-text">
-                    • <span class="fact-percentage">Update Your Devices:</span> Keep your computer and phone up to date. Updates often fix security problems.
-                </p>
+                <p class="justified-text">• <span class="fact-percentage">Update Your Devices:</span> Keep your computer and phone up to date. Updates often fix security problems.</p>
                 <br>
-                
-                <p class="justified-text">
-                    • <span class="fact-percentage">Learn About Scams:</span> Read or ask someone to help you learn about common tricks scammers use.
-                </p>
+                <p class="justified-text">• <span class="fact-percentage">Use Antivirus:</span> Install antivirus software to help guard against bad stuff on the internet.</p>
                 <br>
-                
-                <p class="justified-text">
-                    • <span class="fact-percentage">Use Antivirus:</span> Install antivirus software to help guard against bad stuff on the internet.
-                </p>
+                <p class="justified-text">• <span class="fact-percentage">Secure Wi-Fi:</span> Protect your home Wi-Fi with a strong password.</p>
                 <br>
-                
-                <p class="justified-text">
-                    • <span class="fact-percentage">Verify Requests:</span> If someone asks for personal info or money, double-check with someone you trust or the organization directly.
-                </p>
+                <p class="justified-text">• <span class="fact-percentage">Safe Wi-Fi:</span> Be careful about using public Wi-Fi for important things like banking. A VPN can help make it safer.</p>
                 <br>
-                
-                <p class="justified-text">
-                    • <span class="fact-percentage">Watch Urgent Requests:</span> If someone urgently asks for money online, take your time and ask someone for advice before sending anything.
-                </p>
+                <p class="justified-text">• <span class="fact-percentage">Back Up Your Files:</span> Make copies of important photos and documents, so you don't lose them.</p>
                 <br>
-                
-                <p class="justified-text">
-                    • <span class="fact-percentage">Secure Wi-Fi:</span> Protect your home Wi-Fi with a strong password, so strangers can't use it.
-                </p>
+                <p class="justified-text">• <span class="fact-percentage">Social Media Caution:</span> Don't share too much personal stuff on social media. Scammers might use it against you.</p>
+                <br><br>
+
+                <h2 class="fact-percentage" style="font-weight: bold;">After Exposure or Suspicion</h2>
+                <p class="justified-text">• <span class="fact-percentage">Verify Requests:</span> If someone asks for personal info or money, double-check with someone you trust or the organization directly.</p>
                 <br>
-                
-                <p class="justified-text">
-                    • <span class="fact-percentage">Check Bank Statements:</span> Keep an eye on your bank and credit card statements for any strange charges.
-                </p>
+                <p class="justified-text">• <span class="fact-percentage">Watch Urgent Requests:</span> If someone urgently asks for money online, take your time and ask someone for advice before sending anything.</p>
                 <br>
-                
-                <p class="justified-text">
-                    • <span class="fact-percentage">Safe Wi-Fi:</span> Be careful about using public Wi-Fi for important things like banking. A VPN can help make it safer.
-                </p>
+                <p class="justified-text">• <span class="fact-percentage">Check Bank Statements:</span> Keep an eye on your bank and credit card statements for any strange charges.</p>
                 <br>
-                
-                <p class="justified-text">
-                    • <span class="fact-percentage">Report Suspicious Stuff:</span> If you see something strange online, tell your family or friends. They can help you figure out if it's safe.
-                </p>
+                <p class="justified-text">• <span class="fact-percentage">Report Suspicious Stuff:</span> If you see something strange online, tell your family or friends. They can help you figure out if it's safe.</p>
                 <br>
-                
-                <p class="justified-text">
-                    • <span class="fact-percentage">Back Up Your Files:</span> Make copies of important photos and documents, so you don't lose them.
-                </p>
+                <p class="justified-text">• <span class="fact-percentage">Trust Yourself:</span> If something seems odd or too good to be true, it probably is. Trust your instincts and ask for help if you're unsure.</p>
                 <br>
-                
-                <p class="justified-text">
-                    • <span class="fact-percentage">Social Media Caution:</span> Don't share too much personal stuff on social media. Scammers might use it against you.
-                </p>
-                <br>
-                
-                <p class="justified-text">
-                    • <span class="fact-percentage">Trust Yourself:</span> If something seems odd or too good to be true, it probably is. Trust your instincts and ask for help if you're unsure.
-                </p>
                 
             </div>
-        </section>  
+        </section>
     </div>
 </section>
 
-<section class="bg-black">
+
+
+<section>
     <div class="container container-position">
         <!-- First Row -->
         <div class="row no-gutters align-items-center padding-bottom-half wow fadeInUp" data-wow-duration="1.5s" data-wow-delay=".5s">
@@ -295,7 +240,7 @@
     </div>
 </section>
 
-<section>
+<section class="bg-black">
     <div class="container container-position">
         <!-- First Row -->
         <div class="row no-gutters align-items-center padding-bottom-half wow fadeInUp" data-wow-duration="1.5s" data-wow-delay="1s">
@@ -354,7 +299,7 @@
     </div>
 </section>
 
-<section class="bg-black" id="applepasskey">
+<section id="applepasskey">
     <div class="container container-position">
         <div class="row no-gutters align-items-center padding-bottom-half wow fadeInUp" data-wow-duration="1.5s" data-wow-delay=".5s">
             <div class="col-lg-6 col-md-12 col-sm-12 col-xs-12 text-div " id="passkeys">

@@ -30,30 +30,20 @@
 
  <!-- Start Header -->
     <header id="scam">
-        <div class="top-banner bg-trans-color transparent-banner">
-            <div class="container-fluid">
-                <div class="row">
-                    <div class="col-sm-12 col-md-12 col-lg-12 d-flex justify-content-center">
-                        <div class="logo-center">
-                            <a href="{{ url_for('index') }}">
-        <img src="{{ url_for('static', filename='/resources/images/shield_yellow.png') }}" alt="LOGO IMAGE">
-    </a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        
-        <nav class="navbar navbar-top-default navbar-expand-lg navbar-simple nav-line">
-            <div class="container">
+        <nav class="navbar bg-black navbar-top-default navbar-expand-lg navbar-simple nav-line">
+            <div class="container-fluid"> 
+                <!-- Navbar items -->
                 <div class="collapse navbar-collapse" id="navheader">
-                    <div class="navbar-nav  ml-auto mr-auto">
+                    <div class="navbar-nav ml-auto mr-auto">
+                      <a href="{{ url_for('index') }}" class="navbar-brand mr-4">
+                        <img src="{{ url_for('static', filename='resources/images/shield_yellow.png') }}" alt="LOGO IMAGE">
+                    </a>
                         <a class="nav-link line" data-nav href="{{ url_for('index') }}#home">Home</a>
-                        <a class="nav-link line" data-nav href="{{ url_for('scam') }}#scam">Is this a scam?</a>
+                        <a class="nav-link line" data-nav href="{{ url_for('scam') }}#scam">Scam Quiz</a>
                         <a class="nav-link line" data-nav href="{{ url_for('detect_scam') }}#detect_scam">Scam Detector Tool</a>
-                        <a class="nav-link line" href="{{ url_for('safemethods') }}">Account Safety</a>
-                        <!-- <a class="nav-link line" href="{{ url_for('statistics') }}#statistics">Statistics</a> -->
-                        <a class="nav-link line" data-nav href="{{ url_for('resources') }}#resources">Resources</a> 
+                        <a class="nav-link line" href="{{ url_for('checkemail') }}#checkemail">Check Email Leak</a>
+                        <a class="nav-link line" href="{{ url_for('checkurl') }}#checkurl">Check URL</a>
+                        <a class="nav-link line" data-nav href="{{ url_for('resources') }}#resources">Resources</a>
                     </div>
                 </div>
             </div>
@@ -64,7 +54,7 @@
 
 
 <!-- Start Scam -->
-<section class="scam bg-black overflow-hidden" id="scam">
+<section class="scam overflow-hidden" id="scam">
     <div class="container">
         <div class="row align-items-center">
             <div class="col-12 col-md-10 col-lg-8 offset-md-1 offset-lg-2 heading-area text-center wow zoomIn" data-wow-duration="1s" data-wow-delay=".1s">
@@ -317,10 +307,13 @@
             <h3 class="h3-result" style="font-size: 50px; margin-bottom: 0px;" id="evaluationMessage"></h3>
         </div>
         <p class="p-result" id="actionMessage" style="color: #ff9900;"></p>
-        <div id = "reportButton">
+        <!-- <div id = "reportButton">
             <a href="https://www.scamwatch.gov.au/report-a-scam" id="scamwatchLink" class="btn btn-large btn-rounded btn-trans btn-margin" target="_blank" style="display:none;">Report to scamwatch</a>
-        </div>
+        </div> -->
         <div class="buttons-row" style="margin-top: 30px;">
+            <div id = "reportButton">
+                <a href="https://www.scamwatch.gov.au/report-a-scam" id="scamwatchLink" class="btn btn-large btn-rounded btn-trans btn-margin" target="_blank" style="display:none;">Report to scamwatch</a>
+            </div>
             <div id="scamTypesButton" style="display:none;">
                 <a href="{{ url_for('resources') }}#typesofscam" id="scamtypesbutton" class="btn btn-large btn-rounded btn-trans btn-margin" target="_blank">Learn types of Scams</a>
             </div>

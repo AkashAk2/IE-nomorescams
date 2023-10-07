@@ -50,31 +50,21 @@
 <body data-spy="scroll" data-target=".navbar" data-offset="50">
 
 <!-- Start Header -->
-<header id="statistics">
-    <div class="top-banner bg-trans-color transparent-banner">
-        <div class="container-fluid">
-            <div class="row">
-                <div class="col-sm-12 col-md-12 col-lg-12 d-flex justify-content-center">
-                    <div class="logo-center">
-                        <a href="{{ url_for('index') }}">
-    <img src="{{ url_for('static', filename='/resources/images/shield_yellow.png') }}" alt="LOGO IMAGE">
-</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    
-    <nav class="navbar navbar-top-default navbar-expand-lg navbar-simple nav-line">
-        <div class="container">
+<header id="detect_scam">
+    <nav class="navbar bg-black navbar-top-default navbar-expand-lg navbar-simple nav-line">
+        <div class="container-fluid"> 
+            <!-- Navbar items -->
             <div class="collapse navbar-collapse" id="navheader">
-                <div class="navbar-nav  ml-auto mr-auto">
+                <div class="navbar-nav ml-auto mr-auto">
+                  <a href="{{ url_for('index') }}" class="navbar-brand mr-4">
+                    <img src="{{ url_for('static', filename='resources/images/shield_yellow.png') }}" alt="LOGO IMAGE">
+                </a>
                     <a class="nav-link line" data-nav href="{{ url_for('index') }}#home">Home</a>
-                    <a class="nav-link line" data-nav href="{{ url_for('scam') }}#scam">Is this a scam?</a>
+                    <a class="nav-link line" data-nav href="{{ url_for('scam') }}#scam">Scam Quiz</a>
                     <a class="nav-link line" data-nav href="{{ url_for('detect_scam') }}#detect_scam">Scam Detector Tool</a>
-                    <a class="nav-link line" href="{{ url_for('safemethods') }}">Account Safety</a>
-                    <!-- <a class="nav-link line" href="{{ url_for('statistics') }}#statistics">Statistics</a> -->
-                    <a class="nav-link line" data-nav href="{{ url_for('resources') }}#resources">Resources</a> 
+                    <a class="nav-link line" href="{{ url_for('checkemail') }}#checkemail">Check Email Leak</a>
+                    <a class="nav-link line" href="{{ url_for('checkurl') }}#checkurl">Check URL</a>
+                    <a class="nav-link line" data-nav href="{{ url_for('resources') }}#resources">Resources</a>
                 </div>
             </div>
         </div>

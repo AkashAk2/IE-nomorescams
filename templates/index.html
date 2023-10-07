@@ -29,113 +29,98 @@
 <body data-spy="scroll" data-target=".navbar" data-offset="50">
 
 <!-- Start Header -->
+
 <header id="home">
-    <div class="top-banner bg-trans-color transparent-banner">
-        <div class="container-fluid">
-            <div class="row">
-                <div class="col-sm-12 col-md-12 col-lg-12 d-flex justify-content-center">
-                    <div class="logo-center">
-                        <a href="{{ url_for('index') }}">
-    <img src="{{ url_for('static', filename='/resources/images/shield_yellow.png') }}" alt="LOGO IMAGE">
-</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    
-    <nav class="navbar navbar-top-default navbar-expand-lg navbar-simple nav-line">
-        <div class="container">
-            <div class="collapse navbar-collapse" id="navheader">
-              <div class="navbar-nav  ml-auto mr-auto">
-                <a class="nav-link line" data-nav href="{{ url_for('index') }}#home">Home</a>
-                <a class="nav-link line" data-nav href="{{ url_for('scam') }}#scam">Is this a scam?</a>
-                <a class="nav-link line" data-nav href="{{ url_for('detect_scam') }}#detect_scam">Scam Detector Tool</a>
-                <a class="nav-link line" href="{{ url_for('safemethods') }}">Account Safety</a>
-                <!-- <a class="nav-link line" href="{{ url_for('statistics') }}#statistics">Statistics</a> -->
-                <a class="nav-link line" data-nav href="{{ url_for('resources') }}#resources">Resources</a> 
-            </div>
-            </div>
-        </div>
-    </nav>
+  <nav class="navbar bg-black navbar-top-default navbar-expand-lg navbar-simple nav-line">
+      <div class="container-fluid"> 
+          <!-- Navbar items -->
+          <div class="collapse navbar-collapse" id="navheader">
+              <div class="navbar-nav ml-auto mr-auto">
+                <a href="{{ url_for('index') }}" class="navbar-brand mr-4">
+                  <img src="{{ url_for('static', filename='resources/images/shield_yellow.png') }}" alt="LOGO IMAGE">
+              </a>
+                  <a class="nav-link line" data-nav href="{{ url_for('index') }}#home">Home</a>
+                  <a class="nav-link line" data-nav href="{{ url_for('scam') }}#scam">Scam Quiz</a>
+                  <a class="nav-link line" data-nav href="{{ url_for('detect_scam') }}#detect_scam">Scam Detector Tool</a>
+                  <a class="nav-link line" data-nav href="{{ url_for('checkemail') }}#checkemail">Check Email Leak</a>
+                  <a class="nav-link line" data-nav href="{{ url_for('checkurl') }}#checkurl">Check URL</a>
+                  <a class="nav-link line" data-nav href="{{ url_for('resources') }}#resources">Resources</a>
+              </div>
+          </div>
+      </div>
+  </nav>
 </header>
+
+
 <!-- End Header -->
 
 
 
 <!-- Start Home -->
-<section class="home bg-black" id="home">
-    <div class="container">
-        <!--Heading-->
-        <div class="row text-center">
-            <div class="col-12 col-md-10 col-lg-8 offset-md-1 offset-lg-2 wow zoomIn heading-area h2-center" data-wow-duration="1s" data-wow-delay=".1s">
-                <h2 class="heading h2-center text-center">Are you being scammed?</h2>
-            </div>
-        </div>
+<!-- Start Home -->
+<section class="home bg-black" id="home" style="position: relative; overflow: hidden; min-height: 90vh;">
+  <!-- Video as background -->
+  <video autoplay loop muted playsinline style="position: absolute; top: 0; width: 100%; height: 100%; object-fit: cover; z-index: 0;">
+      <source src="static/resources/videos/background1.mp4" type="video/mp4">
+      Your browser does not support the video tag.
+  </video>
 
-        <div class="fact">
-            <h5 class="fact-heading">🔍 Did you know?</h5>
-            <p class="fact-text">Around <span class="fact-percentage">65%</span> of Australians have encountered scams in the past year. <span class="fact-percentage">In 2022</span>, scams hit Australia hard, causing significant financial losses. This highlights the importance of better online security and knowing how to spot scams to protect ourselves.</p>
-        </div>
-        
-        <!-- Start Counter -->
-    <div class="statistics-home bg-black" id="stats">
-        <!-- <div class="col-12 col-md-10 col-lg-8 offset-md-1 offset-lg-2 heading-area text-center wow zoomIn" data-wow-duration="1s" data-wow-delay=".1s">
-            <div class="main-title text-lg-left mb-0 wow fadeInUp" data-wow-delay="300ms">
-                <h2 class="wow fadeInUp h2-subheadings" data-wow-delay="400ms" style="text-align: center;">Do you know?</h2>
-        </div> -->
-        <div class="container position-relative">
-            <div class="row">
-                <!-- Counter Content Div -->
-                <div class="col-12 text-center wow slideInLeft" data-wow-duration="1s" data-wow-delay=".1s">
-                    <div class="counter-content">
-                        <!-- <h3 class="fact-text">In 2022, scams hit Australia hard, causing significant financial losses. This highlights the importance of better online security and knowing how to spot scams to protect ourselves.</h3> -->
-                        <!-- <p class="paragraph">Adjacent, we unveil the monetary losses suffered by Australians in the year 2022, quantified for your insight.</p> -->
-                    </div>
-                </div>
-            </div>
-            
-            <div class="row align-items-center mt-3 justify-content-center g-4"> <!-- added g-4 for gaps -->
-                <!-- Counters Div -->
-                <div class="col-12 col-md-8 text-center wow slideInRight" data-wow-duration="1s" data-wow-delay=".1s"> <!-- expanded to col-md-8 for a better fit -->
-                    <div class="row" style="margin-bottom: 50px;">
-                        <!-- Counter -->
-                        <div class="col-12 col-md-4 stats">
-                            <div class="parallax-box d-flex flex-column align-items-center justify-content-center">
-                                <i class="fas fa-dollar-sign fact-percentage"></i>
-                                <!-- <h2 class="count fact-percentage">$568640274</h2> -->
-                                <h2 id="total-loss" class="count fact-percentage">{{ total_loss }}</h2>
-                                <h5>Total Monetary Loss in 2022</h5>
-                            </div>
-                        </div>
-                        <!-- Counter -->
-                        <div class="col-12 col-md-4 stats">
-                            <div class="parallax-box d-flex flex-column align-items-center justify-content-center">
-                                <i class="fas fa-file-alt fact-percentage"></i>
-                                <!-- <h2 class="count fact-percentage">239237</h2> -->
-                                <h2 id="numbers-of-reports" class="count fact-percentage">{{ number_of_reports }}</h2>
-                                <h5>Number of reports</h5>
-                            </div>
-                        </div>
-                        <!-- Counter -->
-                        <div class="col-12 col-md-4 stats">
-                            <div class="parallax-box d-flex flex-column align-items-center justify-content-center">
-                                <i class="fas fa-user fact-percentage"></i>
-                                <!-- <h2 class="count fact-percentage">49163</h2> -->
-                                <h2 id="age-over-65" class="count fact-percentage">{{ affected_people_65plus }}</h2>
-                                <h5>Affected people aged 65+ </h5>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-      </div>
-<!-- End Counter -->
+  <!-- Title -->
+  <style>
+    /* Global styles */
+    .transparent-container {
+        position: relative;
+        z-index: 2;
+        background-color: rgba(255, 255, 255, 0.1);
+        backdrop-filter: blur(30px);
+        padding: 40px 20px;
+        border-radius: 10px;
+        width: 55%; /* Instead of min and max-width, just use width */
+        margin: 0 auto;
+        margin-top: 2%;
+        min-height: 350px;
+    }
+    
+    .title-home {
+        text-align: center;
+        white-space: nowrap;
+    }
 
+    /* Media query for smaller screens (e.g., mobile devices) */
+    @media screen and (max-width: 768px) {
+        .transparent-container {
+            width: 90%; /* Increase the width for smaller screens */
+        }
+
+        .title-home h1 {
+            font-size: 24px; /* Decrease the font size of the title for smaller screens */
+        }
+
+        .title-home p {
+            font-size: 18px; /* Decrease the font size of the paragraph for smaller screens */
+            white-space: normal; /* Allow wrapping for smaller screens */
+        }
+    }
+</style>
+
+<div class="transparent-container">
+    <div class="title-home">
+        <h1 class="title-h1">Are you being scammed?</h1>
         
+        <!-- Flexbox container for p and a elements -->
+        <div style="display: flex; flex-direction: column; justify-content: center; align-items: center; gap: 20px;">
+            <p style="font-size: 25px; font-weight: 500; margin: 0;">Received a message and not sure if it's a scam?</p>
+            <a href="{{ url_for('detect_scam') }}#detect_scam" class="btn btn-yellow btn-medium btn-rounded btn-trans btn-margin">Verify Now</a>
+        </div>
     </div>
+</div>
+
 </section>
+
+
 <!-- End Home -->
+
+
 
 
 <script src="https://cdn.jsdelivr.net/npm/echarts@5.3.0/dist/echarts.min.js"></script>
@@ -147,6 +132,23 @@
   
   .chart-section.active {
       display: block;
+  }
+
+  .title-home {
+    position: absolute; 
+    top: 30%; left: 50%; 
+    transform: translateX(-50%); 
+    z-index: 2; 
+    text-align: center; 
+    
+  }
+
+  .title-h1 {
+    font-size: 55px;
+    font-weight: 500;
+    margin-top: -30px;
+    margin-bottom: 20px;
+    font-family: 'Montserrat', sans-serif;
   }
 </style>
 
@@ -584,7 +586,7 @@
                   <span class="feature_header_text underline">Email leaked?</span>
                   <p class="feature_header_content">Concerned about email security? Check if your email has been leaked or not.</p>
               </div>
-              <a href="javascript:void(0);" class="btn btn-medium btn-rounded btn-trans btn-margin centered-button">Coming Soon</a>
+              <a href="{{ url_for('checkemail') }}#checkemail" class="btn btn-medium btn-rounded btn-trans btn-margin centered-button">Coming Soon</a>
           </div>
       </div>
 
@@ -880,6 +882,8 @@
 .radio-buttons > label:hover::before {
     border-color: yellow;
 }
+
+
 
   </style>
 
