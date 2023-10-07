@@ -161,7 +161,7 @@
   <label for="chart2">Scam Occurrences by State</label>
 
   <input type="radio" id="chart3" name="chart" value="chart3">
-  <label for="chart3">Scam Types in Australia</label>
+  <label for="chart3">Loss by Scam Type</label>
 </div>
 
 
@@ -225,7 +225,8 @@
     <div class="col-md-3" style="height: 400px;"> 
         <!-- Add some padding to the left to push the p tag a bit to the right -->
         <div class="p-container">
-            <p style="text-align: justify;">This chart shows persons in Australia aged 15 years and over, whether experienced a scam during 2021-22, by scam type. Statistics show "Information request or phishing" is the most common scam type, which is more than double compared with the second common type "Computer support".</p>
+            <p style="text-align: justify;">
+              This chart illustrates "Loss by scam types" reveals investment scams as the highest scam type, accounts for about 66% of all total loss, followed closely by dating & romance, false billing, and phishing scams, presenting a clear hierarchy in terms of financial impact during 2022.</p>
         </div>
     </div>
 </div>
@@ -616,7 +617,7 @@
 
     option = {
       title: {
-        text: "Australian exposed to scam types('000 people) in 2021-22",
+        text: "Financial loss by scam type in 2022 (AU$)",
         left: 'center',
         textStyle: {
           color: "white",
@@ -651,66 +652,82 @@
         type: 'category',
         data: [
           {
-            value: 'Information request or Phishing',
+            value: 'Investment scames',
             textStyle: {
-              color: 'rgba(194, 221, 80, 0.8)',
+              color: 'Red',
               fontSize: 11,
               fontWeight: 'bold'
 
             }
           },
           {
-            value: 'Computer Support',
+            value: 'Dating & romance',
             textStyle: {
-              color: 'rgba(96, 202, 237, 0.8)', // Change color here
+              color: 'Orange', // Change color here
               fontSize: 12,
               fontWeight: 'bold'
             }
           },
           {
-            value: 'Financial Advice',
+            value: 'False billing',
             textStyle: {
-              color: 'rgba(45, 255, 168, 0.42)',// Change color here
+              color: 'Yellow',// Change color here
               fontSize: 12,
               fontWeight: 'bold'
             }
           },
           {
-            value: 'Upfront Payment',
+            value: 'Phishing',
             textStyle: {
-              color: 'green', // Change color here
+              color: 'Green', // Change color here
               fontSize: 12,
               fontWeight: 'bold'
             }
           },
           {
-            value: 'Buying or Selling',
+            value: 'Remote access scams',
             textStyle: {
-              color: 'rgba(238, 50, 199, 0.74)', // Change color here
+              color: 'Blue', // Change color here
               fontSize: 12,
               fontWeight: 'bold'
             }
           },
           {
-            value: 'Lottery',
+            value: 'Threats to life, arrest or other',
             textStyle: {
-              color: 'orange',// Change color here
+              color: 'Indigo',// Change color here
               fontSize: 12,
               fontWeight: 'bold'
             }
           },
           {
-            value: 'Relationship or Romance',
+            value: 'Identity theft',
             textStyle: {
-              color: 'yellow',// Change color here
+              color: 'Violet',// Change color here
               fontSize: 12,
               fontWeight: 'bold'
             }
           },
           {
-            value: 'Pyramid',
+            value: 'Jobs & employment scams',
             textStyle: {
-              color: 'pink',// Change color here
+              color: 'Purple',// Change color here
+              fontSize: 12,
+              fontWeight: 'bold'
+            }
+          },
+          {
+            value: 'Online shopping scams',
+            textStyle: {
+              color: 'Deep Pink',// Change color here
+              fontSize: 12,
+              fontWeight: 'bold'
+            }
+          },
+          {
+            value: 'Xlassified scams',
+            textStyle: {
+              color: 'Pink',// Change color here
               fontSize: 12,
               fontWeight: 'bold'
             }
@@ -724,51 +741,63 @@
           center: ['25'],
           data: [
             {
-              value: 8909.9,
+              value: 377252430,
               itemStyle: {
-                color: 'rgba(194, 221, 80, 0.8)' // Change color here
+                color: 'Red' // Change color here
               }
             },
             {
-              value: 3747.9,
+              value: 40675825,
               itemStyle: {
-                color: 'rgba(78, 217, 159, 0.42)' // Change color here
+                color: 'Orange' // Change color here
               }
             },
             {
-              value: 3711.9,
+              value: 25312185,
               itemStyle: {
-                color: 'rgba(238, 50, 199, 0.74)' // Change color here
+                color: 'Yellow' // Change color here
               }
             },
             {
-              value: 3503.5,
+              value: 24617192,
               itemStyle: {
-                color: 'rgba(96, 202, 237, 0.8)' // Change color here
+                color: 'Green' // Change color here
               }
             },
             {
-              value: 3021.4,
+              value: 21744454,
               itemStyle: {
-                color: 'rgba(0, 128, 0, 0.6)' // Change color here
+                color: 'Blue' // Change color here
               }
             },
             {
-              value: 1600.6,
+              value: 13934433,
               itemStyle: {
-                color: 'rgba(75, 0, 130, 0.6)' // Change color here
+                color: 'Indigo' // Change color here
               }
             },
             {
-              value: 1071.3,
+              value: 10738029,
               itemStyle: {
-                color: 'rgba(148, 0, 211, 0.6)' // Change color here
+                color: 'Violet' // Change color here
               }
             },
             {
-              value: 587.3,
+              value: 9695719,
               itemStyle: {
-                color: 'rgba(255, 105, 180, 0.6)' // Change color here
+                color: 'Purple' // Change color here
+              }
+            },
+            {
+              value: 9261357,
+              itemStyle: {
+                color: 'Deep Pink' // Change color here
+              }
+            },
+            {
+              value: 8465343,
+              itemStyle: {
+                color: 'Pink' // Change color here
               }
             }
           ]
