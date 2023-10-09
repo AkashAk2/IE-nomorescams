@@ -72,16 +72,23 @@
 
     #resultContainer {
         margin-top: 20px;
+        display: flex;
+        align-items: center;  
+        justify-content: center; 
     }
 
     #resultDiv {
         display: none; /* Initially hidden */
         padding: 10px;
-        border: 1px solid #ccc;
-        border-radius: 4px;
-        background-color: #f9f9f9;
-        color: black;
+        /* border: 1px solid #ccc; */
+        /* border-radius: 4px; */
+        /* background-color: #f9f9f9; */
+        color: white;
+        font-size: 20px;
+        font-weight: 700;
     }
+
+   
 
     .google-link {
     color: #4285f4; /* Google's blue color */
@@ -149,42 +156,59 @@
             </div>
         </div>
         <div id="resultContainer">
-          <div id="resultDiv">Your result here</div>
-      </div>
+            <div id="resultDiv">Your result here</div>
+        </div>
+        <div id="safetySteps" style="display: none; margin-top: 5%;">
+            <h3 style="font-size: 25px; font-weight: bold; color: #ff9900;">Steps to Take for Safety:</h3>
+            <ul style="font-size: 20px;">
+                <li>- Do not visit the URL.</li><br>
+                <li>- If you've already clicked on the URL, do not provide any personal information or download any files.</li><br>
+                <li>- Update your device's security software and run a full scan.</li><br>
+                <li>- Always ensure you're using a trusted and secure internet connection.</li><br>
+                <li>- If the URL was received via email, do not engage or respond. Mark the email as spam.</li>
+            </ul>
+        </div>
+        
     </div>
 </section>
 
   
   <script>
     function checkURL() {
-      const url = document.getElementById('urlInput').value;
-  
-      fetch('/checkurl', {
-          method: 'POST',
-          headers: {
-              'Content-Type': 'application/json'
-          },
-          body: JSON.stringify({ url: url })
-      })
-      .then(response => response.json())
-      .then(data => {
-          let resultText = data.result;
-          
-          if (resultText.includes('Google Safe Browsing')) {
-              resultText = resultText.replace('Google Safe Browsing', `<a href="https://transparencyreport.google.com/safe-browsing/search?hl=en" target="_blank" class="google-link">Google Safe Browsing</a>`);
-          }
-          
-          if (resultText.includes('VirusTotal')) {
-              resultText = resultText.replace('VirusTotal', `<a href="https://www.virustotal.com/gui/home/url" target="_blank" class="virus-total-link">VirusTotal</a>`);
-          }
-          
-          document.getElementById('resultDiv').innerHTML = resultText;
-          document.getElementById('resultDiv').style.display = 'block'; // Display the result
-      })
-      .catch(error => {
-          console.error('Error:', error);
-      });
-    }
+    const url = document.getElementById('urlInput').value;
+
+    fetch('/checkurl', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({ url: url })
+    })
+    .then(response => response.json())
+    .then(data => {
+        let resultText = data.result;
+        
+        if (resultText.includes('Google Safe Browsing')) {
+            resultText = resultText.replace('Google Safe Browsing', `<a href="https://transparencyreport.google.com/safe-browsing/search?hl=en" target="_blank" class="google-link">Google Safe Browsing</a>`);
+        }
+        
+        if (resultText.includes('VirusTotal')) {
+            resultText = resultText.replace('VirusTotal', `<a href="https://www.virustotal.com/gui/home/url" target="_blank" class="virus-total-link">VirusTotal</a>`);
+        }
+        
+        document.getElementById('resultDiv').innerHTML = resultText;
+        document.getElementById('resultDiv').style.display = 'block'; // Display the result
+
+        // Display the safety steps if the URL is flagged
+        if (!resultText.includes('seems safe')) {
+            document.getElementById('safetySteps').style.display = 'block';
+        }
+    })
+    .catch(error => {
+        console.error('Error:', error);
+    });
+}
+
   </script>
   
   

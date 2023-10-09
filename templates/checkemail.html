@@ -28,6 +28,7 @@
             .emailcheck {
                 margin-top: -5%;
             }
+
         </style>
     </head>
     
@@ -78,6 +79,18 @@
             </div>
         </div>
         <div class="result-display scamResultText mt-3" id="emailResult" style="display: none; color: red; font-size: 25px; font-weight: 500; margin-top: 5%; font-family: 'Montserrat', sans-serif;"></div>
+        <div style="display: flex; align-items: baseline; margin-top: 5%; flex-direction: row; flex-wrap: nowrap; justify-content: center;"> <!-- flex container starts here -->
+
+            <div class="protect-info mt-2" id="protectInfo" style="display: none; margin-right: 20px;"> <!-- added margin-right for spacing -->
+                <p style="font-size: 20px; font-weight: 700; margin-top: 5%; margin-bottom: 0;">If your email is compromised, follow Google's recommended steps:</p>
+            </div>
+        
+            <div class="stepsbutton mt-3" id="protectButton" style="display: none;">
+                <a href="https://support.google.com/accounts/answer/46526?hl=en" target="_blank" rel="noopener noreferrer" class="btn btn-medium btn-rounded btn-yellow btn-trans btn-margin">Learn How to Protect Your Email</a>
+            </div>
+        
+        </div> 
+        
     </div>
 </section>
 
@@ -107,14 +120,32 @@
     .then(response => response.json())
     .then(data => {
         const resultDiv = document.getElementById('emailResult');
+        const protectButton = document.getElementById('protectButton');
+        const protectInfo = document.getElementById('protectInfo');  // Get the reference of the new info div
         resultDiv.style.display = 'block'; 
         resultDiv.innerText = data.result;
         resultDiv.style.color = data.color;
+        
+        console.log("Setting display of protectButton to:", (data.result.startsWith('Oh No!') ? 'block' : 'none'));
+        protectButton.style.display = data.result.startsWith('Oh No!') ? 'block' : 'none';
+        console.log("Display of protectButton is now:", protectButton.style.display);
+
+
+        // Check if the message starts with "Oh No!" to determine if the email is leaked
+        if (data.result.startsWith('Oh No!')) {
+            protectButton.style.display = 'block';
+            protectInfo.style.display = 'block';  // Show the info div
+        } else {
+            protectButton.style.display = 'none';
+            protectInfo.style.display = 'none';  // Hide the info div
+        }
     })
     .catch(error => {
         console.error('Error:', error);
     });
 }
+
+
 
 </script>
 

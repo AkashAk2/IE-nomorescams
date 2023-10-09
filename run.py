@@ -177,33 +177,35 @@ def checkurl():
         url = data.get('url', None)
         
         if url:
-            # Check with Google Safe Browsing
-            service = discovery.build('safebrowsing', 'v4', developerKey=WEB_RISK_API_KEY)
-            all_threat_types = list(get_all_threat_types(WEB_RISK_API_KEY))
-            body = {
-                "client": {
-                    "clientId": CLIENT_ID,
-                    "clientVersion": CLIENT_VERSION
-                },
-                "threatInfo": {
-                    "threatTypes": all_threat_types,
-                    "platformTypes": ["ANY_PLATFORM"],
-                    "threatEntryTypes": ["URL"],
-                    "threatEntries": [{"url": url}]
-                }
-            }
-
             safe_on_google = True
-            source_google = None  # Track source of the threat
+            safe_on_virustotal = True
+            source_google = None
+            source_virustotal = None
 
+            # Check with Google Safe Browsing
             try:
+                service = discovery.build('safebrowsing', 'v4', developerKey=WEB_RISK_API_KEY)
+                all_threat_types = list(get_all_threat_types(WEB_RISK_API_KEY))
+                body = {
+                    "client": {
+                        "clientId": CLIENT_ID,
+                        "clientVersion": CLIENT_VERSION
+                    },
+                    "threatInfo": {
+                        "threatTypes": all_threat_types,
+                        "platformTypes": ["ANY_PLATFORM"],
+                        "threatEntryTypes": ["URL"],
+                        "threatEntries": [{"url": url}]
+                    }
+                }
+
                 response = service.threatMatches().find(body=body).execute()
                 if 'matches' in response:
-                    threats = [match['threatType'] for match in response['matches']]
                     safe_on_google = False
                     source_google = "Google Safe Browsing"
             except Exception as e:
-                return jsonify({"error": f"API returned an error: {e}"})
+                safe_on_google = False
+                source_google = f"Google API Error: {e}"
 
             # Check with VirusTotal
             safe_on_virustotal, virustotal_message = check_virustotal(url)
@@ -218,6 +220,7 @@ def checkurl():
             return jsonify({"result": "The URL seems safe."})
 
     return render_template('checkurl.html')
+
 
 
 #report
