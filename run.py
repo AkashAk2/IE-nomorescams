@@ -13,6 +13,7 @@ import mysql.connector
 from googleapiclient import discovery
 from googleapiclient.errors import HttpError
 import joblib
+import time
 
 
 app = Flask(__name__)
@@ -139,7 +140,7 @@ def get_all_threat_types(WEB_RISK_API_KEY):
         return []
 
 
-def check_virustotal(url):
+def check_virustotal(url, max_retries=5, retry_interval=5):
     headers = {
         "x-apikey": VIRUSTOTAL_API_KEY
     }
@@ -156,17 +157,28 @@ def check_virustotal(url):
     # Extract ID from the response to retrieve the analysis result
     id_ = response.json()["data"]["id"]
     analysis_url = f"https://www.virustotal.com/api/v3/analyses/{id_}"
-    analysis_response = requests.get(analysis_url, headers=headers)
 
-    if analysis_response.status_code != 200:
-        return False, "Error fetching analysis from VirusTotal"
+    retries = 0
+    while retries < max_retries:
+        analysis_response = requests.get(analysis_url, headers=headers)
 
-    stats = analysis_response.json()["data"]["attributes"]["stats"]
-    malicious = stats["malicious"]
-    suspicious = stats["suspicious"]
+        if analysis_response.status_code != 200:
+            return False, "Error fetching analysis from VirusTotal"
+
+        stats = analysis_response.json()["data"]["attributes"]["stats"]
+        malicious = stats["malicious"]
+        suspicious = stats["suspicious"]
+
+        if malicious or suspicious:
+            break  # We got our result
+
+        # If not malicious or suspicious, wait and then retry
+        time.sleep(retry_interval)
+        retries += 1
 
     if malicious > 0 or suspicious > 0:
         return False, f"The URL is considered malicious by {malicious} sources and suspicious by {suspicious} sources on VirusTotal"
+    
     return True, "The URL seems safe on VirusTotal"
 
 #URL
