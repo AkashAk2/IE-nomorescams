@@ -67,40 +67,66 @@
 
   <!-- Title -->
   <style>
-    /* Global styles */
-    .transparent-container {
-        position: relative;
-        z-index: 2;
-        background-color: rgba(255, 255, 255, 0.1);
-        backdrop-filter: blur(30px);
-        padding: 40px 20px;
-        border-radius: 10px;
-        width: 55%; /* Instead of min and max-width, just use width */
-        margin: 0 auto;
-        margin-top: 2%;
-        min-height: 350px;
-    }
+   .transparent-container {
+    position: relative;
+    z-index: 2;
+    background-color: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(30px);
+    padding: 40px 20px;
+    border-radius: 10px;
+    width: 55%;
+    margin: 0 auto;
+    margin-top: 2%;
+    min-height: 350px;
+
+    /* Define a CSS variable that's 1% of the container's width */
+    --width-percentage: 1vw;  /* Adjusted for simplicity. You can replace this with a calc method if needed. */
+
+    /* This will make the h1 font size approximately 5% of the container's width */
+    --h1-size: calc(3 * var(--width-percentage));
     
-    .title-home {
-        text-align: center;
-        white-space: nowrap;
+    /* This will make the p font size approximately 3% of the container's width */
+    --p-size: calc(3 * var(--width-percentage));
+}
+
+.title-home {
+    text-align: center;
+    white-space: nowrap;
+    overflow-wrap: break-word; /* Ensures that long words can break and wrap onto the next line */
+}
+
+.title-home h1.title-h1 {
+    font-size: var(--h1-size);
+    /* Defining min and max font-size ensures the text doesn't become too small or too large */
+    min-font-size: 30px;
+    max-font-size: 50px;
+    font-weight: 700;
+}
+
+.title-home p {
+    font-size: var(--p-size);
+    min-font-size: 14px;
+    max-font-size: 25px;
+}
+
+/* Media query for smaller screens (e.g., mobile devices) */
+@media screen and (max-width: 768px) {
+    .transparent-container {
+        width: 90%;
+        padding: 20px 10px; /* Reduce padding for smaller screens */
     }
+}
 
-    /* Media query for smaller screens (e.g., mobile devices) */
-    @media screen and (max-width: 768px) {
-        .transparent-container {
-            width: 90%; /* Increase the width for smaller screens */
-        }
-
-        .title-home h1 {
-            font-size: 24px; /* Decrease the font size of the title for smaller screens */
-        }
-
-        .title-home p {
-            font-size: 18px; /* Decrease the font size of the paragraph for smaller screens */
-            white-space: normal; /* Allow wrapping for smaller screens */
-        }
+/* Media query for medium-sized screens (e.g., tablets) */
+@media screen and (max-width: 1024px) and (min-width: 769px) {
+    .transparent-container {
+        width: 80%;
     }
+}
+
+
+
+
 </style>
 
 <div class="transparent-container">
@@ -152,18 +178,21 @@
   }
 </style>
 
-<div class="radio-buttons" style="width: 80%; margin: auto; margin-top: 1%;">
-  <h5>Select a Chart Based on the Following Categories:</h5>
-  <input type="radio" id="chart1" name="chart" value="chart1" checked>
-  <label for="chart1">Age-Based Scam Trends</label>
 
-  <input type="radio" id="chart2" name="chart" value="chart2">
-  <label for="chart2">Scam Occurrences by State</label>
+<section style="padding: 2.5rem 0; padding-bottom: 0;">
+  <h1 class="title-h1 fact-percentage" style="font-size: 40px; text-align: center; font-weight: 600; margin-top: 1%; margin-bottom: 2%;">Australia's Scam Trends Overview</h1>
+  <div class="radio-buttons" style="width: 80%; margin: auto; margin-top: 1%;">
+    <h5>Select a Chart Based on the Following Categories:</h5>
+    <input type="radio" id="chart1" name="chart" value="chart1" checked>
+    <label for="chart1">Age-Based Scam Trends</label>
 
-  <input type="radio" id="chart3" name="chart" value="chart3">
-  <label for="chart3">Loss by Scam Type</label>
-</div>
+    <input type="radio" id="chart2" name="chart" value="chart2">
+    <label for="chart2">Scam Occurrences by State</label>
 
+    <input type="radio" id="chart3" name="chart" value="chart3">
+    <label for="chart3">Loss by Scam Type</label>
+  </div>
+</section>
 
 <!-- Wrap each chart section within a div with a unique id -->
 <section>
@@ -652,10 +681,10 @@
         type: 'category',
         data: [
           {
-            value: 'Investment scames',
+            value: 'Investment scams',
             textStyle: {
               color: 'Red',
-              fontSize: 11,
+              fontSize: 12,
               fontWeight: 'bold'
 
             }
@@ -695,7 +724,7 @@
           {
             value: 'Threats to life, arrest or other',
             textStyle: {
-              color: 'Indigo',// Change color here
+              color: 'Light Blue',// Change color here
               fontSize: 12,
               fontWeight: 'bold'
             }
@@ -725,7 +754,7 @@
             }
           },
           {
-            value: 'Xlassified scams',
+            value: 'Classified scams',
             textStyle: {
               color: 'Pink',// Change color here
               fontSize: 12,
@@ -773,7 +802,7 @@
             {
               value: 13934433,
               itemStyle: {
-                color: 'Indigo' // Change color here
+                color: 'Light Blue' // Change color here
               }
             },
             {
@@ -839,28 +868,37 @@
 
   <style>
     .statisticsgap {
-      padding: 20px 0 0 0;
-      width: 100%;
-      height: 400px;
-      display: flex;
-      justify-content: center;
-      align-content: center;
-    }
-
-    .piechart_context {
-      width: 30%;
-      margin-left: 10%;
-      padding-top: 80px;
-
-    }
-    .radio-buttons {
+    padding: 20px 0 0 0;
+    width: 100%;
+    height: 400px;
     display: flex;
-    justify-content: space-evenly;
+    justify-content: center;
+    align-content: center;
+}
+
+.piechart_context {
+    width: 30%;
+    margin-left: 10%;
+    padding-top: 80px;
+}
+
+.radio-buttons {
+    display: flex;
+    flex-direction: row;
     align-items: center;
     padding: 10px;
     background-color: transparent;
     border: 1px solid #ff9900;
     border-radius: 8px;
+}
+
+.radio-buttons h5 {
+    margin-bottom: 10px;
+    /* white-space: nowrap; */
+    overflow: hidden;
+    text-overflow: ellipsis;
+    width: 100%;
+    text-align: center;
 }
 
 .radio-buttons input[type='radio'] {
@@ -877,11 +915,16 @@
     font-size: 16px;
     transition: all 0.3s ease-in-out;
     position: relative;
+    text-align: center;
+    white-space: nowrap;
+    width: calc(33.33% - 20px);
+    box-sizing: border-box;
+    margin-right: 10px;
 }
 
-.radio-buttons > label::before {
+.radio-buttons input[type='radio'] + label::before {
     content: '';
-    display: inline-block;
+    display: none;  /* Hide by default */
     width: 20px;
     height: 20px;
     border: 1px solid #ccc;
@@ -894,6 +937,15 @@
     transition: all 0.3s ease-in-out;
 }
 
+.radio-buttons input[type='radio']:checked + label::before {
+    display: none;  /* Show when radio input is checked */
+}
+
+.radio-buttons > label:last-child {
+    margin-right: 0;
+}
+
+
 .radio-buttons input[type='radio']:checked + label {
     background-color: yellow;
     color: black;
@@ -904,6 +956,7 @@
     border-color: black;
 }
 
+
 .radio-buttons > label:hover {
     background-color: #e0e0e0;
 }
@@ -911,6 +964,21 @@
 .radio-buttons > label:hover::before {
     border-color: yellow;
 }
+
+/* Reduce font size for smaller screens */
+@media (max-width: 800px) {
+    .radio-buttons > label {
+        font-size: 14px;
+    }
+}
+
+@media (max-width: 600px) {
+    .radio-buttons > label {
+        font-size: 12px;
+    }
+}
+
+
 
 
 
