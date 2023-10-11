@@ -86,7 +86,7 @@
     --h1-size: calc(3 * var(--width-percentage));
     
     /* This will make the p font size approximately 3% of the container's width */
-    --p-size: calc(3 * var(--width-percentage));
+    --p-size: calc(1 * var(--width-percentage));
 }
 
 .title-home {
@@ -107,6 +107,7 @@
     font-size: var(--p-size);
     min-font-size: 14px;
     max-font-size: 25px;
+    white-space: wrap;
 }
 
 /* Media query for smaller screens (e.g., mobile devices) */
@@ -135,7 +136,7 @@
         
         <!-- Flexbox container for p and a elements -->
         <div style="display: flex; flex-direction: column; justify-content: center; align-items: center; gap: 20px;">
-            <p style="font-size: 25px; font-weight: 500; margin: 0;">Received a message and not sure if it's a scam?</p>
+            <p style="font-size: 25px; font-weight: 500; margin: 0;">Unsure about a message you received? Wondering if it's a scam?</p>
             <a href="{{ url_for('detect_scam') }}#detect_scam" class="btn btn-yellow btn-medium btn-rounded btn-trans btn-margin">Verify Now</a>
         </div>
     </div>
@@ -584,6 +585,7 @@
     <!-- Second Chart -->
 
 <section class="home bg-black">
+  <h1 class="title-h1 fact-percentage" style="font-size: 40px; text-align: center; font-weight: 600; margin-bottom: 2%;">Our Features</h1>
   <div class="container">
     <div class="row">
       <!-- Feature 1 -->
@@ -635,207 +637,258 @@
   </div>
 </section>
 
+<section id="home-scamtypes" style="padding: 50px;">
+  <div class="container">
+    <h1 class="title-h1 fact-percentage" style="font-size: 40px; text-align: center; font-weight: 600; margin-top: 1%; margin-bottom: 3%;">Common Types of Scams in Australia</h1>
+
+      <ul style="list-style-type: none;">
+        <p class="justified-text">• <span class="fact-percentage">Investment Scams:</span> These scams offer fake money-making opportunities to prey on the victim's enthusiasm and steal their cash.</p>
+        <br>
+        <p class="justified-text">• <span class="fact-percentage">Dating & Romance Scams:</span> Scammers use dating or friendship platforms to manipulate and convince individuals to give them money, leaving victims both broke and broken-hearted.</p>
+        <br>
+        <p class="justified-text">• <span class="fact-percentage">False Billing:</span> Victims are falsely invoiced or charged for services they did not request or receive.</p>
+        <br>
+        <p class="justified-text">• <span class="fact-percentage">Phishing:</span> These scams involve attempts to trick individuals into providing sensitive data like passwords or credit card numbers.</p>
+        <br>
+        <p class="justified-text">• <span class="fact-percentage">Jobs & Employment Scams:</span> Scammers offer a ‘guaranteed’ way to make fast money or a high-paying job for little effort to trick individuals into handing over their money.</p>
+        <br>
+        <p class="justified-text">• <span class="fact-percentage">Remote Access Scams:</span> Scammers trick individuals into granting them access to their computers, potentially stealing data or injecting malware.</p>
+        <br>
+        <p class="justified-text">• <span class="fact-percentage">Threats to Life, Arrest or Other:</span> These scams involve threats to the victim's life or well-being to extort money or personal information.</p>
+        <br>
+        <p class="justified-text">• <span class="fact-percentage">Identity Theft:</span> These scams involve using someone else's identity to steal money or gain other benefits.</p>
+        <br>
+        <p class="justified-text">• <span class="fact-percentage">Rebate Scams:</span> Victims are lured by the promise of a rebate or refund, often for taxes or other expenses, only to be defrauded.</p>
+        <br>
+        <p class="justified-text">• <span class="fact-percentage">Classified Scams:</span> These scams target individuals selling items or properties on classified ads platforms by posing as genuine buyers or sellers.</p>
+        <br><br>
+
+        
+      </ul>
+      
+      <div style="text-align: center; margin-top: 20px;">
+          <a href="{{ url_for('resources') }}#resources" class="btn btn-medium btn-rounded btn-trans  btn-primary">Learn More About Types of Scams</a>
+      </div>
+  </div>
+</section>
+
+<!-- Importance of Passkeys Section -->
+<section class="bg-black">
+  <div class="container container-position">
+    <h1 class="title-h1 fact-percentage" style="font-size: 40px; text-align: center; font-weight: 600; margin-bottom: 5%;">The Importance of Passkeys</h1>
+      <!-- First Row -->
+      <div class="row no-gutters align-items-center padding-bottom-half wow fadeInUp" data-wow-duration="1.5s" data-wow-delay=".5s">
+          <div class="col-lg-6 col-md-12 col-sm-12 col-xs-12 text-div " id="passkeys">
+              <h2 class="h2-subheadings">What are passkeys?</h2>
+              <p class="justified-text" style="padding-right: 2%; padding-left: 4%;">
+                  Passkeys are a more secure and convenient way to access your accounts and devices without traditional passwords. These passkeys are unique to you and can come in various forms, such as:
+              </p>
+              <br>
+              <ul class="justified-text" style="padding-right: 2%; padding-left: 4%;">
+                  <li><span class="fact-percentage">Biometrics:</span> Your fingerprint, face scan, or even your voice can serve as a passkey. Devices like smartphones and laptops use these biometric features to verify your identity.</li>
+                  <br>
+                  <li><span class="fact-percentage">Hardware Tokens:</span> Some systems provide physical hardware tokens, like USB keys or smart cards, that you plug into your device to prove your identity.</li>
+                  <br>
+                  <li><span class="fact-percentage">One-Time Codes:</span> Passkeys can also be generated as one-time codes and sent to your trusted device, which you enter to access your account.</li>
+                  <br>
+                  <li><span class="fact-percentage">Email Magic Links:</span> Instead of entering a password, you receive an email link that, when clicked, serves as your passkey to log in.</li>
+              </ul>
+          </div>
+          <div class="col-lg-6 col-md-12 col-sm-12 col-xs-12" style="padding-left: 2%; padding-right: 4%;">
+              <div class="video-container">
+                  <iframe width="100%" height="450" src="https://www.youtube.com/embed/2xdV-xut7EQ" title="Understand passkeys in 4 minutes" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+              </div>
+          </div>
+      </div>
+  </div>
+
+  <!-- Tiles -->
+  <div class="container">
+  <div class="row mt-5 d-flex align-items-stretch">
+    <!-- Apple Passkey Tile -->
+    <div class="col-md-6 d-flex">
+        <a href="{{ url_for('resources') }}#applepasskey" class="passkey-tile apple-tile flex-fill d-flex flex-column justify-content-center">
+            <h3 style="font-weight: 400;">Learn How to Use Apple Passkey</h3>
+            <p style="font-family:'Montserrat', sans-serif;">Discover the steps and benefits of implementing Apple's secure authentication method.</p>
+        </a>
+    </div>
+
+    <!-- Google Passkey Tile -->
+    <div class="col-md-6 d-flex">
+        <a href="{{ url_for('resources') }}#googlepasskey" class="passkey-tile google-tile flex-fill d-flex flex-column justify-content-center">
+            <h3 style="font-weight: 400;">Learn How to Use Google Passkey</h3>
+            <p style="font-family:'Montserrat', sans-serif;">Get started with Google's advanced authentication and protect your accounts.</p>
+        </a>
+    </div>
+</div>
+  </div>
+</section>
+
+<!-- Styles for the Tiles -->
+<style>
+  .passkey-tile {
+      display: block;
+      padding: 20px;
+      border: 1px solid #e5e5e5;
+      border-radius: 10px;
+      transition: 0.3s;
+      text-align: center;
+      color: black;
+      width: 50%;
+      font-family: 'Montserrat', sans-serif;
+  }
+
+  .passkey-tile:hover {
+      box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
+      transform: translateY(-7px);
+      background-color: yellow;
+      color: black;
+  }
+
+  .apple-tile {
+      background-color: #f4f5f7;
+  }
+
+  .google-tile {
+      background-color: #f9f9f9;
+  }
+
+  .section-title {
+      font-size: 24px;
+      font-weight: bold;
+      margin-bottom: 20px;
+      color: #333;
+  }
+
+  .justified-text {
+      text-align: justify;
+  }
+</style>
 
 
-  <script>
 
 
-    var chartDom = document.getElementById('echarts-scamtype-main');
-    var myChart = echarts.init(chartDom);
-    var option;
 
-    option = {
+<script>
+  var chartDom = document.getElementById('echarts-scamtype-main');
+  var myChart = echarts.init(chartDom);
+  var option;
+
+  option = {
       title: {
-        text: "Financial loss by scam type in 2022 (AU$)",
-        left: 'center',
-        textStyle: {
-          color: "white",
-          fontWeight: 'bold',
-          fontSize: 18
-        }
+          text: "Financial loss by scam type in 2022 (AU$)",
+          left: 'center',
+          textStyle: {
+              color: "white",
+              fontWeight: 'bold',
+              fontSize: 18
+          }
       },
       tooltip: {
-        trigger: 'axis',
-        axisPointer: {
-          type: 'shadow'
-        }
+          trigger: 'axis',
+          axisPointer: {
+              type: 'shadow'
+          },
+          formatter: function(params) {
+              var desc = '';
+              switch (params[0].name) {
+                  case 'Investment scams':
+                      desc = 'Scammers make it look like you can make a lot of money investing with them.';
+                      break;
+                  case 'Dating & romance':
+                      desc = 'Scammers exploit people looking for romantic partners.';
+                      break;
+                  case 'False billing':
+                      desc = 'Scammers request you to pay fake invoices.';
+                      break;
+                  case 'Phishing':
+                      desc = 'Scammers impersonate trusted brands to steal personal information.';
+                      break;
+                  case 'Remote access scams':
+                      desc = 'Scammers trick you into installing malicious software.';
+                      break;
+                  case 'Threats to life, arrest or other':
+                      desc = 'Scammers threaten to reveal compromising information.';
+                      break;
+                  case 'Identity theft':
+                      desc = 'Scammers steal personal information to commit fraud.';
+                      break;
+                  case 'Jobs & employment scams':
+                      desc = 'Scammers promise high paying jobs or investment opportunities.';
+                      break;
+                  case 'Online shopping scams':
+                      desc = 'Scammers trick you into buying fake goods.';
+                      break;
+                  case 'Classified scams':
+                      desc = 'Scammers sell fake goods or services.';
+                      break;
+              }
+              return `${params[0].name}: AU$${params[0].data.value.toLocaleString()}<br>${desc}`;
+          }
       },
       grid: {
-        left: '10%',
-        right: '4%',
-        bottom: '3%',
-        containLabel: true
+          left: '10%',
+          right: '4%',
+          bottom: '3%',
+          containLabel: true
       },
       xAxis: {
-        type: 'value',
-        boundaryGap: [0, 0.01],
-        axisLabel: {
-          textStyle: {
-            color: "white",
-            fontSize: 14, // Adjust the font size here
-            fontWeight: 'bold' // Make the font bold
+          type: 'value',
+          boundaryGap: [0, 0.01],
+          axisLabel: {
+              textStyle: {
+                  color: "white",
+                  fontSize: 14,
+                  fontWeight: 'bold'
+              }
           }
-        }
       },
       yAxis: {
-        type: 'category',
-        data: [
-          {
-            value: 'Investment scams',
-            textStyle: {
-              color: 'Red',
-              fontSize: 12,
-              fontWeight: 'bold'
-
-            }
-          },
-          {
-            value: 'Dating & romance',
-            textStyle: {
-              color: 'Orange', // Change color here
-              fontSize: 12,
-              fontWeight: 'bold'
-            }
-          },
-          {
-            value: 'False billing',
-            textStyle: {
-              color: 'Yellow',// Change color here
-              fontSize: 12,
-              fontWeight: 'bold'
-            }
-          },
-          {
-            value: 'Phishing',
-            textStyle: {
-              color: 'Green', // Change color here
-              fontSize: 12,
-              fontWeight: 'bold'
-            }
-          },
-          {
-            value: 'Remote access scams',
-            textStyle: {
-              color: 'Blue', // Change color here
-              fontSize: 12,
-              fontWeight: 'bold'
-            }
-          },
-          {
-            value: 'Threats to life, arrest or other',
-            textStyle: {
-              color: 'Light Blue',// Change color here
-              fontSize: 12,
-              fontWeight: 'bold'
-            }
-          },
-          {
-            value: 'Identity theft',
-            textStyle: {
-              color: 'Violet',// Change color here
-              fontSize: 12,
-              fontWeight: 'bold'
-            }
-          },
-          {
-            value: 'Jobs & employment scams',
-            textStyle: {
-              color: 'Purple',// Change color here
-              fontSize: 12,
-              fontWeight: 'bold'
-            }
-          },
-          {
-            value: 'Online shopping scams',
-            textStyle: {
-              color: 'Deep Pink',// Change color here
-              fontSize: 12,
-              fontWeight: 'bold'
-            }
-          },
-          {
-            value: 'Classified scams',
-            textStyle: {
-              color: 'Pink',// Change color here
-              fontSize: 12,
-              fontWeight: 'bold'
-            }
+          type: 'category',
+          data: [
+              'Investment scams',
+              'Dating & romance',
+              'False billing',
+              'Phishing',
+              'Remote access scams',
+              'Threats to life, arrest or other',
+              'Identity theft',
+              'Jobs & employment scams',
+              'Online shopping scams',
+              'Classified scams'
+          ],
+          axisLabel: {
+              textStyle: {
+                  color: "white",
+                  fontSize: 12,
+                  fontWeight: 'bold'
+              }
           }
-        ]
       },
       series: [
-        {
-          name: '2021-22',
-          type: 'bar',
-          center: ['25'],
-          data: [
-            {
-              value: 377252430,
-              itemStyle: {
-                color: 'Red' // Change color here
-              }
-            },
-            {
-              value: 40675825,
-              itemStyle: {
-                color: 'Orange' // Change color here
-              }
-            },
-            {
-              value: 25312185,
-              itemStyle: {
-                color: 'Yellow' // Change color here
-              }
-            },
-            {
-              value: 24617192,
-              itemStyle: {
-                color: 'Green' // Change color here
-              }
-            },
-            {
-              value: 21744454,
-              itemStyle: {
-                color: 'Blue' // Change color here
-              }
-            },
-            {
-              value: 13934433,
-              itemStyle: {
-                color: 'Light Blue' // Change color here
-              }
-            },
-            {
-              value: 10738029,
-              itemStyle: {
-                color: 'Violet' // Change color here
-              }
-            },
-            {
-              value: 9695719,
-              itemStyle: {
-                color: 'Purple' // Change color here
-              }
-            },
-            {
-              value: 9261357,
-              itemStyle: {
-                color: 'Deep Pink' // Change color here
-              }
-            },
-            {
-              value: 8465343,
-              itemStyle: {
-                color: 'Pink' // Change color here
-              }
-            }
-          ]
-        }
+          {
+              name: '2021-22',
+              type: 'bar',
+              center: ['25'],
+              data: [
+                  { value: 377252430, itemStyle: { color: '#5470c6' } },
+                  { value: 40675825, itemStyle: { color: '#5470c6' } },
+                  { value: 25312185, itemStyle: { color: '#5470c6' } },
+                  { value: 24617192, itemStyle: { color: '#5470c6' } },
+                  { value: 21744454, itemStyle: { color: '#5470c6' } },
+                  { value: 13934433, itemStyle: { color: '#5470c6' } },
+                  { value: 10738029, itemStyle: { color: '#5470c6' } },
+                  { value: 9695719, itemStyle: { color: '#5470c6' } },
+                  { value: 9261357, itemStyle: { color: '#5470c6' } },
+                  { value: 8465343, itemStyle: { color: '#5470c6' } }
+              ]
+          }
       ]
-    };
+  };
 
-    option && myChart.setOption(option);
-  </script>
+  option && myChart.setOption(option);
+</script>
+
 
   <style>
     .statisticsgap_bar {
