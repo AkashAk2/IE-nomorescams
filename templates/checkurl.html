@@ -104,7 +104,24 @@
 
 .urlcheck {
   margin-top: -5%;
+  padding-bottom: 0;
+  margin-bottom: 0;
 }
+
+@keyframes dotPulse {
+    0% { content: '.'; }
+    33% { content: '..'; }
+    66% { content: '...'; }
+    100% { content: '.'; }
+}
+
+.waitingDots:after {
+    content: '...';
+    display: inline-block;
+    animation: dotPulse 1s infinite;
+    margin-left: 5px;
+}
+
 
 </style>
 
@@ -152,62 +169,112 @@
                     <div class="urlcheck-button mt-3" style="margin-bottom: 5%;">
                         <a href="javascript:void(0);" onclick="checkURL()" class="scroll btn btn-medium btn-rounded btn-yellow btn-trans btn-margin">Check URL</a>
                     </div>
+                    <div id="statusMessage" style="margin-top: 15px;"></div>
+
                 </div>
             </div>
         </div>
-        <div id="resultContainer">
-            <div id="resultDiv">Your result here</div>
-        </div>
-        <div id="safetySteps" style="display: none; margin-top: 5%;">
-            <h3 style="font-size: 25px; font-weight: bold; color: #ff9900;">Steps to Take for Safety:</h3>
-            <ul style="font-size: 20px;">
-                <li>- Do not visit the URL.</li><br>
-                <li>- If you've already clicked on the URL, do not provide any personal information or download any files.</li><br>
-                <li>- Update your device's security software and run a full scan.</li><br>
-                <li>- Always ensure you're using a trusted and secure internet connection.</li><br>
-                <li>- If the URL was received via email, do not engage or respond. Mark the email as spam.</li>
-            </ul>
-        </div>
-        
+    </div>
+
+    <div id="resultContainer">
+        <div id="resultDiv">Your result here</div>
+    </div>
+    <div id="safetySteps" style="display: none; margin-top: 5%;">
+        <h3 style="font-size: 25px; font-weight: bold; color: #ff9900;">Steps to Take for Safety:</h3>
+        <ul style="font-size: 20px;">
+            <li>- Do not visit the URL.</li><br>
+            <li>- If you've already clicked on the URL, do not provide any personal information or download any files.</li><br>
+            <li>- Update your device's security software and run a full scan.</li><br>
+            <li>- Always ensure you're using a trusted and secure internet connection.</li><br>
+            <li>- If the URL was received via email, do not engage or respond. Mark the email as spam.</li>
+        </ul>
     </div>
 </section>
 
+    
+</section>
   
   <script>
     function checkURL() {
     const url = document.getElementById('urlInput').value;
+    const statusMessage = document.getElementById('statusMessage');
+    const resultDiv = document.getElementById('resultDiv');
+    const safetySteps = document.getElementById('safetySteps');
 
-    fetch('/checkurl', {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json'
-        },
-        body: JSON.stringify({ url: url })
-    })
-    .then(response => response.json())
-    .then(data => {
-        let resultText = data.result;
-        
-        if (resultText.includes('Google Safe Browsing')) {
-            resultText = resultText.replace('Google Safe Browsing', `<a href="https://transparencyreport.google.com/safe-browsing/search?hl=en" target="_blank" class="google-link">Google Safe Browsing</a>`);
-        }
-        
-        if (resultText.includes('VirusTotal')) {
-            resultText = resultText.replace('VirusTotal', `<a href="https://www.virustotal.com/gui/home/url" target="_blank" class="virus-total-link">VirusTotal</a>`);
-        }
-        
-        document.getElementById('resultDiv').innerHTML = resultText;
-        document.getElementById('resultDiv').style.display = 'block'; // Display the result
+    // Clear the previous result and hide safety steps
+    resultDiv.innerHTML = '';
+    resultDiv.style.display = 'none';
+    safetySteps.style.display = 'none';
 
-        // Display the safety steps if the URL is flagged
-        if (!resultText.includes('seems safe')) {
-            document.getElementById('safetySteps').style.display = 'block';
+    statusMessage.innerHTML = 'Scanning on VirusTotal, Please wait<span class="waitingDots"></span>';
+
+    // Notify user if the scan takes longer than expected
+    const notifyTimeout = setTimeout(() => {
+        if (statusMessage.innerHTML.includes('Scanning') || statusMessage.innerHTML.includes('Finalizing results')) {
+            statusMessage.innerHTML = 'It is taking longer than expected. Please wait a moment longer<span class="waitingDots"></span>';
         }
-    })
-    .catch(error => {
-        console.error('Error:', error);
-    });
+    }, 10000);  // 10 seconds delay to notify
+
+    setTimeout(() => {
+        statusMessage.innerHTML = 'Scanning on Google Safe Browsing, Please wait<span class="waitingDots"></span>';
+
+        fetch('/checkurl', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({ url: url })
+        })
+        .then(response => {
+            if (response.ok) {
+                return response.json();
+            } else {
+                throw new Error("Failed to scan on VirusTotal");
+            }
+        })
+        .then(data => {
+            clearTimeout(notifyTimeout);  // clear the notification timeout
+
+            setTimeout(() => {
+                statusMessage.innerHTML = 'Finalizing results, please wait<span class="waitingDots"></span>';
+
+                let resultText = data.result;
+
+                if (resultText.includes('Google Safe Browsing')) {
+                    resultText = resultText.replace('Google Safe Browsing', `<a href="https://transparencyreport.google.com/safe-browsing/search?hl=en" target="_blank" class="google-link">Google Safe Browsing</a>`);
+                }
+
+                if (resultText.includes('VirusTotal')) {
+                    resultText = resultText.replace('VirusTotal', `<a href="https://www.virustotal.com/gui/home/url" target="_blank" class="virus-total-link">VirusTotal</a>`);
+                }
+
+                resultDiv.innerHTML = resultText;
+                resultDiv.style.display = 'block';
+
+                if (!resultText.includes('seems safe')) {
+                    safetySteps.style.display = 'block';
+                } else {
+                    safetySteps.style.display = 'none';
+                }
+                statusMessage.innerHTML = '';
+
+                // Smooth scroll to the result
+                resultDiv.scrollIntoView({ behavior: 'smooth' });
+
+            }, 2000); // 2 seconds delay for finalizing results
+        })
+        .catch(error => {
+            clearTimeout(notifyTimeout);  // clear the notification timeout
+
+            console.error('Error:', error);
+            statusMessage.innerHTML = 'An error occurred while checking the URL. Please try again later.';
+        });
+
+    }, 2000); // 2 seconds delay for Google Safe Browsing
 }
+
+
+
 
   </script>
   

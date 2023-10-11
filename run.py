@@ -194,6 +194,10 @@ def checkurl():
             source_google = None
             source_virustotal = None
 
+            # Check with VirusTotal
+            safe_on_virustotal, virustotal_message = check_virustotal(url)
+            source_virustotal = None if safe_on_virustotal else "VirusTotal"
+            
             # Check with Google Safe Browsing
             try:
                 service = discovery.build('safebrowsing', 'v4', developerKey=WEB_RISK_API_KEY)
@@ -218,10 +222,6 @@ def checkurl():
             except Exception as e:
                 safe_on_google = False
                 source_google = f"Google API Error: {e}"
-
-            # Check with VirusTotal
-            safe_on_virustotal, virustotal_message = check_virustotal(url)
-            source_virustotal = None if safe_on_virustotal else "VirusTotal"
 
             if not safe_on_google or not safe_on_virustotal:
                 # Combine sources
