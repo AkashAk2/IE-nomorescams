@@ -79,10 +79,10 @@
         <!-- First Div with centered content -->
         <div class="first">
             <div class="main-title">
-                <h2 class="heading result-header" style="text-align: center;background-color: #181A1F; font-weight: bold;">Scam Detector for SMS or Email</h2>
+                <h2 class="heading result-header" style="text-align: center;background-color: #181A1F; font-weight: bold;">Scam Detector for SMS</h2>
             </div>
             <form id="scamForm" action="{{ url_for('detect_scam')}}" method="POST">
-                <textarea id="messageBox" name="message" rows="10" cols="100" required="required" placeholder="Enter the SMS or Email content here" style="color: black; font-size: 20px;">{{ original_message }}</textarea>
+                <textarea id="messageBox" name="message" rows="10" cols="100" required="required" placeholder="Enter the SMS content here" style="color: black; font-size: 20px;">{{ original_message }}</textarea>
                 <br>
                 <button type="submit" class="btn btn-medium btn-trans btn-rounded btn-margin">Predict</button>
             </form>
