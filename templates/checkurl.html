@@ -28,19 +28,20 @@
 
 
   <style>
-    body, html {
+    /* body, html {
         height: 100%;
         margin: 0;
         font-family: Arial, sans-serif;
-    }
+    } */
 
     section {
         display: flex;
         flex-direction: column;
         align-items: center;
         justify-content: center;
-        height: 100%;
-    }
+        height: 150vh;
+        font-family: "Montserrat", sans-serif;
+    } 
 
     #inputform {
         display: flex;
@@ -130,6 +131,8 @@
 }
 
 
+
+
 </style>
 
 </head>
@@ -160,8 +163,11 @@
   <!-- End Header -->
 
 
-  <section class="safety urlcheck overflow-hidden vh-100 d-flex align-items-center" id="urlSafety">
-    <div class="container">
+  <section class="safety urlcheck" id="urlSafety">
+    <div style="height: 1%;">
+
+    </div>
+    <div class="container" style="padding-top: -5%;">
         <div class="row justify-content-center">
             <div class="col-12 col-md-10 col-lg-8 text-center">
                 <div class="heading-area reduced-margin wow zoomIn" data-wow-duration="1s" data-wow-delay=".1s">
@@ -173,7 +179,7 @@
                     <div class="urlinputcontainer d-flex align-items-center justify-content-center mt-3">
                         <input type="url" name="Enter URL" id="urlInput" placeholder="https://example.com">
                     </div>
-                    <div class="urlcheck-button mt-3" style="margin-bottom: 5%;">
+                    <div class="urlcheck-button mt-3">
                         <a href="javascript:void(0);" onclick="checkURL()" class="scroll btn btn-medium btn-rounded btn-yellow btn-trans btn-margin">Check URL</a>
                     </div>
                     <div id="statusMessage" style="margin-top: 15px;"></div>
@@ -183,11 +189,12 @@
         </div>
     </div>
 
-    <div id="resultContainer">
+    <div id="resultContainer" style="margin-bottom: 5%;">
         <div id="resultDiv">Your result here</div>
     </div>
-    <div id="safetySteps" style="display: none; margin-top: 5%;">
-        <h3 style="font-size: 25px; font-weight: bold; color: #ff9900;">Steps to Take for Safety:</h3>
+    <div class="container" id="safetySteps" style="display: none;">
+        <!-- <h3 style="font-size: 25px; font-weight: bold; color: #ff9900;">Steps to Take for Safety:</h3> -->
+        <h1 class="title-h1 fact-percentage" style="font-size: 40px; text-align: center; font-weight: 600; margin-top: 3%; margin-bottom: 2%;">Steps to Take for Safety:</h1>
         <ul style="font-size: 20px;">
             <li>- Do not visit the URL.</li><br>
             <li>- If you've already clicked on the URL, do not provide any personal information or download any files.</li><br>
@@ -195,11 +202,31 @@
             <li>- Always ensure you're using a trusted and secure internet connection.</li><br>
             <li>- If the URL was received via email, do not engage or respond. Mark the email as spam.</li>
         </ul>
+    </div>   
+    
+    <div class="container">
+        <h1 class="title-h1 fact-percentage" style="font-size: 40px; text-align: center; font-weight: 600;margin-top: 5%; margin-bottom: 2%;">Sample URLs for Testing</h1>
+        <p class="justified-text">Explore these real-world malicious URLs with our tool for testing purposes. However, please note that these URLs are associated with actual scams. Always be cautious and avoid engaging with unfamiliar links.</p>
+        <br><br>
+        <ul class="example-list" style="padding: 0; list-style-type: none;">
+            <li class="justified-text" style="margin-bottom: 2%;">
+                <span class="fact-percentage">Phishing URL:</span> http://testsafebrowsing.appspot.com/s/phishing.html
+            </li>
+            
+            <li class="justified-text" style="margin-bottom: 2%;">
+                <span class="fact-percentage">Malware URL:</span> http://testsafebrowsing.appspot.com/s/malware.html
+            </li>
+            
+            <li class="justified-text">
+                <span class="fact-percentage">Unwanted Software URL:</span> http://testsafebrowsing.appspot.com/s/unwanted.html
+            </li>
+        </ul>
     </div>
 </section>
 
-    
-</section>
+
+
+
 
 
 <script>
@@ -336,17 +363,19 @@
   <!-- Start Footer -->
   <footer class="footer bg-black">
     <div class="container">
-      <div class="row align-items-center">
-        <!--Social-->
-        <!--Text-->
-        <div class="col-12 text-center mt-3" style="top: 80px;">
-          <p class="company-about fadeIn">© 2023 Made By <a href="javascript:void(0);">Team Code for Good</a>
-          </p>
+        <div class="row align-items-center">
+          <!-- Social -->
+          <!-- Text -->
+          <div class="col-12 text-center mt-3" style="top: 80px;">
+            <p class="company-about fadeIn">© 2023 Made By <a href="javascript:void(0);">Team Code for Good</a></p>
+            <!-- Contact us -->
+            <p class="contact-us">Contact us: &nbsp;<a href="mailto:fit5120team27@gmail.com"><i class="fas fa-envelope"></i> fit5120team27@gmail.com</a></p>
+          </div>
         </div>
       </div>
-    </div>
   </footer>
   <!-- End Footer -->
+  
 
   <!-- Start Scroll Top -->
   <div class="go-top"><i class="fas fa-angle-up"></i><i class="fas fa-angle-up"></i></div>
