@@ -30,7 +30,7 @@ VIRUSTOTAL_API_KEY = "Key is hidden for security purposes"
 
 DB_CONFIG = {
     'user': 'team27',
-    'password': 'Password is hidden for security purposes,
+    'password': 'Password is hidden for security purposes',
     'host': 'nomorescams-mysql.mysql.database.azure.com',
     'port': 3306,
     'database': 'nomorescams',
