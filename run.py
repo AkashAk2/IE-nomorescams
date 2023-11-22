@@ -21,16 +21,16 @@ app.register_blueprint(iteration1, url_prefix='/iteration1')
 app.register_blueprint(iteration2, url_prefix='/iteration2')
 app.secret_key = secrets.token_hex(16)
 
-WEB_RISK_API_KEY = 'AIzaSyAS7xBvDz9u70txO4BiCWTPTCWnZeCqHXw'
+WEB_RISK_API_KEY = "Key is hidden for security purposes"
 CLIENT_ID = "nomorescams"  # Replace with your client ID
 CLIENT_VERSION = "1.0"  # Adjust as necessary
-VIRUSTOTAL_API_KEY = "6908dc82cfc9e3d263e55f59ef24ad91c0125dd6ea7269767b767b19715f91f5"
+VIRUSTOTAL_API_KEY = "Key is hidden for security purposes"
 
 
 
 DB_CONFIG = {
     'user': 'team27',
-    'password': 'Monash@27',
+    'password': 'Password is hidden for security purposes,
     'host': 'nomorescams-mysql.mysql.database.azure.com',
     'port': 3306,
     'database': 'nomorescams',
